@@ -67,20 +67,22 @@ function Logo3D() {
       style={{ perspective: "1200px" }}
     >
       <motion.div
-        initial={{ rotateY: -18, rotateX: 8 }}
+        initial={{ rotateY: -25, rotateX: 10, scale: 1 }}
         animate={{
-          rotateY: [-18, -12, -18],
-          rotateX: [8, 4, 8],
-          y: [0, -10, 0],
+          rotateY: [-25, 25, -25],
+          rotateX: [10, -6, 10],
+          rotateZ: [-2, 2, -2],
+          scale: [1, 1.08, 1],
+          y: [0, -20, 0],
         }}
         transition={{
-          duration: 10,
+          duration: 12,
           ease: "easeInOut",
           repeat: Infinity,
         }}
         style={{
           transformStyle: "preserve-3d",
-          filter: "drop-shadow(0 30px 60px rgba(166,226,46,0.18))",
+          filter: "drop-shadow(0 40px 80px rgba(166,226,46,0.28))",
         }}
       >
         <svg
@@ -88,7 +90,7 @@ function Logo3D() {
           height="560"
           viewBox="0 0 28 28"
           fill="none"
-          className="opacity-[0.07] md:opacity-[0.09]"
+          className="opacity-[0.10] md:opacity-[0.13]"
         >
           <defs>
             <linearGradient id="bar1" x1="0" y1="0" x2="0" y2="1">
@@ -123,7 +125,7 @@ export default function LinktreeClient() {
       className="relative min-h-screen w-full overflow-hidden flex items-center justify-center px-6 py-16"
       style={{
         background:
-          "radial-gradient(ellipse at top, #1a1f12 0%, #0D0D0D 45%, #050505 100%)",
+          "radial-gradient(ellipse at top, #3a4230 0%, #2a2e26 35%, #1e2019 70%, #15171a 100%)",
       }}
     >
       {/* Capa de glow lime difuso */}
@@ -132,22 +134,7 @@ export default function LinktreeClient() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle at 50% 30%, rgba(166,226,46,0.18) 0%, transparent 55%)",
-        }}
-      />
-
-      {/* Rejilla sutil */}
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none opacity-[0.06]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(255,255,255,0.6) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.6) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-          maskImage:
-            "radial-gradient(ellipse at center, black 30%, transparent 75%)",
-          WebkitMaskImage:
-            "radial-gradient(ellipse at center, black 30%, transparent 75%)",
+            "radial-gradient(circle at 50% 25%, rgba(166,226,46,0.22) 0%, transparent 55%)",
         }}
       />
 
@@ -192,8 +179,12 @@ export default function LinktreeClient() {
             style={{ perspective: "600px" }}
           >
             <motion.div
-              animate={{ rotateY: [0, 8, 0, -8, 0] }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              animate={{
+                rotateY: [0, 25, 0, -25, 0],
+                rotateX: [0, -8, 0, 8, 0],
+                y: [0, -3, 0, -3, 0],
+              }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
               style={{ transformStyle: "preserve-3d" }}
             >
               <svg width="36" height="36" viewBox="0 0 28 28" fill="none" className="text-pg-lime">
@@ -256,8 +247,8 @@ export default function LinktreeClient() {
               whileHover={{ y: -2 }}
               className="group relative flex items-center gap-4 px-5 py-4 rounded-xl backdrop-blur-md border transition-all duration-500 overflow-hidden"
               style={{
-                background: "rgba(255,255,255,0.04)",
-                borderColor: "rgba(255,255,255,0.1)",
+                background: "rgba(13,13,13,0.45)",
+                borderColor: "rgba(255,255,255,0.12)",
               }}
             >
               {/* Hover sweep */}
