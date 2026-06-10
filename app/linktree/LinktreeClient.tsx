@@ -82,7 +82,8 @@ function Logo3D() {
         }}
         style={{
           transformStyle: "preserve-3d",
-          filter: "drop-shadow(0 40px 80px rgba(166,226,46,0.28))",
+          filter:
+            "drop-shadow(0 30px 60px rgba(166,226,46,0.35)) drop-shadow(0 0 40px rgba(166,226,46,0.15))",
         }}
       >
         <svg
@@ -90,7 +91,7 @@ function Logo3D() {
           height="560"
           viewBox="0 0 28 28"
           fill="none"
-          className="opacity-[0.10] md:opacity-[0.13]"
+          className="opacity-[0.16] md:opacity-[0.20]"
         >
           <defs>
             <linearGradient id="bar1" x1="0" y1="0" x2="0" y2="1">
@@ -125,44 +126,74 @@ export default function LinktreeClient() {
       className="relative min-h-screen w-full overflow-hidden flex items-center justify-center px-6 py-16"
       style={{
         background:
-          "radial-gradient(ellipse at top, #3a4230 0%, #2a2e26 35%, #1e2019 70%, #15171a 100%)",
+          "linear-gradient(135deg, #2a2d31 0%, #34373b 25%, #3d4045 50%, #2f3236 78%, #1f2125 100%)",
       }}
     >
-      {/* Capa de glow lime difuso */}
+      {/* Textura metal cepillado — líneas finas horizontales */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none opacity-[0.18] mix-blend-overlay"
+        style={{
+          backgroundImage:
+            "repeating-linear-gradient(180deg, rgba(255,255,255,0.06) 0px, rgba(255,255,255,0.06) 1px, transparent 1px, transparent 3px), repeating-linear-gradient(180deg, rgba(0,0,0,0.05) 0px, rgba(0,0,0,0.05) 1px, transparent 1px, transparent 2px)",
+        }}
+      />
+
+      {/* Ruido fino tipo grano de metal */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none opacity-[0.12] mix-blend-overlay"
+        style={{
+          backgroundImage:
+            "url(\"data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")",
+          backgroundSize: "200px 200px",
+        }}
+      />
+
+      {/* Luz cálida sutil arriba-izquierda (highlight metálico) */}
       <div
         aria-hidden
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle at 50% 25%, rgba(166,226,46,0.22) 0%, transparent 55%)",
+            "radial-gradient(ellipse 80% 60% at 20% 10%, rgba(255,255,255,0.08) 0%, transparent 55%)",
+        }}
+      />
+
+      {/* Sombra abajo-derecha para profundidad */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 90% 70% at 90% 100%, rgba(0,0,0,0.45) 0%, transparent 60%)",
+        }}
+      />
+
+      {/* Glow lime central muy sutil — solo realce del logo */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 45%, rgba(166,226,46,0.12) 0%, transparent 45%)",
         }}
       />
 
       {/* Logo 3D animado de fondo */}
       <Logo3D />
 
-      {/* Orbes flotantes */}
+      {/* Orbe lime flotante único — acento sutil */}
       <motion.div
         aria-hidden
-        className="absolute -top-20 -left-20 w-[420px] h-[420px] rounded-full pointer-events-none"
+        className="absolute top-1/4 -left-32 w-[420px] h-[420px] rounded-full pointer-events-none"
         style={{
           background:
-            "radial-gradient(circle, rgba(166,226,46,0.22) 0%, transparent 70%)",
-          filter: "blur(40px)",
-        }}
-        animate={{ x: [0, 30, 0], y: [0, 20, 0] }}
-        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        aria-hidden
-        className="absolute -bottom-20 -right-20 w-[480px] h-[480px] rounded-full pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle, rgba(166,226,46,0.14) 0%, transparent 70%)",
+            "radial-gradient(circle, rgba(166,226,46,0.10) 0%, transparent 70%)",
           filter: "blur(50px)",
         }}
-        animate={{ x: [0, -30, 0], y: [0, -20, 0] }}
-        transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
+        animate={{ x: [0, 40, 0], y: [0, 20, 0] }}
+        transition={{ duration: 14, repeat: Infinity, ease: "easeInOut" }}
       />
 
       {/* Contenido */}
@@ -247,8 +278,11 @@ export default function LinktreeClient() {
               whileHover={{ y: -2 }}
               className="group relative flex items-center gap-4 px-5 py-4 rounded-xl backdrop-blur-md border transition-all duration-500 overflow-hidden"
               style={{
-                background: "rgba(13,13,13,0.45)",
-                borderColor: "rgba(255,255,255,0.12)",
+                background:
+                  "linear-gradient(135deg, rgba(60,63,68,0.55) 0%, rgba(40,42,46,0.55) 100%)",
+                borderColor: "rgba(255,255,255,0.14)",
+                boxShadow:
+                  "inset 0 1px 0 rgba(255,255,255,0.06), 0 8px 24px rgba(0,0,0,0.35)",
               }}
             >
               {/* Hover sweep */}
