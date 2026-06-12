@@ -109,7 +109,7 @@ export default function Footer() {
             >
               Contacto
             </p>
-            <div className="flex flex-col gap-3 mb-8">
+            <div className="flex flex-col gap-3">
               <a
                 href="mailto:contacto@pgestrategias.com"
                 className="font-body text-[14px] transition-colors duration-500 hover:text-white"
@@ -125,15 +125,6 @@ export default function Footer() {
                 +52 222 121 5051
               </a>
             </div>
-            <p
-              className="font-body text-[11px] uppercase tracking-[0.14em] mb-3"
-              style={{ color: "rgba(255,255,255,0.25)" }}
-            >
-              Oficina
-            </p>
-            <p className="font-body text-[13px] leading-relaxed" style={{ color: "rgba(245,245,245,0.4)" }}>
-              Calle Valencia 131-2, Las Palmas,<br />Puebla, México
-            </p>
           </div>
         </div>
 
