@@ -10,9 +10,9 @@ import { useRef, useState } from "react";
    Sube las imágenes a /public/chefisabel/
    ============================================================ */
 const IMAGES = {
-  hero: "/chefisabel/isabel-hero.jpg", // Retrato en Santa Catrina / taller, luz cálida
-  legado: "/chefisabel/isabel-legado.jpg", // Foto cocinando o emplatando
-  cierre: "/chefisabel/isabel-cierre.jpg", // Retrato sonriente / brindis
+  hero: "https://res.cloudinary.com/djduba5fd/image/upload/q_auto/f_auto/v1781502134/WhatsApp_Image_2026-06-14_at_11.15.03_PM_1_r49ewm.jpg",
+  legado: "https://res.cloudinary.com/djduba5fd/image/upload/q_auto/f_auto/v1781502136/WhatsApp_Image_2026-06-14_at_11.15.03_PM_iyxnhp.jpg",
+  cierre: "https://res.cloudinary.com/djduba5fd/image/upload/q_auto/f_auto/v1781502226/c2979cc8-1657-4ea6-8c0f-cd9ea1378b51_blhqcb.jpg",
 };
 
 /* ---------- Animación reutilizable (patrón fadeUp) ---------- */
