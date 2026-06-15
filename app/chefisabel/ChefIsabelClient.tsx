@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 
 /* ============================================================
    ASSETS — reemplaza estas rutas por las fotos de la Chef.
@@ -201,14 +201,6 @@ const mensajes = [
    COMPONENTE
    ============================================================ */
 export default function ChefIsabelClient() {
-  const [mensaje, setMensaje] = useState("");
-  const [enviado, setEnviado] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (mensaje.trim()) setEnviado(true);
-  };
-
   return (
     <div
       className="catrina relative min-h-screen overflow-x-hidden"
@@ -257,7 +249,7 @@ export default function ChefIsabelClient() {
             backgroundColor: "#1a0f12",
             backgroundImage: `linear-gradient(180deg, rgba(18,11,14,0.35) 0%, rgba(18,11,14,0.55) 55%, rgba(18,11,14,0.92) 100%), radial-gradient(120% 90% at 70% 20%, rgba(228,0,124,0.35), transparent 60%), url('${IMAGES.hero}')`,
             backgroundSize: "cover",
-            backgroundPosition: "center",
+            backgroundPosition: "center top",
           }}
         />
 
@@ -356,7 +348,7 @@ export default function ChefIsabelClient() {
                 backgroundColor: "#2a1a1e",
                 backgroundImage: `linear-gradient(120deg, rgba(228,0,124,0.15), transparent), url('${IMAGES.legado}')`,
                 backgroundSize: "cover",
-                backgroundPosition: "center",
+                backgroundPosition: "center top",
               }}
             >
               <Cempasuchil className="absolute bottom-4 right-4 w-14 opacity-90" />
@@ -449,7 +441,7 @@ export default function ChefIsabelClient() {
             Un brindis a la <span className="italic" style={{ color: "var(--rosa)" }}>distancia</span>
           </motion.h2>
 
-          <div className="grid sm:grid-cols-2 gap-5 mb-14">
+          <div className="grid sm:grid-cols-2 gap-5">
             {mensajes.map((m, i) => (
               <motion.div
                 key={i}
@@ -476,50 +468,6 @@ export default function ChefIsabelClient() {
               </motion.div>
             ))}
           </div>
-
-          {/* Formulario para dejar felicitación */}
-          <motion.div
-            {...fadeUp(0.1)}
-            className="rounded-3xl p-8 md:p-10 text-center"
-            style={{ background: "var(--rosa)", color: "#fff" }}
-          >
-            {!enviado ? (
-              <>
-                <h3 className="font-serif-display text-2xl md:text-3xl mb-2">
-                  Deja tu felicitación
-                </h3>
-                <p className="text-white/85 mb-6 text-sm md:text-base">
-                  Suma tu voz a este brindis colectivo por la Chef Isabel.
-                </p>
-                <form
-                  onSubmit={handleSubmit}
-                  className="catrina-glass flex flex-col sm:flex-row items-center gap-2 rounded-2xl sm:rounded-full p-2 max-w-xl mx-auto"
-                >
-                  <input
-                    value={mensaje}
-                    onChange={(e) => setMensaje(e.target.value)}
-                    placeholder="Escribe tu mensaje para la Chef…"
-                    className="flex-1 w-full bg-transparent px-5 py-3 text-white placeholder-white/60 outline-none text-sm md:text-base"
-                  />
-                  <motion.button
-                    type="submit"
-                    whileHover={{ scale: 1.03 }}
-                    whileTap={{ scale: 0.98 }}
-                    className="w-full sm:w-auto rounded-full px-8 py-3 font-medium text-sm md:text-base"
-                    style={{ background: "var(--amarillo)", color: "var(--tinta)" }}
-                  >
-                    Enviar 🌼
-                  </motion.button>
-                </form>
-              </>
-            ) : (
-              <motion.div initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }}>
-                <Cempasuchil className="w-16 mx-auto mb-4" />
-                <h3 className="font-serif-display text-2xl md:text-3xl mb-2">¡Gracias por tu cariño!</h3>
-                <p className="text-white/85">Tu brindis ya forma parte de esta celebración. 🥂</p>
-              </motion.div>
-            )}
-          </motion.div>
         </div>
       </section>
 
@@ -560,25 +508,7 @@ export default function ChefIsabelClient() {
             compartes en cada platillo.
           </motion.p>
 
-          <motion.div {...fadeUp(0.34)} className="mt-10 flex flex-wrap items-center justify-center gap-3">
-            <a
-              href="https://santacatrina.com.pl/es/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="rounded-full px-8 py-4 font-medium text-sm md:text-base"
-              style={{ background: "var(--amarillo)", color: "var(--tinta)" }}
-            >
-              Descubre el menú de Santa Catrina
-            </a>
-            <a
-              href="#legado"
-              className="catrina-glass rounded-full px-8 py-4 font-medium text-sm md:text-base text-white"
-            >
-              Conoce más sobre la Chef
-            </a>
-          </motion.div>
-
-          <motion.p {...fadeUp(0.46)} className="mt-16 font-hand text-3xl md:text-4xl" style={{ color: "var(--amarillo)" }}>
+          <motion.p {...fadeUp(0.34)} className="mt-16 font-hand text-3xl md:text-4xl" style={{ color: "var(--amarillo)" }}>
             Con cariño, de México para ti 🌺
           </motion.p>
         </div>
