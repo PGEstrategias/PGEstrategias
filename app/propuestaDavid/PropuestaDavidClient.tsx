@@ -192,7 +192,7 @@ const comparison = [
   { row: "Estudio de mercado B2B", a: "✔ Incluido", b: "— No incluido" },
   { row: "Video institucional live action", a: "✔ Incluido", b: "— No incluido" },
   { row: "Drone + multicámara + director", a: "✔ Día de rodaje completo", b: "— No incluido" },
-  { row: "Inversión total", a: "$35,000 MXN — pago único", b: "$16,000 MXN — pago único" },
+  { row: "Inversión total", a: "$28,000 MXN — pago único", b: "$16,000 MXN — pago único" },
   { row: "Duración del proceso", a: "45 días naturales", b: "35 días naturales" },
 ];
 
@@ -561,7 +561,7 @@ export default function PropuestaDavidClient() {
                   fontWeight: 400,
                 }}
               >
-                $35,000
+                $28,000
                 <span className="text-[18px] opacity-60"> MXN</span>
               </p>
               <p
@@ -875,7 +875,7 @@ export default function PropuestaDavidClient() {
                   background: "rgba(166,226,46,0.04)",
                 }}
               >
-                Opción A · $35K
+                Opción A · $28K
               </div>
               <div
                 className="px-6 py-5 font-body text-[10px] uppercase tracking-[0.16em] text-center"
