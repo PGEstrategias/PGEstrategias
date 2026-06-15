@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Caveat:wght@500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -66,3 +66,59 @@ body {
   background-repeat: repeat;
   background-size: 128px 128px;
 }
+
+/* ============================================================
+   CHEF ISABEL · Identidad gráfica "Santa Catrina"
+   Paleta cálida: rosa mexicano, amarillo, terracota, negro
+   ============================================================ */
+.catrina {
+  --rosa: #E4007C;       /* rosa mexicano */
+  --rosa-soft: #FF3D9A;
+  --amarillo: #FFC400;   /* amarillo intenso */
+  --terracota: #C75B39;  /* terracota */
+  --hueso: #F6EFE3;      /* crema / papel */
+  --tinta: #120B0E;      /* negro cálido */
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-hand: 'Caveat', cursive;
+}
+
+/* Liquid glass adaptado a fondo claro/cálido (de prompt Mindloop) */
+.catrina-glass {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: none;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.18);
+  position: relative;
+  overflow: hidden;
+}
+.catrina-glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: linear-gradient(180deg,
+    rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.18) 22%,
+    rgba(255,255,255,0) 45%, rgba(255,255,255,0) 60%,
+    rgba(228,0,124,0.25) 82%, rgba(255,196,0,0.45) 100%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.font-serif-display { font-family: 'Playfair Display', Georgia, serif; }
+.font-hand { font-family: 'Caveat', cursive; }
+
+@keyframes catrina-float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(6deg); }
+}
+.catrina-float { animation: catrina-float 7s ease-in-out infinite; }
+
+@keyframes catrina-spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.catrina-spin-slow { animation: catrina-spin-slow 40s linear infinite; }
