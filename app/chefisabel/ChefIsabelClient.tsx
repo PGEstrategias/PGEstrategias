@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
-import { useRef } from "react";
+import { motion, AnimatePresence, useScroll, useTransform, MotionValue } from "framer-motion";
+import { useRef, useState } from "react";
 
 /* ============================================================
    ASSETS — reemplaza estas rutas por las fotos de la Chef.
@@ -198,6 +198,134 @@ const mensajes = [
 ];
 
 /* ============================================================
+   TIMELINE SLIDER — slide creativo e interactivo
+   (swipe / flechas / nodos clicables)
+   ============================================================ */
+function TimelineSlider() {
+  const [[active, dir], setState] = useState<[number, number]>([0, 0]);
+  const go = (i: number) => setState([i, i > active ? 1 : -1]);
+  const next = () => setState([(active + 1) % timeline.length, 1]);
+  const prev = () => setState([(active - 1 + timeline.length) % timeline.length, -1]);
+  const item = timeline[active];
+
+  const variants = {
+    enter: (d: number) => ({ x: d > 0 ? 90 : -90, opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (d: number) => ({ x: d > 0 ? -90 : 90, opacity: 0 }),
+  };
+
+  return (
+    <div className="relative">
+      {/* Escenario del slide */}
+      <div className="relative overflow-hidden rounded-[28px] catrina-glass min-h-[360px] md:min-h-[340px]">
+        <AnimatePresence mode="wait" custom={dir}>
+          <motion.div
+            key={active}
+            custom={dir}
+            variants={variants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            dragElastic={0.2}
+            onDragEnd={(_, info) => {
+              if (info.offset.x < -80) next();
+              else if (info.offset.x > 80) prev();
+            }}
+            className="grid md:grid-cols-2 gap-8 p-8 md:p-14 cursor-grab active:cursor-grabbing select-none"
+          >
+            {/* Lado visual */}
+            <div className="relative flex items-center justify-center">
+              <span
+                className="font-serif-display absolute -top-4 md:-top-6 text-[120px] md:text-[170px] leading-none font-semibold pointer-events-none"
+                style={{ color: "rgba(255,255,255,0.05)" }}
+              >
+                0{active + 1}
+              </span>
+              <div
+                className="w-32 h-32 md:w-44 md:h-44 rounded-full flex items-center justify-center text-6xl md:text-7xl catrina-float"
+                style={{ border: "2px solid var(--rosa)", background: "rgba(228,0,124,0.08)" }}
+              >
+                {item.icon}
+              </div>
+            </div>
+
+            {/* Lado texto */}
+            <div className="flex flex-col justify-center text-left">
+              <span className="text-xs tracking-[0.25em] uppercase font-semibold mb-3" style={{ color: "var(--amarillo)" }}>
+                {item.year}
+              </span>
+              <h3 className="font-serif-display text-3xl md:text-5xl font-semibold mb-4 leading-tight">
+                {item.title}
+              </h3>
+              <p className="text-base md:text-lg leading-relaxed text-white/65 max-w-md">{item.desc}</p>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Controles + track de nodos */}
+      <div className="mt-10 flex items-center gap-4 md:gap-6">
+        <button
+          onClick={prev}
+          aria-label="Anterior"
+          className="catrina-glass shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-xl text-white hover:scale-105 transition-transform"
+        >
+          ‹
+        </button>
+
+        {/* Track */}
+        <div className="relative flex-1">
+          <div className="absolute top-1/2 left-0 right-0 h-[2px] -translate-y-1/2" style={{ background: "rgba(255,255,255,0.12)" }} />
+          <div
+            className="absolute top-1/2 left-0 h-[2px] -translate-y-1/2 transition-all duration-500"
+            style={{
+              width: `${(active / (timeline.length - 1)) * 100}%`,
+              background: "linear-gradient(90deg, var(--terracota), var(--rosa), var(--amarillo))",
+            }}
+          />
+          <div className="relative flex justify-between">
+            {timeline.map((t, i) => (
+              <button
+                key={i}
+                onClick={() => go(i)}
+                aria-label={t.year}
+                className="group flex flex-col items-center"
+              >
+                <span
+                  className="w-4 h-4 rounded-full transition-all duration-300"
+                  style={{
+                    background: i <= active ? "var(--rosa)" : "rgba(255,255,255,0.2)",
+                    transform: i === active ? "scale(1.5)" : "scale(1)",
+                    boxShadow: i === active ? "0 0 0 4px rgba(228,0,124,0.25)" : "none",
+                  }}
+                />
+                <span
+                  className="hidden md:block mt-3 text-[11px] tracking-wide uppercase whitespace-nowrap transition-colors"
+                  style={{ color: i === active ? "var(--amarillo)" : "rgba(255,255,255,0.4)" }}
+                >
+                  {t.year}
+                </span>
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <button
+          onClick={next}
+          aria-label="Siguiente"
+          className="catrina-glass shrink-0 w-12 h-12 rounded-full flex items-center justify-center text-xl text-white hover:scale-105 transition-transform"
+        >
+          ›
+        </button>
+      </div>
+    </div>
+  );
+}
+
+/* ============================================================
    COMPONENTE
    ============================================================ */
 export default function ChefIsabelClient() {
@@ -206,40 +334,6 @@ export default function ChefIsabelClient() {
       className="catrina relative min-h-screen overflow-x-hidden"
       style={{ background: "var(--hueso)", color: "var(--tinta)" }}
     >
-      {/* ===================== NAV (flotante, no institucional) ===================== */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-5 md:px-12 py-4">
-        <div className="flex items-center gap-2.5">
-          <Cempasuchil className="w-7 h-7 catrina-spin-slow" />
-          <span className="font-serif-display text-lg md:text-xl font-semibold tracking-tight" style={{ color: "var(--tinta)" }}>
-            Santa&nbsp;Catrina
-          </span>
-        </div>
-        <div className="catrina-glass hidden md:flex items-center gap-1 rounded-full px-2 py-1.5">
-          {[
-            { label: "Inicio", href: "#hero" },
-            { label: "Legado", href: "#legado" },
-            { label: "Trayectoria", href: "#trayectoria" },
-            { label: "Mensajes", href: "#mensajes" },
-          ].map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
-              className="text-sm px-3.5 py-1.5 rounded-full transition-colors hover:bg-black/5"
-              style={{ color: "var(--tinta)" }}
-            >
-              {l.label}
-            </a>
-          ))}
-        </div>
-        <a
-          href="#cierre"
-          className="text-sm font-medium rounded-full px-5 py-2.5"
-          style={{ background: "var(--rosa)", color: "#fff" }}
-        >
-          15 · Junio
-        </a>
-      </nav>
-
       {/* ===================== HERO ===================== */}
       <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Fondo: foto de la Chef con fallback degradado cálido */}
@@ -287,19 +381,13 @@ export default function ChefIsabelClient() {
             Celebrando a la mujer que lleva el corazón de México a Polonia.
           </motion.p>
 
-          <motion.div {...fadeUp(0.45)} className="mt-10 flex flex-wrap items-center justify-center gap-3">
+          <motion.div {...fadeUp(0.45)} className="mt-10 flex items-center justify-center">
             <a
               href="#legado"
               className="rounded-full px-7 py-3.5 text-sm md:text-base font-medium"
               style={{ background: "var(--amarillo)", color: "var(--tinta)" }}
             >
               Conoce su historia
-            </a>
-            <a
-              href="#mensajes"
-              className="catrina-glass rounded-full px-7 py-3.5 text-sm md:text-base font-medium text-white"
-            >
-              Déjale un mensaje
             </a>
           </motion.div>
         </div>
@@ -394,32 +482,10 @@ export default function ChefIsabelClient() {
             De una maleta y un sueño, a un restaurante que sabe a México en el corazón de Polonia.
           </motion.p>
 
-          {/* Línea + nodos */}
-          <div className="relative">
-            <div
-              className="hidden md:block absolute top-[34px] left-0 right-0 h-[2px]"
-              style={{ background: "linear-gradient(90deg, var(--terracota), var(--rosa), var(--amarillo))" }}
-            />
-            <div className="grid md:grid-cols-4 gap-12 md:gap-6">
-              {timeline.map((item, i) => (
-                <motion.div key={i} {...fadeUp(i * 0.12)} className="relative">
-                  <div className="flex md:block items-center gap-4">
-                    <div
-                      className="w-[68px] h-[68px] shrink-0 rounded-full flex items-center justify-center text-2xl mb-0 md:mb-6 catrina-glass"
-                      style={{ border: "2px solid var(--rosa)" }}
-                    >
-                      {item.icon}
-                    </div>
-                    <span className="text-xs tracking-[0.2em] uppercase font-semibold" style={{ color: "var(--amarillo)" }}>
-                      {item.year}
-                    </span>
-                  </div>
-                  <h3 className="font-serif-display text-2xl md:text-[26px] mt-3 mb-2">{item.title}</h3>
-                  <p className="text-sm leading-relaxed text-white/60">{item.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+          {/* Slider creativo del timeline */}
+          <motion.div {...fadeUp(0.2)}>
+            <TimelineSlider />
+          </motion.div>
         </div>
       </section>
 
