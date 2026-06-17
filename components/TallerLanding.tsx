@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
+import CatalogoModal from "./CatalogoModal";
 
 const TALLER_VIDEO =
   "https://res.cloudinary.com/djduba5fd/video/upload/q_auto/f_auto/v1779507243/05.1___MetaAds_yrtgmr.mp4";
@@ -65,6 +66,7 @@ export default function TallerLanding() {
   const [nombre, setNombre] = useState("");
   const [whatsapp, setWhatsapp] = useState("");
   const [ocupacion, setOcupacion] = useState("");
+  const [catalogoOpen, setCatalogoOpen] = useState(false);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -78,6 +80,8 @@ export default function TallerLanding() {
 
   return (
     <>
+      <CatalogoModal open={catalogoOpen} onClose={() => setCatalogoOpen(false)} />
+
       {/* NAV */}
       <nav
         className="fixed top-0 left-0 right-0 z-50"
@@ -103,13 +107,22 @@ export default function TallerLanding() {
             </span>
           </a>
 
-          <a
-            href="#registro"
-            className="font-title font-bold text-pg-black px-5 py-2.5 text-[12px] tracking-wide transition-opacity duration-500 hover:opacity-80"
-            style={{ background: "#A6E22E" }}
-          >
-            Quiero mi lugar
-          </a>
+          <div className="flex items-center gap-3">
+            <button
+              type="button"
+              onClick={() => setCatalogoOpen(true)}
+              className="hidden sm:inline-flex font-body text-pg-light px-4 py-2.5 text-[12px] tracking-wide transition-colors duration-300 hover:text-lime"
+            >
+              Catálogo
+            </button>
+            <a
+              href="#registro"
+              className="font-title font-bold text-pg-black px-5 py-2.5 text-[12px] tracking-wide transition-opacity duration-500 hover:opacity-80"
+              style={{ background: "#A6E22E" }}
+            >
+              Quiero mi lugar
+            </a>
+          </div>
         </div>
       </nav>
 
@@ -196,6 +209,7 @@ export default function TallerLanding() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.6, delay: 0.5 }}
+                className="flex flex-wrap gap-4"
               >
                 <a
                   href="#registro"
@@ -205,6 +219,15 @@ export default function TallerLanding() {
                   Quiero mi lugar — es gratis
                   <span aria-hidden>→</span>
                 </a>
+                <button
+                  type="button"
+                  onClick={() => setCatalogoOpen(true)}
+                  className="inline-flex items-center gap-3 font-body text-pg-light px-8 py-4 text-[14px] tracking-wide transition-colors duration-500 hover:border-white"
+                  style={{ border: "1px solid rgba(255,255,255,0.28)" }}
+                >
+                  Ver catálogo
+                  <span aria-hidden style={{ color: "#A6E22E" }}>↗</span>
+                </button>
               </motion.div>
             </div>
 
