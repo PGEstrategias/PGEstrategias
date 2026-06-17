@@ -3,20 +3,20 @@ import "./globals.css";
 import ClientProviders from "@/components/ClientProviders";
 
 export const metadata: Metadata = {
-  title: "PG Estrategias — Growth Partners",
-  description: "Convertimos tu inversión publicitaria en clientes. Paid Media · Producción Audiovisual · Mensajería · Ecosistema Digital.",
-  keywords: "marketing digital, pauta digital, growth partners, CDMX, publicidad digital, Meta Ads, Google Ads",
+  title: "Taller Gratuito CorteCloud — Diseña y vende muebles sin taller propio",
+  description: "Taller práctico en Puebla donde aprendes a usar CorteCloud desde cero: diseña, cotiza y manda muebles a producción industrial sin maquinaria, bodega ni empleados fijos. Cupos limitados.",
+  keywords: "CorteCloud, Cubiertas y Herrajes, taller muebles, fabricar muebles sin taller, producción industrial muebles, Puebla, carpintería",
   openGraph: {
-    title: "PG Estrategias — Growth Partners",
-    description: "Convertimos tu inversión publicitaria en clientes. 14 días de firma a campaña activa.",
+    title: "Taller Gratuito CorteCloud — Diseña y vende muebles sin taller propio",
+    description: "Aprende a fabricar muebles profesionales sin maquinaria, sin bodega y sin empleados fijos. Taller gratuito en Puebla · Cupos limitados.",
     type: "website",
     locale: "es_MX",
-    siteName: "PG Estrategias",
+    siteName: "CorteCloud · Cubiertas y Herrajes",
   },
   twitter: {
     card: "summary_large_image",
-    title: "PG Estrategias — Growth Partners",
-    description: "Convertimos tu inversión publicitaria en clientes.",
+    title: "Taller Gratuito CorteCloud",
+    description: "Diseña y vende muebles sin taller propio. Cupos limitados.",
   },
 };
 
