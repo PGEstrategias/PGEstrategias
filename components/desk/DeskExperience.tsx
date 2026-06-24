@@ -17,6 +17,7 @@ import { useEffect, useRef } from "react";
 import { ArrowLeft, MousePointerClick } from "lucide-react";
 import { gsap } from "./gsap";
 import { SCENES, LAST, useScene } from "./store";
+import { SCENE_COMPONENTS } from "./scenes";
 import Hotspot from "./ui/Hotspot";
 import Progress from "./ui/Progress";
 
@@ -83,6 +84,7 @@ export default function DeskExperience() {
   const t = index / LAST; // 0..1 a lo largo del arco
   const scene = SCENES[index];
   const isLast = index === LAST;
+  const SceneComponent = SCENE_COMPONENTS[index];
 
   return (
     <main
@@ -99,9 +101,13 @@ export default function DeskExperience() {
         <span className="font-title text-sm tracking-widest text-white/60">{scene.titulo}</span>
       </header>
 
-      {/* Escena activa (STUB del paso 1) */}
-      <div ref={stageRef} className="absolute inset-0 z-10 flex items-center justify-center p-6">
-        <Hotspot
+      {/* Escena activa: real si existe en el registro, si no, STUB */}
+      <div ref={stageRef} className="absolute inset-0 z-10">
+        {SceneComponent ? (
+          <SceneComponent key={index} active onAdvance={next} />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center p-6">
+            <Hotspot
           label={`${scene.objeto}. ${isLast ? "Abrir WhatsApp" : scene.hint}`}
           onActivate={next}
           disabled={locked || isLast}
@@ -128,7 +134,9 @@ export default function DeskExperience() {
               {scene.hint}
             </span>
           )}
-        </Hotspot>
+            </Hotspot>
+          </div>
+        )}
       </div>
 
       {/* Pie: retroceder + progreso */}
