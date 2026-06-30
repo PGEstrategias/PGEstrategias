@@ -13,6 +13,12 @@ const config: Config = {
         "pg-lime": "#A6E22E",
         "pg-light": "#F5F5F5",
         "pg-white": "#FFFFFF",
+        // Paleta Brief Narrativo v3.0 (experiencia /experiencia)
+        "exp-black": "#0A0A0A",
+        "exp-bg": "#1E1E1E",
+        "exp-bg-2": "#2A2A2A",
+        "exp-bg-dark": "#141414",
+        "exp-green": "#A7E12F",
       },
       fontFamily: {
         title: ["Syne", "sans-serif"],
