@@ -31,13 +31,7 @@ export default function Acto5Sistema({ registerHandle }: ActProps) {
   const flowDuration = (total - 1) * STEP + 0.4;
 
   return (
-    <div
-      className="absolute inset-0 flex flex-col items-center justify-center bg-[#141414] overflow-hidden"
-      style={{
-        backgroundImage:
-          "url(\"data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200'><filter id='n'><feTurbulence baseFrequency='0.9' numOctaves='2'/></filter><rect width='200' height='200' filter='url(%23n)' opacity='0.08'/></svg>\")",
-      }}
-    >
+    <div className="absolute inset-0 flex flex-col items-center justify-center overflow-hidden">
       {/* Flujo horizontal */}
       <div className="relative flex items-center justify-center gap-4 md:gap-7 px-6 max-w-6xl flex-wrap">
         {NODOS.map((n, i) => {

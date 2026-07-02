@@ -22,16 +22,7 @@ export default function Acto2Propuesta({ registerHandle }: ActProps) {
   }, [registerHandle]);
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center bg-[#1E1E1E] overflow-hidden">
-      {/* Visual de apoyo — clips a baja opacidad (placeholder). Reemplazar por <video> cuando se entregue el clip ambiental. */}
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          opacity: 0.15,
-          background:
-            "radial-gradient(ellipse at 30% 40%, rgba(167,225,47,0.18), transparent 60%), radial-gradient(ellipse at 70% 60%, rgba(255,255,255,0.08), transparent 60%)",
-        }}
-      />
+    <div className="absolute inset-0 flex items-center justify-center overflow-hidden">
 
       <motion.p
         className="relative z-10 max-w-5xl px-8 text-center font-title font-bold leading-[1.05] tracking-tight"

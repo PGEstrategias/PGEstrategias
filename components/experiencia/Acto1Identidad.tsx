@@ -12,7 +12,7 @@ export default function Acto1Identidad({ registerHandle }: ActProps) {
   }, [registerHandle]);
 
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center bg-[#0A0A0A]">
+    <div className="absolute inset-0 flex flex-col items-center justify-center">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

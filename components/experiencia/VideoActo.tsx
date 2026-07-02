@@ -4,9 +4,13 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 type Props = {
-  sources: string[]; // 1 o más URLs — se reproducen en secuencia
+  sources: string[];
   label?: string;
 };
+
+// Los videos son verticales (9:16). Se muestran en su relación original,
+// centrados, a tamaño intermedio — ni fullscreen ni miniatura.
+// Los reels se rotan en secuencia dentro del mismo acto.
 
 export default function VideoActo({ sources, label }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -31,7 +35,6 @@ export default function VideoActo({ sources, label }: Props) {
 
   const handleEnded = () => {
     if (sources.length > 1 && idx < sources.length - 1) {
-      // Rotar al siguiente video sin salir del acto
       setIdx((i) => i + 1);
       setEnded(false);
     } else {
@@ -40,65 +43,76 @@ export default function VideoActo({ sources, label }: Props) {
   };
 
   return (
-    <div className="absolute inset-0 bg-black flex items-center justify-center overflow-hidden">
-      {hasSources ? (
-        <video
-          key={currentSrc}
-          ref={videoRef}
-          src={currentSrc}
-          autoPlay
-          playsInline
-          muted={muted}
-          onEnded={handleEnded}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-      ) : (
-        <div className="absolute inset-0 flex items-center justify-center text-white/40 font-title text-2xl tracking-widest uppercase">
-          <div className="text-center">
-            <div className="mb-3 text-xs opacity-60">{label ?? "VIDEO"}</div>
-            <div>· Pendiente de carga ·</div>
-          </div>
-        </div>
-      )}
-
-      {/* Contador discreto arriba a la izquierda cuando hay varios */}
-      {sources.length > 1 && (
-        <div className="absolute top-6 left-6 z-20 text-white/60 text-xs tracking-widest font-medium bg-black/40 backdrop-blur px-2.5 py-1 rounded-full">
-          {idx + 1} / {sources.length}
-        </div>
-      )}
-
-      {/* Botón audio */}
-      <button
-        data-interactive
-        onClick={toggleAudio}
-        aria-label={muted ? "Activar audio" : "Silenciar"}
-        className="absolute top-6 right-6 z-20 w-11 h-11 rounded-full bg-black/55 border border-white/20 backdrop-blur flex items-center justify-center text-white hover:bg-black/80 transition-colors"
+    <div className="absolute inset-0 flex items-center justify-center bg-black overflow-hidden">
+      {/* Contenedor 9:16 — vertical, tamaño intermedio */}
+      <div
+        className="relative"
+        style={{
+          height: "min(85vh, 900px)",
+          aspectRatio: "9 / 16",
+          maxWidth: "94vw",
+        }}
       >
-        {muted ? <IconMuted /> : <IconAudio />}
-      </button>
-
-      {/* Indicador discreto de avance al terminar el último video */}
-      <AnimatePresence>
-        {ended && (
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 text-white/70 text-sm tracking-widest uppercase"
-          >
-            Continuar →
-          </motion.div>
+        {hasSources ? (
+          <video
+            key={currentSrc}
+            ref={videoRef}
+            src={currentSrc}
+            autoPlay
+            playsInline
+            muted={muted}
+            onEnded={handleEnded}
+            className="w-full h-full object-cover rounded-lg shadow-2xl"
+            style={{ boxShadow: "0 30px 80px rgba(0,0,0,0.6)" }}
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center text-white/40 font-title text-lg tracking-widest uppercase rounded-lg border border-white/10">
+            <div className="text-center">
+              <div className="mb-2 text-xs opacity-60">{label ?? "VIDEO"}</div>
+              <div>· Pendiente ·</div>
+            </div>
+          </div>
         )}
-      </AnimatePresence>
+
+        {/* Contador dentro del contenedor del video */}
+        {sources.length > 1 && (
+          <div className="absolute top-3 left-3 text-white/85 text-[10px] tracking-widest font-medium bg-black/50 backdrop-blur px-2 py-0.5 rounded-full">
+            {idx + 1} / {sources.length}
+          </div>
+        )}
+
+        {/* Botón audio */}
+        <button
+          data-interactive
+          onClick={toggleAudio}
+          aria-label={muted ? "Activar audio" : "Silenciar"}
+          className="absolute top-3 right-3 w-9 h-9 rounded-full bg-black/55 border border-white/20 backdrop-blur flex items-center justify-center text-white hover:bg-black/80 transition-colors"
+        >
+          {muted ? <IconMuted /> : <IconAudio />}
+        </button>
+
+        {/* Indicador discreto de avance */}
+        <AnimatePresence>
+          {ended && (
+            <motion.div
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.4 }}
+              className="absolute -bottom-8 left-1/2 -translate-x-1/2 text-white/70 text-xs tracking-widest uppercase"
+            >
+              Continuar →
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </div>
   );
 }
 
 function IconMuted() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M11 5L6 9H2v6h4l5 4V5z" />
       <line x1="23" y1="9" x2="17" y2="15" />
       <line x1="17" y1="9" x2="23" y2="15" />
@@ -108,7 +122,7 @@ function IconMuted() {
 
 function IconAudio() {
   return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
       <path d="M11 5L6 9H2v6h4l5 4V5z" />
       <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
       <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />

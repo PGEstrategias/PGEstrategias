@@ -17,7 +17,7 @@ export default function FrasePuente({ onAdvance, registerHandle }: ActProps) {
   }, [onAdvance]);
 
   return (
-    <div className="absolute inset-0 flex items-center justify-center bg-[#0A0A0A]">
+    <div className="absolute inset-0 flex items-center justify-center">
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

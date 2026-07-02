@@ -38,7 +38,7 @@ export default function Acto6Evidencia({ registerHandle }: ActProps) {
   }, [registerHandle]);
 
   return (
-    <div className="absolute inset-0 bg-[#141414] overflow-hidden flex flex-col">
+    <div className="absolute inset-0 overflow-hidden flex flex-col">
       {/* Header con título del momento */}
       <div className="pt-8 pb-2 text-center">
         <div className="text-white/40 text-[11px] tracking-[0.3em] uppercase mb-2">

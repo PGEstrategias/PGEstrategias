@@ -12,6 +12,7 @@ import Acto5Sistema from "@/components/experiencia/Acto5Sistema";
 import Acto6Evidencia from "@/components/experiencia/Acto6Evidencia";
 import Acto7Cierre from "@/components/experiencia/Acto7Cierre";
 import ProgressDots from "@/components/experiencia/ProgressDots";
+import BackgroundLogo from "@/components/experiencia/BackgroundLogo";
 
 export type SceneHandle = {
   forward?: () => boolean; // return true if the scene consumed the action
@@ -137,13 +138,19 @@ export default function ExperienciaClient() {
     }
   };
 
+  // Actos 3 y 4 son videos a pantalla — el logo desvanecido no aporta ahí.
+  const showBgLogo = !["acto3", "acto4"].includes(currentScene.key);
+
   return (
     <div
-      className="absolute inset-0 w-full h-full cursor-pointer"
+      className="absolute inset-0 w-full h-full cursor-pointer bg-[#0A0A0A]"
       onClick={onClick}
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
     >
+      {/* Logo desvanecido animado como fondo global */}
+      {showBgLogo && <BackgroundLogo intensity="soft" />}
+
       <AnimatePresence mode="wait">
         <motion.div
           key={currentScene.key}
