@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import type { ActProps } from "@/app/experiencia/ExperienciaClient";
+import LogoPG from "./LogoPG";
 
 export default function Acto1Identidad({ registerHandle }: ActProps) {
   useEffect(() => {
@@ -16,24 +17,8 @@ export default function Acto1Identidad({ registerHandle }: ActProps) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
-        className="flex flex-col items-center gap-10"
       >
-        {/* Logo placeholder — reemplazar con asset real */}
-        <div className="flex items-center gap-3 text-white">
-          <svg
-            viewBox="0 0 64 64"
-            className="w-16 h-16"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-          >
-            <circle cx="32" cy="32" r="28" />
-            <path d="M20 40 L32 20 L44 40 Z" />
-          </svg>
-          <span className="font-title text-3xl md:text-4xl font-bold tracking-tight">
-            PG ESTRATEGIAS
-          </span>
-        </div>
+        <LogoPG height={72} className="md:h-[96px]" />
       </motion.div>
 
       <motion.p

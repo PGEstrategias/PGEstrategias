@@ -5,13 +5,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { ActProps } from "@/app/experiencia/ExperienciaClient";
 import WhatsAppMockup from "./whatsapp/WhatsAppMockup";
 import MetaAdsDashboard from "./dashboard/MetaAdsDashboard";
-import { ASSETS } from "@/app/experiencia/assets";
 
-const TITULOS = [
-  "Una conversación real.",
-  "Los números detrás.",
-  "Las palabras del cliente.",
-];
+const TITULOS = ["Una conversación real.", "Los números detrás."];
+const TOTAL_STEPS = TITULOS.length;
 
 export default function Acto6Evidencia({ registerHandle }: ActProps) {
   const [step, setStep] = useState(0);
@@ -24,7 +20,7 @@ export default function Acto6Evidencia({ registerHandle }: ActProps) {
   useEffect(() => {
     registerHandle({
       forward: () => {
-        if (stepRef.current < 2) {
+        if (stepRef.current < TOTAL_STEPS - 1) {
           setStep((s) => s + 1);
           return true;
         }
@@ -76,14 +72,13 @@ export default function Acto6Evidencia({ registerHandle }: ActProps) {
           >
             {step === 0 && <WhatsAppMockup />}
             {step === 1 && <MetaAdsDashboard />}
-            {step === 2 && <TestimoniosGrid />}
           </motion.div>
         </AnimatePresence>
       </div>
 
       {/* Micro-navegación interna */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-2 z-30">
-        {[0, 1, 2].map((i) => (
+        {Array.from({ length: TOTAL_STEPS }).map((_, i) => (
           <button
             data-interactive
             key={i}
@@ -101,44 +96,6 @@ export default function Acto6Evidencia({ registerHandle }: ActProps) {
           />
         ))}
       </div>
-    </div>
-  );
-}
-
-function TestimoniosGrid() {
-  const items = ASSETS.testimonios;
-
-  if (!items || items.length === 0) {
-    return (
-      <div className="text-white/40 text-center max-w-md">
-        <div className="border border-white/15 rounded-2xl p-10">
-          <div className="text-xs tracking-widest uppercase mb-3 opacity-60">
-            Testimonios en video
-          </div>
-          <div>· Pendientes de carga ·</div>
-        </div>
-      </div>
-    );
-  }
-
-  const cols = items.length > 1 ? "md:grid-cols-2" : "md:grid-cols-1";
-  return (
-    <div className={`grid grid-cols-1 ${cols} gap-4 max-w-4xl w-full`}>
-      {items.map((t, i) => (
-        <div
-          key={i}
-          className="aspect-video rounded-xl overflow-hidden bg-black"
-          data-interactive
-        >
-          <video
-            src={t.src}
-            controls
-            playsInline
-            className="w-full h-full object-cover"
-          />
-          <div className="px-3 py-2 text-white/80 text-xs">{t.nombre}</div>
-        </div>
-      ))}
     </div>
   );
 }

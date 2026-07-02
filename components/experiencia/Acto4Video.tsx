@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import type { ActProps } from "@/app/experiencia/ExperienciaClient";
 import VideoActo from "./VideoActo";
-import { ASSETS } from "@/app/experiencia/assets";
+import { VIDEOS_ACTO_4 } from "@/app/experiencia/assets";
 
 export default function Acto4Video({ registerHandle }: ActProps) {
   const [showIntro, setShowIntro] = useState(true);
@@ -15,7 +15,6 @@ export default function Acto4Video({ registerHandle }: ActProps) {
   }, [registerHandle]);
 
   useEffect(() => {
-    // Texto exactamente 1s, luego entra el video
     const t = window.setTimeout(() => setShowIntro(false), 1000);
     return () => window.clearTimeout(t);
   }, []);
@@ -47,7 +46,7 @@ export default function Acto4Video({ registerHandle }: ActProps) {
             transition={{ duration: 0.25 }}
             className="absolute inset-0"
           >
-            <VideoActo src={ASSETS.video2} label="VIDEO 2 — ACTO 4" />
+            <VideoActo sources={VIDEOS_ACTO_4} label="VIDEOS — ACTO 4" />
           </motion.div>
         )}
       </AnimatePresence>

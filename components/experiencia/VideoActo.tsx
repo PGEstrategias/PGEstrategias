@@ -4,55 +4,67 @@ import { useEffect, useRef, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 type Props = {
-  src?: string; // URL pública (mp4 o m3u8). Si no se pasa, muestra placeholder.
-  poster?: string;
-  label?: string; // etiqueta opcional para identificar (debug / accesibilidad)
-  onEnded?: () => void;
+  sources: string[]; // 1 o más URLs — se reproducen en secuencia
+  label?: string;
 };
 
-export default function VideoActo({ src, poster, label, onEnded }: Props) {
+export default function VideoActo({ sources, label }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [muted, setMuted] = useState(true);
+  const [idx, setIdx] = useState(0);
   const [ended, setEnded] = useState(false);
 
+  const hasSources = sources.length > 0;
+  const currentSrc = hasSources ? sources[idx % sources.length] : undefined;
+
   useEffect(() => {
-    setEnded(false);
     const v = videoRef.current;
-    if (!v) return;
+    if (!v || !currentSrc) return;
     v.muted = muted;
-    if (src) {
-      v.play().catch(() => {});
-    }
-  }, [src, muted]);
+    v.play().catch(() => {});
+  }, [currentSrc, muted]);
 
   const toggleAudio = (e: React.MouseEvent) => {
     e.stopPropagation();
     setMuted((m) => !m);
   };
 
+  const handleEnded = () => {
+    if (sources.length > 1 && idx < sources.length - 1) {
+      // Rotar al siguiente video sin salir del acto
+      setIdx((i) => i + 1);
+      setEnded(false);
+    } else {
+      setEnded(true);
+    }
+  };
+
   return (
     <div className="absolute inset-0 bg-black flex items-center justify-center overflow-hidden">
-      {src ? (
+      {hasSources ? (
         <video
+          key={currentSrc}
           ref={videoRef}
-          src={src}
-          poster={poster}
+          src={currentSrc}
           autoPlay
           playsInline
           muted={muted}
-          onEnded={() => {
-            setEnded(true);
-            onEnded?.();
-          }}
+          onEnded={handleEnded}
           className="absolute inset-0 w-full h-full object-cover"
         />
       ) : (
-        // Placeholder mientras no haya video real
         <div className="absolute inset-0 flex items-center justify-center text-white/40 font-title text-2xl tracking-widest uppercase">
           <div className="text-center">
             <div className="mb-3 text-xs opacity-60">{label ?? "VIDEO"}</div>
             <div>· Pendiente de carga ·</div>
           </div>
+        </div>
+      )}
+
+      {/* Contador discreto arriba a la izquierda cuando hay varios */}
+      {sources.length > 1 && (
+        <div className="absolute top-6 left-6 z-20 text-white/60 text-xs tracking-widest font-medium bg-black/40 backdrop-blur px-2.5 py-1 rounded-full">
+          {idx + 1} / {sources.length}
         </div>
       )}
 
@@ -66,7 +78,7 @@ export default function VideoActo({ src, poster, label, onEnded }: Props) {
         {muted ? <IconMuted /> : <IconAudio />}
       </button>
 
-      {/* Indicador discreto de avance al terminar */}
+      {/* Indicador discreto de avance al terminar el último video */}
       <AnimatePresence>
         {ended && (
           <motion.div

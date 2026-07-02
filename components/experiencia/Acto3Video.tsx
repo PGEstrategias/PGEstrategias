@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import type { ActProps } from "@/app/experiencia/ExperienciaClient";
 import VideoActo from "./VideoActo";
-import { ASSETS } from "@/app/experiencia/assets";
+import { VIDEOS_ACTO_3 } from "@/app/experiencia/assets";
 
 export default function Acto3Video({ registerHandle }: ActProps) {
   useEffect(() => {
@@ -11,5 +11,5 @@ export default function Acto3Video({ registerHandle }: ActProps) {
     return () => registerHandle(null);
   }, [registerHandle]);
 
-  return <VideoActo src={ASSETS.video1} label="VIDEO 1 — ACTO 3" />;
+  return <VideoActo sources={VIDEOS_ACTO_3} label="VIDEOS — ACTO 3" />;
 }

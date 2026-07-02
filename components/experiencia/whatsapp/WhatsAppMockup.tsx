@@ -2,44 +2,37 @@
 
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { ASSETS } from "@/app/experiencia/assets";
+import { WHATSAPP } from "@/app/experiencia/assets";
 
 type Mensaje =
   | { type: "text"; from: "cliente" | "pg"; text: string; hora: string; truncate?: boolean }
   | { type: "audio"; from: "cliente" | "pg"; duracion: string; hora: string };
 
-const DEFAULT_MENSAJES: Mensaje[] = [
+const MENSAJES: Mensaje[] = [
   {
     type: "text",
     from: "pg",
-    text: "Listo Pablo. Acabamos de lanzar la campaña 🚀",
-    hora: "10:42",
-  },
-  {
-    type: "text",
-    from: "cliente",
-    text: "Gracias chicos. Ya empezaron a entrar mensajes esta mañana.",
-    hora: "11:05",
+    text: "Buenas noches Paola 🙌 Todo listo con los ajustes de los últimos creativos.",
+    hora: "22:14",
   },
   {
     type: "audio",
     from: "cliente",
-    duracion: "0:24",
-    hora: "11:06",
+    duracion: WHATSAPP.audioCliente.duracion,
+    hora: "22:29",
   },
   {
     type: "text",
     from: "cliente",
-    text: "Nada más quería decirles que los videos quedaron increíbles, mi agenda está prácticamente llena para los próximos 15 días. Esto cambió completamente el ritmo del negocio y ya estamos viendo el impacto en facturación. De verdad muchas gracias por el trabajo y la paciencia con todos los detalles.",
-    hora: "11:08",
+    text: WHATSAPP.mensajeLargo,
+    hora: "22:30",
     truncate: true,
   },
 ];
 
 export default function WhatsAppMockup() {
-  const contacto = ASSETS.whatsapp.contacto;
-  const audioSrc = ASSETS.whatsapp.audioCliente.src;
-  const audioDur = ASSETS.whatsapp.audioCliente.duracion;
+  const contacto = WHATSAPP.contacto;
+  const audioSrc = WHATSAPP.audioCliente.src;
 
   return (
     <div
@@ -47,7 +40,7 @@ export default function WhatsAppMockup() {
       className="mx-auto"
       style={{
         width: "min(360px, 92vw)",
-        height: "min(640px, 80vh)",
+        height: "min(640px, 78vh)",
         background: "#0B141A",
         borderRadius: 28,
         boxShadow: "0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06)",
@@ -64,13 +57,13 @@ export default function WhatsAppMockup() {
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#B0B7BB" strokeWidth="2">
           <polyline points="15 18 9 12 15 6" />
         </svg>
-        <div className="w-9 h-9 rounded-full bg-[#6B7C85] overflow-hidden flex items-center justify-center text-white font-semibold">
-          {contacto.foto ? (
-            // eslint-disable-next-line @next/next/no-img-element
-            <img src={contacto.foto} alt={contacto.nombre} className="w-full h-full object-cover" />
-          ) : (
-            contacto.nombre[0]
-          )}
+        <div
+          className="w-9 h-9 rounded-full flex items-center justify-center text-white font-semibold text-sm"
+          style={{
+            background: "linear-gradient(135deg, #6B7C85, #4A5860)",
+          }}
+        >
+          {contacto.avatarIniciales}
         </div>
         <div className="flex-1 min-w-0">
           <div className="text-white text-[15px] font-medium truncate">{contacto.nombre}</div>
@@ -85,12 +78,9 @@ export default function WhatsAppMockup() {
       {/* Chat */}
       <div
         className="flex-1 overflow-y-auto px-3 py-4 flex flex-col gap-2"
-        style={{
-          background:
-            "linear-gradient(180deg, #0B141A 0%, #0B141A 100%), url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"60\" height=\"60\"><circle cx=\"30\" cy=\"30\" r=\"1\" fill=\"%23ffffff10\"/></svg>')",
-        }}
+        style={{ background: "#0B141A" }}
       >
-        {DEFAULT_MENSAJES.map((m, i) =>
+        {MENSAJES.map((m, i) =>
           m.type === "text" ? (
             <Burbuja
               key={i}
@@ -104,7 +94,7 @@ export default function WhatsAppMockup() {
               key={i}
               from={m.from}
               hora={m.hora}
-              duracion={audioSrc ? audioDur : m.duracion}
+              duracion={m.duracion}
               audioSrc={audioSrc}
             />
           )
@@ -142,14 +132,16 @@ function Burbuja({
   const [expanded, setExpanded] = useState(false);
   const isMine = from === "pg";
   const showTruncated = truncate && !expanded;
-  const lines = text.split("\n");
-  const preview = lines.slice(0, 1).join(" ");
-  const cut = showTruncated && preview.length > 90 ? preview.slice(0, 90) + "…" : showTruncated ? preview : text;
+
+  // Preview: primera línea no vacía, cortada a ~110 chars
+  const primeraLinea = text.split("\n").find((l) => l.trim().length > 0) ?? "";
+  const preview = primeraLinea.length > 110 ? primeraLinea.slice(0, 110) + "…" : primeraLinea;
+  const contenido = showTruncated ? preview : text;
 
   return (
     <div className={`flex ${isMine ? "justify-end" : "justify-start"}`}>
       <div
-        className="max-w-[80%] px-3 py-1.5 rounded-lg relative"
+        className="max-w-[85%] px-3 py-1.5 rounded-lg relative"
         style={{
           background: isMine ? "#005C4B" : "#202C33",
           color: "white",
@@ -158,7 +150,7 @@ function Burbuja({
         }}
       >
         <div className="text-[14.5px] leading-[1.35] whitespace-pre-wrap">
-          {cut}
+          {contenido}
         </div>
         {showTruncated && (
           <button
@@ -196,10 +188,18 @@ function BurbujaAudio({
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
+  const [duracionShown, setDuracionShown] = useState(duracion);
 
   useEffect(() => {
     const a = audioRef.current;
     if (!a) return;
+    const onLoaded = () => {
+      if (isFinite(a.duration) && a.duration > 0) {
+        const m = Math.floor(a.duration / 60);
+        const s = Math.floor(a.duration % 60);
+        setDuracionShown(`${m}:${s.toString().padStart(2, "0")}`);
+      }
+    };
     const onTime = () => {
       if (a.duration > 0) setProgress(a.currentTime / a.duration);
     };
@@ -207,9 +207,11 @@ function BurbujaAudio({
       setPlaying(false);
       setProgress(0);
     };
+    a.addEventListener("loadedmetadata", onLoaded);
     a.addEventListener("timeupdate", onTime);
     a.addEventListener("ended", onEnd);
     return () => {
+      a.removeEventListener("loadedmetadata", onLoaded);
       a.removeEventListener("timeupdate", onTime);
       a.removeEventListener("ended", onEnd);
     };
@@ -235,7 +237,7 @@ function BurbujaAudio({
         style={{
           background: isMine ? "#005C4B" : "#202C33",
           color: "white",
-          minWidth: 220,
+          minWidth: 240,
           borderBottomLeftRadius: isMine ? 8 : 4,
           borderBottomRightRadius: isMine ? 4 : 8,
         }}
@@ -249,7 +251,7 @@ function BurbujaAudio({
           {playing ? <IconPause /> : <IconPlay />}
         </button>
         <Waveform playing={playing} progress={progress} />
-        <span className="text-[11px] text-white/70 shrink-0">{duracion}</span>
+        <span className="text-[11px] text-white/70 shrink-0 tabular-nums">{duracionShown}</span>
         {audioSrc && <audio ref={audioRef} src={audioSrc} preload="metadata" />}
       </div>
     </div>

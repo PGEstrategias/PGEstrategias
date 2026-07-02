@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import type { ActProps } from "@/app/experiencia/ExperienciaClient";
+import LogoPG from "./LogoPG";
 
 const CONTACTO = {
   whatsapp: "+52 222 000 0000",
@@ -23,15 +24,8 @@ export default function Acto7Cierre({ registerHandle }: ActProps) {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2, ease: "easeOut" }}
-        className="flex items-center gap-3 text-white"
       >
-        <svg viewBox="0 0 64 64" className="w-14 h-14" fill="none" stroke="currentColor" strokeWidth="2.5">
-          <circle cx="32" cy="32" r="28" />
-          <path d="M20 40 L32 20 L44 40 Z" />
-        </svg>
-        <span className="font-title text-2xl md:text-3xl font-bold tracking-tight">
-          PG ESTRATEGIAS
-        </span>
+        <LogoPG height={64} className="md:h-[80px]" />
       </motion.div>
 
       <motion.p
