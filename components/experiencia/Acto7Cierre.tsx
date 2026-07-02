@@ -10,7 +10,7 @@ const CONTACTO = {
   email: "hola@pgestrategias.com",
 };
 
-export default function Acto8Cierre({ registerHandle }: ActProps) {
+export default function Acto7Cierre({ registerHandle }: ActProps) {
   useEffect(() => {
     registerHandle(null);
     return () => registerHandle(null);

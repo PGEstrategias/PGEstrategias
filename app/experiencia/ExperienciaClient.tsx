@@ -10,8 +10,7 @@ import Acto4Video from "@/components/experiencia/Acto4Video";
 import FrasePuente from "@/components/experiencia/FrasePuente";
 import Acto5Sistema from "@/components/experiencia/Acto5Sistema";
 import Acto6Evidencia from "@/components/experiencia/Acto6Evidencia";
-import Acto7Equipo from "@/components/experiencia/Acto7Equipo";
-import Acto8Cierre from "@/components/experiencia/Acto8Cierre";
+import Acto7Cierre from "@/components/experiencia/Acto7Cierre";
 import ProgressDots from "@/components/experiencia/ProgressDots";
 
 export type SceneHandle = {
@@ -134,9 +133,7 @@ export default function ExperienciaClient() {
       case "acto6":
         return <Acto6Evidencia {...props} />;
       case "acto7":
-        return <Acto7Equipo {...props} />;
-      case "acto8":
-        return <Acto8Cierre {...props} />;
+        return <Acto7Cierre {...props} />;
     }
   };
 

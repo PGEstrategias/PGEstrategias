@@ -6,10 +6,9 @@ export const SCENES = [
   { key: "puente", actoLabel: null, showProgress: false },
   { key: "acto5", actoLabel: 5, showProgress: true },
   { key: "acto6", actoLabel: 6, showProgress: true },
-  { key: "acto7", actoLabel: 7, showProgress: true },
-  { key: "acto8", actoLabel: 8, showProgress: false },
+  { key: "acto7", actoLabel: 7, showProgress: false },
 ] as const;
 
 export type SceneKey = (typeof SCENES)[number]["key"];
 
-export const TOTAL_ACTOS = 8;
+export const TOTAL_ACTOS = 7;
