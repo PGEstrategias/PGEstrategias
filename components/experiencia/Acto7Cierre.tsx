@@ -6,11 +6,7 @@ import type { ActProps } from "@/app/experiencia/ExperienciaClient";
 import LogoPG from "./LogoPG";
 import { VIDEOS_ACTO_3, VIDEOS_ACTO_4, WHATSAPP, DASHBOARD } from "@/app/experiencia/assets";
 
-const CONTACTO = {
-  whatsapp: "+52 222 000 0000",
-  whatsappLink: "https://wa.me/5212220000000",
-  email: "hola@pgestrategias.com",
-};
+const WHATSAPP_LINK = "https://wa.me/522201758468";
 
 const TODOS_VIDEOS = [...VIDEOS_ACTO_3, ...VIDEOS_ACTO_4];
 
@@ -74,22 +70,22 @@ export default function Acto7Cierre({ registerHandle }: ActProps) {
           </div>
         </motion.div>
 
-        {/* CTA + contacto + QR */}
+        {/* CTA único — Contactar por WhatsApp */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.5 }}
-          className="flex flex-col items-center gap-5 py-8"
+          className="flex justify-center py-8"
         >
           <a
             data-interactive
-            href={CONTACTO.whatsappLink}
+            href={WHATSAPP_LINK}
             target="_blank"
             rel="noreferrer"
             onClick={(e) => e.stopPropagation()}
-            className="group inline-flex items-center gap-2 px-8 py-3.5 rounded-full text-sm tracking-wide transition-all"
+            className="inline-flex items-center gap-3 px-10 py-4 rounded-full text-base font-medium tracking-wide transition-all"
             style={{
-              border: "1px solid #A7E12F",
+              border: "1.5px solid #A7E12F",
               color: "#A7E12F",
             }}
             onMouseEnter={(e) => {
@@ -101,44 +97,11 @@ export default function Acto7Cierre({ registerHandle }: ActProps) {
               (e.currentTarget as HTMLElement).style.color = "#A7E12F";
             }}
           >
-            Hablemos
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <line x1="5" y1="12" x2="19" y2="12" />
-              <polyline points="12 5 19 12 12 19" />
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M21 11.5a8.4 8.4 0 0 1-12.5 7.3L3 21l1.3-5A8.5 8.5 0 1 1 21 11.5z" />
             </svg>
+            Contactar
           </a>
-
-          <div className="flex flex-col md:flex-row items-center gap-3 md:gap-6 text-sm">
-            <a
-              data-interactive
-              href={CONTACTO.whatsappLink}
-              target="_blank"
-              rel="noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              style={{ color: "#A7E12F" }}
-              className="hover:underline"
-            >
-              {CONTACTO.whatsapp}
-            </a>
-            <span className="hidden md:inline text-white/30">·</span>
-            <a
-              data-interactive
-              href={`mailto:${CONTACTO.email}`}
-              onClick={(e) => e.stopPropagation()}
-              style={{ color: "#A7E12F" }}
-              className="hover:underline"
-            >
-              {CONTACTO.email}
-            </a>
-          </div>
-
-          <div
-            className="mt-2 p-2 rounded bg-white/95"
-            data-interactive
-            onClick={(e) => e.stopPropagation()}
-          >
-            <QrSvg link={CONTACTO.whatsappLink} />
-          </div>
         </motion.div>
       </div>
     </div>
@@ -294,36 +257,3 @@ function MiniStat({ label, value }: { label: string; value: string }) {
   );
 }
 
-/* ---------------- QR ornamental ---------------- */
-
-function QrSvg({ link }: { link: string }) {
-  const size = 12;
-  const cells: { x: number; y: number }[] = [];
-  let seed = 0;
-  for (let i = 0; i < link.length; i++) seed = (seed * 31 + link.charCodeAt(i)) >>> 0;
-  for (let y = 0; y < size; y++) {
-    for (let x = 0; x < size; x++) {
-      seed = (seed * 1103515245 + 12345) & 0x7fffffff;
-      if ((seed & 7) > 3) cells.push({ x, y });
-    }
-  }
-  return (
-    <svg width="96" height="96" viewBox={`0 0 ${size} ${size}`} className="block">
-      <rect width={size} height={size} fill="white" />
-      {cells.map((c, i) => (
-        <rect key={i} x={c.x} y={c.y} width="1" height="1" fill="#0A0A0A" />
-      ))}
-      {[
-        [0, 0],
-        [size - 3, 0],
-        [0, size - 3],
-      ].map(([fx, fy], i) => (
-        <g key={`f${i}`}>
-          <rect x={fx} y={fy} width="3" height="3" fill="#0A0A0A" />
-          <rect x={fx + 0.5} y={fy + 0.5} width="2" height="2" fill="white" />
-          <rect x={fx + 1} y={fy + 1} width="1" height="1" fill="#0A0A0A" />
-        </g>
-      ))}
-    </svg>
-  );
-}

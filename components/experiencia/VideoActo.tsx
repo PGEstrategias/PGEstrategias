@@ -44,13 +44,13 @@ export default function VideoActo({ sources, label }: Props) {
 
   return (
     <div className="absolute inset-0 flex items-center justify-center bg-black overflow-hidden">
-      {/* Contenedor 9:16 — vertical, tamaño intermedio */}
+      {/* Contenedor 9:16 — vertical, ocupa la altura útil del viewport */}
       <div
         className="relative"
         style={{
-          height: "min(85vh, 900px)",
+          height: "min(98vh, 1200px)",
           aspectRatio: "9 / 16",
-          maxWidth: "94vw",
+          maxWidth: "96vw",
         }}
       >
         {hasSources ? (
