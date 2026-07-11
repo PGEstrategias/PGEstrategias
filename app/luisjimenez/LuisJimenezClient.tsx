@@ -247,37 +247,6 @@ export default function LuisJimenezClient() {
 
         <Divider />
 
-        {/* POR QUÉ ESTE PLAN */}
-        <section className="px-6 md:px-16 py-24 md:py-32 max-w-[1300px] mx-auto">
-          <SectionLabel>Por qué este plan</SectionLabel>
-          <h2
-            className="font-title text-pg-light mb-6"
-            style={{
-              fontSize: "clamp(32px, 5vw, 64px)",
-              fontWeight: 400,
-              lineHeight: 1,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            Adaptado a tu presupuesto,
-            <br />
-            no al <em style={{ color: LIME, fontStyle: "italic" }}>revés.</em>
-          </h2>
-          <p
-            className="font-body text-[15px] leading-[1.7] max-w-[640px]"
-            style={{ color: TEXT_DIM }}
-          >
-            Nuestro paquete base de arranque tiene un costo de más de $10,000 pesos al mes.
-            Con $5,500 pesos al mes no alcanza para producción y pauta publicitaria al mismo
-            tiempo, así que construimos un plan de 3 meses que alterna entre ambas: primero
-            dejamos todo montado, después encendemos la pauta, y luego renovamos el
-            contenido sin dejar de invertir en anuncios. Así el proyecto funciona dentro de
-            tu presupuesto real, sin prometerte algo que este mes no se puede cumplir.
-          </p>
-        </section>
-
-        <Divider />
-
         {/* PLAN DE 3 MESES */}
         <section className="px-6 md:px-16 py-24 md:py-32 max-w-[1300px] mx-auto">
           <SectionLabel>Plan de trabajo</SectionLabel>
