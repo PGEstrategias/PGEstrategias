@@ -22,9 +22,10 @@ const WA_LINK =
   "https://wa.me/522201758468?text=Hola%20Pablo,%20vi%20la%20propuesta%20para%20Wasabi";
 
 /* ── Recursos ───────────────────────────────────────────────── */
-// PENDIENTE: pegar la URL del demo reel (Cloudinary .mp4).
-// Al llenarla, el hero y el fondo del CTA final la toman automáticamente.
-const REEL_DEMO: string | null = null;
+// Demo reel: se usa en el hero (marco de teléfono) y como textura de
+// fondo del CTA final, muy oscurecido y desenfocado.
+const REEL_DEMO: string | null =
+  "https://res.cloudinary.com/dxcr9utre/video/upload/v1783103607/reel1_d1nzzx.mp4";
 
 // GRID_FOTOS_PENDIENTE: 4–6 imágenes de producción gastronómica.
 // Mientras el arreglo esté vacío, la sección de portafolio no se
@@ -435,6 +436,7 @@ const garantia = [
 /* ── Página ─────────────────────────────────────────────────── */
 export default function WasabiClient() {
   const [mounted, setMounted] = useState(false);
+  const reduce = useReducedMotion();
   useEffect(() => setMounted(true), []);
 
   const rise = {
@@ -1171,7 +1173,7 @@ export default function WasabiClient() {
               aria-hidden
               src={REEL_DEMO}
               poster={posterOf(REEL_DEMO)}
-              autoPlay
+              autoPlay={!reduce}
               muted
               loop
               playsInline
