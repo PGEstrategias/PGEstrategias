@@ -427,10 +427,21 @@ const alcances = [
   },
 ];
 
-const garantia = [
-  "Definimos juntos la meta del periodo en una métrica verificable, antes de arrancar.",
-  "Si al cierre del periodo no se alcanza, seguimos trabajando 30 días adicionales sin honorarios.",
-  "La garantía aplica sobre honorarios, nunca sobre inversión publicitaria, y está sujeta a los tiempos de respuesta y entrega de material acordados.",
+/* La ventana de arranque: por qué el primer resultado se lee a los 45
+   días y no antes. */
+const arranque = [
+  {
+    title: "Estudio de mercado",
+    desc: "Competencia de la zona, comportamiento de búsqueda y línea base de venta y tráfico.",
+  },
+  {
+    title: "Estrategia",
+    desc: "Calendario ligado a horarios valle, temporada y platillos de mayor margen, con la métrica de éxito definida.",
+  },
+  {
+    title: "Creación de contenido",
+    desc: "Producción, edición y puesta en campaña de las piezas que van a sostener el periodo completo.",
+  },
 ];
 
 /* ── Página ─────────────────────────────────────────────────── */
@@ -899,7 +910,7 @@ export default function WasabiClient() {
                 color: TEXT,
               }}
             >
-              Con estos cuatro instrumentos, al final del primer mes no hay
+              Con estos cuatro instrumentos, cuando el periodo cierra no hay
               opinión: <span style={{ color: ACCENT_TEXT }}>hay un número.</span>
             </motion.p>
           </div>
@@ -1089,13 +1100,73 @@ export default function WasabiClient() {
           </div>
         </section>
 
-        {/* ══ 10 · LA GARANTÍA ══════════════════════════════════ */}
-        {/* IMPORTANTE: definir la métrica y el número de la meta antes de
-            presentar, y que un abogado revise la redacción contractual. */}
+        {/* ══ 10 · TIEMPOS Y GARANTÍA ═══════════════════════════ */}
         <section className="relative px-5 md:px-16 py-24 md:py-32">
           <div className="max-w-[1300px] mx-auto">
             <KnifeRule />
-            <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-12 md:gap-20">
+
+            {/* La ventana de arranque */}
+            <div className="max-w-[760px] mb-16 md:mb-20">
+              <motion.div {...rise}>
+                <Eyebrow>Los tiempos</Eyebrow>
+              </motion.div>
+              <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
+                <Display className="mb-8">
+                  Los primeros{" "}
+                  <span style={{ color: ACCENT_TEXT }}>45 días</span> son de
+                  construcción.
+                </Display>
+              </motion.div>
+              <motion.p
+                {...rise}
+                transition={{ ...rise.transition, delay: 0.1 }}
+                className="font-body text-[15px] leading-[1.8]"
+                style={{ color: MUTED }}
+              >
+                Ese es el tiempo que toma hacer bien las tres cosas que sostienen
+                todo lo que viene después: el estudio de mercado, la estrategia y la
+                creación del contenido. Un anuncio se puede prender en una tarde;
+                una campaña que baje el costo por cliente, no. Por eso los
+                resultados empiezan a leerse a partir del día 45 — antes de eso hay
+                trabajo, no cifras.
+              </motion.p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-20 md:mb-28">
+              {arranque.map((a, i) => (
+                <motion.div
+                  key={a.title}
+                  {...rise}
+                  transition={{ ...rise.transition, delay: i * 0.07 }}
+                  className="p-7"
+                  style={{
+                    border: `1px solid ${BORDER}`,
+                    background: "rgba(242,237,230,0.02)",
+                  }}
+                >
+                  <span
+                    aria-hidden
+                    className="block h-px w-8 mb-5"
+                    style={{ background: ACCENT }}
+                  />
+                  <h3
+                    className="font-title mb-2"
+                    style={{ fontSize: "18px", fontWeight: 400, color: TEXT }}
+                  >
+                    {a.title}
+                  </h3>
+                  <p
+                    className="font-body text-[14px] leading-[1.7]"
+                    style={{ color: MUTED }}
+                  >
+                    {a.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* La garantía */}
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-12 md:gap-20 items-start">
               <div>
                 <motion.div {...rise}>
                   <Eyebrow>Cómo compartimos el riesgo</Eyebrow>
@@ -1121,37 +1192,45 @@ export default function WasabiClient() {
               </div>
 
               <div>
-                <ol className="flex flex-col gap-3">
-                  {garantia.map((g, i) => (
-                    <motion.li
-                      key={g}
-                      {...rise}
-                      transition={{ ...rise.transition, delay: 0.1 + i * 0.07 }}
-                      className="flex items-start gap-4 p-6"
-                      style={{
-                        border: `1px solid ${BORDER}`,
-                        background: "rgba(242,237,230,0.02)",
-                      }}
-                    >
-                      <span
-                        className="font-title text-[13px] shrink-0"
-                        style={{ color: ACCENT_TEXT, fontWeight: 700 }}
-                      >
-                        0{i + 1}
-                      </span>
-                      <span
-                        className="font-body text-[14px] leading-[1.7]"
-                        style={{ color: TEXT }}
-                      >
-                        {g}
-                      </span>
-                    </motion.li>
-                  ))}
-                </ol>
+                <motion.div
+                  {...rise}
+                  transition={{ ...rise.transition, delay: 0.15 }}
+                  className="p-8 md:p-10"
+                  style={{
+                    border: `1px solid rgba(196,48,43,0.35)`,
+                    background: `linear-gradient(150deg, ${ACCENT_SOFT} 0%, rgba(242,237,230,0.02) 60%)`,
+                  }}
+                >
+                  <p
+                    className="font-title leading-none mb-4"
+                    style={{
+                      fontSize: "clamp(40px, 5vw, 64px)",
+                      fontWeight: 400,
+                      color: ACCENT_TEXT,
+                      letterSpacing: "-0.03em",
+                    }}
+                  >
+                    30 días
+                  </p>
+                  <p
+                    className="font-body text-[15px] leading-[1.7] mb-6"
+                    style={{ color: TEXT }}
+                  >
+                    de honorarios sin costo. Si al cierre del periodo no llegamos a
+                    la meta que definimos juntos, seguimos trabajando un mes más sin
+                    cobrarlos.
+                  </p>
+                  <p
+                    className="font-body text-[13px] leading-[1.65] pt-6"
+                    style={{ color: MUTED, borderTop: `1px solid ${BORDER}` }}
+                  >
+                    Aplica sobre honorarios, nunca sobre la inversión publicitaria.
+                  </p>
+                </motion.div>
 
                 <motion.p
                   {...rise}
-                  transition={{ ...rise.transition, delay: 0.35 }}
+                  transition={{ ...rise.transition, delay: 0.25 }}
                   className="font-body text-[14px] leading-[1.7] mt-8"
                   style={{ color: MUTED }}
                 >
