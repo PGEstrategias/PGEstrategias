@@ -53,7 +53,25 @@ function PhoneVideo({
   const ref = useRef<HTMLVideoElement>(null);
   const [loaded, setLoaded] = useState(eager);
   const [muted, setMuted] = useState(true);
+  const [playing, setPlaying] = useState(false);
   const reduce = useReducedMotion();
+
+  // Play / pausa manual — también es el respaldo cuando el navegador
+  // bloquea el autoplay (iOS en modo de bajo consumo, p. ej.).
+  const pausedByUser = useRef(false);
+
+  const togglePlay = () => {
+    const el = ref.current;
+    if (!el) return;
+    if (el.paused) {
+      pausedByUser.current = false;
+      setLoaded(true);
+      el.play().catch(() => {});
+    } else {
+      pausedByUser.current = true;
+      el.pause();
+    }
+  };
 
   useEffect(() => {
     const el = ref.current;
@@ -63,7 +81,8 @@ function PhoneVideo({
       ([entry]) => {
         if (entry.isIntersecting) {
           setLoaded(true);
-          if (!reduce) el.play().catch(() => {});
+          // Si el usuario pausó a propósito, no lo reanudamos al volver.
+          if (!reduce && !pausedByUser.current) el.play().catch(() => {});
         } else if (!el.paused) {
           el.pause();
         }
@@ -118,9 +137,56 @@ function PhoneVideo({
             autoPlay={eager && !reduce}
             controls={!!reduce}
             preload="metadata"
+            onPlay={() => setPlaying(true)}
+            onPause={() => setPlaying(false)}
             aria-label={caption ?? "Video de muestra de contenido"}
             className="w-full h-full object-cover"
           />
+
+          {/* Botón de play / pausa */}
+          {!reduce && (
+            <button
+              type="button"
+              onClick={togglePlay}
+              className={`absolute inset-0 z-10 flex items-center justify-center transition-opacity duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:-outline-offset-4 ${
+                playing
+                  ? "opacity-0 hover:opacity-100 focus-visible:opacity-100"
+                  : "opacity-100"
+              }`}
+              style={{ outlineColor: ACCENT }}
+              aria-label={playing ? "Pausar video" : "Reproducir video"}
+            >
+              {!playing && (
+                <span
+                  aria-hidden
+                  className="absolute inset-0"
+                  style={{ background: "rgba(5,8,11,0.35)" }}
+                />
+              )}
+              <span
+                className="relative flex items-center justify-center rounded-full transition-transform duration-300 hover:scale-105"
+                style={{
+                  width: 62,
+                  height: 62,
+                  background: "rgba(10,14,18,0.62)",
+                  border: `1px solid rgba(166,226,46,0.55)`,
+                  backdropFilter: "blur(6px)",
+                  color: ACCENT,
+                }}
+              >
+                {playing ? (
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                    <rect x="6" y="4" width="4.5" height="16" rx="1" />
+                    <rect x="13.5" y="4" width="4.5" height="16" rx="1" />
+                  </svg>
+                ) : (
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+                    <path d="M8 5.6c0-.9.9-1.4 1.6-1L18.4 11c.7.4.7 1.5 0 1.9L9.6 19.4c-.7.4-1.6-.1-1.6-1V5.6z" />
+                  </svg>
+                )}
+              </span>
+            </button>
+          )}
 
           {/* Viñeta inferior para que el caption respire */}
           {caption && (
@@ -136,7 +202,7 @@ function PhoneVideo({
 
           {caption && (
             <p
-              className="absolute bottom-4 left-4 right-4 font-body text-[11px] uppercase tracking-[0.14em]"
+              className="absolute bottom-4 left-4 right-4 z-10 pointer-events-none font-body text-[11px] uppercase tracking-[0.14em]"
               style={{ color: "rgba(232,236,239,0.75)" }}
             >
               {caption}
