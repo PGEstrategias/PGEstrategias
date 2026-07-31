@@ -5,18 +5,15 @@ import { motion, useReducedMotion } from "framer-motion";
 import Footer from "@/components/Footer";
 
 /* ────────────────────────────────────────────────────────────
-   PALETA — japonés contemporáneo: negro cálido y rojo lacado.
-   ACCENT se usa en rellenos y reglas; ACCENT_TEXT es la versión
-   aclarada para texto, que sí cumple contraste AA sobre el fondo.
+   PALETA — identidad PG Estrategias: negro y lime, un solo acento.
    ──────────────────────────────────────────────────────────── */
-const BASE = "#0C0B0A";
-const SURFACE = "#161412";
-const TEXT = "#F2EDE6";
-const MUTED = "#9B9186";
-const ACCENT = "#C4302B";
-const ACCENT_TEXT = "#E4564F";
-const ACCENT_SOFT = "rgba(196,48,43,0.07)";
-const BORDER = "rgba(242,237,230,0.10)";
+const BASE = "#0D0D0D";
+const SURFACE = "#141414";
+const TEXT = "#F5F5F5";
+const MUTED = "#8C8C8C";
+const ACCENT = "#A6E22E";
+const ACCENT_SOFT = "rgba(166,226,46,0.06)";
+const BORDER = "rgba(245,245,245,0.10)";
 
 const WA_LINK =
   "https://wa.me/522201758468?text=Hola%20Pablo,%20vi%20la%20propuesta%20para%20Wasabi";
@@ -53,7 +50,7 @@ function KnifeRule({ className = "" }: { className?: string }) {
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
       className={`h-px w-full origin-left mb-14 md:mb-20 ${className}`}
       style={{
-        background: `linear-gradient(to right, ${ACCENT} 0%, rgba(196,48,43,0.35) 45%, transparent 100%)`,
+        background: `linear-gradient(to right, ${ACCENT} 0%, rgba(166,226,46,0.35) 45%, transparent 100%)`,
       }}
     />
   );
@@ -110,7 +107,7 @@ function PhoneVideo({ src }: { src: string | null }) {
         className="hidden md:block absolute -inset-10 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at center, rgba(196,48,43,0.16) 0%, transparent 68%)",
+            "radial-gradient(ellipse at center, rgba(166,226,46,0.16) 0%, transparent 68%)",
           filter: "blur(26px)",
         }}
       />
@@ -118,18 +115,18 @@ function PhoneVideo({ src }: { src: string | null }) {
       <div
         className="relative md:p-[10px] md:rounded-[46px]"
         style={{
-          background: "linear-gradient(160deg, #2a2422 0%, #060505 100%)",
+          background: "linear-gradient(160deg, #262626 0%, #060606 100%)",
           boxShadow: "0 40px 90px -30px rgba(0,0,0,0.95)",
         }}
       >
         <div
           className="relative overflow-hidden rounded-[18px] md:rounded-[38px] max-h-[62vh] md:max-h-none"
-          style={{ aspectRatio: "9 / 16", background: "#060505" }}
+          style={{ aspectRatio: "9 / 16", background: "#0A0A0A" }}
         >
           <span
             aria-hidden
             className="hidden md:block absolute top-[10px] left-1/2 -translate-x-1/2 z-20 rounded-full"
-            style={{ width: 86, height: 22, background: "#060505" }}
+            style={{ width: 86, height: 22, background: "#0A0A0A" }}
           />
 
           {src ? (
@@ -158,14 +155,14 @@ function PhoneVideo({ src }: { src: string | null }) {
                       ? "opacity-0 hover:opacity-100 focus-visible:opacity-100"
                       : "opacity-100"
                   }`}
-                  style={{ outlineColor: ACCENT_TEXT }}
+                  style={{ outlineColor: ACCENT }}
                   aria-label={playing ? "Pausar video" : "Reproducir video"}
                 >
                   {!playing && (
                     <span
                       aria-hidden
                       className="absolute inset-0"
-                      style={{ background: "rgba(6,5,5,0.35)" }}
+                      style={{ background: "rgba(13,13,13,0.35)" }}
                     />
                   )}
                   <span
@@ -173,10 +170,10 @@ function PhoneVideo({ src }: { src: string | null }) {
                     style={{
                       width: 62,
                       height: 62,
-                      background: "rgba(12,11,10,0.62)",
-                      border: `1px solid rgba(196,48,43,0.7)`,
+                      background: "rgba(13,13,13,0.62)",
+                      border: `1px solid rgba(166,226,46,0.7)`,
                       backdropFilter: "blur(6px)",
-                      color: ACCENT_TEXT,
+                      color: ACCENT,
                     }}
                   >
                     {playing ? (
@@ -230,7 +227,7 @@ function Eyebrow({
       className={`font-body text-[11px] tracking-[0.14em] uppercase mb-6 flex items-center gap-3 ${
         centered ? "justify-center" : ""
       }`}
-      style={{ color: ACCENT_TEXT, fontWeight: 500 }}
+      style={{ color: ACCENT, fontWeight: 500 }}
     >
       <span className="inline-block w-8 h-px" style={{ background: ACCENT }} />
       {children}
@@ -290,10 +287,10 @@ function CTAButton({
       className={`inline-flex items-center gap-2.5 font-title tracking-wide transition-all duration-300 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 ${pad} ${className}`}
       style={{
         background: ACCENT,
-        color: TEXT,
+        color: "#0D1005",
         fontWeight: 700,
-        outlineColor: ACCENT_TEXT,
-        boxShadow: "0 12px 40px -14px rgba(196,48,43,0.75)",
+        outlineColor: ACCENT,
+        boxShadow: "0 12px 40px -14px rgba(166,226,46,0.75)",
       }}
     >
       <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
@@ -473,7 +470,7 @@ export default function WasabiClient() {
           <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
             <Display className="mb-8">
               Cada pedido por app paga una comisión que{" "}
-              <span style={{ color: ACCENT_TEXT }}>puede quedarse en casa.</span>
+              <span style={{ color: ACCENT }}>puede quedarse en casa.</span>
             </Display>
           </motion.div>
           <motion.p
@@ -501,14 +498,14 @@ export default function WasabiClient() {
       <nav
         className="fixed top-0 left-0 right-0 z-50"
         style={{
-          background: "rgba(12,11,10,0.84)",
+          background: "rgba(13,13,13,0.84)",
           backdropFilter: "blur(16px)",
           borderBottom: `1px solid ${BORDER}`,
         }}
       >
         <div className="flex items-center justify-between gap-4 px-5 md:px-16 h-16 max-w-[1300px] mx-auto">
           <a href="/" className="flex items-center gap-2.5 shrink-0">
-            <svg width="24" height="24" viewBox="0 0 28 28" fill="none" style={{ color: ACCENT_TEXT }}>
+            <svg width="24" height="24" viewBox="0 0 28 28" fill="none" style={{ color: ACCENT }}>
               <rect x="2" y="18" width="5" height="8" fill="currentColor" />
               <rect x="9" y="12" width="5" height="14" fill="currentColor" />
               <rect x="16" y="6" width="5" height="20" fill="currentColor" />
@@ -541,7 +538,7 @@ export default function WasabiClient() {
           className="absolute inset-x-0 top-0 h-[100vh] pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 70% 50% at 72% 0%, rgba(196,48,43,0.16) 0%, transparent 66%)",
+              "radial-gradient(ellipse 70% 50% at 72% 0%, rgba(166,226,46,0.16) 0%, transparent 66%)",
           }}
         />
 
@@ -554,7 +551,7 @@ export default function WasabiClient() {
                 animate={mounted ? { opacity: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="font-body text-[11px] tracking-[0.14em] uppercase mb-7 flex items-center gap-3"
-                style={{ color: ACCENT_TEXT, fontWeight: 500 }}
+                style={{ color: ACCENT, fontWeight: 500 }}
               >
                 <span
                   className="inline-block w-1.5 h-1.5 rounded-full"
@@ -577,8 +574,8 @@ export default function WasabiClient() {
                 }}
               >
                 El sushi ya está a la altura.{" "}
-                <span style={{ color: ACCENT_TEXT }}>
-                  El contenido tiene que venderlo igual.
+                <span style={{ color: ACCENT }}>
+                  Vamos a que el contenido lo demuestre.
                 </span>
               </motion.h1>
 
@@ -619,14 +616,14 @@ export default function WasabiClient() {
             <KnifeRule />
             <div className="max-w-[820px]">
               <motion.div {...rise}>
-                <Eyebrow>El diagnóstico</Eyebrow>
+                <Eyebrow>El enfoque</Eyebrow>
               </motion.div>
 
               <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
                 <Display className="mb-8">
-                  686 publicaciones.{" "}
-                  <span style={{ color: ACCENT_TEXT }}>
-                    El crecimiento no corresponde.
+                  El objetivo no es publicar más.{" "}
+                  <span style={{ color: ACCENT }}>
+                    Es que cada pieza trabaje.
                   </span>
                 </Display>
               </motion.div>
@@ -637,11 +634,11 @@ export default function WasabiClient() {
                 className="font-body text-[15px] leading-[1.8] max-w-[680px]"
                 style={{ color: MUTED }}
               >
-                No es un problema de cantidad. Es un problema de sistema. Publicar
-                sin estrategia de retención hace que cada campaña cueste más
-                alcanzar a la misma gente — y ese sobrecosto sale del mismo
-                presupuesto que podría estar llenando mesas. Wasabi no necesita
-                publicar más. Necesita que cada pieza trabaje.
+                En redes, el volumen por sí solo no mueve la aguja: lo que define
+                cuánto cuesta cada campaña es cuánta atención retiene cada pieza.
+                Por eso trabajamos con un sistema — cada publicación sale con un
+                objetivo claro, llenar un horario valle, mover un platillo de alto
+                margen, traer una reserva — y con la forma de saber si lo cumplió.
               </motion.p>
 
               <motion.p
@@ -657,8 +654,8 @@ export default function WasabiClient() {
                   borderLeft: `2px solid ${ACCENT}`,
                 }}
               >
-                El costo de un mal contenido no es estético.{" "}
-                <span style={{ color: ACCENT_TEXT }}>Es el CPM.</span>
+                La calidad del contenido no es un tema estético.{" "}
+                <span style={{ color: ACCENT }}>Es un tema de CPM.</span>
               </motion.p>
             </div>
           </div>
@@ -678,7 +675,7 @@ export default function WasabiClient() {
               <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
                 <Display>
                   Calidad no es un lujo. Es lo que{" "}
-                  <span style={{ color: ACCENT_TEXT }}>
+                  <span style={{ color: ACCENT }}>
                     baja su costo por cliente.
                   </span>
                 </Display>
@@ -694,7 +691,7 @@ export default function WasabiClient() {
                 >
                   <p
                     className="font-body text-[11px] tracking-[0.14em] mb-4"
-                    style={{ color: ACCENT_TEXT }}
+                    style={{ color: ACCENT }}
                   >
                     {m.n}
                   </p>
@@ -738,7 +735,7 @@ export default function WasabiClient() {
                 <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
                   <Display>
                     Esto es lo que{" "}
-                    <span style={{ color: ACCENT_TEXT }}>producimos.</span>
+                    <span style={{ color: ACCENT }}>producimos.</span>
                   </Display>
                 </motion.div>
               </div>
@@ -777,7 +774,7 @@ export default function WasabiClient() {
               <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
                 <Display>
                   Un proceso,{" "}
-                  <span style={{ color: ACCENT_TEXT }}>no ocurrencias.</span>
+                  <span style={{ color: ACCENT }}>no ocurrencias.</span>
                 </Display>
               </motion.div>
             </div>
@@ -787,7 +784,7 @@ export default function WasabiClient() {
                 aria-hidden
                 className="absolute left-[13px] md:left-[15px] top-3 bottom-3 w-px"
                 style={{
-                  background: `linear-gradient(to bottom, ${ACCENT}, rgba(196,48,43,0.12))`,
+                  background: `linear-gradient(to bottom, ${ACCENT}, rgba(166,226,46,0.12))`,
                 }}
               />
 
@@ -806,7 +803,7 @@ export default function WasabiClient() {
                         height: 28,
                         background: BASE,
                         border: `1px solid ${ACCENT}`,
-                        color: ACCENT_TEXT,
+                        color: ACCENT,
                         fontWeight: 700,
                       }}
                     >
@@ -852,7 +849,7 @@ export default function WasabiClient() {
               <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
                 <Display className="mb-8">
                   Si no se puede medir,{" "}
-                  <span style={{ color: ACCENT_TEXT }}>no lo proponemos.</span>
+                  <span style={{ color: ACCENT }}>no lo proponemos.</span>
                 </Display>
               </motion.div>
               <motion.p
@@ -875,7 +872,7 @@ export default function WasabiClient() {
                   className="p-7 md:p-8"
                   style={{
                     border: `1px solid ${BORDER}`,
-                    background: "rgba(242,237,230,0.02)",
+                    background: "rgba(245,245,245,0.02)",
                   }}
                 >
                   <span
@@ -911,7 +908,7 @@ export default function WasabiClient() {
               }}
             >
               Con estos cuatro instrumentos, cuando el periodo cierra no hay
-              opinión: <span style={{ color: ACCENT_TEXT }}>hay un número.</span>
+              opinión: <span style={{ color: ACCENT }}>hay un número.</span>
             </motion.p>
           </div>
         </section>
@@ -931,7 +928,9 @@ export default function WasabiClient() {
                 <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
                   <Display className="mb-8">
                     Sus mejores clientes ya son suyos.{" "}
-                    <span style={{ color: ACCENT_TEXT }}>Falta poder hablarles.</span>
+                    <span style={{ color: ACCENT }}>
+                      Un canal propio los deja a un mensaje.
+                    </span>
                   </Display>
                 </motion.div>
                 <motion.p
@@ -981,7 +980,7 @@ export default function WasabiClient() {
                     fontWeight: 400,
                     lineHeight: 1.35,
                     letterSpacing: "-0.02em",
-                    color: ACCENT_TEXT,
+                    color: ACCENT,
                     borderLeft: `2px solid ${ACCENT}`,
                   }}
                 >
@@ -1004,7 +1003,7 @@ export default function WasabiClient() {
               width: 700,
               height: 700,
               background:
-                "radial-gradient(circle, rgba(196,48,43,0.13) 0%, transparent 65%)",
+                "radial-gradient(circle, rgba(166,226,46,0.13) 0%, transparent 65%)",
             }}
           />
 
@@ -1016,7 +1015,7 @@ export default function WasabiClient() {
               </motion.div>
               <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
                 <Display size="clamp(48px, 7.5vw, 104px)" className="mb-8">
-                  <span style={{ color: ACCENT_TEXT }}>Tracción.</span>
+                  <span style={{ color: ACCENT }}>Tracción.</span>
                 </Display>
               </motion.div>
               <motion.p
@@ -1026,7 +1025,7 @@ export default function WasabiClient() {
                 style={{ color: MUTED }}
               >
                 El paquete para negocios que ya tienen el producto resuelto y
-                necesitan que el mercado lo vea así de bien.
+                quieren que el mercado lo vea así de bien.
               </motion.p>
             </div>
 
@@ -1035,13 +1034,13 @@ export default function WasabiClient() {
               transition={{ ...rise.transition, delay: 0.15 }}
               className="p-7 md:p-14"
               style={{
-                border: `1px solid rgba(196,48,43,0.35)`,
-                background: `linear-gradient(150deg, ${ACCENT_SOFT} 0%, rgba(242,237,230,0.02) 55%)`,
+                border: `1px solid rgba(166,226,46,0.35)`,
+                background: `linear-gradient(150deg, ${ACCENT_SOFT} 0%, rgba(245,245,245,0.02) 55%)`,
               }}
             >
               <p
                 className="font-body text-[11px] uppercase tracking-[0.14em] mb-8 pb-6"
-                style={{ color: ACCENT_TEXT, borderBottom: `1px solid ${BORDER}` }}
+                style={{ color: ACCENT, borderBottom: `1px solid ${BORDER}` }}
               >
                 Alcances del paquete
               </p>
@@ -1059,7 +1058,7 @@ export default function WasabiClient() {
                     >
                       <path
                         d="M2 6l3 3 5-5"
-                        stroke={ACCENT_TEXT}
+                        stroke={ACCENT}
                         strokeWidth="1.8"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -1113,7 +1112,7 @@ export default function WasabiClient() {
               <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
                 <Display className="mb-8">
                   Los primeros{" "}
-                  <span style={{ color: ACCENT_TEXT }}>45 días</span> son de
+                  <span style={{ color: ACCENT }}>45 días</span> son de
                   construcción.
                 </Display>
               </motion.div>
@@ -1141,7 +1140,7 @@ export default function WasabiClient() {
                   className="p-7"
                   style={{
                     border: `1px solid ${BORDER}`,
-                    background: "rgba(242,237,230,0.02)",
+                    background: "rgba(245,245,245,0.02)",
                   }}
                 >
                   <span
@@ -1174,7 +1173,7 @@ export default function WasabiClient() {
                 <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
                   <Display className="mb-8">
                     No garantizamos su operación.{" "}
-                    <span style={{ color: ACCENT_TEXT }}>Garantizamos la nuestra.</span>
+                    <span style={{ color: ACCENT }}>Garantizamos la nuestra.</span>
                   </Display>
                 </motion.div>
                 <motion.p
@@ -1197,8 +1196,8 @@ export default function WasabiClient() {
                   transition={{ ...rise.transition, delay: 0.15 }}
                   className="p-8 md:p-10"
                   style={{
-                    border: `1px solid rgba(196,48,43,0.35)`,
-                    background: `linear-gradient(150deg, ${ACCENT_SOFT} 0%, rgba(242,237,230,0.02) 60%)`,
+                    border: `1px solid rgba(166,226,46,0.35)`,
+                    background: `linear-gradient(150deg, ${ACCENT_SOFT} 0%, rgba(245,245,245,0.02) 60%)`,
                   }}
                 >
                   <p
@@ -1206,7 +1205,7 @@ export default function WasabiClient() {
                     style={{
                       fontSize: "clamp(40px, 5vw, 64px)",
                       fontWeight: 400,
-                      color: ACCENT_TEXT,
+                      color: ACCENT,
                       letterSpacing: "-0.03em",
                     }}
                   >
@@ -1268,8 +1267,8 @@ export default function WasabiClient() {
             className="absolute inset-0"
             style={{
               background: REEL_DEMO
-                ? "linear-gradient(rgba(12,11,10,0.88), rgba(12,11,10,0.94))"
-                : "radial-gradient(ellipse 60% 50% at 50% 100%, rgba(196,48,43,0.18) 0%, transparent 70%)",
+                ? "linear-gradient(rgba(13,13,13,0.88), rgba(13,13,13,0.94))"
+                : "radial-gradient(ellipse 60% 50% at 50% 100%, rgba(166,226,46,0.18) 0%, transparent 70%)",
             }}
           />
 
@@ -1281,7 +1280,7 @@ export default function WasabiClient() {
             <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
               <Display size="clamp(32px, 5vw, 64px)" className="mb-12">
                 Empecemos midiendo.{" "}
-                <span style={{ color: ACCENT_TEXT }}>
+                <span style={{ color: ACCENT }}>
                   El resto se decide con números.
                 </span>
               </Display>
@@ -1306,7 +1305,7 @@ export default function WasabiClient() {
         <div
           className="md:hidden fixed bottom-0 left-0 right-0 z-50 px-4 py-3"
           style={{
-            background: "rgba(12,11,10,0.93)",
+            background: "rgba(13,13,13,0.93)",
             backdropFilter: "blur(14px)",
             borderTop: `1px solid ${BORDER}`,
           }}
