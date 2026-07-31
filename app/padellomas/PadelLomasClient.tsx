@@ -193,7 +193,7 @@ function Eyebrow({
 }) {
   return (
     <p
-      className={`font-body text-[11px] tracking-[0.2em] uppercase mb-6 flex items-center gap-3 ${
+      className={`font-body text-[11px] tracking-[0.14em] uppercase mb-6 flex items-center gap-3 ${
         centered ? "justify-center" : ""
       }`}
       style={{ color: ACCENT, fontWeight: 500 }}
@@ -210,7 +210,7 @@ function Eyebrow({
 function Display({
   children,
   className = "",
-  size = "clamp(34px, 5.4vw, 74px)",
+  size = "clamp(30px, 4.6vw, 56px)",
 }: {
   children: React.ReactNode;
   className?: string;
@@ -218,13 +218,13 @@ function Display({
 }) {
   return (
     <h2
-      className={`font-title uppercase ${className}`}
+      className={`font-title ${className}`}
       style={{
         color: TEXT,
         fontSize: size,
-        fontWeight: 800,
-        lineHeight: 0.94,
-        letterSpacing: "-0.025em",
+        fontWeight: 400,
+        lineHeight: 1.05,
+        letterSpacing: "-0.02em",
       }}
     >
       {children}
@@ -243,21 +243,21 @@ function CTAButton({
 }) {
   const pad =
     size === "lg"
-      ? "px-10 py-5 text-[15px]"
+      ? "px-9 py-4 text-[14px]"
       : size === "sm"
       ? "px-5 py-2.5 text-[12px]"
-      : "px-8 py-4 text-[14px]";
+      : "px-8 py-3.5 text-[13px]";
 
   return (
     <a
       href={WA_LINK}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group inline-flex items-center gap-2.5 font-title uppercase tracking-[0.06em] transition-all duration-300 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 ${pad} ${className}`}
+      className={`group inline-flex items-center gap-2.5 font-title tracking-wide transition-all duration-300 hover:brightness-110 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 ${pad} ${className}`}
       style={{
         background: ACCENT,
         color: "#07100A",
-        fontWeight: 800,
+        fontWeight: 700,
         outlineColor: ACCENT,
         boxShadow: "0 12px 40px -12px rgba(166,226,46,0.55)",
       }}
@@ -403,7 +403,7 @@ export default function PadelLomasClient() {
 
           <div className="flex items-center gap-4">
             <span
-              className="hidden md:block font-body text-[11px] tracking-[0.16em] uppercase"
+              className="hidden md:block font-body text-[11px] tracking-[0.14em] uppercase"
               style={{ color: MUTED }}
             >
               Propuesta · Pádel Lomas
@@ -450,7 +450,7 @@ export default function PadelLomasClient() {
                 initial={{ opacity: 0 }}
                 animate={mounted ? { opacity: 1 } : {}}
                 transition={{ duration: 0.5, delay: 0.1 }}
-                className="font-body text-[11px] tracking-[0.22em] uppercase mb-7 flex items-center gap-3"
+                className="font-body text-[11px] tracking-[0.14em] uppercase mb-7 flex items-center gap-3"
                 style={{ color: ACCENT, fontWeight: 500 }}
               >
                 <span
@@ -464,12 +464,12 @@ export default function PadelLomasClient() {
                 initial={{ opacity: 0, y: 24 }}
                 animate={mounted ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
-                className="font-title uppercase mb-7"
+                className="font-title mb-7"
                 style={{
-                  fontSize: "clamp(40px, 6.6vw, 92px)",
-                  fontWeight: 800,
-                  lineHeight: 0.9,
-                  letterSpacing: "-0.035em",
+                  fontSize: "clamp(34px, 4.8vw, 68px)",
+                  fontWeight: 400,
+                  lineHeight: 1.0,
+                  letterSpacing: "-0.03em",
                   color: TEXT,
                 }}
               >
@@ -481,7 +481,7 @@ export default function PadelLomasClient() {
                 initial={{ opacity: 0 }}
                 animate={mounted ? { opacity: 1 } : {}}
                 transition={{ duration: 0.6, delay: 0.35 }}
-                className="font-body text-[16px] leading-[1.75] max-w-[560px] mb-10"
+                className="font-body text-[15px] leading-[1.75] max-w-[560px] mb-10"
                 style={{ color: MUTED }}
               >
                 Producción audiovisual y marketing digital para que Pádel Lomas se
@@ -508,7 +508,7 @@ export default function PadelLomasClient() {
                   <div key={s.label}>
                     <p
                       className="font-title leading-none mb-1.5"
-                      style={{ fontSize: "clamp(24px, 2.4vw, 32px)", fontWeight: 800, color: TEXT }}
+                      style={{ fontSize: "clamp(22px, 2vw, 28px)", fontWeight: 400, color: TEXT }}
                     >
                       {s.num}
                     </p>
@@ -543,7 +543,7 @@ export default function PadelLomasClient() {
             </motion.div>
 
             <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
-              <Display size="clamp(34px, 6vw, 82px)" className="mb-10">
+              <Display size="clamp(30px, 4.6vw, 60px)" className="mb-10">
                 Construyeron el mejor club de pádel de Puebla.
                 <br className="hidden sm:block" />{" "}
                 <span style={{ color: MUTED }}>Casi nadie lo ha visto.</span>
@@ -553,7 +553,7 @@ export default function PadelLomasClient() {
             <motion.p
               {...rise}
               transition={{ ...rise.transition, delay: 0.1 }}
-              className="font-body text-[16px] md:text-[18px] leading-[1.8] max-w-[720px] mx-auto"
+              className="font-body text-[15px] leading-[1.8] max-w-[700px] mx-auto"
               style={{ color: MUTED }}
             >
               Un estadio. 9 canchas. 3,400 m² techados. El único club 360° de la
@@ -574,12 +574,12 @@ export default function PadelLomasClient() {
             >
               <p
                 className="font-title leading-none mb-4"
-                style={{ fontSize: "clamp(64px, 12vw, 140px)", fontWeight: 800, color: ACCENT, letterSpacing: "-0.04em" }}
+                style={{ fontSize: "clamp(56px, 8vw, 104px)", fontWeight: 400, color: ACCENT, letterSpacing: "-0.03em" }}
               >
                 76
               </p>
               <p
-                className="font-body text-[14px] md:text-[16px] leading-[1.6] max-w-[420px]"
+                className="font-body text-[15px] leading-[1.6] max-w-[420px]"
                 style={{ color: TEXT }}
               >
                 publicaciones no cuentan la historia de un club de este nivel.
@@ -613,7 +613,7 @@ export default function PadelLomasClient() {
               <motion.p
                 {...rise}
                 transition={{ ...rise.transition, delay: 0.1 }}
-                className="font-body text-[16px] leading-[1.8] max-w-[560px] mb-12"
+                className="font-body text-[15px] leading-[1.8] max-w-[560px] mb-12"
                 style={{ color: MUTED }}
               >
                 Torneos que se ven como transmisión profesional. Un estadio que se
@@ -635,7 +635,7 @@ export default function PadelLomasClient() {
                       style={{ width: 18, height: 2, background: ACCENT }}
                     />
                     <span
-                      className="font-body text-[15px] md:text-[16px] leading-[1.6]"
+                      className="font-body text-[15px] leading-[1.6]"
                       style={{ color: TEXT }}
                     >
                       {c}
@@ -662,7 +662,7 @@ export default function PadelLomasClient() {
               <motion.p
                 {...rise}
                 transition={{ ...rise.transition, delay: 0.1 }}
-                className="font-body text-[16px] leading-[1.8]"
+                className="font-body text-[15px] leading-[1.8]"
                 style={{ color: MUTED }}
               >
                 Sin filtros de por medio. Esto es lo que entregamos.
@@ -730,18 +730,18 @@ export default function PadelLomasClient() {
                         background: BASE,
                         border: `1px solid ${ACCENT}`,
                         color: ACCENT,
-                        fontWeight: 800,
+                        fontWeight: 700,
                       }}
                     >
                       {i + 1}
                     </span>
 
                     <h3
-                      className="font-title uppercase"
+                      className="font-title"
                       style={{
-                        fontSize: "clamp(20px, 2.2vw, 28px)",
-                        fontWeight: 800,
-                        letterSpacing: "-0.02em",
+                        fontSize: "clamp(18px, 1.7vw, 23px)",
+                        fontWeight: 400,
+                        letterSpacing: "-0.01em",
                         color: TEXT,
                       }}
                     >
@@ -780,14 +780,14 @@ export default function PadelLomasClient() {
                 <Eyebrow centered>La propuesta</Eyebrow>
               </motion.div>
               <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
-                <Display size="clamp(56px, 11vw, 150px)" className="mb-8">
+                <Display size="clamp(48px, 7.5vw, 104px)" className="mb-8">
                   <span style={{ color: ACCENT }}>Tracción.</span>
                 </Display>
               </motion.div>
               <motion.p
                 {...rise}
                 transition={{ ...rise.transition, delay: 0.1 }}
-                className="font-body text-[16px] md:text-[18px] leading-[1.8] max-w-[620px] mx-auto"
+                className="font-body text-[15px] leading-[1.8] max-w-[620px] mx-auto"
                 style={{ color: MUTED }}
               >
                 El paquete para marcas que ya tienen el producto — y necesitan que
@@ -805,7 +805,7 @@ export default function PadelLomasClient() {
               }}
             >
               <p
-                className="font-body text-[11px] uppercase tracking-[0.2em] mb-8 pb-6"
+                className="font-body text-[11px] uppercase tracking-[0.14em] mb-8 pb-6"
                 style={{ color: ACCENT, borderBottom: `1px solid ${BORDER}` }}
               >
                 Alcances del paquete
@@ -834,13 +834,13 @@ export default function PadelLomasClient() {
                     </svg>
                     <div>
                       <p
-                        className="font-title text-[15px] md:text-[16px] mb-1"
-                        style={{ color: TEXT, fontWeight: 700 }}
+                        className="font-title text-[16px] mb-1"
+                        style={{ color: TEXT, fontWeight: 400 }}
                       >
                         {a.title}
                       </p>
                       <p
-                        className="font-body text-[13.5px] leading-[1.65]"
+                        className="font-body text-[13px] leading-[1.65]"
                         style={{ color: MUTED }}
                       >
                         {a.desc}
@@ -894,7 +894,7 @@ export default function PadelLomasClient() {
             </motion.div>
 
             <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
-              <Display size="clamp(38px, 7vw, 96px)" className="mb-12">
+              <Display size="clamp(32px, 5vw, 64px)" className="mb-12">
                 Su próximo torneo merece verse como{" "}
                 <span style={{ color: ACCENT }}>final de Premier Padel.</span>
               </Display>
@@ -907,7 +907,7 @@ export default function PadelLomasClient() {
             <motion.p
               {...rise}
               transition={{ ...rise.transition, delay: 0.15 }}
-              className="font-body text-[12px] uppercase tracking-[0.16em] mt-14"
+              className="font-body text-[12px] uppercase tracking-[0.14em] mt-14"
               style={{ color: MUTED }}
             >
               Propuesta confidencial · Puebla, {new Date().getFullYear()}
