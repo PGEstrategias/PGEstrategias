@@ -601,18 +601,19 @@ export default function PadelLomasClient() {
           </div>
         </section>
 
-        {/* ══ 2 · EL PROBLEMA ═══════════════════════════════════ */}
+        {/* ══ 2 · LA OPORTUNIDAD ════════════════════════════════ */}
         <section className="relative px-5 md:px-16 py-24 md:py-40">
           <div className="max-w-[900px] mx-auto text-center">
             <motion.div {...rise}>
-              <Eyebrow centered>El costo de oportunidad</Eyebrow>
+              <Eyebrow centered>La oportunidad</Eyebrow>
             </motion.div>
 
             <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
               <Display size="clamp(30px, 4.6vw, 60px)" className="mb-10">
-                Construyeron el mejor club de pádel de Puebla.
-                <br className="hidden sm:block" />{" "}
-                <span style={{ color: MUTED }}>Casi nadie lo ha visto.</span>
+                Ahora vamos a hacer que sea{" "}
+                <span style={{ color: ACCENT }}>
+                  el club de pádel más visto de Puebla.
+                </span>
               </Display>
             </motion.div>
 
@@ -623,10 +624,11 @@ export default function PadelLomasClient() {
               style={{ color: MUTED }}
             >
               Un estadio. 9 canchas. 3,400 m² techados. El único club 360° de la
-              ciudad. Pero en el teléfono de sus clientes —donde se decide cada
-              reserva, cada torneo, cada membresía— nada de eso se ve. Cada semana,
-              jugadores que deberían estar en sus canchas eligen otro club porque
-              nunca vieron lo que ustedes construyeron.
+              ciudad. El producto ya está construido y está al nivel más alto de la
+              región. Lo que sigue es que se vea igual de bien en el teléfono —
+              donde se decide cada reserva, cada torneo y cada membresía— y que
+              cualquier jugador de la zona reconozca al club antes de elegir dónde
+              jugar.
             </motion.p>
 
             <motion.div
@@ -642,13 +644,14 @@ export default function PadelLomasClient() {
                 className="font-title leading-none mb-4"
                 style={{ fontSize: "clamp(56px, 8vw, 104px)", fontWeight: 400, color: ACCENT, letterSpacing: "-0.03em" }}
               >
-                76
+                #1
               </p>
               <p
-                className="font-body text-[15px] leading-[1.6] max-w-[420px]"
+                className="font-body text-[15px] leading-[1.6] max-w-[440px]"
                 style={{ color: TEXT }}
               >
-                publicaciones no cuentan la historia de un club de este nivel.
+                Ese es el objetivo: el club de pádel más visto de Puebla. Con las
+                instalaciones que ya tienen, es una meta alcanzable.
               </p>
             </motion.div>
           </div>
@@ -666,12 +669,12 @@ export default function PadelLomasClient() {
 
             <div className="order-2">
               <motion.div {...rise}>
-                <Eyebrow>Lo que cambia</Eyebrow>
+                <Eyebrow>Lo que sumamos</Eyebrow>
               </motion.div>
 
               <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
                 <Display className="mb-8">
-                  Del feed genérico al contenido que{" "}
+                  Contenido que no solo se ve bien:{" "}
                   <span style={{ color: ACCENT }}>llena canchas.</span>
                 </Display>
               </motion.div>
@@ -856,7 +859,7 @@ export default function PadelLomasClient() {
                 className="font-body text-[15px] leading-[1.8] max-w-[620px] mx-auto"
                 style={{ color: MUTED }}
               >
-                El paquete para marcas que ya tienen el producto — y necesitan que
+                El paquete para marcas que ya tienen el producto — y quieren que
                 el mundo lo vea así de bien.
               </motion.p>
             </div>
