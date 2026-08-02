@@ -48,14 +48,25 @@ export default function QuienesSomos() {
     <section
       id="servicios"
       className="py-40 relative overflow-hidden"
-      style={{ background: "#1C1C1A" }}
+      style={{ background: "#EDE9E5" }}
     >
+      {/* Halo suave decorativo */}
+      <div
+        aria-hidden
+        className="absolute -top-40 -right-40 w-[520px] h-[520px] pointer-events-none rounded-full"
+        style={{
+          background:
+            "radial-gradient(circle, rgba(214,58,39,0.10), transparent 65%)",
+          filter: "blur(50px)",
+        }}
+      />
+
       <div className="max-w-[1300px] mx-auto px-8 md:px-16 relative">
         {/* Bloque A — Manifiesto */}
         <div
           ref={ref}
           className="mb-32 pt-8"
-          style={{ borderTop: "1px solid rgba(228,224,221,0.1)" }}
+          style={{ borderTop: "1px solid rgba(28,28,26,0.12)" }}
         >
           <motion.div
             initial={{ opacity: 0 }}
@@ -69,7 +80,7 @@ export default function QuienesSomos() {
             />
             <p
               className="font-body text-[11px] uppercase tracking-[var(--ls-label)]"
-              style={{ color: "rgba(228,224,221,0.5)" }}
+              style={{ color: "rgba(28,28,26,0.5)" }}
             >
               Quiénes somos
             </p>
@@ -86,7 +97,7 @@ export default function QuienesSomos() {
                 fontWeight: 400,
                 lineHeight: "var(--lh-h2)",
                 letterSpacing: "var(--ls-h2)",
-                color: "#E4E0DD",
+                color: "#1C1C1A",
               }}
             >
               No somos una agencia.
@@ -104,7 +115,7 @@ export default function QuienesSomos() {
             >
               <p
                 className="font-body text-[17px] leading-[1.75] mb-8"
-                style={{ color: "rgba(228,224,221,0.65)" }}
+                style={{ color: "rgba(28,28,26,0.7)" }}
               >
                 Trabajamos con negocios que ya saben cómo funciona lo que
                 venden. Nuestra labor es construir el sistema digital que
@@ -115,8 +126,8 @@ export default function QuienesSomos() {
                   href="#contacto"
                   className="relative overflow-hidden group inline-flex items-center gap-3 font-body text-[12px] tracking-[0.14em] uppercase px-6 py-3 transition-colors duration-500"
                   style={{
-                    border: "1px solid rgba(228,224,221,0.3)",
-                    color: "#E4E0DD",
+                    border: "1px solid rgba(28,28,26,0.3)",
+                    color: "#1C1C1A",
                   }}
                 >
                   <span
@@ -124,9 +135,11 @@ export default function QuienesSomos() {
                     className="absolute inset-0 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"
                     style={{ background: "#D63A27" }}
                   />
-                  <span className="relative">Hablemos</span>
+                  <span className="relative transition-colors duration-500 group-hover:text-[#E4E0DD]">
+                    Hablemos
+                  </span>
                   <span
-                    className="relative inline-block transition-transform duration-500 group-hover:translate-x-1"
+                    className="relative inline-block transition-transform duration-500 group-hover:translate-x-1 group-hover:text-[#E4E0DD]"
                     aria-hidden
                   >
                     →
@@ -136,7 +149,7 @@ export default function QuienesSomos() {
                   href="/nuestrotrabajo"
                   className="relative overflow-hidden group inline-flex items-center gap-3 font-body text-[12px] tracking-[0.14em] uppercase px-6 py-3 transition-colors duration-500"
                   style={{
-                    border: "1px solid rgba(214,58,39,0.55)",
+                    border: "1px solid rgba(214,58,39,0.6)",
                     color: "#D63A27",
                   }}
                 >
@@ -175,9 +188,8 @@ export default function QuienesSomos() {
               }}
               whileHover={{ y: -4 }}
               className="pt-8 pb-8 pr-0 lg:pr-10 group cursor-default relative"
-              style={{ borderTop: "1px solid rgba(228,224,221,0.12)" }}
+              style={{ borderTop: "1px solid rgba(28,28,26,0.14)" }}
             >
-              {/* Línea roja al hacer hover */}
               <span
                 aria-hidden
                 className="absolute top-0 left-0 h-px origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-700"
@@ -190,7 +202,7 @@ export default function QuienesSomos() {
               <p
                 className="font-body text-[11px] mb-6 tabular-nums transition-colors duration-500 group-hover:text-[color:#D63A27]"
                 style={{
-                  color: "rgba(228,224,221,0.3)",
+                  color: "rgba(28,28,26,0.4)",
                   letterSpacing: "0.06em",
                 }}
               >
@@ -200,15 +212,15 @@ export default function QuienesSomos() {
                 className="font-title mb-4 leading-snug transition-colors duration-500"
                 style={{
                   fontSize: "var(--t-h3)",
-                  fontWeight: 400,
-                  color: "#E4E0DD",
+                  fontWeight: 500,
+                  color: "#1C1C1A",
                 }}
               >
                 {s.title}
               </h3>
               <p
                 className="font-body text-[13px] leading-[1.7]"
-                style={{ color: "rgba(228,224,221,0.55)" }}
+                style={{ color: "rgba(28,28,26,0.6)" }}
               >
                 {s.desc}
               </p>
@@ -220,7 +232,7 @@ export default function QuienesSomos() {
         <div
           ref={difRef}
           className="mt-24 pt-16"
-          style={{ borderTop: "1px solid rgba(228,224,221,0.08)" }}
+          style={{ borderTop: "1px solid rgba(28,28,26,0.1)" }}
         >
           <motion.div
             initial={{ opacity: 0 }}
@@ -234,7 +246,7 @@ export default function QuienesSomos() {
             />
             <p
               className="font-body text-[11px] uppercase tracking-[var(--ls-label)]"
-              style={{ color: "rgba(228,224,221,0.35)" }}
+              style={{ color: "rgba(28,28,26,0.45)" }}
             >
               Por qué PG
             </p>
@@ -248,9 +260,7 @@ export default function QuienesSomos() {
                 animate={difInView ? { opacity: 1 } : {}}
                 transition={{ duration: 0.6, delay: i * 0.07 }}
                 className="flex items-start gap-4 py-4 group"
-                style={{
-                  borderBottom: "1px solid rgba(228,224,221,0.08)",
-                }}
+                style={{ borderBottom: "1px solid rgba(28,28,26,0.1)" }}
               >
                 <span
                   className="flex-shrink-0 w-1.5 h-1.5 rounded-full mt-2.5 transition-transform duration-500 group-hover:scale-150"
@@ -258,7 +268,7 @@ export default function QuienesSomos() {
                 />
                 <p
                   className="font-body text-[14px] leading-[1.65]"
-                  style={{ color: "rgba(228,224,221,0.65)" }}
+                  style={{ color: "rgba(28,28,26,0.72)" }}
                 >
                   {d}
                 </p>
