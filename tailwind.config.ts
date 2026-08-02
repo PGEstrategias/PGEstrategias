@@ -9,10 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        "pg-black": "#0D0D0D",
-        "pg-lime": "#A6E22E",
-        "pg-light": "#F5F5F5",
+        "pg-black": "#1C1C1A",
+        "pg-red": "#D63A27",
+        "pg-warm": "#A79F99",
+        "pg-cream": "#E4E0DD",
         "pg-white": "#FFFFFF",
+        // Compat aliases (deprecated, kept for legacy component styles)
+        "pg-lime": "#D63A27",
+        "pg-light": "#E4E0DD",
       },
       fontFamily: {
         title: ["Syne", "sans-serif"],

@@ -107,8 +107,8 @@ function ReelCard({ reel, index }: { reel: Reel; index: number }) {
         ref={wrapperRef}
         className="reel-card relative aspect-[9/16] w-full overflow-hidden bg-white/[0.03] border border-white/10 flex items-center justify-center group"
       >
-        <div className="absolute inset-0 opacity-30" style={{
-          background: "radial-gradient(circle at 50% 50%, rgba(166,226,46,0.15), transparent 60%)",
+        <div className="absolute inset-0 opacity-40" style={{
+          background: "radial-gradient(circle at 50% 50%, rgba(214,58,39,0.15), transparent 60%)",
         }} />
         <div className="relative text-center px-6">
           <div className="font-body text-[10px] tracking-[0.2em] uppercase text-white/40 mb-3">
@@ -117,8 +117,8 @@ function ReelCard({ reel, index }: { reel: Reel; index: number }) {
           <div className="font-title text-white/80 text-xl tracking-tight">
             {reel.label || "Próximamente"}
           </div>
-          <div className="mt-4 inline-flex items-center gap-2 text-[10px] text-pg-lime tracking-[0.2em] uppercase">
-            <span className="w-1.5 h-1.5 rounded-full bg-pg-lime animate-pulse" />
+          <div className="mt-4 inline-flex items-center gap-2 text-[10px] tracking-[0.2em] uppercase" style={{ color: "#D63A27" }}>
+            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#D63A27" }} />
             En producción
           </div>
         </div>
@@ -142,16 +142,23 @@ function ReelCard({ reel, index }: { reel: Reel; index: number }) {
           preload="metadata"
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
-        <div className="absolute top-4 left-4 font-body text-[10px] tracking-[0.2em] uppercase text-white/70">
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1C1C1A]/80 via-transparent to-transparent opacity-80 transition-opacity duration-500 group-hover:opacity-100" />
+        <div
+          aria-hidden
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          style={{ background: "linear-gradient(to top, rgba(214,58,39,0.3), transparent 55%)" }}
+        />
+        <div className="absolute top-4 left-4 font-body text-[10px] tracking-[0.22em] uppercase text-[#E4E0DD]/80">
           {String(index + 1).padStart(2, "0")} / Reel
         </div>
         <div className="absolute bottom-4 left-4 right-4 flex items-end justify-between">
-          <div className="font-body text-[10px] tracking-[0.2em] uppercase text-white/80">
+          <div className="font-body text-[10px] tracking-[0.22em] uppercase text-[#E4E0DD]/90">
             Ver completo
           </div>
-          <div className="w-9 h-9 rounded-full border border-white/40 flex items-center justify-center transition-all duration-500 group-hover:border-pg-lime group-hover:bg-pg-lime">
-            <svg width="10" height="12" viewBox="0 0 10 12" className="text-white transition-colors duration-500 group-hover:text-pg-black">
+          <div className="w-9 h-9 rounded-full border flex items-center justify-center transition-all duration-500"
+            style={{ borderColor: "rgba(228,224,221,0.45)" }}
+          >
+            <svg width="10" height="12" viewBox="0 0 10 12" className="transition-colors duration-500" style={{ color: "#E4E0DD" }}>
               <path d="M0 0L10 6L0 12V0Z" fill="currentColor" />
             </svg>
           </div>
@@ -166,7 +173,7 @@ function ReelCard({ reel, index }: { reel: Reel; index: number }) {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
             className="fixed inset-0 z-[120] flex items-center justify-center p-4 md:p-8"
-            style={{ background: "rgba(13,13,13,0.94)", backdropFilter: "blur(8px)" }}
+            style={{ background: "rgba(28,28,26,0.95)", backdropFilter: "blur(8px)" }}
             onClick={() => setOpen(false)}
           >
             <button
@@ -279,56 +286,57 @@ export default function NuestroTrabajoClient() {
   return (
     <>
       <Navbar />
-      <main ref={heroRef} className="bg-pg-black text-white overflow-hidden">
+      <main ref={heroRef} className="overflow-hidden" style={{ background: "#1C1C1A", color: "#E4E0DD" }}>
 
         {/* HERO */}
         <section className="relative min-h-[92vh] flex flex-col justify-end px-6 md:px-16 pt-32 pb-12 max-w-[1400px] mx-auto">
           <div
-            className="absolute inset-0 pointer-events-none opacity-60"
+            className="absolute inset-0 pointer-events-none opacity-70"
             style={{
               background:
-                "radial-gradient(ellipse at 80% 10%, rgba(166,226,46,0.10), transparent 50%), radial-gradient(ellipse at 10% 90%, rgba(166,226,46,0.06), transparent 55%)",
+                "radial-gradient(ellipse at 80% 10%, rgba(214,58,39,0.14), transparent 55%), radial-gradient(ellipse at 10% 90%, rgba(167,159,153,0.10), transparent 60%)",
             }}
           />
 
           <div className="relative">
             <div className="hero-kicker flex items-center gap-3 mb-8">
-              <span className="w-10 h-px bg-pg-lime" />
-              <span className="font-body text-[11px] tracking-[0.22em] uppercase text-pg-lime">
+              <span className="w-10 h-px" style={{ background: "#D63A27" }} />
+              <span className="font-body text-[11px] tracking-[0.24em] uppercase" style={{ color: "#D63A27" }}>
                 Portafolio · PG Estrategias
               </span>
             </div>
 
             <h1
-              className="hero-title font-title text-white"
+              className="hero-title font-title"
               style={{
                 fontSize: "var(--t-display)",
                 lineHeight: "var(--lh-display)",
                 letterSpacing: "var(--ls-display)",
                 fontWeight: 700,
+                color: "#E4E0DD",
               }}
             >
               <span className="block overflow-hidden"><span className="line block">Nuestro</span></span>
               <span className="block overflow-hidden"><span className="line block italic font-normal opacity-80">trabajo,</span></span>
-              <span className="block overflow-hidden"><span className="line block">tus <span className="text-pg-lime">resultados.</span></span></span>
+              <span className="block overflow-hidden"><span className="line block">tus <span style={{ color: "#D63A27" }}>resultados.</span></span></span>
             </h1>
 
             <div className="mt-10 grid md:grid-cols-12 gap-8 items-end">
-              <p className="hero-sub md:col-span-6 font-body text-white/70 text-base md:text-lg leading-relaxed max-w-xl">
+              <p className="hero-sub md:col-span-6 font-body text-base md:text-lg leading-relaxed max-w-xl" style={{ color: "rgba(228,224,221,0.72)" }}>
                 Una selección de los reels que producimos para nuestros clientes. Cada pieza está pensada para una sola cosa: convertir atención en clientes, ventas y posicionamiento.
               </p>
               <div className="hero-meta md:col-span-6 md:justify-self-end flex items-center gap-8">
                 <div>
-                  <div className="font-title text-pg-lime text-3xl md:text-4xl" style={{ fontWeight: 700 }}>04</div>
-                  <div className="font-body text-[10px] tracking-[0.2em] uppercase text-white/40 mt-1">Formatos</div>
+                  <div className="font-title text-3xl md:text-4xl" style={{ fontWeight: 700, color: "#D63A27" }}>04</div>
+                  <div className="font-body text-[10px] tracking-[0.22em] uppercase mt-1" style={{ color: "rgba(228,224,221,0.45)" }}>Formatos</div>
                 </div>
                 <div>
-                  <div className="font-title text-white text-3xl md:text-4xl" style={{ fontWeight: 700 }}>+200</div>
-                  <div className="font-body text-[10px] tracking-[0.2em] uppercase text-white/40 mt-1">Reels producidos</div>
+                  <div className="font-title text-3xl md:text-4xl" style={{ fontWeight: 700, color: "#E4E0DD" }}>+200</div>
+                  <div className="font-body text-[10px] tracking-[0.22em] uppercase mt-1" style={{ color: "rgba(228,224,221,0.45)" }}>Reels producidos</div>
                 </div>
                 <div>
-                  <div className="font-title text-white text-3xl md:text-4xl" style={{ fontWeight: 700 }}>1:1</div>
-                  <div className="font-body text-[10px] tracking-[0.2em] uppercase text-white/40 mt-1">Estrategia + Producción</div>
+                  <div className="font-title text-3xl md:text-4xl" style={{ fontWeight: 700, color: "#E4E0DD" }}>1:1</div>
+                  <div className="font-body text-[10px] tracking-[0.22em] uppercase mt-1" style={{ color: "rgba(228,224,221,0.45)" }}>Estrategia + Producción</div>
                 </div>
               </div>
             </div>
@@ -336,14 +344,28 @@ export default function NuestroTrabajoClient() {
         </section>
 
         {/* MARQUEE */}
-        <div ref={marqueeRef} className="border-y border-white/10 py-5 overflow-hidden">
+        <div
+          ref={marqueeRef}
+          className="py-5 overflow-hidden"
+          style={{
+            borderTop: "1px solid rgba(228,224,221,0.1)",
+            borderBottom: "1px solid rgba(228,224,221,0.1)",
+          }}
+        >
           <div className="marquee-inner flex whitespace-nowrap gap-12 will-change-transform">
             {Array.from({ length: 2 }).map((_, k) => (
               <div key={k} className="flex gap-12 items-center">
                 {["Atención", "Conversión", "Storytelling", "Performance", "Branding", "Hooks", "Cinemática", "Edición", "Dirección de arte", "Estrategia"].map((t) => (
-                  <span key={t + k} className="flex items-center gap-12 font-title text-white/30 text-2xl md:text-3xl tracking-tight">
+                  <span
+                    key={t + k}
+                    className="flex items-center gap-12 font-title text-2xl md:text-3xl tracking-tight"
+                    style={{ color: "rgba(228,224,221,0.35)" }}
+                  >
                     {t}
-                    <span className="w-2 h-2 rounded-full bg-pg-lime/60" />
+                    <span
+                      className="w-2 h-2 rounded-full"
+                      style={{ background: "rgba(214,58,39,0.7)" }}
+                    />
                   </span>
                 ))}
               </div>
@@ -359,8 +381,13 @@ export default function NuestroTrabajoClient() {
             className="section-block relative px-6 md:px-16 py-24 md:py-32 max-w-[1400px] mx-auto"
           >
             <div
-              className="section-number pointer-events-none absolute -top-2 right-6 md:right-16 font-title text-white/[0.04] select-none"
-              style={{ fontSize: "clamp(120px, 22vw, 320px)", fontWeight: 800, lineHeight: 0.85 }}
+              className="section-number pointer-events-none absolute -top-2 right-6 md:right-16 font-title select-none"
+              style={{
+                fontSize: "clamp(120px, 22vw, 320px)",
+                fontWeight: 800,
+                lineHeight: 0.85,
+                color: "rgba(228,224,221,0.05)",
+              }}
             >
               {cat.number}
             </div>
@@ -368,25 +395,26 @@ export default function NuestroTrabajoClient() {
             <div className="relative grid md:grid-cols-12 gap-8 md:gap-12 mb-12 md:mb-16">
               <div className="md:col-span-5 min-w-0">
                 <div className="reveal-up flex items-center gap-3 mb-6">
-                  <span className="w-8 h-px bg-pg-lime" />
-                  <span className="font-body text-[10px] tracking-[0.22em] uppercase text-pg-lime">
+                  <span className="w-8 h-px" style={{ background: "#D63A27" }} />
+                  <span className="font-body text-[10px] tracking-[0.24em] uppercase" style={{ color: "#D63A27" }}>
                     {cat.number} — {cat.kicker}
                   </span>
                 </div>
                 <h2
-                  className="reveal-up font-title text-white break-words hyphens-auto"
+                  className="reveal-up font-title break-words hyphens-auto"
                   style={{
                     fontSize: "var(--t-h2)",
                     lineHeight: "var(--lh-h2)",
                     letterSpacing: "var(--ls-h2)",
                     fontWeight: 700,
+                    color: "#E4E0DD",
                   }}
                 >
                   {cat.title}
                 </h2>
               </div>
               <div className="md:col-span-6 md:col-start-7 flex items-end">
-                <p className="reveal-up font-body text-white/65 text-base md:text-lg leading-relaxed">
+                <p className="reveal-up font-body text-base md:text-lg leading-relaxed" style={{ color: "rgba(228,224,221,0.7)" }}>
                   {cat.description}
                 </p>
               </div>
@@ -414,40 +442,48 @@ export default function NuestroTrabajoClient() {
             className="absolute inset-x-6 md:inset-x-16 inset-y-12 pointer-events-none"
             style={{
               background:
-                "radial-gradient(ellipse at center, rgba(166,226,46,0.10), transparent 60%)",
+                "radial-gradient(ellipse at center, rgba(214,58,39,0.14), transparent 60%)",
             }}
           />
           <div className="relative text-center">
             <div className="flex items-center justify-center gap-3 mb-8">
-              <span className="w-8 h-px bg-pg-lime" />
-              <span className="font-body text-[11px] tracking-[0.22em] uppercase text-pg-lime">
+              <span className="w-8 h-px" style={{ background: "#D63A27" }} />
+              <span className="font-body text-[11px] tracking-[0.24em] uppercase" style={{ color: "#D63A27" }}>
                 Tu marca, el próximo caso
               </span>
-              <span className="w-8 h-px bg-pg-lime" />
+              <span className="w-8 h-px" style={{ background: "#D63A27" }} />
             </div>
             <h2
-              className="font-title text-white max-w-4xl mx-auto"
+              className="font-title max-w-4xl mx-auto"
               style={{
                 fontSize: "var(--t-h1)",
                 lineHeight: "var(--lh-h1)",
                 letterSpacing: "var(--ls-display)",
                 fontWeight: 700,
+                color: "#E4E0DD",
               }}
             >
-              ¿Listo para que tu marca <span className="italic font-normal opacity-80">no se pueda</span> ignorar?
+              ¿Listo para que tu marca <span className="italic font-normal opacity-80" style={{ color: "#D63A27" }}>no se pueda</span> ignorar?
             </h2>
-            <p className="mt-8 font-body text-white/65 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+            <p className="mt-8 font-body text-base md:text-lg max-w-xl mx-auto leading-relaxed" style={{ color: "rgba(228,224,221,0.7)" }}>
               Cuéntanos a dónde quieres llevar tu marca y diseñamos la estrategia + producción audiovisual que te lleva ahí.
             </p>
             <button
               onClick={() => openContact(CTA_MSG)}
-              className="mt-12 inline-flex items-center gap-3 font-title font-bold text-pg-black text-[13px] tracking-wide px-8 py-4 transition-all duration-500 hover:opacity-90"
-              style={{ background: "#A6E22E" }}
+              className="relative overflow-hidden group mt-12 inline-flex items-center gap-3 font-title font-bold text-[13px] tracking-wide px-8 py-4 transition-transform duration-500 hover:-translate-y-0.5"
+              style={{ background: "#D63A27", color: "#E4E0DD" }}
             >
-              Agenda una llamada
-              <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
-                <path d="M1 5H13M13 5L9 1M13 5L9 9" stroke="currentColor" strokeWidth="1.5" />
-              </svg>
+              <span
+                aria-hidden
+                className="absolute inset-0 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"
+                style={{ background: "#1C1C1A" }}
+              />
+              <span className="relative flex items-center gap-3">
+                Agenda una llamada
+                <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+                  <path d="M1 5H13M13 5L9 1M13 5L9 9" stroke="currentColor" strokeWidth="1.5" />
+                </svg>
+              </span>
             </button>
           </div>
         </section>

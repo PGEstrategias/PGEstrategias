@@ -66,14 +66,14 @@ export default function ContactMenu() {
       icon: <IconPhone />,
       label: "Llamar ahora",
       sub: PHONE_DISPLAY,
-      accent: "#A6E22E",
+      accent: "#D63A27",
       action: () => { window.location.href = PHONE_TEL; close(); },
     },
     {
       icon: <IconForm />,
       label: "Llenar formulario",
       sub: "Te contactamos en 24 h",
-      accent: "rgba(255,255,255,0.55)",
+      accent: "rgba(228,224,221,0.6)",
       action: scrollToForm,
     },
   ];
@@ -91,7 +91,7 @@ export default function ContactMenu() {
             transition={{ duration: 0.25 }}
             onClick={close}
             className="fixed inset-0 z-[200]"
-            style={{ background: "rgba(0,0,0,0.72)", backdropFilter: "blur(6px)" }}
+            style={{ background: "rgba(28,28,26,0.78)", backdropFilter: "blur(6px)" }}
           />
 
           {/* Positioner: bottom on mobile, centered on desktop */}
@@ -104,10 +104,10 @@ export default function ContactMenu() {
               transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
               className="w-full md:w-[400px] pointer-events-auto"
               style={{
-                background: "#111111",
-                borderTop: "1px solid rgba(255,255,255,0.09)",
-                borderLeft: "1px solid rgba(255,255,255,0.06)",
-                borderRight: "1px solid rgba(255,255,255,0.06)",
+                background: "#25241F",
+                borderTop: "1px solid rgba(228,224,221,0.1)",
+                borderLeft: "1px solid rgba(228,224,221,0.06)",
+                borderRight: "1px solid rgba(228,224,221,0.06)",
                 borderRadius: "12px 12px 0 0",
               }}
               // On desktop, override rounded corners
@@ -115,22 +115,22 @@ export default function ContactMenu() {
               {/* Header */}
               <div
                 className="flex items-center justify-between px-6 pt-6 pb-5"
-                style={{ borderBottom: "1px solid rgba(255,255,255,0.06)" }}
+                style={{ borderBottom: "1px solid rgba(228,224,221,0.08)" }}
               >
                 <div>
-                  <p className="font-title text-white text-[15px]" style={{ fontWeight: 400, letterSpacing: "-0.01em" }}>
+                  <p className="font-title text-[15px]" style={{ fontWeight: 400, letterSpacing: "-0.01em", color: "#E4E0DD" }}>
                     ¿Cómo prefieres contactarnos?
                   </p>
-                  <p className="font-body text-[11px] mt-0.5" style={{ color: "rgba(255,255,255,0.3)" }}>
+                  <p className="font-body text-[11px] mt-0.5" style={{ color: "rgba(228,224,221,0.4)" }}>
                     Elige la opción que más te convenga
                   </p>
                 </div>
                 <button
                   onClick={close}
                   className="flex items-center justify-center w-7 h-7 transition-colors duration-300"
-                  style={{ color: "rgba(255,255,255,0.3)" }}
-                  onMouseEnter={(e) => (e.currentTarget.style.color = "#fff")}
-                  onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.3)")}
+                  style={{ color: "rgba(228,224,221,0.4)" }}
+                  onMouseEnter={(e) => (e.currentTarget.style.color = "#D63A27")}
+                  onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(228,224,221,0.4)")}
                   aria-label="Cerrar"
                 >
                   <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5">
@@ -147,8 +147,8 @@ export default function ContactMenu() {
                     key={i}
                     onClick={opt.action}
                     className="w-full flex items-center gap-4 px-3 py-4 transition-colors duration-300 group"
-                    style={{ borderBottom: i < options.length - 1 ? "1px solid rgba(255,255,255,0.05)" : "none" }}
-                    onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.04)")}
+                    style={{ borderBottom: i < options.length - 1 ? "1px solid rgba(228,224,221,0.06)" : "none" }}
+                    onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(228,224,221,0.05)")}
                     onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
                   >
                     {/* Icon bubble */}
@@ -161,16 +161,16 @@ export default function ContactMenu() {
 
                     {/* Text */}
                     <span className="flex flex-col text-left">
-                      <span className="font-title text-white text-[14px]" style={{ fontWeight: 400 }}>
+                      <span className="font-title text-[14px]" style={{ fontWeight: 400, color: "#E4E0DD" }}>
                         {opt.label}
                       </span>
-                      <span className="font-body text-[12px] mt-0.5" style={{ color: "rgba(255,255,255,0.38)" }}>
+                      <span className="font-body text-[12px] mt-0.5" style={{ color: "rgba(228,224,221,0.5)" }}>
                         {opt.sub}
                       </span>
                     </span>
 
                     {/* Arrow */}
-                    <span className="ml-auto" style={{ color: "rgba(255,255,255,0.2)" }}>
+                    <span className="ml-auto group-hover:translate-x-1 transition-transform duration-500" style={{ color: "rgba(228,224,221,0.3)" }}>
                       <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round">
                         <line x1="2" y1="7" x2="12" y2="7" />
                         <polyline points="8 3 12 7 8 11" />
