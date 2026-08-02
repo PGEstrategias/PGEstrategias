@@ -6,18 +6,25 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 const testimonios = [
   {
     id: 1,
-    video: "https://res.cloudinary.com/dieszqcrn/video/upload/v1778399000/DrManuelPGTestimonio_ar6neh.mp4",
-    thumbnail: "https://res.cloudinary.com/dieszqcrn/image/upload/v1778399766/3e0ed3ac-bcb5-493c-80c9-f505a37a38e3_uqfo1h.png",
-    thumbnailV: "https://res.cloudinary.com/dieszqcrn/image/upload/v1778400341/ChatGPT_Image_10_may_2026_02_05_25_a.m_tgohn3.png",
-    quote: "Sé que ustedes son un negocio confiable, en el que les interesa que sus clientes crezcan para que ustedes también crezcan.",
+    video:
+      "https://res.cloudinary.com/dieszqcrn/video/upload/v1778399000/DrManuelPGTestimonio_ar6neh.mp4",
+    thumbnail:
+      "https://res.cloudinary.com/dieszqcrn/image/upload/v1778399766/3e0ed3ac-bcb5-493c-80c9-f505a37a38e3_uqfo1h.png",
+    thumbnailV:
+      "https://res.cloudinary.com/dieszqcrn/image/upload/v1778400341/ChatGPT_Image_10_may_2026_02_05_25_a.m_tgohn3.png",
+    quote:
+      "Sé que ustedes son un negocio confiable, en el que les interesa que sus clientes crezcan para que ustedes también crezcan.",
     nombre: "Dr. Manuel",
     industria: "Proctología · Puebla",
   },
   {
     id: 2,
-    video: "https://res.cloudinary.com/dieszqcrn/video/upload/v1778398752/ExHaciendaPGTestimonio_ut7ja4.mp4",
-    thumbnail: "https://res.cloudinary.com/dieszqcrn/image/upload/v1778399817/ChatGPT_Image_10_may_2026_01_56_51_a.m_onxhrw.png",
-    thumbnailV: "https://res.cloudinary.com/dieszqcrn/image/upload/v1778400307/ChatGPT_Image_10_may_2026_02_04_57_a.m_gdkjn9.png",
+    video:
+      "https://res.cloudinary.com/dieszqcrn/video/upload/v1778398752/ExHaciendaPGTestimonio_ut7ja4.mp4",
+    thumbnail:
+      "https://res.cloudinary.com/dieszqcrn/image/upload/v1778399817/ChatGPT_Image_10_may_2026_01_56_51_a.m_onxhrw.png",
+    thumbnailV:
+      "https://res.cloudinary.com/dieszqcrn/image/upload/v1778400307/ChatGPT_Image_10_may_2026_02_04_57_a.m_gdkjn9.png",
     quote: "Hemos triplicado el número de contratos firmados.",
     nombre: "Ex Hacienda de San Bartolo",
     industria: "Bienes Raíces · Puebla",
@@ -30,23 +37,23 @@ function VideoModal({ src, onClose }: { src: string; onClose: () => void }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.5 }}
+      transition={{ duration: 0.4 }}
       className="fixed inset-0 z-[200] flex items-center justify-center"
-      style={{ background: "rgba(0,0,0,0.96)" }}
+      style={{ background: "rgba(28,28,26,0.96)" }}
       onClick={onClose}
     >
       <motion.div
         initial={{ scale: 0.97, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.97, opacity: 0 }}
-        transition={{ duration: 0.5 }}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
         className="relative w-full max-w-sm mx-4"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute -top-10 right-0 font-body text-[11px] tracking-[0.16em] uppercase transition-colors duration-500"
-          style={{ color: "rgba(255,255,255,0.4)" }}
+          className="absolute -top-10 right-0 font-body text-[11px] tracking-[0.16em] uppercase transition-colors duration-500 hover:text-[color:#D63A27]"
+          style={{ color: "rgba(228,224,221,0.5)" }}
           aria-label="Cerrar video"
         >
           Cerrar ×
@@ -64,7 +71,13 @@ function VideoModal({ src, onClose }: { src: string; onClose: () => void }) {
   );
 }
 
-function TestimonioCard({ t, index }: { t: typeof testimonios[0]; index: number }) {
+function TestimonioCard({
+  t,
+  index,
+}: {
+  t: typeof testimonios[0];
+  index: number;
+}) {
   const [showModal, setShowModal] = useState(false);
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -73,63 +86,90 @@ function TestimonioCard({ t, index }: { t: typeof testimonios[0]; index: number 
     <>
       <motion.div
         ref={ref}
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 30 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
-        transition={{ duration: 0.5, delay: index * 0.1 }}
+        transition={{ duration: 0.7, delay: index * 0.12, ease: [0.16, 1, 0.3, 1] }}
         className="flex flex-col"
       >
-        {/* Thumbnail — no card bg, sits directly on section bg */}
+        {/* Thumbnail */}
         <div
           className="relative cursor-pointer group overflow-hidden"
           style={{ aspectRatio: "9/16", maxHeight: "520px" }}
           onClick={() => setShowModal(true)}
         >
-          {/* Horizontal thumbnail — desktop */}
           <div
-            className="absolute inset-0 bg-cover bg-center hidden md:block"
-            style={{ backgroundImage: `url(${t.thumbnail})`, backgroundColor: "#1a1a1a" }}
+            className="absolute inset-0 bg-cover bg-center hidden md:block transition-transform duration-700 group-hover:scale-[1.03]"
+            style={{
+              backgroundImage: `url(${t.thumbnail})`,
+              backgroundColor: "#25241F",
+            }}
           />
-          {/* Vertical thumbnail — móvil */}
           <div
-            className="absolute inset-0 bg-cover bg-center block md:hidden"
-            style={{ backgroundImage: `url(${t.thumbnailV})`, backgroundColor: "#1a1a1a" }}
+            className="absolute inset-0 bg-cover bg-center block md:hidden transition-transform duration-700 group-hover:scale-[1.03]"
+            style={{
+              backgroundImage: `url(${t.thumbnailV})`,
+              backgroundColor: "#25241F",
+            }}
           />
           <div
             className="absolute inset-0 transition-opacity duration-500"
-            style={{ background: "rgba(0,0,0,0.35)" }}
+            style={{ background: "rgba(28,28,26,0.32)" }}
           />
-          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ background: "rgba(0,0,0,0.12)" }} />
+          <div
+            className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+            style={{
+              background:
+                "linear-gradient(to top, rgba(214,58,39,0.28), transparent 60%)",
+            }}
+          />
 
           {/* Play */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div
-              className="w-14 h-14 rounded-full border flex items-center justify-center transition-all duration-500 group-hover:scale-105"
-              style={{ borderColor: "rgba(255,255,255,0.7)", background: "rgba(255,255,255,0.08)" }}
+              className="w-14 h-14 rounded-full flex items-center justify-center transition-all duration-500 group-hover:scale-110"
+              style={{
+                border: "1px solid rgba(228,224,221,0.7)",
+                background: "rgba(28,28,26,0.35)",
+              }}
               aria-label={`Reproducir testimonio de ${t.nombre}`}
             >
               <svg width="14" height="16" viewBox="0 0 14 16" fill="none">
-                <path d="M1 1.5L13 8L1 14.5V1.5Z" fill="white" />
+                <path d="M1 1.5L13 8L1 14.5V1.5Z" fill="#E4E0DD" />
               </svg>
             </div>
           </div>
         </div>
 
         {/* Quote */}
-        <div className="pt-5 pb-2" style={{ borderTop: "1px solid rgba(13,13,13,0.1)" }}>
+        <div
+          className="pt-5 pb-2"
+          style={{ borderTop: "1px solid rgba(28,28,26,0.12)" }}
+        >
           <p
             className="font-body text-[16px] leading-relaxed mb-3 italic"
-            style={{ color: "rgba(13,13,13,0.8)" }}
+            style={{ color: "rgba(28,28,26,0.82)" }}
           >
             &ldquo;{t.quote}&rdquo;
           </p>
-          <p className="font-body text-[12px] tracking-wide" style={{ color: "rgba(13,13,13,0.38)" }}>
-            {t.nombre} · {t.industria}
-          </p>
+          <div className="flex items-center gap-3">
+            <span
+              className="w-6 h-px block"
+              style={{ background: "#D63A27" }}
+            />
+            <p
+              className="font-body text-[12px] tracking-wide uppercase"
+              style={{ color: "rgba(28,28,26,0.5)", letterSpacing: "0.08em" }}
+            >
+              {t.nombre} · {t.industria}
+            </p>
+          </div>
         </div>
       </motion.div>
 
       <AnimatePresence>
-        {showModal && <VideoModal src={t.video} onClose={() => setShowModal(false)} />}
+        {showModal && (
+          <VideoModal src={t.video} onClose={() => setShowModal(false)} />
+        )}
       </AnimatePresence>
     </>
   );
@@ -140,40 +180,54 @@ export default function Testimonios() {
   const headInView = useInView(headRef, { once: true, margin: "-80px" });
 
   return (
-    <section className="py-40" style={{ background: "#F5F5F5" }}>
+    <section className="py-40" style={{ background: "#E4E0DD" }}>
       <div className="max-w-[1300px] mx-auto px-8 md:px-16">
-
         {/* Header */}
-        <div ref={headRef} className="mb-20" style={{ borderTop: "1px solid rgba(13,13,13,0.12)" }}>
+        <div
+          ref={headRef}
+          className="mb-20"
+          style={{ borderTop: "1px solid rgba(28,28,26,0.14)" }}
+        >
           <div className="pt-8 grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
             <div>
-              <motion.p
+              <motion.div
                 initial={{ opacity: 0 }}
                 animate={headInView ? { opacity: 1 } : {}}
-                transition={{ duration: 0.5 }}
-                className="font-body text-[11px] uppercase tracking-[var(--ls-label)] mb-6"
-                style={{ color: "rgba(13,13,13,0.4)" }}
+                transition={{ duration: 0.6 }}
+                className="flex items-center gap-3 mb-6"
               >
-                Lo que dicen nuestros clientes
-              </motion.p>
+                <span
+                  className="w-8 h-px block"
+                  style={{ background: "#D63A27" }}
+                />
+                <p
+                  className="font-body text-[11px] uppercase tracking-[var(--ls-label)]"
+                  style={{ color: "rgba(28,28,26,0.45)" }}
+                >
+                  Lo que dicen nuestros clientes
+                </p>
+              </motion.div>
               <motion.h2
                 initial={{ opacity: 0, y: 16 }}
                 animate={headInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: 0.1 }}
-                className="font-title text-pg-black"
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="font-title"
                 style={{
                   fontSize: "var(--t-h2)",
                   fontWeight: 400,
                   lineHeight: "var(--lh-h2)",
                   letterSpacing: "var(--ls-h2)",
+                  color: "#1C1C1A",
                 }}
               >
                 Resultados reales,
                 <br />
-                en sus propias palabras.
+                en sus{" "}
+                <em style={{ color: "#D63A27", fontStyle: "italic" }}>
+                  propias palabras.
+                </em>
               </motion.h2>
             </div>
-
           </div>
         </div>
 

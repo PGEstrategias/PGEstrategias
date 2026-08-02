@@ -5,11 +5,22 @@
 @tailwind utilities;
 
 :root {
-  --pg-black: #0D0D0D;
-  --pg-lime: #A6E22E;
-  --pg-light: #F5F5F5;
+  /* Nuevo brand kit — PG Estrategias 2026 */
+  --pg-black: #1C1C1A;         /* Negro cálido principal */
+  --pg-red: #D63A27;           /* Rojo acento (único highlight de marca) */
+  --pg-warm: #A79F99;           /* Gris cálido para textos secundarios */
+  --pg-cream: #E4E0DD;          /* Crema claro para fondos y texto sobre oscuro */
   --pg-white: #FFFFFF;
-  --pg-lime-dim: rgba(166, 226, 46, 0.12);
+  --pg-red-dim: rgba(214, 58, 39, 0.14);
+  --pg-red-hover: #E55A44;
+  --pg-black-soft: #25241F;     /* Un tono arriba del negro para cards y overlays */
+  --pg-cream-soft: #EDE9E5;     /* Un tono debajo del crema para fondos alternos */
+
+  /* Legacy aliases (para no romper referencias antiguas) */
+  --pg-lime: #D63A27;
+  --pg-light: #E4E0DD;
+  --pg-lime-dim: rgba(214, 58, 39, 0.14);
+
   --font-title: 'Syne', sans-serif;
   --font-body: 'Inter', sans-serif;
 
@@ -28,21 +39,30 @@
   --ls-display: -0.03em;
   --ls-h2: -0.02em;
   --ls-label: 0.14em;
+
+  /* Easing curves */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 }
 
 html { scroll-behavior: smooth; }
 
 body {
   background-color: var(--pg-black);
-  color: var(--pg-white);
+  color: var(--pg-cream);
   font-family: var(--font-body);
   overflow-x: hidden;
 }
 
 ::-webkit-scrollbar { width: 3px; }
 ::-webkit-scrollbar-track { background: var(--pg-black); }
-::-webkit-scrollbar-thumb { background: rgba(166, 226, 46, 0.2); }
-::-webkit-scrollbar-thumb:hover { background: var(--pg-lime); }
+::-webkit-scrollbar-thumb { background: rgba(214, 58, 39, 0.3); }
+::-webkit-scrollbar-thumb:hover { background: var(--pg-red); }
+
+::selection {
+  background: var(--pg-red);
+  color: var(--pg-cream);
+}
 
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -51,18 +71,95 @@ body {
   }
 }
 
-.text-lime { color: var(--pg-lime); }
-.bg-lime { background-color: var(--pg-lime); }
-.border-lime { border-color: var(--pg-lime); }
+.text-lime { color: var(--pg-red); }
+.bg-lime { background-color: var(--pg-red); }
+.border-lime { border-color: var(--pg-red); }
 
+.text-red-brand { color: var(--pg-red); }
+.bg-red-brand { background-color: var(--pg-red); }
+.border-red-brand { border-color: var(--pg-red); }
+
+/* ------- Micro-interacciones creativas ------- */
+
+/* Underline animado de izquierda a derecha */
+.link-underline {
+  position: relative;
+  display: inline-block;
+}
+.link-underline::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  height: 1px;
+  width: 100%;
+  background: var(--pg-red);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.6s var(--ease-out-expo);
+}
+.link-underline:hover::after {
+  transform: scaleX(1);
+}
+
+/* Botón con "sweep" rojo al hacer hover */
+.btn-sweep {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+.btn-sweep::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--pg-red);
+  transform: translateX(-101%);
+  transition: transform 0.55s var(--ease-out-expo);
+  z-index: -1;
+}
+.btn-sweep:hover::before {
+  transform: translateX(0);
+}
+
+/* Cursor accent pulse (para elementos destacados) */
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.6); opacity: 0.35; }
+}
+.pulse-dot {
+  animation: pulse-dot 2.4s var(--ease-in-out-quart) infinite;
+}
+
+/* Marquee suave */
+@keyframes marquee-slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.marquee-track {
+  animation: marquee-slide 32s linear infinite;
+  will-change: transform;
+}
+
+/* Reveal por letra (utility) */
+@keyframes rise-in {
+  from { transform: translateY(110%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.rise-in > span {
+  display: inline-block;
+  animation: rise-in 0.9s var(--ease-out-expo) both;
+}
+
+/* Grain overlay más cálido */
 .grain::after {
   content: '';
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  opacity: 0.02;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   background-repeat: repeat;
   background-size: 128px 128px;
+  mix-blend-mode: overlay;
 }

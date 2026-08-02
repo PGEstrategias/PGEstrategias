@@ -18,7 +18,7 @@ const faqs = [
   },
   {
     q: "¿Qué pasa si no veo resultados?",
-    a: "Si al cierre de los 3 meses las métricas no se movieron por causas atribuibles a nuestra ejecución — y no a factores como precio del producto, cobertura geográfica o problemas internos del negocio — te damos un mes adicional de trabajo sin costo de honorarios.",
+    a: "Si al cierre del periodo no llegamos a la meta que definimos juntos, seguimos trabajando un mes más de honorarios sin cobrarlos. Aplica sobre honorarios, nunca sobre la inversión publicitaria.",
   },
   {
     q: "¿Puedo cambiar de plan?",
@@ -30,7 +30,13 @@ const faqs = [
   },
 ];
 
-function AccordionItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {
+function AccordionItem({
+  faq,
+  index,
+}: {
+  faq: typeof faqs[0];
+  index: number;
+}) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -38,22 +44,26 @@ function AccordionItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.06 }}
-      style={{ borderBottom: "1px solid rgba(13,13,13,0.1)" }}
+      transition={{ duration: 0.6, delay: index * 0.06 }}
+      style={{ borderBottom: "1px solid rgba(28,28,26,0.12)" }}
+      className="group"
     >
       <button
         className="w-full flex items-start justify-between py-6 text-left group"
         onClick={() => setOpen(!open)}
         aria-expanded={open}
       >
-        <span className="font-body text-[17px] text-pg-black leading-snug pr-8" style={{ fontWeight: 400 }}>
+        <span
+          className="font-body text-[17px] leading-snug pr-8 transition-colors duration-500 group-hover:text-[color:#D63A27]"
+          style={{ fontWeight: 400, color: "#1C1C1A" }}
+        >
           {faq.q}
         </span>
         <motion.span
           animate={{ rotate: open ? 45 : 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex-shrink-0 text-[20px] leading-none mt-0.5 transition-colors duration-500"
-          style={{ color: open ? "#A6E22E" : "rgba(13,13,13,0.3)" }}
+          transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          className="flex-shrink-0 text-[22px] leading-none mt-0.5 transition-colors duration-500"
+          style={{ color: open ? "#D63A27" : "rgba(28,28,26,0.4)" }}
         >
           +
         </motion.span>
@@ -68,12 +78,18 @@ function AccordionItem({ faq, index }: { faq: typeof faqs[0]; index: number }) {
             transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
             className="overflow-hidden"
           >
-            <p
-              className="font-body text-[15px] leading-[1.75] pb-7"
-              style={{ color: "rgba(13,13,13,0.55)" }}
-            >
-              {faq.a}
-            </p>
+            <div className="pb-7 pr-8 flex gap-4">
+              <span
+                className="w-0.5 flex-shrink-0 mt-1 mb-1"
+                style={{ background: "#D63A27" }}
+              />
+              <p
+                className="font-body text-[15px] leading-[1.75]"
+                style={{ color: "rgba(28,28,26,0.65)" }}
+              >
+                {faq.a}
+              </p>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
@@ -86,38 +102,52 @@ export default function FAQ() {
   const headInView = useInView(headRef, { once: true, margin: "-80px" });
 
   return (
-    <section className="py-40" style={{ background: "#F5F5F5" }}>
+    <section
+      id="faq"
+      className="py-40"
+      style={{ background: "#E4E0DD" }}
+    >
       <div className="max-w-[900px] mx-auto px-8 md:px-16">
-
         <div
           ref={headRef}
           className="mb-20 pt-8"
-          style={{ borderTop: "1px solid rgba(13,13,13,0.1)" }}
+          style={{ borderTop: "1px solid rgba(28,28,26,0.12)" }}
         >
-          <motion.p
+          <motion.div
             initial={{ opacity: 0 }}
             animate={headInView ? { opacity: 1 } : {}}
-            transition={{ duration: 0.5 }}
-            className="font-body text-[11px] uppercase tracking-[var(--ls-label)] mb-8"
-            style={{ color: "rgba(13,13,13,0.35)" }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center gap-3 mb-8"
           >
-            Preguntas frecuentes
-          </motion.p>
+            <span
+              className="w-8 h-px block"
+              style={{ background: "#D63A27" }}
+            />
+            <p
+              className="font-body text-[11px] uppercase tracking-[var(--ls-label)]"
+              style={{ color: "rgba(28,28,26,0.45)" }}
+            >
+              Preguntas frecuentes
+            </p>
+          </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 16 }}
             animate={headInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.1 }}
-            className="font-title text-pg-black"
+            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="font-title"
             style={{
               fontSize: "var(--t-h2)",
               fontWeight: 400,
               lineHeight: "var(--lh-h2)",
               letterSpacing: "var(--ls-h2)",
+              color: "#1C1C1A",
             }}
           >
             Todo lo que necesitas saber
             <br />
-            antes de empezar.
+            <em style={{ color: "#D63A27", fontStyle: "italic" }}>
+              antes de empezar.
+            </em>
           </motion.h2>
         </div>
 
@@ -131,22 +161,25 @@ export default function FAQ() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
           className="mt-16 pt-8"
-          style={{ borderTop: "1px solid rgba(13,13,13,0.08)" }}
+          style={{ borderTop: "1px solid rgba(28,28,26,0.1)" }}
         >
-          <p className="font-body text-[14px] mb-4" style={{ color: "rgba(13,13,13,0.45)" }}>
+          <p
+            className="font-body text-[14px] mb-4"
+            style={{ color: "rgba(28,28,26,0.55)" }}
+          >
             ¿Tu pregunta no está aquí?
           </p>
           <a
             href="#contacto"
-            className="font-body text-[13px] tracking-[0.1em] uppercase inline-flex items-center gap-3 transition-colors duration-500"
-            style={{ color: "rgba(13,13,13,0.45)" }}
+            className="link-underline font-body text-[13px] tracking-[0.12em] uppercase inline-flex items-center gap-3 transition-colors duration-500"
+            style={{ color: "rgba(28,28,26,0.75)" }}
           >
-            Escríbenos directamente <span style={{ color: "#A6E22E" }}>→</span>
+            Escríbenos directamente{" "}
+            <span style={{ color: "#D63A27" }}>→</span>
           </a>
         </motion.div>
-
       </div>
     </section>
   );
