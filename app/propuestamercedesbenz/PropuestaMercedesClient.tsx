@@ -12,9 +12,13 @@ const WHATSAPP_URL =
   );
 
 const HERO_VIDEO =
-  "https://res.cloudinary.com/djduba5fd/video/upload/v1785887879/AQNuVhBmkwGTX4OC78O3d0NwH_wfPRlmgNF7AvKO9OeAWifsY0eQEZ9IC9s0raBPg-wJjnxrnTZXKaXkwiHNIpMRWV-x3VRjiy1V4-k_om1cmn.mp4";
+  "https://res.cloudinary.com/djduba5fd/video/upload/v1785888616/WhatsApp_Video_2026-08-04_at_4.27.42_PM_vcpnm7.mp4";
 
 const REEL_VIDEOS = [
+  {
+    src: "https://res.cloudinary.com/djduba5fd/video/upload/v1785887879/AQNuVhBmkwGTX4OC78O3d0NwH_wfPRlmgNF7AvKO9OeAWifsY0eQEZ9IC9s0raBPg-wJjnxrnTZXKaXkwiHNIpMRWV-x3VRjiy1V4-k_om1cmn.mp4",
+    label: "Producción · Reel principal",
+  },
   {
     src: "https://res.cloudinary.com/djduba5fd/video/upload/v1785888058/AQPQOFP2CknFh7iZjtFDWRGeqLuiu-wE6o3L4EaKSH4XoEaxIAgPuWhJrRtB7CHuNDnCAdvL-XfWcEP_h32SaGdC627KoUHNg29_hbI_fz6dxd.mp4",
     label: "Producción · Reel de marca",
@@ -30,10 +34,6 @@ const REEL_VIDEOS = [
   {
     src: "https://res.cloudinary.com/djduba5fd/video/upload/v1779377563/Tesla2_qgocjj.mp4",
     label: "Automotriz · Formato showroom",
-  },
-  {
-    src: "https://res.cloudinary.com/djduba5fd/video/upload/v1785888616/WhatsApp_Video_2026-08-04_at_4.27.42_PM_vcpnm7.mp4",
-    label: "Corte vertical · Plataformas sociales",
   },
 ];
 
@@ -382,62 +382,32 @@ export default function PropuestaMercedesClient() {
               className="lg:col-span-6"
             >
               <div className="relative aspect-[4/5] w-full overflow-hidden">
-                {/* Placeholder editorial — reemplazar por imagen del kit de prensa Mercedes-Benz */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/mercedes-benz-showroom.jpg"
+                  alt="Casa matriz Mercedes-Benz"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                {/* Gradiente para legibilidad de etiquetas */}
                 <div
+                  aria-hidden
                   className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(140deg, #2a2a26 0%, #1C1C1A 55%, #0e0e0d 100%)",
+                      "linear-gradient(180deg, rgba(14,14,13,0.55) 0%, transparent 30%, transparent 55%, rgba(14,14,13,0.85) 100%)",
                   }}
                 />
-                {/* Rejilla arquitectónica sutil */}
-                <div
-                  aria-hidden
-                  className="absolute inset-0 opacity-[0.14]"
-                  style={{
-                    backgroundImage:
-                      "linear-gradient(rgba(228,224,221,0.4) 1px, transparent 1px), linear-gradient(90deg, rgba(228,224,221,0.4) 1px, transparent 1px)",
-                    backgroundSize: "72px 72px",
-                    maskImage:
-                      "radial-gradient(ellipse at 30% 30%, black 40%, transparent 85%)",
-                    WebkitMaskImage:
-                      "radial-gradient(ellipse at 30% 30%, black 40%, transparent 85%)",
-                  }}
-                />
-                {/* "Estrella" MB decorativa */}
-                <svg
-                  aria-hidden
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-                  width="220"
-                  height="220"
-                  viewBox="0 0 200 200"
-                  fill="none"
-                  style={{ opacity: 0.28 }}
-                >
-                  <circle
-                    cx="100"
-                    cy="100"
-                    r="96"
-                    stroke="#E4E0DD"
-                    strokeWidth="1.5"
-                  />
-                  <path
-                    d="M100 20 L100 100 M100 100 L30 140 M100 100 L170 140"
-                    stroke="#E4E0DD"
-                    strokeWidth="2"
-                  />
-                </svg>
-                {/* Etiqueta */}
-                <div className="absolute top-6 left-6 flex items-center gap-3">
+                {/* Etiqueta superior */}
+                <div className="absolute top-6 left-6 flex items-center gap-3 z-10">
                   <span className="w-8 h-px block" style={{ background: "#D63A27" }} />
                   <p
                     className="font-body text-[10px] tracking-[0.28em] uppercase"
-                    style={{ color: "#E4E0DD", opacity: 0.85 }}
+                    style={{ color: "#E4E0DD", opacity: 0.9 }}
                   >
                     Stuttgart · DE
                   </p>
                 </div>
-                <div className="absolute bottom-6 left-6 right-6">
+                <div className="absolute bottom-6 left-6 right-6 z-10">
                   <p
                     className="font-title mb-1"
                     style={{
@@ -451,9 +421,9 @@ export default function PropuestaMercedesClient() {
                   </p>
                   <p
                     className="font-body text-[11px] tracking-[0.18em] uppercase"
-                    style={{ color: "rgba(228,224,221,0.5)" }}
+                    style={{ color: "rgba(228,224,221,0.55)" }}
                   >
-                    Referencia visual · Kit de prensa oficial
+                    Referencia visual · Estándar global
                   </p>
                 </div>
                 {/* Marco */}
@@ -463,14 +433,6 @@ export default function PropuestaMercedesClient() {
                   style={{ border: "1px solid rgba(228,224,221,0.14)" }}
                 />
               </div>
-              <p
-                className="font-body text-[11px] mt-4 leading-relaxed"
-                style={{ color: "rgba(228,224,221,0.4)" }}
-              >
-                Nota interna: reemplazar por imagen del kit de prensa oficial
-                de Mercedes-Benz (media.mercedes-benz.com) o stock licenciada
-                antes de enviar.
-              </p>
             </motion.div>
           </div>
         </section>
