@@ -384,7 +384,7 @@ export default function PropuestaMercedesClient() {
               <div className="relative aspect-[4/5] w-full overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="/mercedes-benz-showroom.jpg"
+                  src="https://res.cloudinary.com/djduba5fd/image/upload/v1785894459/Captura_de_pantalla_2026-08-04_193156_wtjjfg.png"
                   alt="Casa matriz Mercedes-Benz"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
