@@ -342,48 +342,6 @@ const heroSpecs = [
   { num: "360°", label: "Único en Puebla" },
 ];
 
-const cambios = [
-  "Cobertura de torneos con calidad broadcast",
-  "Foto y video que venden la experiencia completa: cancha, bar, comunidad",
-  "Campañas en Meta dirigidas a jugadores de la zona Angelópolis",
-];
-
-/* Lo que un torneo bien comunicado devuelve, en el orden en que le
-   importa a quien firma: negocio, red y posicionamiento. */
-const retorno = [
-  {
-    title: "Retorno medible",
-    desc: "Inscripciones, reservas y membresías atribuidas a la campaña que las generó. Cada peso de pauta con su resultado al lado, no con una gráfica de alcance.",
-  },
-  {
-    title: "Networking de alto nivel",
-    desc: "El pádel en Angelópolis convoca a dueños de negocio, directivos y familias de ticket alto. Un torneo visible convierte al club en el punto donde esa red se encuentra — y en la sede que las marcas quieren patrocinar.",
-  },
-  {
-    title: "Posicionamiento premium",
-    desc: "Cuando el club se ve como sede de nivel nacional, deja de competir por precio de hora-cancha. La percepción sostiene la membresía, el consumo en el bar y el valor de cada patrocinio.",
-  },
-];
-
-const instrumentos = [
-  {
-    title: "Click-to-WhatsApp",
-    desc: "Cada conversación queda atribuida a la campaña que la originó.",
-  },
-  {
-    title: "Registro de inscripciones",
-    desc: "Un enlace por torneo. Se sabe cuántos llegaron por contenido y cuántos por pauta.",
-  },
-  {
-    title: "Perfil de Google",
-    desc: "Llamadas, solicitudes de ruta y búsquedas de marca, medidas de forma nativa.",
-  },
-  {
-    title: "Comparativo contra línea base",
-    desc: "Asistencia y ocupación del periodo anterior al arranque, como punto de partida.",
-  },
-];
-
 const garantia = [
   {
     title: "Estudio y estrategia",
@@ -399,80 +357,70 @@ const garantia = [
   },
 ];
 
-const metodo = [
-  {
-    n: "01",
-    title: "Inmersión",
-    desc: "Conocemos su club, su comunidad y su calendario de torneos.",
-  },
-  {
-    n: "02",
-    title: "Estrategia",
-    desc: "Calendario de contenido ligado a ocupación de canchas y eventos.",
-  },
-  {
-    n: "03",
-    title: "Producción",
-    desc: "Foto y video de nivel cinematográfico en sus instalaciones.",
-  },
-  {
-    n: "04",
-    title: "Amplificación",
-    desc: "Meta Ads dirigidos a jugadores y familias de la zona.",
-  },
-  {
-    n: "05",
-    title: "Medición",
-    desc: "Reservas, leads y crecimiento en un reporte que entiende cualquiera.",
-  },
-];
-
 /* Alcances del paquete Tracción (base del sitio, traducidos al
    contexto del club). CONFIRMAR EN REUNIÓN antes de firmar. */
+const PRECIO = "$12,500";
+const PAUTA = "$2,500";
+
+/* Paquete a la medida para Pádel Lomas, construido sobre Ignición:
+   10 videos al mes, bot de WhatsApp, mensajería masiva, lealtad y
+   lead magnets. Confirmar el volumen de envíos antes de firmar. */
 const alcances = [
   {
-    title: "Publicidad en Meta y/o Google",
-    desc: "Presupuesto de pauta incluido, dirigido a jugadores y familias de Lomas de Angelópolis, Sonata y zona sur de Puebla.",
+    title: "Publicidad en Meta o Google",
+    desc: "Los " + PAUTA + " de pauta están incluidos en la mensualidad — no son un costo aparte. Campañas dirigidas a jugadores, familias y empresas de la zona Angelópolis.",
   },
   {
-    title: "1 video de 1 minuto al mes",
-    desc: "La pieza ancla del club: estadio, canchas panorámicas, Quinto Set, The Courts y comunidad en una sola narrativa.",
+    title: "10 videos al mes",
+    desc: "Piezas para anuncios y para redes: cobertura de torneos, ambiente de estadio, sports bar, clases y comunidad.",
   },
   {
-    title: "7 reels mensuales",
-    desc: "2 optimizados para anuncios, 5 para crecimiento orgánico: puntos del torneo, clases, ambiente de bar, novedades del padel shop.",
+    title: "3 diseños gráficos con texto persuasivo",
+    desc: "Torneos, promociones de horario valle y campañas de membresía.",
   },
   {
-    title: "8 carruseles con imágenes propias",
-    desc: "Torneos, membresías, promociones de horario valle y contenido educativo de pádel.",
+    title: "3 carruseles para redes sociales",
+    desc: "Formato para contar el club por partes: instalaciones, servicios y calendario.",
   },
   {
-    title: "Cobertura de torneos y eventos",
-    desc: "Producción en sitio los días de competencia, con entrega ágil para publicar mientras el torneo sigue vivo.",
+    title: "Bot de WhatsApp",
+    desc: "Responde en automático a quien pregunta por canchas, clases, torneos o membresías, sin que nadie del club tenga que estar pendiente del teléfono.",
   },
   {
-    title: "WhatsApp Bot para reservas y leads",
-    desc: "Respuesta inmediata a quien pregunta por canchas, clases o membresías — sin que nadie del club esté pegado al teléfono.",
+    title: "Mensajería masiva a clientes recurrentes",
+    desc: "Promociones y convocatorias enviadas directo a quienes ya juegan en el club — 500 envíos mensuales por WhatsApp o correo.",
   },
   {
-    title: "Página de ventas + CRM + hosting 6 meses",
-    desc: "Un destino propio para membresías, torneos y eventos corporativos, con seguimiento de cada contacto.",
+    title: "Programas de lealtad optimizados",
+    desc: "Revisamos y ajustamos los beneficios de socios y frecuentes para que den motivo real de volver, y los conectamos con la mensajería.",
+  },
+  {
+    title: "Base de datos gestionada",
+    desc: "Construcción, limpieza y segmentación de la base: quién juega entre semana, quién viene en fin de semana, quién compite en torneos.",
+  },
+  {
+    title: "Lead magnets para ampliar la base",
+    desc: "Clases muestra, retos, guías y registros a torneo que capturan contactos nuevos y los suman a la base con permiso.",
+  },
+  {
+    title: "Página de ventas diseñada e incluida",
+    desc: "Un destino propio para membresías, torneos y eventos corporativos.",
   },
   {
     title: "Configuración técnica completa",
-    desc: "Píxel, eventos y rastreo de conversiones para saber qué campaña llenó qué cancha.",
+    desc: "Píxeles, eventos y rastreo para saber qué campaña llenó qué cancha.",
   },
   {
     title: "Perfil de Google optimizado + reseñas",
-    desc: "Que quien busque «pádel Angelópolis» encuentre el club antes que a cualquier otro.",
+    desc: "Para ganar la búsqueda de «pádel Angelópolis» y las solicitudes de ruta de la zona.",
   },
   {
-    title: "Videollamada quincenal + consultoría mensual",
-    desc: "Revisión de resultados, calendario del siguiente periodo y decisiones tomadas con datos.",
+    title: "1 videollamada estratégica mensual",
+    desc: "Revisión de resultados y calendario del siguiente mes, ligado a los torneos del club.",
   },
   {
-    title: "Reporte quincenal en lenguaje claro",
-    desc: "Alcance, leads, reservas y crecimiento. Sin jerga, sin métricas de vanidad.",
+    title: "Reporte mensual en lenguaje claro",
+    desc: "Reservas, conversaciones, inscripciones y crecimiento. Sin métricas de vanidad.",
   },
 ];
 
@@ -704,20 +652,16 @@ export default function PadelLomasClient() {
           </div>
         </section>
 
-        {/* ══ 3 · EL RETORNO ════════════════════════════════════ */}
-        <section
-          className="relative px-5 md:px-16 py-24 md:py-36"
-          style={{ background: SURFACE, borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}
-        >
+        {/* ══ 6 · PORTAFOLIO ════════════════════════════════════ */}
+        <section className="relative px-5 md:px-16 py-24 md:py-36">
           <div className="max-w-[1300px] mx-auto">
-            <div className="max-w-[760px] mb-16 md:mb-20">
+            <div className="max-w-[720px] mb-16 md:mb-20">
               <motion.div {...rise}>
-                <Eyebrow>Lo que devuelve</Eyebrow>
+                <Eyebrow>Nuestro trabajo</Eyebrow>
               </motion.div>
               <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
-                <Display className="mb-8">
-                  Un torneo que se ve no llena gradas:{" "}
-                  <span style={{ color: ACCENT }}>abre agenda.</span>
+                <Display className="mb-6">
+                  Así se ve lo que <span style={{ color: ACCENT }}>producimos.</span>
                 </Display>
               </motion.div>
               <motion.p
@@ -726,85 +670,161 @@ export default function PadelLomasClient() {
                 className="font-body text-[15px] leading-[1.8]"
                 style={{ color: MUTED }}
               >
-                El contenido es el medio, no el fin. Lo que se contrata es lo que
-                pasa después: más gente en las gradas, más marcas queriendo estar
-                ahí y un club que se percibe en otra categoría.
+                Sin filtros de por medio. Esto es lo que entregamos.
               </motion.p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-20 md:mb-24">
-              {retorno.map((r, i) => (
-                <motion.div
-                  key={r.title}
-                  {...rise}
-                  transition={{ ...rise.transition, delay: i * 0.07 }}
-                  className="p-7 md:p-8"
-                  style={{
-                    border: `1px solid ${BORDER}`,
-                    background: "rgba(255,255,255,0.02)",
-                  }}
-                >
-                  <span
-                    aria-hidden
-                    className="block h-px w-8 mb-5"
-                    style={{ background: ACCENT }}
-                  />
-                  <h3
-                    className="font-title mb-3"
-                    style={{ fontSize: "20px", fontWeight: 400, color: TEXT }}
-                  >
-                    {r.title}
-                  </h3>
-                  <p
-                    className="font-body text-[14px] leading-[1.7]"
-                    style={{ color: MUTED }}
-                  >
-                    {r.desc}
-                  </p>
-                </motion.div>
-              ))}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-10 justify-items-center">
+              <motion.div {...rise} className="w-full">
+                <PhoneVideo src={VIDEO_B} sound caption="Producción PG Estrategias" />
+              </motion.div>
+              <motion.div
+                {...rise}
+                transition={{ ...rise.transition, delay: 0.1 }}
+                className="w-full"
+              >
+                <PhoneVideo src={VIDEO_C} sound caption="Producción PG Estrategias" />
+              </motion.div>
             </div>
 
-            <motion.div {...rise}>
-              <Eyebrow>Y cómo se mide</Eyebrow>
-            </motion.div>
-            <motion.p
+            {/* GRID_FOTOS_PENDIENTE — aquí entra la fila de fotografías
+                cuando se definan las piezas a mostrar. */}
+          </div>
+        </section>
+
+        {/* ══ 8 · PAQUETE TRACCIÓN ══════════════════════════════ */}
+        <section className="relative px-5 md:px-16 py-24 md:py-36 overflow-hidden">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-0"
+            style={{
+              width: 700,
+              height: 700,
+              background:
+                "radial-gradient(circle, rgba(166,226,46,0.12) 0%, transparent 65%)",
+            }}
+          />
+
+          <div className="relative max-w-[1000px] mx-auto">
+            <div className="text-center mb-14">
+              <motion.div {...rise}>
+                <Eyebrow centered>La propuesta</Eyebrow>
+              </motion.div>
+              <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
+                <Display size="clamp(48px, 7.5vw, 104px)" className="mb-8">
+                  <span style={{ color: ACCENT }}>Ignición.</span>
+                </Display>
+              </motion.div>
+              <motion.p
+                {...rise}
+                transition={{ ...rise.transition, delay: 0.1 }}
+                className="font-body text-[15px] leading-[1.8] max-w-[620px] mx-auto mb-12"
+                style={{ color: MUTED }}
+              >
+                Ampliado para Pádel Lomas: el paquete para marcas que ya tienen el
+                producto — y quieren que el mundo lo vea así de bien.
+              </motion.p>
+
+              {/* Inversión mensual */}
+              <motion.div
+                {...rise}
+                transition={{ ...rise.transition, delay: 0.15 }}
+                className="inline-flex flex-col items-center"
+              >
+                <p
+                  className="font-body text-[10px] uppercase tracking-[0.14em] mb-3"
+                  style={{ color: MUTED }}
+                >
+                  Inversión mensual
+                </p>
+                <p
+                  className="font-title leading-none mb-3"
+                  style={{
+                    fontSize: "clamp(44px, 6vw, 76px)",
+                    fontWeight: 400,
+                    color: TEXT,
+                    letterSpacing: "-0.03em",
+                  }}
+                >
+                  {PRECIO}{" "}
+                  <span style={{ fontSize: "0.32em", color: MUTED }}>MXN / mes</span>
+                </p>
+                <p
+                  className="font-body text-[14px] px-4 py-1.5"
+                  style={{ color: ACCENT, background: ACCENT_DIM }}
+                >
+                  {PAUTA} en publicidad incluidos
+                </p>
+              </motion.div>
+            </div>
+
+            <motion.div
               {...rise}
-              transition={{ ...rise.transition, delay: 0.05 }}
-              className="font-body text-[15px] leading-[1.8] max-w-[620px] mb-10"
-              style={{ color: MUTED }}
+              transition={{ ...rise.transition, delay: 0.15 }}
+              className="p-7 md:p-14"
+              style={{
+                border: `1px solid rgba(166,226,46,0.30)`,
+                background: `linear-gradient(150deg, rgba(166,226,46,0.07) 0%, ${SURFACE} 55%)`,
+              }}
             >
-              Un club no se mide en likes. Estos son los cuatro instrumentos que
-              instalamos desde el día uno:
-            </motion.p>
+              <p
+                className="font-body text-[11px] uppercase tracking-[0.14em] mb-8 pb-6"
+                style={{ color: ACCENT, borderBottom: `1px solid ${BORDER}` }}
+              >
+                Alcances del paquete
+              </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
-              {instrumentos.map((ins, i) => (
-                <motion.div
-                  key={ins.title}
-                  {...rise}
-                  transition={{ ...rise.transition, delay: i * 0.06 }}
-                  className="p-6"
-                  style={{
-                    border: `1px solid ${BORDER}`,
-                    background: "rgba(255,255,255,0.02)",
-                  }}
+              <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-7">
+                {alcances.map((a) => (
+                  <li key={a.title} className="flex items-start gap-3.5">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 12 12"
+                      fill="none"
+                      className="shrink-0 mt-[5px]"
+                      aria-hidden
+                    >
+                      <path
+                        d="M2 6l3 3 5-5"
+                        stroke={ACCENT}
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                    <div>
+                      <p
+                        className="font-title text-[16px] mb-1"
+                        style={{ color: TEXT, fontWeight: 400 }}
+                      >
+                        {a.title}
+                      </p>
+                      <p
+                        className="font-body text-[13px] leading-[1.65]"
+                        style={{ color: MUTED }}
+                      >
+                        {a.desc}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+              <div
+                className="mt-12 pt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6"
+                style={{ borderTop: `1px solid ${BORDER}` }}
+              >
+                <p
+                  className="font-body text-[13px] leading-[1.6] max-w-[440px]"
+                  style={{ color: MUTED }}
                 >
-                  <h3
-                    className="font-title mb-2"
-                    style={{ fontSize: "16px", fontWeight: 400, color: TEXT }}
-                  >
-                    {ins.title}
-                  </h3>
-                  <p
-                    className="font-body text-[13px] leading-[1.65]"
-                    style={{ color: MUTED }}
-                  >
-                    {ins.desc}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
+                  Precio en pesos mexicanos, sin IVA. El calendario de arranque se
+                  ajusta al calendario de torneos del club.
+                </p>
+                <CTAButton>Agendar reunión</CTAButton>
+              </div>
+            </motion.div>
           </div>
         </section>
 
@@ -943,283 +963,6 @@ export default function PadelLomasClient() {
                 antes de eso hay trabajo, no cifras.
               </motion.p>
             </div>
-          </div>
-        </section>
-
-        {/* ══ 5 · LA TRANSFORMACIÓN ═════════════════════════════ */}
-        <section
-          className="relative px-5 md:px-16 py-24 md:py-36"
-          style={{ background: SURFACE, borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}
-        >
-          <div className="max-w-[1300px] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-12 md:gap-20 items-start">
-            <div>
-              <motion.div {...rise}>
-                <Eyebrow>Lo que sumamos</Eyebrow>
-              </motion.div>
-
-              <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
-                <Display className="mb-8">
-                  Contenido que no solo se ve bien:{" "}
-                  <span style={{ color: ACCENT }}>llena canchas.</span>
-                </Display>
-              </motion.div>
-
-              <motion.p
-                {...rise}
-                transition={{ ...rise.transition, delay: 0.1 }}
-                className="font-body text-[15px] leading-[1.8] max-w-[560px] mb-12"
-                style={{ color: MUTED }}
-              >
-                Torneos que se ven como transmisión profesional. Un estadio que se
-                siente desde Instagram. Contenido que convierte espectadores en
-                reservas — y reservas en comunidad.
-              </motion.p>
-            </div>
-
-            <div>
-              <ul className="flex flex-col">
-                {cambios.map((c, i) => (
-                  <motion.li
-                    key={c}
-                    {...rise}
-                    transition={{ ...rise.transition, delay: 0.15 + i * 0.08 }}
-                    className="flex items-start gap-4 py-5"
-                    style={{ borderTop: `1px solid ${BORDER}` }}
-                  >
-                    <span
-                      className="mt-[7px] shrink-0"
-                      style={{ width: 18, height: 2, background: ACCENT }}
-                    />
-                    <span
-                      className="font-body text-[15px] leading-[1.6]"
-                      style={{ color: TEXT }}
-                    >
-                      {c}
-                    </span>
-                  </motion.li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* ══ 6 · PORTAFOLIO ════════════════════════════════════ */}
-        <section className="relative px-5 md:px-16 py-24 md:py-36">
-          <div className="max-w-[1300px] mx-auto">
-            <div className="max-w-[720px] mb-16 md:mb-20">
-              <motion.div {...rise}>
-                <Eyebrow>Nuestro trabajo</Eyebrow>
-              </motion.div>
-              <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
-                <Display className="mb-6">
-                  Así se ve lo que <span style={{ color: ACCENT }}>producimos.</span>
-                </Display>
-              </motion.div>
-              <motion.p
-                {...rise}
-                transition={{ ...rise.transition, delay: 0.1 }}
-                className="font-body text-[15px] leading-[1.8]"
-                style={{ color: MUTED }}
-              >
-                Sin filtros de por medio. Esto es lo que entregamos.
-              </motion.p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-10 justify-items-center">
-              <motion.div {...rise} className="w-full">
-                <PhoneVideo src={VIDEO_B} sound caption="Producción PG Estrategias" />
-              </motion.div>
-              <motion.div
-                {...rise}
-                transition={{ ...rise.transition, delay: 0.1 }}
-                className="w-full"
-              >
-                <PhoneVideo src={VIDEO_C} sound caption="Producción PG Estrategias" />
-              </motion.div>
-            </div>
-
-            {/* GRID_FOTOS_PENDIENTE — aquí entra la fila de fotografías
-                cuando se definan las piezas a mostrar. */}
-          </div>
-        </section>
-
-        {/* ══ 7 · CÓMO TRABAJAMOS ═══════════════════════════════ */}
-        <section
-          className="relative px-5 md:px-16 py-24 md:py-36"
-          style={{ background: SURFACE, borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}
-        >
-          <div className="max-w-[1300px] mx-auto">
-            <div className="max-w-[720px] mb-16 md:mb-20">
-              <motion.div {...rise}>
-                <Eyebrow>El método</Eyebrow>
-              </motion.div>
-              <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
-                <Display>
-                  Un proceso, <span style={{ color: ACCENT }}>no ocurrencias.</span>
-                </Display>
-              </motion.div>
-            </div>
-
-            <div className="relative">
-              {/* Línea conectora */}
-              <span
-                aria-hidden
-                className="absolute left-[13px] md:left-[15px] top-3 bottom-3 w-px"
-                style={{
-                  background: `linear-gradient(to bottom, ${ACCENT}, rgba(166,226,46,0.15))`,
-                }}
-              />
-
-              <ol className="flex flex-col gap-10 md:gap-12">
-                {metodo.map((step, i) => (
-                  <motion.li
-                    key={step.n}
-                    {...rise}
-                    transition={{ ...rise.transition, delay: i * 0.07 }}
-                    className="relative grid grid-cols-[28px_1fr] md:grid-cols-[32px_200px_1fr] gap-x-6 md:gap-x-10 gap-y-2 items-start"
-                  >
-                    <span
-                      className="relative z-10 flex items-center justify-center rounded-full font-title text-[11px]"
-                      style={{
-                        width: 28,
-                        height: 28,
-                        background: BASE,
-                        border: `1px solid ${ACCENT}`,
-                        color: ACCENT,
-                        fontWeight: 700,
-                      }}
-                    >
-                      {i + 1}
-                    </span>
-
-                    <h3
-                      className="font-title"
-                      style={{
-                        fontSize: "clamp(18px, 1.7vw, 23px)",
-                        fontWeight: 400,
-                        letterSpacing: "-0.01em",
-                        color: TEXT,
-                      }}
-                    >
-                      {step.title}
-                    </h3>
-
-                    <p
-                      className="col-start-2 md:col-start-3 font-body text-[15px] leading-[1.7] max-w-[560px]"
-                      style={{ color: MUTED }}
-                    >
-                      {step.desc}
-                    </p>
-                  </motion.li>
-                ))}
-              </ol>
-            </div>
-          </div>
-        </section>
-
-        {/* ══ 8 · PAQUETE TRACCIÓN ══════════════════════════════ */}
-        <section className="relative px-5 md:px-16 py-24 md:py-36 overflow-hidden">
-          <div
-            aria-hidden
-            className="pointer-events-none absolute left-1/2 -translate-x-1/2 top-0"
-            style={{
-              width: 700,
-              height: 700,
-              background:
-                "radial-gradient(circle, rgba(166,226,46,0.12) 0%, transparent 65%)",
-            }}
-          />
-
-          <div className="relative max-w-[1000px] mx-auto">
-            <div className="text-center mb-14">
-              <motion.div {...rise}>
-                <Eyebrow centered>La propuesta</Eyebrow>
-              </motion.div>
-              <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
-                <Display size="clamp(48px, 7.5vw, 104px)" className="mb-8">
-                  <span style={{ color: ACCENT }}>Tracción.</span>
-                </Display>
-              </motion.div>
-              <motion.p
-                {...rise}
-                transition={{ ...rise.transition, delay: 0.1 }}
-                className="font-body text-[15px] leading-[1.8] max-w-[620px] mx-auto"
-                style={{ color: MUTED }}
-              >
-                El paquete para marcas que ya tienen el producto — y quieren que
-                el mundo lo vea así de bien.
-              </motion.p>
-            </div>
-
-            <motion.div
-              {...rise}
-              transition={{ ...rise.transition, delay: 0.15 }}
-              className="p-7 md:p-14"
-              style={{
-                border: `1px solid rgba(166,226,46,0.30)`,
-                background: `linear-gradient(150deg, rgba(166,226,46,0.07) 0%, ${SURFACE} 55%)`,
-              }}
-            >
-              <p
-                className="font-body text-[11px] uppercase tracking-[0.14em] mb-8 pb-6"
-                style={{ color: ACCENT, borderBottom: `1px solid ${BORDER}` }}
-              >
-                Alcances del paquete
-              </p>
-
-              {/* CONFIRMAR ALCANCES EXACTOS EN REUNIÓN — base tomada del
-                  paquete Tracción del sitio, adaptado al club. */}
-              <ul className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-7">
-                {alcances.map((a) => (
-                  <li key={a.title} className="flex items-start gap-3.5">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 12 12"
-                      fill="none"
-                      className="shrink-0 mt-[5px]"
-                      aria-hidden
-                    >
-                      <path
-                        d="M2 6l3 3 5-5"
-                        stroke={ACCENT}
-                        strokeWidth="1.8"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                    <div>
-                      <p
-                        className="font-title text-[16px] mb-1"
-                        style={{ color: TEXT, fontWeight: 400 }}
-                      >
-                        {a.title}
-                      </p>
-                      <p
-                        className="font-body text-[13px] leading-[1.65]"
-                        style={{ color: MUTED }}
-                      >
-                        {a.desc}
-                      </p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-
-              <div
-                className="mt-12 pt-8 flex flex-col sm:flex-row sm:items-center justify-between gap-6"
-                style={{ borderTop: `1px solid ${BORDER}` }}
-              >
-                <p
-                  className="font-body text-[13px] leading-[1.6] max-w-[420px]"
-                  style={{ color: MUTED }}
-                >
-                  Inversión y calendario de arranque se presentan en la reunión,
-                  ajustados al calendario de torneos del club.
-                </p>
-                <CTAButton>Agendar reunión</CTAButton>
-              </div>
-            </motion.div>
           </div>
         </section>
 
