@@ -28,9 +28,6 @@ const VIDEO_B =
   "https://res.cloudinary.com/dxcr9utre/video/upload/v1785518828/AQPay2iWyNALI-asvT__vKCI7MEFUQmi-D43AZoxTdFdNFwbcKy1W7Ba2VbVdxIqvvLtXTipuMYmZZs8j_8_of1FUP_AyC_9jVXe8OU_fsbus2.mp4";
 const VIDEO_C =
   "https://res.cloudinary.com/djduba5fd/video/upload/v1779377534/Video2_qslm4c.mp4";
-// PENDIENTE: sustituir por la URL del 4to video. Mientras tanto reusa VIDEO_A.
-const VIDEO_D = VIDEO_A;
-
 // Cloudinary genera el poster con la misma URL cambiando .mp4 por .jpg
 const posterOf = (url: string) => url.replace(/\.mp4$/, ".jpg");
 
@@ -351,6 +348,57 @@ const cambios = [
   "Campañas en Meta dirigidas a jugadores de la zona Angelópolis",
 ];
 
+/* Lo que un torneo bien comunicado devuelve, en el orden en que le
+   importa a quien firma: negocio, red y posicionamiento. */
+const retorno = [
+  {
+    title: "Retorno medible",
+    desc: "Inscripciones, reservas y membresías atribuidas a la campaña que las generó. Cada peso de pauta con su resultado al lado, no con una gráfica de alcance.",
+  },
+  {
+    title: "Networking de alto nivel",
+    desc: "El pádel en Angelópolis convoca a dueños de negocio, directivos y familias de ticket alto. Un torneo visible convierte al club en el punto donde esa red se encuentra — y en la sede que las marcas quieren patrocinar.",
+  },
+  {
+    title: "Posicionamiento premium",
+    desc: "Cuando el club se ve como sede de nivel nacional, deja de competir por precio de hora-cancha. La percepción sostiene la membresía, el consumo en el bar y el valor de cada patrocinio.",
+  },
+];
+
+const instrumentos = [
+  {
+    title: "Click-to-WhatsApp",
+    desc: "Cada conversación queda atribuida a la campaña que la originó.",
+  },
+  {
+    title: "Registro de inscripciones",
+    desc: "Un enlace por torneo. Se sabe cuántos llegaron por contenido y cuántos por pauta.",
+  },
+  {
+    title: "Perfil de Google",
+    desc: "Llamadas, solicitudes de ruta y búsquedas de marca, medidas de forma nativa.",
+  },
+  {
+    title: "Comparativo contra línea base",
+    desc: "Asistencia y ocupación del periodo anterior al arranque, como punto de partida.",
+  },
+];
+
+const garantia = [
+  {
+    title: "Estudio y estrategia",
+    desc: "Competencia de la zona, calendario de torneos y línea base de asistencia y ocupación.",
+  },
+  {
+    title: "Producción",
+    desc: "La cobertura y las piezas que van a sostener el periodo completo, no un anuncio suelto.",
+  },
+  {
+    title: "Campaña en marcha",
+    desc: "Pauta segmentada corriendo con tiempo suficiente para convocar antes del torneo.",
+  },
+];
+
 const metodo = [
   {
     n: "01",
@@ -610,9 +658,9 @@ export default function PadelLomasClient() {
 
             <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
               <Display size="clamp(30px, 4.6vw, 60px)" className="mb-10">
-                Ahora vamos a hacer que sea{" "}
+                Su torneo ya reúne al público correcto.{" "}
                 <span style={{ color: ACCENT }}>
-                  el club de pádel más visto de Puebla.
+                  Fuera de la cancha, casi nadie se entera.
                 </span>
               </Display>
             </motion.div>
@@ -623,12 +671,11 @@ export default function PadelLomasClient() {
               className="font-body text-[15px] leading-[1.8] max-w-[700px] mx-auto"
               style={{ color: MUTED }}
             >
-              Un estadio. 9 canchas. 3,400 m² techados. El único club 360° de la
-              ciudad. El producto ya está construido y está al nivel más alto de la
-              región. Lo que sigue es que se vea igual de bien en el teléfono —
-              donde se decide cada reserva, cada torneo y cada membresía— y que
-              cualquier jugador de la zona reconozca al club antes de elegir dónde
-              jugar.
+              Estadio, sports bar, canchas de nivel nacional. Pero la conversación
+              se queda entre quienes ya juegan: no llega al dueño de negocio, al
+              patrocinador ni al socio que deberían estar en esas gradas. Ese
+              público no se convoca con un flyer — se convoca mostrando el nivel
+              del evento antes de que suceda.
             </motion.p>
 
             <motion.div
@@ -657,17 +704,255 @@ export default function PadelLomasClient() {
           </div>
         </section>
 
-        {/* ══ 3 · LA TRANSFORMACIÓN ═════════════════════════════ */}
+        {/* ══ 3 · EL RETORNO ════════════════════════════════════ */}
         <section
           className="relative px-5 md:px-16 py-24 md:py-36"
           style={{ background: SURFACE, borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}
         >
-          <div className="max-w-[1300px] mx-auto grid grid-cols-1 md:grid-cols-[0.85fr_1.15fr] gap-14 md:gap-20 items-center">
-            <motion.div {...rise} className="order-1">
-              <PhoneVideo src={VIDEO_B} />
-            </motion.div>
+          <div className="max-w-[1300px] mx-auto">
+            <div className="max-w-[760px] mb-16 md:mb-20">
+              <motion.div {...rise}>
+                <Eyebrow>Lo que devuelve</Eyebrow>
+              </motion.div>
+              <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
+                <Display className="mb-8">
+                  Un torneo que se ve no llena gradas:{" "}
+                  <span style={{ color: ACCENT }}>abre agenda.</span>
+                </Display>
+              </motion.div>
+              <motion.p
+                {...rise}
+                transition={{ ...rise.transition, delay: 0.1 }}
+                className="font-body text-[15px] leading-[1.8]"
+                style={{ color: MUTED }}
+              >
+                El contenido es el medio, no el fin. Lo que se contrata es lo que
+                pasa después: más gente en las gradas, más marcas queriendo estar
+                ahí y un club que se percibe en otra categoría.
+              </motion.p>
+            </div>
 
-            <div className="order-2">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-20 md:mb-24">
+              {retorno.map((r, i) => (
+                <motion.div
+                  key={r.title}
+                  {...rise}
+                  transition={{ ...rise.transition, delay: i * 0.07 }}
+                  className="p-7 md:p-8"
+                  style={{
+                    border: `1px solid ${BORDER}`,
+                    background: "rgba(255,255,255,0.02)",
+                  }}
+                >
+                  <span
+                    aria-hidden
+                    className="block h-px w-8 mb-5"
+                    style={{ background: ACCENT }}
+                  />
+                  <h3
+                    className="font-title mb-3"
+                    style={{ fontSize: "20px", fontWeight: 400, color: TEXT }}
+                  >
+                    {r.title}
+                  </h3>
+                  <p
+                    className="font-body text-[14px] leading-[1.7]"
+                    style={{ color: MUTED }}
+                  >
+                    {r.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div {...rise}>
+              <Eyebrow>Y cómo se mide</Eyebrow>
+            </motion.div>
+            <motion.p
+              {...rise}
+              transition={{ ...rise.transition, delay: 0.05 }}
+              className="font-body text-[15px] leading-[1.8] max-w-[620px] mb-10"
+              style={{ color: MUTED }}
+            >
+              Un club no se mide en likes. Estos son los cuatro instrumentos que
+              instalamos desde el día uno:
+            </motion.p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+              {instrumentos.map((ins, i) => (
+                <motion.div
+                  key={ins.title}
+                  {...rise}
+                  transition={{ ...rise.transition, delay: i * 0.06 }}
+                  className="p-6"
+                  style={{
+                    border: `1px solid ${BORDER}`,
+                    background: "rgba(255,255,255,0.02)",
+                  }}
+                >
+                  <h3
+                    className="font-title mb-2"
+                    style={{ fontSize: "16px", fontWeight: 400, color: TEXT }}
+                  >
+                    {ins.title}
+                  </h3>
+                  <p
+                    className="font-body text-[13px] leading-[1.65]"
+                    style={{ color: MUTED }}
+                  >
+                    {ins.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ══ 4 · LA GARANTÍA ═══════════════════════════════════ */}
+        {/* La meta de asistencia y la línea base se confirman con el club
+            antes de firmar, y conviene que un abogado revise la redacción
+            contractual de la garantía. */}
+        <section className="relative px-5 md:px-16 py-24 md:py-36">
+          <div className="max-w-[1300px] mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-12 md:gap-20 items-start">
+              <div>
+                <motion.div {...rise}>
+                  <Eyebrow>Seamos claros</Eyebrow>
+                </motion.div>
+                <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
+                  <Display className="mb-8">
+                    Si no cumplimos,{" "}
+                    <span style={{ color: ACCENT }}>seguimos sin costo.</span>
+                  </Display>
+                </motion.div>
+                <motion.p
+                  {...rise}
+                  transition={{ ...rise.transition, delay: 0.1 }}
+                  className="font-body text-[15px] leading-[1.8] max-w-[520px]"
+                  style={{ color: MUTED }}
+                >
+                  Nosotros controlamos el alcance, la convocatoria y la calidad de
+                  la producción. Ustedes controlan la cancha, el precio y la
+                  experiencia de quien llega. Por eso nos comprometemos con lo que
+                  sí está en nuestras manos: llevar gente a las gradas. Convertir
+                  esa gente en negocio ya es cosa del club — y con ese público
+                  adentro, es la parte fácil.
+                </motion.p>
+              </div>
+
+              <div>
+                <motion.div
+                  {...rise}
+                  transition={{ ...rise.transition, delay: 0.15 }}
+                  className="p-8 md:p-10"
+                  style={{
+                    border: `1px solid rgba(166,226,46,0.30)`,
+                    background: `linear-gradient(150deg, ${ACCENT_SOFT} 0%, rgba(255,255,255,0.015) 60%)`,
+                  }}
+                >
+                  <p
+                    className="font-body text-[11px] uppercase tracking-[0.14em] mb-5"
+                    style={{ color: ACCENT }}
+                  >
+                    El compromiso
+                  </p>
+                  <p
+                    className="font-title leading-none mb-5"
+                    style={{
+                      fontSize: "clamp(38px, 5vw, 62px)",
+                      fontWeight: 400,
+                      color: ACCENT,
+                      letterSpacing: "-0.03em",
+                    }}
+                  >
+                    200–300
+                  </p>
+                  <p
+                    className="font-body text-[15px] leading-[1.7] mb-6"
+                    style={{ color: TEXT }}
+                  >
+                    asistentes al mes en sus torneos, partiendo de la asistencia
+                    actual de alrededor de 100. Si al cierre del periodo no
+                    llegamos, trabajamos 30 días más sin honorarios hasta
+                    conseguirlo.
+                  </p>
+                  <p
+                    className="font-body text-[13px] leading-[1.65] pt-6"
+                    style={{ color: MUTED, borderTop: `1px solid ${BORDER}` }}
+                  >
+                    Aplica sobre honorarios, nunca sobre la inversión publicitaria.
+                    La línea base de asistencia se fija juntos antes de arrancar.
+                  </p>
+                </motion.div>
+
+                <motion.p
+                  {...rise}
+                  transition={{ ...rise.transition, delay: 0.25 }}
+                  className="font-body text-[14px] leading-[1.7] mt-8"
+                  style={{ color: MUTED }}
+                >
+                  Es una garantía corta y clara. Preferimos eso a una promesa grande
+                  que no podríamos sostener.
+                </motion.p>
+              </div>
+            </div>
+
+            <div className="mt-20 md:mt-24">
+              <motion.p
+                {...rise}
+                className="font-body text-[11px] uppercase tracking-[0.14em] mb-8"
+                style={{ color: ACCENT }}
+              >
+                Los primeros 45 días son de construcción
+              </motion.p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                {garantia.map((g, i) => (
+                  <motion.div
+                    key={g.title}
+                    {...rise}
+                    transition={{ ...rise.transition, delay: i * 0.07 }}
+                    className="p-6"
+                    style={{
+                      border: `1px solid ${BORDER}`,
+                      background: "rgba(255,255,255,0.02)",
+                    }}
+                  >
+                    <h3
+                      className="font-title mb-2"
+                      style={{ fontSize: "16px", fontWeight: 400, color: TEXT }}
+                    >
+                      {g.title}
+                    </h3>
+                    <p
+                      className="font-body text-[13px] leading-[1.65]"
+                      style={{ color: MUTED }}
+                    >
+                      {g.desc}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+              <motion.p
+                {...rise}
+                transition={{ ...rise.transition, delay: 0.25 }}
+                className="font-body text-[14px] leading-[1.7] mt-8 max-w-[720px]"
+                style={{ color: MUTED }}
+              >
+                Ese es el tiempo que toma hacer bien el estudio, la estrategia y la
+                producción. Los resultados empiezan a leerse a partir del día 45 —
+                antes de eso hay trabajo, no cifras.
+              </motion.p>
+            </div>
+          </div>
+        </section>
+
+        {/* ══ 5 · LA TRANSFORMACIÓN ═════════════════════════════ */}
+        <section
+          className="relative px-5 md:px-16 py-24 md:py-36"
+          style={{ background: SURFACE, borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}
+        >
+          <div className="max-w-[1300px] mx-auto grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-12 md:gap-20 items-start">
+            <div>
               <motion.div {...rise}>
                 <Eyebrow>Lo que sumamos</Eyebrow>
               </motion.div>
@@ -689,7 +974,9 @@ export default function PadelLomasClient() {
                 siente desde Instagram. Contenido que convierte espectadores en
                 reservas — y reservas en comunidad.
               </motion.p>
+            </div>
 
+            <div>
               <ul className="flex flex-col">
                 {cambios.map((c, i) => (
                   <motion.li
@@ -716,7 +1003,7 @@ export default function PadelLomasClient() {
           </div>
         </section>
 
-        {/* ══ 4 · PORTAFOLIO ════════════════════════════════════ */}
+        {/* ══ 6 · PORTAFOLIO ════════════════════════════════════ */}
         <section className="relative px-5 md:px-16 py-24 md:py-36">
           <div className="max-w-[1300px] mx-auto">
             <div className="max-w-[720px] mb-16 md:mb-20">
@@ -740,14 +1027,14 @@ export default function PadelLomasClient() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-14 md:gap-10 justify-items-center">
               <motion.div {...rise} className="w-full">
-                <PhoneVideo src={VIDEO_C} sound caption="Producción PG Estrategias" />
+                <PhoneVideo src={VIDEO_B} sound caption="Producción PG Estrategias" />
               </motion.div>
               <motion.div
                 {...rise}
                 transition={{ ...rise.transition, delay: 0.1 }}
                 className="w-full"
               >
-                <PhoneVideo src={VIDEO_D} sound caption="Producción PG Estrategias" />
+                <PhoneVideo src={VIDEO_C} sound caption="Producción PG Estrategias" />
               </motion.div>
             </div>
 
@@ -756,7 +1043,7 @@ export default function PadelLomasClient() {
           </div>
         </section>
 
-        {/* ══ 5 · CÓMO TRABAJAMOS ═══════════════════════════════ */}
+        {/* ══ 7 · CÓMO TRABAJAMOS ═══════════════════════════════ */}
         <section
           className="relative px-5 md:px-16 py-24 md:py-36"
           style={{ background: SURFACE, borderTop: `1px solid ${BORDER}`, borderBottom: `1px solid ${BORDER}` }}
@@ -830,7 +1117,7 @@ export default function PadelLomasClient() {
           </div>
         </section>
 
-        {/* ══ 6 · PAQUETE TRACCIÓN ══════════════════════════════ */}
+        {/* ══ 8 · PAQUETE TRACCIÓN ══════════════════════════════ */}
         <section className="relative px-5 md:px-16 py-24 md:py-36 overflow-hidden">
           <div
             aria-hidden
@@ -936,7 +1223,7 @@ export default function PadelLomasClient() {
           </div>
         </section>
 
-        {/* ══ 7 · CTA FINAL ═════════════════════════════════════ */}
+        {/* ══ 9 · CTA FINAL ═════════════════════════════════════ */}
         <section
           className="relative flex items-center justify-center px-5 md:px-16 py-32 md:py-44 min-h-[85vh]"
           style={{
@@ -964,8 +1251,10 @@ export default function PadelLomasClient() {
 
             <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
               <Display size="clamp(32px, 5vw, 64px)" className="mb-12">
-                Su próximo torneo merece verse como{" "}
-                <span style={{ color: ACCENT }}>final de Premier Padel.</span>
+                Su próximo torneo puede ser{" "}
+                <span style={{ color: ACCENT }}>
+                  el evento que Puebla estaba esperando.
+                </span>
               </Display>
             </motion.div>
 
