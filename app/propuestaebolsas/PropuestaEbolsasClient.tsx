@@ -444,7 +444,7 @@ export default function PropuestaEbolsasClient() {
                         color: "#E4E0DD",
                       }}
                     >
-                      1,500
+                      3,500
                     </span>
                     <div className="flex flex-col">
                       <span
