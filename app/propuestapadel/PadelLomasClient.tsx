@@ -828,10 +828,9 @@ export default function PadelLomasClient() {
           </div>
         </section>
 
-        {/* ══ 4 · LA GARANTÍA ═══════════════════════════════════ */}
-        {/* La meta de asistencia y la línea base se confirman con el club
-            antes de firmar, y conviene que un abogado revise la redacción
-            contractual de la garantía. */}
+        {/* ══ 5 · LA GARANTÍA ═══════════════════════════════════ */}
+        {/* Conviene que un abogado revise la redacción contractual de la
+            garantía antes de firmar. */}
         <section className="relative px-5 md:px-16 py-24 md:py-36">
           <div className="max-w-[1300px] mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr] gap-12 md:gap-20 items-start">
@@ -879,29 +878,29 @@ export default function PadelLomasClient() {
                   <p
                     className="font-title leading-none mb-5"
                     style={{
-                      fontSize: "clamp(38px, 5vw, 62px)",
+                      fontSize: "clamp(34px, 4.4vw, 56px)",
                       fontWeight: 400,
                       color: ACCENT,
                       letterSpacing: "-0.03em",
                     }}
                   >
-                    200–300
+                    30 días
                   </p>
                   <p
                     className="font-body text-[15px] leading-[1.7] mb-6"
                     style={{ color: TEXT }}
                   >
-                    asistentes al mes en sus torneos, partiendo de la asistencia
-                    actual de alrededor de 100. Si al cierre del periodo no
-                    llegamos, trabajamos 30 días más sin honorarios hasta
-                    conseguirlo.
+                    más de trabajo sin costo. Si al cierre del periodo no hay más
+                    gente inscribiéndose y asistiendo a sus eventos que antes de
+                    arrancar, seguimos trabajando un mes adicional sin honorarios
+                    hasta lograrlo.
                   </p>
                   <p
                     className="font-body text-[13px] leading-[1.65] pt-6"
                     style={{ color: MUTED, borderTop: `1px solid ${BORDER}` }}
                   >
                     Aplica sobre honorarios, nunca sobre la inversión publicitaria.
-                    La línea base de asistencia se fija juntos antes de arrancar.
+                    La asistencia de partida se registra juntos antes de arrancar.
                   </p>
                 </motion.div>
 
