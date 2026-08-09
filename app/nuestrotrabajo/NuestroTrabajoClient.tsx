@@ -59,6 +59,7 @@ const CATEGORIES: Category[] = [
       { src: "https://res.cloudinary.com/djduba5fd/video/upload/q_auto/f_auto/v1779379006/Webinar2_unozlf.mp4" },
       { src: "https://res.cloudinary.com/djduba5fd/video/upload/q_auto/f_auto/v1779377655/CorteCloud_q9lzff.mp4" },
       { src: "https://res.cloudinary.com/djduba5fd/video/upload/q_auto/f_auto/v1779377490/MetaAd_gya5zi.mp4" },
+      { src: "https://res.cloudinary.com/djduba5fd/video/upload/q_auto/f_auto/v1779507243/05.1___MetaAds_yrtgmr.mp4" },
     ],
   },
   {

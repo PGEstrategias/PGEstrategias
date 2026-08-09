@@ -14,7 +14,8 @@
     "react-dom": "^18",
     "framer-motion": "^11.3.8",
     "gsap": "^3.12.5",
-    "lucide-react": "^0.400.0"
+    "lucide-react": "^0.400.0",
+    "zustand": "^5.0.14"
   },
   "devDependencies": {
     "@types/node": "^20",
