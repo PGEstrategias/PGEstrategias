@@ -24,6 +24,7 @@ export default function Navbar() {
   const { open: openContact } = useContactMenu();
   const pathname = usePathname();
   const isHome = pathname === "/";
+  const homeHeroIsLight = isHome; // Home tiene hero crema
   const hrefFor = useMemo(
     () => (link: { href: string; external?: boolean }) => {
       if (link.external) return link.href;
@@ -69,6 +70,20 @@ export default function Navbar() {
     };
   }, [menuOpen]);
 
+  // Determinar apariencia según scroll y tipo de hero
+  const useLightSurface = scrolled || !homeHeroIsLight ? false : true;
+  const textColor = useLightSurface
+    ? "#1C1C1A"
+    : "#E4E0DD";
+  const textColorMuted = useLightSurface
+    ? "rgba(28,28,26,0.55)"
+    : "rgba(228,224,221,0.55)";
+  const borderColor = useLightSurface
+    ? "rgba(28,28,26,0.28)"
+    : "rgba(228,224,221,0.3)";
+  const logoTone: "cream" | "dark" = useLightSurface ? "dark" : "cream";
+  const barColor = useLightSurface ? "#1C1C1A" : "#E4E0DD";
+
   return (
     <>
       <motion.nav
@@ -77,7 +92,7 @@ export default function Navbar() {
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
-          background: scrolled ? "rgba(28,28,26,0.88)" : "transparent",
+          background: scrolled ? "rgba(28,28,26,0.9)" : "transparent",
           backdropFilter: scrolled ? "blur(14px)" : "none",
           WebkitBackdropFilter: scrolled ? "blur(14px)" : "none",
           borderBottom: scrolled
@@ -85,13 +100,13 @@ export default function Navbar() {
             : "none",
         }}
       >
-        <div className="flex items-center justify-between px-8 md:px-16 h-16 max-w-[1300px] mx-auto">
+        <div className="flex items-center justify-between px-8 md:px-14 h-20 max-w-[1300px] mx-auto">
           {/* Logo */}
           <a
             href="/"
             className="flex items-center transition-opacity duration-500 hover:opacity-80"
           >
-            <Logo size={22} tone="cream" />
+            <Logo size={30} tone={scrolled ? "cream" : logoTone} />
           </a>
 
           {/* Desktop nav */}
@@ -106,8 +121,12 @@ export default function Navbar() {
                   className="relative group font-body text-[12px] tracking-[0.08em] transition-colors duration-500"
                   style={{
                     color: isActive
-                      ? "#E4E0DD"
-                      : "rgba(228,224,221,0.55)",
+                      ? scrolled
+                        ? "#E4E0DD"
+                        : textColor
+                      : scrolled
+                      ? "rgba(228,224,221,0.55)"
+                      : textColorMuted,
                   }}
                 >
                   {link.label}
@@ -134,8 +153,8 @@ export default function Navbar() {
               onClick={() => openContact(MSG_NAVBAR)}
               className="hidden md:inline-flex relative overflow-hidden group items-center gap-2 font-body text-[12px] tracking-wide px-5 py-2.5 transition-colors duration-500"
               style={{
-                border: "1px solid rgba(228,224,221,0.28)",
-                color: "#E4E0DD",
+                border: `1px solid ${scrolled ? "rgba(228,224,221,0.3)" : borderColor}`,
+                color: scrolled ? "#E4E0DD" : textColor,
               }}
             >
               <span
@@ -143,7 +162,11 @@ export default function Navbar() {
                 className="absolute inset-0 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"
                 style={{ background: "#D63A27" }}
               />
-              <span className="relative">Agenda una llamada</span>
+              <span
+                className="relative transition-colors duration-500 group-hover:text-[#E4E0DD]"
+              >
+                Agenda una llamada
+              </span>
             </button>
             <button
               className="md:hidden flex flex-col gap-1.5 p-1"
@@ -152,11 +175,11 @@ export default function Navbar() {
             >
               <span
                 className="w-5 h-px block"
-                style={{ background: "#E4E0DD" }}
+                style={{ background: scrolled ? "#E4E0DD" : barColor }}
               />
               <span
                 className="w-3.5 h-px block"
-                style={{ background: "#E4E0DD" }}
+                style={{ background: scrolled ? "#E4E0DD" : barColor }}
               />
             </button>
           </div>
@@ -175,10 +198,10 @@ export default function Navbar() {
             style={{ background: "rgba(28,28,26,0.98)" }}
           >
             <div
-              className="flex items-center justify-between px-8 h-16"
+              className="flex items-center justify-between px-8 h-20"
               style={{ borderBottom: "1px solid rgba(228,224,221,0.08)" }}
             >
-              <Logo size={20} tone="cream" />
+              <Logo size={26} tone="cream" />
               <button
                 onClick={() => setMenuOpen(false)}
                 className="font-body text-[11px] tracking-[0.16em] uppercase transition-colors duration-500"
