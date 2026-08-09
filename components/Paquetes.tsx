@@ -5,14 +5,10 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useContactMenu } from "@/context/ContactMenuContext";
 
 const WA_MSGS: Record<string, string> = {
-  ignicion:
-    "Hola, me interesa el plan IGNICIÓN de PG Estrategias ($11,000/mes). ¿Podemos agendar una llamada?",
-  traccion:
-    "Hola, me interesa el plan TRACCIÓN de PG Estrategias ($16,000/mes). ¿Podemos agendar una llamada?",
-  dominio:
-    "Hola, me interesa el plan DOMINIO de PG Estrategias ($27,000/mes). ¿Podemos agendar una llamada?",
-  elegir:
-    "Hola, necesito ayuda para elegir el plan correcto de PG Estrategias para mi negocio. ¿Podemos hablar?",
+  ignicion: "Hola, me interesa el plan IGNICIÓN de PG Estrategias ($11,000/mes). ¿Podemos agendar una llamada?",
+  traccion: "Hola, me interesa el plan TRACCIÓN de PG Estrategias ($18,000/mes). ¿Podemos agendar una llamada?",
+  dominio: "Hola, me interesa el plan DOMINIO de PG Estrategias ($27,000/mes). ¿Podemos agendar una llamada?",
+  elegir: "Hola, necesito ayuda para elegir el plan correcto de PG Estrategias para mi negocio. ¿Podemos hablar?",
 };
 
 const checkIcon = (
@@ -62,7 +58,7 @@ const planes = [
     id: "traccion",
     nombre: "TRACCIÓN",
     badge: "El más elegido",
-    precio: "$16,000",
+    precio: "$18,000",
     publicidad: "$4,000 en publicidad incluidos",
     paraQuien:
       "Ideal si facturas entre $80,000 y $300,000 al mes. Negocio que ya funciona y quieres acelerar ventas de forma consistente.",
@@ -72,9 +68,8 @@ const planes = [
       "Publicidad en Meta y/o Google — $4,000 incluidos",
       "1 video de 1 minuto para tu página de ventas",
       "7 reels mensuales (2 para anuncios, 5 para redes)",
-      "5 diseños gráficos con texto persuasivo",
-      "5 carruseles para redes sociales",
-      "1,000 mensajes por WhatsApp o correo al mes",
+      "8 carruseles para redes sociales con imágenes",
+      "WhatsApp Bot para responder a tus leads",
       "Página de ventas + CRM + hosting 6 meses",
       "Configuración técnica completa",
       "Perfil de Google optimizado + estrategia de reseñas",
@@ -391,7 +386,7 @@ export default function Paquetes() {
                       {[
                         ["Presupuesto publicidad incluido", "$2,500", "$4,000", "$7,000"],
                         ["Reels mensuales", "4", "7", "10"],
-                        ["Mensajes WhatsApp/email", "500", "1,000", "2,000"],
+                        ["Mensajes WhatsApp/email", "500", "WhatsApp Bot", "2,000"],
                         ["Videollamada estratégica", "Mensual", "Quincenal", "Semanal"],
                         ["Páginas de ventas", "1", "1 + CRM", "2 + CRM"],
                         ["Hosting incluido", "—", "6 meses", "Permanente"],

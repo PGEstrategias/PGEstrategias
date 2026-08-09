@@ -421,7 +421,7 @@ CTA: "Empezar con Ignición"
 → borde blanco 1px, fondo transparente, hover fondo blanco/texto negro
 ```
 
-### Tarjeta 02 — TRACCIÓN · $16,000 MXN/mes ← DESTACADA
+### Tarjeta 02 — TRACCIÓN · $18,000 MXN/mes ← DESTACADA
 
 ```
 BADGE DESTACADO: "El más elegido"
@@ -430,7 +430,7 @@ BADGE DESTACADO: "El más elegido"
 BORDE: 2px solid #A6E22E (acento de marca — único elemento con este borde en la sección)
 
 NOMBRE DEL PLAN: "TRACCIÓN"
-PRECIO: "$16,000/mes · Incluye $4,000 para publicidad"
+PRECIO: "$18,000/mes · Incluye $4,000 para publicidad"
 
 PARA QUIÉN ES:
 "Ideal si facturas entre $80,000 y $300,000 al mes, con un negocio
@@ -440,9 +440,8 @@ QUÉ INCLUYE:
 ✓ Publicidad en Meta y/o Google — $4,000 incluidos
 ✓ 1 video de 1 minuto para tu página de ventas
 ✓ 7 reels mensuales (2 para anuncios, 5 para redes sociales)
-✓ 5 diseños gráficos con texto persuasivo
-✓ 5 carruseles para redes sociales
-✓ 1,000 mensajes por WhatsApp o correo al mes
+✓ 8 carruseles para redes sociales con imágenes
+✓ WhatsApp Bot para responder a tus leads
 ✓ Página de ventas + CRM para organizar tus prospectos + hosting 6 meses
 ✓ Configuración técnica completa
 ✓ Perfil de Google optimizado + estrategia de reseñas
