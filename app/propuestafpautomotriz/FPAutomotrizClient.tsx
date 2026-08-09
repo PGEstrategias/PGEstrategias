@@ -18,10 +18,10 @@ const ACCENT_SOFT = "rgba(214,58,39,0.06)";
 const BORDER = "rgba(228,224,221,0.10)";
 
 /* Nombre del taller — cambiarlo aquí lo cambia en toda la página. */
-const TALLER = "tu taller";
+const TALLER = "FP Automotriz";
 
 const WA_LINK =
-  "https://wa.me/522201758468?text=Hola%20Pablo,%20vi%20la%20propuesta%20para%20el%20taller";
+  "https://wa.me/522201758468?text=Hola%20Pablo,%20vi%20la%20propuesta%20para%20FP%20Automotriz";
 
 /* ── Videos de muestra ──────────────────────────────────────── */
 const VIDEO_A =
@@ -533,7 +533,7 @@ const arranque = [
 ];
 
 /* ── Página ─────────────────────────────────────────────────── */
-export default function TallerMecanicoClient() {
+export default function FPAutomotrizClient() {
   const [mounted, setMounted] = useState(false);
   useEffect(() => setMounted(true), []);
 
@@ -576,7 +576,7 @@ export default function TallerMecanicoClient() {
               className="hidden md:block font-body text-[11px] tracking-[0.14em] uppercase"
               style={{ color: MUTED }}
             >
-              Propuesta · Taller mecánico
+              Propuesta · FP Automotriz
             </span>
             <CTAButton size="sm">Agendar reunión</CTAButton>
           </div>
@@ -626,7 +626,7 @@ export default function TallerMecanicoClient() {
                   className="inline-block w-1.5 h-1.5 rounded-full"
                   style={{ background: ACCENT }}
                 />
-                PG Estrategias × Taller mecánico
+                PG Estrategias × {TALLER}
               </motion.p>
 
               <motion.h1
@@ -642,7 +642,7 @@ export default function TallerMecanicoClient() {
                   color: TEXT,
                 }}
               >
-                Ya pasaron por tu taller.{" "}
+                Ya pasaron por {TALLER}.{" "}
                 <span style={{ color: ACCENT }}>Falta que regresen.</span>
               </motion.h1>
 
@@ -654,8 +654,9 @@ export default function TallerMecanicoClient() {
                 style={{ color: MUTED }}
               >
                 Producción audiovisual, campañas locales y un bot de WhatsApp que
-                reactiva a los clientes que ya te conocen — para que el taller
-                deje de depender de que a alguien se le descomponga el carro.
+                reactiva a los clientes que ya conocen {TALLER} — para que el
+                taller deje de depender de que a alguien se le descomponga el
+                carro.
               </motion.p>
 
               <motion.div
@@ -1315,7 +1316,7 @@ export default function TallerMecanicoClient() {
 
           <div className="relative max-w-[900px] mx-auto text-center">
             <motion.div {...rise}>
-              <Eyebrow centered>PG Estrategias × Taller mecánico</Eyebrow>
+              <Eyebrow centered>PG Estrategias × {TALLER}</Eyebrow>
             </motion.div>
 
             <motion.div {...rise} transition={{ ...rise.transition, delay: 0.05 }}>
