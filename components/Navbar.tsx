@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useContactMenu } from "@/context/ContactMenuContext";
 import Logo from "@/components/Logo";
+import { legalLinks } from "@/components/Footer";
 
 const MSG_NAVBAR =
   "Hola, me interesa saber más sobre los servicios de PG Estrategias. ¿Podemos hablar?";
@@ -245,6 +246,26 @@ export default function Navbar() {
               >
                 Agenda una llamada
               </motion.button>
+
+              {/* Legal — secundario, no compite con la navegación */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+                className="flex flex-wrap gap-x-5 gap-y-2 mt-10"
+              >
+                {legalLinks.map((link) => (
+                  <a
+                    key={link.href}
+                    href={link.href}
+                    onClick={() => setMenuOpen(false)}
+                    className="font-body text-[12px] transition-colors duration-500 hover:text-[color:#E4E0DD]"
+                    style={{ color: "rgba(228,224,221,0.45)" }}
+                  >
+                    {link.label}
+                  </a>
+                ))}
+              </motion.div>
             </div>
           </motion.div>
         )}

@@ -12,6 +12,12 @@ const navLinks = [
   { label: "Agendar llamada", href: "#contacto" },
 ];
 
+export const legalLinks = [
+  { label: "Aviso de Privacidad", href: "/privacidad" },
+  { label: "Términos y Condiciones", href: "/terminos" },
+  { label: "Eliminación de datos", href: "/eliminacion-de-datos" },
+];
+
 function InstagramIcon() {
   return (
     <svg
@@ -115,6 +121,26 @@ export default function Footer() {
                 <a
                   key={link.label}
                   href={hrefFor(link)}
+                  className="link-underline font-body text-[14px] transition-colors duration-500 w-fit hover:text-[color:#E4E0DD]"
+                  style={{ color: "rgba(228,224,221,0.6)" }}
+                >
+                  {link.label}
+                </a>
+              ))}
+            </div>
+
+            {/* Legal */}
+            <p
+              className="font-body text-[11px] uppercase tracking-[0.14em] mt-10 mb-6"
+              style={{ color: "rgba(228,224,221,0.35)" }}
+            >
+              Legal
+            </p>
+            <div className="flex flex-col gap-3">
+              {legalLinks.map((link) => (
+                <a
+                  key={link.label}
+                  href={link.href}
                   className="link-underline font-body text-[14px] transition-colors duration-500 w-fit hover:text-[color:#E4E0DD]"
                   style={{ color: "rgba(228,224,221,0.6)" }}
                 >
