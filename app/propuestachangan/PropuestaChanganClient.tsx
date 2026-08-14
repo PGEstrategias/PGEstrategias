@@ -19,31 +19,15 @@ const WHATSAPP_URL =
 const HERO_VIDEO =
   "https://res.cloudinary.com/djduba5fd/video/upload/v1779377563/Tesla2_qgocjj.mp4";
 
+/* Showreel sin etiquetas: las piezas se explican solas y así ninguna
+   descripción contradice lo que se ve en pantalla. Si más adelante se
+   quieren rótulos, deben escribirse viendo cada video. */
 const REEL_VIDEOS = [
-  {
-    src: "https://res.cloudinary.com/djduba5fd/video/upload/v1785887879/AQNuVhBmkwGTX4OC78O3d0NwH_wfPRlmgNF7AvKO9OeAWifsY0eQEZ9IC9s0raBPg-wJjnxrnTZXKaXkwiHNIpMRWV-x3VRjiy1V4-k_om1cmn.mp4",
-    label: "Producción · Reel principal",
-  },
-  {
-    src: "https://res.cloudinary.com/djduba5fd/video/upload/v1785888058/AQPQOFP2CknFh7iZjtFDWRGeqLuiu-wE6o3L4EaKSH4XoEaxIAgPuWhJrRtB7CHuNDnCAdvL-XfWcEP_h32SaGdC627KoUHNg29_hbI_fz6dxd.mp4",
-    label: "Producción · Reel de marca",
-  },
-  {
-    src: "https://res.cloudinary.com/djduba5fd/video/upload/v1779377563/Tesla2_qgocjj.mp4",
-    label: "Automotriz · Formato showroom",
-  },
-  {
-    src: "https://res.cloudinary.com/djduba5fd/video/upload/v1779379785/AQM00fcFB9UXzP0XHk25z0YsAV6IQq-Q2WvI-l4X-5FOxbB0Y3ZBy5qfCKmYppNZ1uqC6NSFUTJdtATYZoxwS7VKBBgGy7hP7dEnq-g_snczgp.mp4",
-    label: "Instalaciones · Cinematográfico",
-  },
-  {
-    src: "https://res.cloudinary.com/djduba5fd/video/upload/v1779379782/AQNT8_lqO4uOfGx0cDYYLy5qea3MVzTq7nMnuJrqQ10beUeG_V6FfEw4CmGXg5dkSiKwSj-0-g70SxtETMlBb5OsaeYI4fC70KqDoJM_kls3iw.mp4",
-    label: "Producto · Ficha visual",
-  },
-  {
-    src: "https://res.cloudinary.com/djduba5fd/video/upload/q_auto/f_auto/v1779377490/MetaAd_gya5zi.mp4",
-    label: "Campaña · Anuncio Meta",
-  },
+  "https://res.cloudinary.com/djduba5fd/video/upload/v1785887879/AQNuVhBmkwGTX4OC78O3d0NwH_wfPRlmgNF7AvKO9OeAWifsY0eQEZ9IC9s0raBPg-wJjnxrnTZXKaXkwiHNIpMRWV-x3VRjiy1V4-k_om1cmn.mp4",
+  "https://res.cloudinary.com/djduba5fd/video/upload/v1785888058/AQPQOFP2CknFh7iZjtFDWRGeqLuiu-wE6o3L4EaKSH4XoEaxIAgPuWhJrRtB7CHuNDnCAdvL-XfWcEP_h32SaGdC627KoUHNg29_hbI_fz6dxd.mp4",
+  "https://res.cloudinary.com/djduba5fd/video/upload/v1779377563/Tesla2_qgocjj.mp4",
+  "https://res.cloudinary.com/djduba5fd/video/upload/v1779379785/AQM00fcFB9UXzP0XHk25z0YsAV6IQq-Q2WvI-l4X-5FOxbB0Y3ZBy5qfCKmYppNZ1uqC6NSFUTJdtATYZoxwS7VKBBgGy7hP7dEnq-g_snczgp.mp4",
+  "https://res.cloudinary.com/djduba5fd/video/upload/v1779379782/AQNT8_lqO4uOfGx0cDYYLy5qea3MVzTq7nMnuJrqQ10beUeG_V6FfEw4CmGXg5dkSiKwSj-0-g70SxtETMlBb5OsaeYI4fC70KqDoJM_kls3iw.mp4",
 ];
 
 /* Cifras públicas del mercado nacional 2026. Son contexto de marca,
@@ -727,9 +711,9 @@ export default function PropuestaChanganClient() {
             </motion.div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-              {REEL_VIDEOS.map((v, i) => (
+              {REEL_VIDEOS.map((src, i) => (
                 <motion.div
-                  key={i}
+                  key={src}
                   initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
@@ -744,25 +728,10 @@ export default function PropuestaChanganClient() {
                     muted
                     playsInline
                     preload="metadata"
+                    aria-label="Muestra de producción audiovisual de PG Estrategias"
                   >
-                    <source src={v.src} type="video/mp4" />
+                    <source src={src} type="video/mp4" />
                   </video>
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 pointer-events-none"
-                    style={{
-                      background:
-                        "linear-gradient(180deg, transparent 55%, rgba(0,0,0,0.75) 100%)",
-                    }}
-                  />
-                  <div className="absolute bottom-3 left-3 right-3 z-10">
-                    <p
-                      className="font-body text-[10px] md:text-[11px] tracking-[0.16em] uppercase"
-                      style={{ color: "#E4E0DD", fontWeight: 500 }}
-                    >
-                      {v.label}
-                    </p>
-                  </div>
                   <div
                     aria-hidden
                     className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500"
