@@ -5,11 +5,14 @@ import { useEffect, useState } from "react";
 import Logo from "@/components/Logo";
 
 /* ────────────────────────────────────────────────────────────
-   Landing de propuesta — Land Rover Puebla × PG Estrategias.
+   Propuesta — Land Rover Puebla × PG Estrategias.
 
-   Versión comercial: expone cómo trabajamos, los servicios y la
-   inversión. Mantiene el sistema visual de la marca PG y las piezas
-   audiovisuales del portafolio.
+   Construida desde el brief del cliente: creación de contenido,
+   estrategia digital (pauta + orgánico), presencia en eventos,
+   comunidad de rutas, accesorios originales y una cadencia que
+   resuelve el ciclo de aprobación de 20 días.
+
+   Sistema visual de PG: negro #1C1C1A, acento #D63A27, Syne/Inter.
    ──────────────────────────────────────────────────────────── */
 
 const CLIENTE = "Land Rover Puebla";
@@ -18,9 +21,8 @@ const PRECIO = "15,000";
 const HERO_VIDEO =
   "https://res.cloudinary.com/djduba5fd/video/upload/v1785888616/WhatsApp_Video_2026-08-04_at_4.27.42_PM_vcpnm7.mp4";
 
-/* Material automotriz primero. Sin rótulos: las piezas se muestran,
-   no se describen. */
-const PORTFOLIO = [
+/* Muestras de producción de PG. Piezas reales del portafolio. */
+const MUESTRAS = [
   "https://res.cloudinary.com/djduba5fd/video/upload/v1779377563/Tesla2_qgocjj.mp4",
   "https://res.cloudinary.com/djduba5fd/video/upload/v1779379785/AQM00fcFB9UXzP0XHk25z0YsAV6IQq-Q2WvI-l4X-5FOxbB0Y3ZBy5qfCKmYppNZ1uqC6NSFUTJdtATYZoxwS7VKBBgGy7hP7dEnq-g_snczgp.mp4",
   "https://res.cloudinary.com/djduba5fd/video/upload/v1779379782/AQNT8_lqO4uOfGx0cDYYLy5qea3MVzTq7nMnuJrqQ10beUeG_V6FfEw4CmGXg5dkSiKwSj-0-g70SxtETMlBb5OsaeYI4fC70KqDoJM_kls3iw.mp4",
@@ -28,40 +30,61 @@ const PORTFOLIO = [
   "https://res.cloudinary.com/djduba5fd/video/upload/v1785888058/AQPQOFP2CknFh7iZjtFDWRGeqLuiu-wE6o3L4EaKSH4XoEaxIAgPuWhJrRtB7CHuNDnCAdvL-XfWcEP_h32SaGdC627KoUHNg29_hbI_fz6dxd.mp4",
 ];
 
-const TRANSFORMACION_VIDEO =
-  "https://res.cloudinary.com/djduba5fd/video/upload/v1779379785/AQM00fcFB9UXzP0XHk25z0YsAV6IQq-Q2WvI-l4X-5FOxbB0Y3ZBy5qfCKmYppNZ1uqC6NSFUTJdtATYZoxwS7VKBBgGy7hP7dEnq-g_snczgp.mp4";
+/* Lo que entendimos de su operación — construido sobre el brief. */
+const contexto = [
+  {
+    title: "Creación de contenido",
+    desc:
+      "Producción constante y a la altura de la marca: reels, fotografía y artes para sostener la presencia todo el mes.",
+  },
+  {
+    title: "Estrategia digital",
+    desc:
+      "Pauta y contenido orgánico trabajando juntos — la estrategia que ordena qué se produce, cuándo se publica y con qué objetivo.",
+  },
+  {
+    title: "Presencia en eventos",
+    desc:
+      "Estamos en los eventos filmando fuera de piso: rutas, actividades y experiencias reales de la comunidad Land Rover.",
+  },
+  {
+    title: "Experiencia con su público",
+    desc:
+      "Ya trabajamos con este perfil de comprador. Sabemos qué le mueve y con qué tipo de contenido responde.",
+  },
+];
 
-/* Los entregables concretos del mes. Este es el corazón de la oferta. */
+/* Los entregables concretos del mes. El corazón de la oferta. */
 const incluye = [
   {
     num: "01",
     title: "8 reels mensuales",
     desc:
-      "Distribuidos entre oferta comercial del mes, recaps de eventos y rutas de la comunidad, y promociones atemporales. Producción a la altura de la marca, no relleno de calendario.",
+      "Distribuidos entre oferta comercial del mes, recaps de eventos y rutas de la comunidad, y promociones atemporales.",
   },
   {
     num: "02",
     title: "100 fotografías",
     desc:
-      "Para posts, carruseles y artes en redes sociales. Un banco visual que alimenta la operación todo el mes sin depender de una sola sesión.",
+      "Para posts, carruseles y artes en redes sociales. Un banco visual que alimenta la operación sin depender de una sola sesión.",
   },
   {
     num: "03",
     title: "WhatsApp Bot optimizado",
     desc:
-      "Para responder a tus leads al instante, calificar interés y modelo, y pasarle a tu equipo solo a quien está listo para hablar.",
+      "Para responder a tus leads al instante, calificar interés y pasarle a tu equipo solo a quien está listo para hablar.",
   },
   {
     num: "04",
     title: "Perfil de Google optimizado",
     desc:
-      "Más estrategia de reseñas para dominar las búsquedas locales de ventas, servicio y Approved — y llegar bien parados a quien ya te busca.",
+      "Más estrategia de reseñas, para llegar bien parados a quien ya busca ventas, servicio o seminuevos en Puebla.",
   },
   {
     num: "05",
     title: "Videollamada estratégica quincenal",
     desc:
-      "Cada dos semanas revisamos calendario, prioridades y siguiente ola de contenido. La estrategia sigue siendo tuya; nosotros la ejecutamos.",
+      "Cada dos semanas revisamos calendario, prioridades y la siguiente ola de contenido. La estrategia sigue siendo tuya.",
   },
   {
     num: "06",
@@ -77,98 +100,72 @@ const incluye = [
   },
 ];
 
-/* La cadencia que resuelve el cuello de botella de aprobación. */
+/* La cadencia que resuelve el ciclo de aprobación de 20 días. */
 const cadencia = [
   {
     dia: "Semana 1",
     title: "Ofertas comerciales listas",
     desc:
-      "Los videos de la oferta comercial del mes quedan entregados en los primeros días. Entran a su ciclo de aprobación de inmediato, no a mitad de mes.",
+      "Los videos de la oferta comercial del mes quedan entregados en los primeros días, para que entren a aprobación de inmediato — no a mitad de mes.",
   },
   {
     dia: "Durante el mes",
     title: "Recaps y comunidad",
     desc:
-      "Filmamos fuera de piso: rutas, actividades y eventos de la comunidad Land Rover. El contenido de estilo de vida que hace sentir la marca.",
+      "Filmamos fuera de piso las rutas, actividades y eventos de la comunidad Land Rover: el contenido de estilo de vida que hace sentir la marca.",
   },
   {
     dia: "Constante",
     title: "Atemporales y banco visual",
     desc:
-      "Promociones atemporales, accesorios originales y las 100 fotografías que sostienen la publicación diaria sin apagar el ritmo.",
+      "Promociones atemporales, la línea de accesorios originales y las 100 fotografías que sostienen la publicación diaria.",
   },
 ];
 
+/* Comunidad, eventos y accesorios — activos propios de la marca. */
 const comunidad = [
   {
-    title: "Recaps de eventos fuera de piso",
+    title: "Recaps de la comunidad",
     desc:
-      "Estamos presentes en rutas y actividades para filmar la experiencia real de la comunidad Land Rover — no una recreación de estudio.",
+      "La comunidad de rutas y actividades Land Rover es un activo que pocas marcas tienen. Lo convertimos en contenido que atrae a más clientes como los tuyos.",
   },
   {
     title: "Curaduría de eventos",
     desc:
-      "Sugerimos eventos deportivos y campestres alineados con el público objetivo y con el ADN de la marca, para activar presencia donde importa.",
-  },
-  {
-    title: "Público objetivo que ya conocemos",
-    desc:
-      "Tenemos experiencia con este perfil de comprador. No arrancamos de cero: sabemos qué le mueve y con qué contenido responde.",
+      "Sugerimos eventos deportivos y campestres alineados con el público objetivo y el ADN de la marca, para activar presencia donde de verdad importa.",
   },
   {
     title: "Línea de accesorios originales",
     desc:
-      "La marca de accesorios originales Land Rover tiene su propio espacio dentro del calendario — un ingreso que casi nadie promociona con calidad.",
+      "La marca de accesorios originales Land Rover tiene su propio espacio en el calendario — un ingreso que casi nadie promociona con calidad.",
   },
 ];
 
-const colaboracion = [
+/* Cómo trabajamos — proceso de arranque y operación. */
+const proceso = [
   {
     num: "01",
     title: "Inmersión",
     desc:
-      "Conocemos tu operación, tu inventario, tus lineamientos de marca y tus objetivos.",
+      "Conocemos tu operación, tu inventario, tus lineamientos de marca y tus objetivos del trimestre.",
   },
   {
     num: "02",
     title: "Plan conjunto",
     desc:
-      "Definimos juntos prioridades, calendario y metas — dentro de los lineamientos de identidad de Jaguar Land Rover.",
+      "Definimos juntos calendario, prioridades y metas — dentro de los lineamientos de identidad de Jaguar Land Rover.",
   },
   {
     num: "03",
     title: "Producción y activación",
-    desc: "Grabamos, fotografiamos y ponemos el sistema completo en marcha.",
+    desc:
+      "Grabamos, fotografiamos y ponemos el sistema en marcha: reels, fotos, bot de WhatsApp y perfil de Google.",
   },
   {
     num: "04",
     title: "Optimización quincenal",
-    desc: "Reportería clara y ajustes con datos, no con intuición.",
-  },
-];
-
-const estandares = [
-  "Dirección de arte",
-  "Iluminación cinematográfica",
-  "Color grading",
-  "Entregas puntuales",
-];
-
-const testimonios = [
-  {
-    quote: "Hemos triplicado el número de contratos firmados.",
-    nombre: "Ex Hacienda de San Bartolo",
-    industria: "Bienes Raíces · Puebla",
-    imagen:
-      "https://res.cloudinary.com/dieszqcrn/image/upload/v1778399817/ChatGPT_Image_10_may_2026_01_56_51_a.m_onxhrw.png",
-  },
-  {
-    quote:
-      "Una fotografía no puede enseñar lo que un sistema audiovisual estratégico sí…",
-    nombre: "Cubiertas y Herrajes",
-    industria: "Industria · Puebla",
-    imagen:
-      "https://res.cloudinary.com/djduba5fd/image/upload/q_auto/f_auto/v1779761378/ChatGPT_Image_25_may_2026_08_09_30_p.m_d7citi.png",
+    desc:
+      "Videollamada, reporte y ajustes con datos cada dos semanas. Ritmo constante, sin sorpresas.",
   },
 ];
 
@@ -245,7 +242,7 @@ export default function PropuestaLandRoverClient() {
 
   return (
     <>
-      {/* NAV — identificación, sin navegación ni CTA */}
+      {/* NAV */}
       <nav
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
@@ -337,19 +334,30 @@ export default function PropuestaLandRoverClient() {
                 transition={{ duration: 1.1, delay: 0.35, ease: [0.16, 1, 0.3, 1] }}
                 className="font-title"
                 style={{
-                  fontSize: "clamp(46px, 7.6vw, 124px)",
+                  fontSize: "clamp(42px, 7vw, 116px)",
                   fontWeight: 700,
-                  lineHeight: 0.94,
+                  lineHeight: 0.96,
                   letterSpacing: "-0.035em",
                   color: "#E4E0DD",
                 }}
               >
-                Contenido a la altura de{" "}
+                Todo tu contenido, en un solo equipo —{" "}
                 <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                  Land Rover.
+                  a tu ritmo.
                 </em>
               </motion.h1>
             </div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.7 }}
+              className="font-body mt-8 max-w-[620px] text-[15px] md:text-[18px] leading-[1.7]"
+              style={{ color: "rgba(228,224,221,0.75)" }}
+            >
+              Creación de contenido, estrategia digital, presencia en eventos y
+              automatización — un sistema mensual armado para Land Rover Puebla.
+            </motion.p>
           </div>
 
           <motion.div
@@ -382,34 +390,64 @@ export default function PropuestaLandRoverClient() {
         </section>
 
         {/* ============================================================
-            2 · EL PROBLEMA — el cuello de botella real
+            2 · LO QUE ENTENDIMOS
            ============================================================ */}
         <section className="relative px-6 md:px-14 py-24 md:py-40 max-w-[1400px] mx-auto">
-          <motion.div {...reveal} className="max-w-[880px]">
-            <Eyebrow>El problema</Eyebrow>
+          <motion.div {...reveal} className="mb-16 md:mb-20 max-w-[880px]">
+            <Eyebrow>Lo que entendimos</Eyebrow>
             <SectionTitle>
-              No es un problema de visión.{" "}
+              Escuchamos primero.{" "}
               <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                Es un problema de ritmo.
+                Después proponemos.
               </em>
             </SectionTitle>
-            <Body className="mb-7">
-              Aprobar un anuncio para pautar toma cerca de 20 días. Eso deja
-              apenas 10 para que la oferta comercial del mes salga a la calle —
-              y muchas veces el contenido llega tarde a ese ciclo. El resultado:
-              vehículos que merecen una producción cinematográfica terminan
-              publicados con prisa, o no publicados a tiempo.
-            </Body>
             <Body>
-              La marca ya es legendaria. Lo que falta es una maquinaria que
-              produzca a la altura de Land Rover y entregue con la anticipación
-              que su calendario exige.
+              Land Rover Puebla no necesita otra agencia que publique por
+              publicar. Necesita un equipo que entienda su operación, su
+              comunidad y su calendario — y produzca a la altura de la marca.
             </Body>
           </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px">
+            {contexto.map((c, i) => (
+              <motion.div
+                key={c.title}
+                {...reveal}
+                transition={{ ...reveal.transition, delay: (i % 2) * 0.08 }}
+                className="p-7 md:p-9 relative group"
+                style={{
+                  borderTop: "1px solid rgba(228,224,221,0.12)",
+                  background: "rgba(255,255,255,0.015)",
+                }}
+              >
+                <span
+                  aria-hidden
+                  className="absolute left-0 top-0 h-full w-[2px] scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-500"
+                  style={{ background: "#D63A27" }}
+                />
+                <h3
+                  className="font-title text-[20px] mb-3"
+                  style={{
+                    fontWeight: 700,
+                    color: "#E4E0DD",
+                    letterSpacing: "-0.01em",
+                  }}
+                >
+                  {c.title}
+                </h3>
+                <p
+                  className="font-body text-[14px] leading-[1.7]"
+                  style={{ color: "rgba(228,224,221,0.62)" }}
+                >
+                  {c.desc}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </section>
 
         {/* ============================================================
-            3 · LA TRANSFORMACIÓN
+            3 · EL RETO DEL CALENDARIO
            ============================================================ */}
         <section
           className="relative py-24 md:py-40"
@@ -418,20 +456,23 @@ export default function PropuestaLandRoverClient() {
           <div className="px-6 md:px-14 max-w-[1400px] mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
               <motion.div {...reveal} className="lg:col-span-6">
-                <Eyebrow>La transformación</Eyebrow>
+                <Eyebrow>El reto del calendario</Eyebrow>
                 <SectionTitle>
-                  La estrategia sigue siendo tuya.{" "}
+                  20 días para aprobar.{" "}
                   <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                    Nosotros ponemos la maquinaria.
+                    Solo 10 para vender.
                   </em>
                 </SectionTitle>
+                <Body className="mb-7">
+                  Aprobar un anuncio para pautar toma cerca de 20 días. Eso deja
+                  apenas 10 para que la oferta comercial del mes salga a la calle.
+                  Si el contenido llega tarde a ese ciclo, la oferta pierde días
+                  de exposición — y ventas.
+                </Body>
                 <Body>
-                  Imagina un equipo completo de producción operando como
-                  extensión del tuyo: cada vehículo filmado con calidad
-                  cinematográfica, contenido de estilo de vida que hace sentir la
-                  marca antes de manejarla, y un sistema que responde a cada lead
-                  al instante — todo entregado con la anticipación que tu ciclo
-                  de aprobación necesita.
+                  Por eso trabajamos con anticipación: los videos de oferta
+                  comercial están listos en la primera semana del mes, para que
+                  entren a aprobación desde el día uno.
                 </Body>
               </motion.div>
 
@@ -441,28 +482,36 @@ export default function PropuestaLandRoverClient() {
                 className="lg:col-span-6"
               >
                 <div
-                  className="relative aspect-[4/5] md:aspect-[3/4] overflow-hidden"
-                  style={{ background: "#0e0e0d" }}
+                  className="relative p-8 md:p-10"
+                  style={{
+                    border: "1px solid rgba(228,224,221,0.14)",
+                    background: "rgba(255,255,255,0.02)",
+                  }}
                 >
-                  <video
-                    className="absolute inset-0 w-full h-full object-cover"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="auto"
-                    aria-hidden
-                  >
-                    <source src={TRANSFORMACION_VIDEO} type="video/mp4" />
-                  </video>
-                  <div
-                    aria-hidden
-                    className="absolute inset-0 pointer-events-none"
-                    style={{
-                      background:
-                        "linear-gradient(180deg, transparent 60%, rgba(21,21,19,0.6) 100%)",
-                    }}
-                  />
+                  {[
+                    { k: "Semana 1", v: "Ofertas comerciales entregadas" },
+                    { k: "Semana 1–3", v: "En ciclo de aprobación" },
+                    { k: "Semana 3–4", v: "Oferta al aire, con margen real" },
+                  ].map((row) => (
+                    <div
+                      key={row.k}
+                      className="py-5 flex items-start gap-5"
+                      style={{ borderTop: "1px solid rgba(228,224,221,0.1)" }}
+                    >
+                      <span
+                        className="font-body text-[11px] uppercase tracking-[0.18em] shrink-0 pt-1"
+                        style={{ color: "#D63A27", fontWeight: 600, width: 96 }}
+                      >
+                        {row.k}
+                      </span>
+                      <span
+                        className="font-title text-[17px] md:text-[19px]"
+                        style={{ fontWeight: 700, color: "#E4E0DD" }}
+                      >
+                        {row.v}
+                      </span>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             </div>
@@ -470,11 +519,147 @@ export default function PropuestaLandRoverClient() {
         </section>
 
         {/* ============================================================
-            4 · PORTAFOLIO
+            4 · QUÉ INCLUYE CADA MES
+           ============================================================ */}
+        <section className="relative px-6 md:px-14 py-24 md:py-40 max-w-[1400px] mx-auto">
+          <motion.div {...reveal} className="mb-16 md:mb-20 max-w-[880px]">
+            <Eyebrow>Qué incluye cada mes</Eyebrow>
+            <SectionTitle>
+              Un sistema completo,{" "}
+              <em style={{ color: "#D63A27", fontStyle: "italic" }}>
+                medible por entregables.
+              </em>
+            </SectionTitle>
+            <Body>
+              Nada de promesas difusas. Esto es exactamente lo que produce y
+              entrega el equipo, mes con mes.
+            </Body>
+          </motion.div>
+
+          <div
+            className="grid grid-cols-1"
+            style={{ borderTop: "1px solid rgba(228,224,221,0.12)" }}
+          >
+            {incluye.map((item, i) => (
+              <motion.div
+                key={item.num}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.7, delay: i * 0.05 }}
+                className="relative grid grid-cols-12 gap-6 md:gap-10 py-8 md:py-10 group"
+                style={{ borderBottom: "1px solid rgba(228,224,221,0.12)" }}
+              >
+                <span
+                  aria-hidden
+                  className="absolute top-0 left-0 h-px w-0 group-hover:w-full transition-all duration-700"
+                  style={{ background: "#D63A27" }}
+                />
+                <div className="col-span-12 md:col-span-2">
+                  <p
+                    className="font-title"
+                    style={{
+                      fontSize: 14,
+                      fontWeight: 500,
+                      letterSpacing: "0.18em",
+                      color: "#D63A27",
+                    }}
+                  >
+                    {item.num}
+                  </p>
+                </div>
+                <div className="col-span-12 md:col-span-4">
+                  <h3
+                    className="font-title"
+                    style={{
+                      fontSize: 22,
+                      fontWeight: 700,
+                      letterSpacing: "-0.02em",
+                      lineHeight: 1.15,
+                      color: "#E4E0DD",
+                    }}
+                  >
+                    {item.title}
+                  </h3>
+                </div>
+                <div className="col-span-12 md:col-span-6">
+                  <p
+                    className="font-body text-[15px] leading-[1.7]"
+                    style={{ color: "rgba(228,224,221,0.7)" }}
+                  >
+                    {item.desc}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </section>
+
+        {/* ============================================================
+            5 · CADENCIA MENSUAL DEL CONTENIDO
+           ============================================================ */}
+        <section
+          className="relative py-24 md:py-40"
+          style={{ background: "#151513" }}
+        >
+          <div className="px-6 md:px-14 max-w-[1400px] mx-auto">
+            <motion.div {...reveal} className="mb-16 md:mb-20 max-w-[880px]">
+              <Eyebrow>Cómo se reparten los 8 reels</Eyebrow>
+              <SectionTitle>
+                Cada pieza tiene{" "}
+                <em style={{ color: "#D63A27", fontStyle: "italic" }}>
+                  un trabajo que hacer.
+                </em>
+              </SectionTitle>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-px">
+              {cadencia.map((c, i) => (
+                <motion.div
+                  key={c.title}
+                  {...reveal}
+                  transition={{ ...reveal.transition, delay: i * 0.08 }}
+                  className="p-7 md:p-9 relative group"
+                  style={{
+                    borderTop: "1px solid rgba(228,224,221,0.12)",
+                    background: "rgba(255,255,255,0.015)",
+                  }}
+                >
+                  <span
+                    aria-hidden
+                    className="absolute left-0 top-0 h-full w-[2px] scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-500"
+                    style={{ background: "#D63A27" }}
+                  />
+                  <p
+                    className="font-body text-[11px] uppercase tracking-[0.22em] mb-5"
+                    style={{ color: "#D63A27", fontWeight: 600 }}
+                  >
+                    {c.dia}
+                  </p>
+                  <h3
+                    className="font-title text-[20px] mb-3"
+                    style={{ fontWeight: 700, color: "#E4E0DD" }}
+                  >
+                    {c.title}
+                  </h3>
+                  <p
+                    className="font-body text-[14px] leading-[1.7]"
+                    style={{ color: "rgba(228,224,221,0.6)" }}
+                  >
+                    {c.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================
+            6 · MUESTRAS DE PRODUCCIÓN
            ============================================================ */}
         <section className="relative px-6 md:px-14 py-24 md:py-40 max-w-[1400px] mx-auto">
           <motion.div {...reveal} className="mb-16 md:mb-20 max-w-[820px]">
-            <Eyebrow>Portafolio</Eyebrow>
+            <Eyebrow>Muestras de producción</Eyebrow>
             <SectionTitle>
               No te contamos cómo se ve la calidad.{" "}
               <em style={{ color: "#D63A27", fontStyle: "italic" }}>
@@ -484,7 +669,7 @@ export default function PropuestaLandRoverClient() {
           </motion.div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
-            {PORTFOLIO.map((src, i) => (
+            {MUESTRAS.map((src, i) => (
               <motion.div
                 key={src}
                 initial={{ opacity: 0, y: 40 }}
@@ -516,7 +701,7 @@ export default function PropuestaLandRoverClient() {
         </section>
 
         {/* ============================================================
-            5 · QUÉ INCLUYE CADA MES — los entregables concretos
+            7 · COMUNIDAD, EVENTOS Y ACCESORIOS
            ============================================================ */}
         <section
           className="relative py-24 md:py-40"
@@ -524,148 +709,7 @@ export default function PropuestaLandRoverClient() {
         >
           <div className="px-6 md:px-14 max-w-[1400px] mx-auto">
             <motion.div {...reveal} className="mb-16 md:mb-20 max-w-[880px]">
-              <Eyebrow>Qué incluye cada mes</Eyebrow>
-              <SectionTitle>
-                Un sistema completo,{" "}
-                <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                  medible por entregables.
-                </em>
-              </SectionTitle>
-              <Body>
-                Nada de promesas difusas. Esto es exactamente lo que produce y
-                entrega el equipo, mes con mes.
-              </Body>
-            </motion.div>
-
-            <div
-              className="grid grid-cols-1"
-              style={{ borderTop: "1px solid rgba(228,224,221,0.12)" }}
-            >
-              {incluye.map((item, i) => (
-                <motion.div
-                  key={item.num}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-60px" }}
-                  transition={{ duration: 0.7, delay: i * 0.05 }}
-                  className="relative grid grid-cols-12 gap-6 md:gap-10 py-8 md:py-10 group"
-                  style={{ borderBottom: "1px solid rgba(228,224,221,0.12)" }}
-                >
-                  <span
-                    aria-hidden
-                    className="absolute top-0 left-0 h-px w-0 group-hover:w-full transition-all duration-700"
-                    style={{ background: "#D63A27" }}
-                  />
-                  <div className="col-span-12 md:col-span-2">
-                    <p
-                      className="font-title"
-                      style={{
-                        fontSize: 14,
-                        fontWeight: 500,
-                        letterSpacing: "0.18em",
-                        color: "#D63A27",
-                      }}
-                    >
-                      {item.num}
-                    </p>
-                  </div>
-                  <div className="col-span-12 md:col-span-4">
-                    <h3
-                      className="font-title"
-                      style={{
-                        fontSize: 22,
-                        fontWeight: 700,
-                        letterSpacing: "-0.02em",
-                        lineHeight: 1.15,
-                        color: "#E4E0DD",
-                      }}
-                    >
-                      {item.title}
-                    </h3>
-                  </div>
-                  <div className="col-span-12 md:col-span-6">
-                    <p
-                      className="font-body text-[15px] leading-[1.7]"
-                      style={{ color: "rgba(228,224,221,0.7)" }}
-                    >
-                      {item.desc}
-                    </p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ============================================================
-            6 · CADENCIA OPERATIVA — cómo resolvemos el timing
-           ============================================================ */}
-        <section className="relative px-6 md:px-14 py-24 md:py-40 max-w-[1400px] mx-auto">
-          <motion.div {...reveal} className="mb-16 md:mb-20 max-w-[880px]">
-            <Eyebrow>Cadencia operativa</Eyebrow>
-            <SectionTitle>
-              La oferta comercial,{" "}
-              <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                lista en la primera semana.
-              </em>
-            </SectionTitle>
-            <Body>
-              Trabajamos con la anticipación que exige tu ciclo de aprobación:
-              los videos de oferta comercial entran a revisión desde los
-              primeros días del mes, no a mitad de camino.
-            </Body>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px">
-            {cadencia.map((c, i) => (
-              <motion.div
-                key={c.title}
-                {...reveal}
-                transition={{ ...reveal.transition, delay: i * 0.08 }}
-                className="p-7 md:p-9 relative group"
-                style={{
-                  borderTop: "1px solid rgba(228,224,221,0.12)",
-                  background: "rgba(255,255,255,0.015)",
-                }}
-              >
-                <span
-                  aria-hidden
-                  className="absolute left-0 top-0 h-full w-[2px] scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-500"
-                  style={{ background: "#D63A27" }}
-                />
-                <p
-                  className="font-body text-[11px] uppercase tracking-[0.22em] mb-5"
-                  style={{ color: "#D63A27", fontWeight: 600 }}
-                >
-                  {c.dia}
-                </p>
-                <h3
-                  className="font-title text-[20px] mb-3"
-                  style={{ fontWeight: 700, color: "#E4E0DD" }}
-                >
-                  {c.title}
-                </h3>
-                <p
-                  className="font-body text-[14px] leading-[1.7]"
-                  style={{ color: "rgba(228,224,221,0.6)" }}
-                >
-                  {c.desc}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
-
-        {/* ============================================================
-            7 · COMUNIDAD Y EVENTOS
-           ============================================================ */}
-        <section
-          className="relative py-24 md:py-40"
-          style={{ background: "#151513" }}
-        >
-          <div className="px-6 md:px-14 max-w-[1400px] mx-auto">
-            <motion.div {...reveal} className="mb-16 md:mb-20 max-w-[880px]">
-              <Eyebrow>Comunidad y eventos</Eyebrow>
+              <Eyebrow>Comunidad, eventos y accesorios</Eyebrow>
               <SectionTitle>
                 Donde vive la marca,{" "}
                 <em style={{ color: "#D63A27", fontStyle: "italic" }}>
@@ -673,18 +717,17 @@ export default function PropuestaLandRoverClient() {
                 </em>
               </SectionTitle>
               <Body>
-                La comunidad de rutas y actividades Land Rover es un activo que
-                pocas marcas tienen. Lo convertimos en contenido — y sugerimos
-                dónde activar la siguiente experiencia.
+                Tu comunidad, tus eventos y tu línea de accesorios son activos
+                que casi nadie aprovecha con contenido de calidad. Nosotros sí.
               </Body>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-px">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-px">
               {comunidad.map((c, i) => (
                 <motion.div
                   key={c.title}
                   {...reveal}
-                  transition={{ ...reveal.transition, delay: (i % 2) * 0.08 }}
+                  transition={{ ...reveal.transition, delay: i * 0.08 }}
                   className="p-7 md:p-9 relative group"
                   style={{
                     borderTop: "1px solid rgba(228,224,221,0.12)",
@@ -733,15 +776,15 @@ export default function PropuestaLandRoverClient() {
                 </em>
               </SectionTitle>
               <Body className="mb-7">
-                Sabemos que el video generado con IA no es la preferencia por
-                defecto — y está bien. Lo dejamos como una capacidad disponible:
-                cuando una campaña lo pida, podemos producir piezas full-AI de
-                alto impacto, del tipo que ya usan marcas globales.
+                Cuando una campaña lo pida, podemos producir piezas full-AI de
+                alto impacto, del tipo que ya usan marcas globales. Una capacidad
+                más en la caja de herramientas — no un reemplazo de la producción
+                real.
               </Body>
               <Body>
                 Siempre bajo autorización previa y dentro de los lineamientos de
-                identidad de la marca. Nunca sustituye la producción real; la
-                complementa cuando aporta.
+                identidad de la marca. Se incluyen algunas piezas cuando lo
+                autorizas.
               </Body>
             </motion.div>
 
@@ -766,7 +809,7 @@ export default function PropuestaLandRoverClient() {
                 {[
                   "Proponemos el concepto y lo autorizas antes de producir.",
                   "Se ejecuta dentro de los lineamientos de Jaguar Land Rover.",
-                  "Se cotiza por pieza, aparte del paquete mensual.",
+                  "Se acuerdan las piezas caso por caso, según la campaña.",
                 ].map((linea) => (
                   <div
                     key={linea}
@@ -792,7 +835,7 @@ export default function PropuestaLandRoverClient() {
         </section>
 
         {/* ============================================================
-            9 · CÓMO COLABORARÍAMOS
+            9 · CÓMO TRABAJAMOS
            ============================================================ */}
         <section
           className="relative py-24 md:py-40"
@@ -800,7 +843,7 @@ export default function PropuestaLandRoverClient() {
         >
           <div className="px-6 md:px-14 max-w-[1400px] mx-auto">
             <motion.div {...reveal} className="mb-16 md:mb-20 max-w-[820px]">
-              <Eyebrow>Cómo colaboraríamos</Eyebrow>
+              <Eyebrow>Cómo trabajamos</Eyebrow>
               <SectionTitle>
                 Cuatro pasos,{" "}
                 <em style={{ color: "#D63A27", fontStyle: "italic" }}>
@@ -810,7 +853,7 @@ export default function PropuestaLandRoverClient() {
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px">
-              {colaboracion.map((c, i) => (
+              {proceso.map((c, i) => (
                 <motion.div
                   key={c.num}
                   {...reveal}
@@ -898,7 +941,7 @@ export default function PropuestaLandRoverClient() {
                   className="font-body text-[14px] leading-[1.7]"
                   style={{ color: "rgba(228,224,221,0.55)" }}
                 >
-                  Las piezas full-AI se cotizan por separado y solo bajo
+                  Las piezas full-AI se acuerdan por separado y solo bajo
                   autorización previa.
                 </p>
               </div>
@@ -977,142 +1020,7 @@ export default function PropuestaLandRoverClient() {
         </section>
 
         {/* ============================================================
-            11 · ESTÁNDARES DE CALIDAD
-           ============================================================ */}
-        <section className="relative px-6 md:px-14 py-24 md:py-40 max-w-[1400px] mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-            <motion.div {...reveal} className="lg:col-span-6">
-              <Eyebrow>Estándares de calidad</Eyebrow>
-              <SectionTitle>
-                Más de 75 años de historia.{" "}
-                <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                  Cada pieza tiene que estar a esa altura.
-                </em>
-              </SectionTitle>
-              <Body>
-                Trabajamos con estándares de producción publicitaria: dirección
-                de arte, iluminación cinematográfica, color grading y entregas
-                puntuales. Cuando representas una marca con más de 75 años de
-                historia, cada pieza tiene que estar a esa altura.
-              </Body>
-            </motion.div>
-
-            <motion.div
-              {...reveal}
-              transition={{ ...reveal.transition, delay: 0.15 }}
-              className="lg:col-span-5 lg:col-start-8"
-            >
-              <div className="flex flex-col gap-px">
-                {estandares.map((e) => (
-                  <div
-                    key={e}
-                    className="py-6 flex items-center gap-5"
-                    style={{ borderTop: "1px solid rgba(228,224,221,0.12)" }}
-                  >
-                    <span
-                      aria-hidden
-                      className="shrink-0 block"
-                      style={{ width: 20, height: 1, background: "#D63A27" }}
-                    />
-                    <span
-                      className="font-title text-[19px]"
-                      style={{ fontWeight: 700, color: "#E4E0DD" }}
-                    >
-                      {e}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* ============================================================
-            12 · PRUEBA SOCIAL
-           ============================================================ */}
-        <section
-          className="relative py-24 md:py-40"
-          style={{ background: "#151513" }}
-        >
-          <div className="px-6 md:px-14 max-w-[1400px] mx-auto">
-            <motion.div {...reveal} className="mb-16 md:mb-20 max-w-[820px]">
-              <Eyebrow>Quiénes ya trabajan con nosotros</Eyebrow>
-              <SectionTitle>
-                Lo dicen{" "}
-                <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                  ellos, no nosotros.
-                </em>
-              </SectionTitle>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-              {testimonios.map((t, i) => (
-                <motion.figure
-                  key={t.nombre}
-                  {...reveal}
-                  transition={{ ...reveal.transition, delay: i * 0.1 }}
-                  className="flex flex-col"
-                  style={{
-                    border: "1px solid rgba(228,224,221,0.12)",
-                    background: "rgba(255,255,255,0.02)",
-                  }}
-                >
-                  <div
-                    className="relative aspect-[16/10] overflow-hidden"
-                    style={{ background: "#0e0e0d" }}
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={t.imagen}
-                      alt={`Cliente de PG Estrategias: ${t.nombre}`}
-                      className="absolute inset-0 w-full h-full object-cover"
-                    />
-                    <div
-                      aria-hidden
-                      className="absolute inset-0 pointer-events-none"
-                      style={{
-                        background:
-                          "linear-gradient(180deg, transparent 45%, rgba(21,21,19,0.85) 100%)",
-                      }}
-                    />
-                  </div>
-
-                  <blockquote className="p-7 md:p-9">
-                    <p
-                      className="font-title mb-6"
-                      style={{
-                        fontSize: "clamp(19px, 2.1vw, 25px)",
-                        fontWeight: 700,
-                        lineHeight: 1.25,
-                        letterSpacing: "-0.015em",
-                        color: "#E4E0DD",
-                      }}
-                    >
-                      «{t.quote}»
-                    </p>
-                    <figcaption>
-                      <p
-                        className="font-body text-[14px] mb-1"
-                        style={{ color: "#E4E0DD" }}
-                      >
-                        {t.nombre}
-                      </p>
-                      <p
-                        className="font-body text-[11px] uppercase tracking-[0.16em]"
-                        style={{ color: "rgba(228,224,221,0.45)" }}
-                      >
-                        {t.industria}
-                      </p>
-                    </figcaption>
-                  </blockquote>
-                </motion.figure>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ============================================================
-            13 · CIERRE
+            11 · CIERRE
            ============================================================ */}
         <section
           className="relative overflow-hidden flex items-center justify-center px-6 md:px-14 min-h-screen"
@@ -1156,9 +1064,9 @@ export default function PropuestaLandRoverClient() {
                 color: "#E4E0DD",
               }}
             >
-              La marca ya es legendaria.
+              Un equipo. Un ritmo.
               <br />
-              Los vehículos hablan por sí solos.
+              Un solo responsable.
             </motion.h2>
 
             <motion.p
@@ -1166,17 +1074,17 @@ export default function PropuestaLandRoverClient() {
               transition={{ ...reveal.transition, delay: 0.2 }}
               className="font-title"
               style={{
-                fontSize: "clamp(26px, 3.6vw, 54px)",
+                fontSize: "clamp(24px, 3.4vw, 50px)",
                 fontWeight: 700,
-                lineHeight: 1.1,
+                lineHeight: 1.12,
                 letterSpacing: "-0.025em",
                 color: "#D63A27",
                 fontStyle: "italic",
               }}
             >
-              Nosotros ponemos la maquinaria
+              Empecemos por la oferta
               <br />
-              que los convierte en ventas.
+              comercial de este mes.
             </motion.p>
 
             <motion.div
