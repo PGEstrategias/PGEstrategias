@@ -21,13 +21,18 @@ const PRECIO = "15,000";
 const HERO_VIDEO =
   "https://res.cloudinary.com/djduba5fd/video/upload/v1785888616/WhatsApp_Video_2026-08-04_at_4.27.42_PM_vcpnm7.mp4";
 
-/* Muestras de producción de PG. Piezas reales del portafolio. */
+/* Demo vertical que PG ya produjo específicamente para Land Rover. */
+const LANDROVER_DEMO =
+  "https://res.cloudinary.com/djduba5fd/video/upload/v1787082349/LandRover_LegacyDrop2_lwq2q2.mp4";
+
+/* Muestras de producción de PG en el sector automotriz. Verticales 9:16. */
 const MUESTRAS = [
+  "https://res.cloudinary.com/djduba5fd/video/upload/v1787082394/ZenithMustangBlackHorse_ld8o8z.mp4",
+  "https://res.cloudinary.com/djduba5fd/video/upload/v1787612227/HuracanZenith_uzna4d.mp4",
+  "https://res.cloudinary.com/djduba5fd/video/upload/v1787612470/Challenger_vur6pe.mp4",
   "https://res.cloudinary.com/djduba5fd/video/upload/v1779377563/Tesla2_qgocjj.mp4",
   "https://res.cloudinary.com/djduba5fd/video/upload/v1779379785/AQM00fcFB9UXzP0XHk25z0YsAV6IQq-Q2WvI-l4X-5FOxbB0Y3ZBy5qfCKmYppNZ1uqC6NSFUTJdtATYZoxwS7VKBBgGy7hP7dEnq-g_snczgp.mp4",
   "https://res.cloudinary.com/djduba5fd/video/upload/v1779379782/AQNT8_lqO4uOfGx0cDYYLy5qea3MVzTq7nMnuJrqQ10beUeG_V6FfEw4CmGXg5dkSiKwSj-0-g70SxtETMlBb5OsaeYI4fC70KqDoJM_kls3iw.mp4",
-  "https://res.cloudinary.com/djduba5fd/video/upload/v1785887879/AQNuVhBmkwGTX4OC78O3d0NwH_wfPRlmgNF7AvKO9OeAWifsY0eQEZ9IC9s0raBPg-wJjnxrnTZXKaXkwiHNIpMRWV-x3VRjiy1V4-k_om1cmn.mp4",
-  "https://res.cloudinary.com/djduba5fd/video/upload/v1785888058/AQPQOFP2CknFh7iZjtFDWRGeqLuiu-wE6o3L4EaKSH4XoEaxIAgPuWhJrRtB7CHuNDnCAdvL-XfWcEP_h32SaGdC627KoUHNg29_hbI_fz6dxd.mp4",
 ];
 
 /* Lo que entendimos de su operación — construido sobre el brief. */
@@ -447,7 +452,72 @@ export default function PropuestaLandRoverClient() {
         </section>
 
         {/* ============================================================
-            3 · EL RETO DEL CALENDARIO
+            3 · DEMO PARA LA MARCA
+           ============================================================ */}
+        <section
+          className="relative py-24 md:py-40"
+          style={{ background: "#121210" }}
+        >
+          <div className="px-6 md:px-14 max-w-[1400px] mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+              <motion.div {...reveal} className="lg:col-span-6 order-2 lg:order-1">
+                <Eyebrow>Un demo para la marca</Eyebrow>
+                <SectionTitle>
+                  No arrancamos de cero.{" "}
+                  <em style={{ color: "#D63A27", fontStyle: "italic" }}>
+                    Ya produjimos para Land Rover.
+                  </em>
+                </SectionTitle>
+                <Body className="mb-7">
+                  Esta pieza la hicimos específicamente para la marca — el tono,
+                  el ritmo y el estándar de producción que Land Rover Puebla
+                  puede tener publicando cada semana.
+                </Body>
+                <Body>
+                  Es una muestra, no un caso aislado: así se ve el contenido que
+                  el sistema mensual produce de forma constante.
+                </Body>
+              </motion.div>
+
+              <motion.div
+                {...reveal}
+                transition={{ ...reveal.transition, delay: 0.15 }}
+                className="lg:col-span-6 order-1 lg:order-2 flex justify-center"
+              >
+                <div
+                  className="relative w-full max-w-[360px] aspect-[9/16] overflow-hidden"
+                  style={{
+                    background: "#0e0e0d",
+                    border: "1px solid rgba(228,224,221,0.14)",
+                  }}
+                >
+                  <video
+                    className="absolute inset-0 w-full h-full object-cover"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="auto"
+                    aria-label="Demo de producción de PG Estrategias para Land Rover"
+                  >
+                    <source src={LANDROVER_DEMO} type="video/mp4" />
+                  </video>
+                  <div
+                    aria-hidden
+                    className="absolute inset-0 pointer-events-none"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, transparent 70%, rgba(14,14,13,0.5) 100%)",
+                    }}
+                  />
+                </div>
+              </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================
+            4 · EL RETO DEL CALENDARIO
            ============================================================ */}
         <section
           className="relative py-24 md:py-40"
@@ -519,7 +589,7 @@ export default function PropuestaLandRoverClient() {
         </section>
 
         {/* ============================================================
-            4 · QUÉ INCLUYE CADA MES
+            5 · QUÉ INCLUYE CADA MES
            ============================================================ */}
         <section className="relative px-6 md:px-14 py-24 md:py-40 max-w-[1400px] mx-auto">
           <motion.div {...reveal} className="mb-16 md:mb-20 max-w-[880px]">
@@ -596,7 +666,7 @@ export default function PropuestaLandRoverClient() {
         </section>
 
         {/* ============================================================
-            5 · CADENCIA MENSUAL DEL CONTENIDO
+            6 · CADENCIA MENSUAL DEL CONTENIDO
            ============================================================ */}
         <section
           className="relative py-24 md:py-40"
@@ -655,7 +725,7 @@ export default function PropuestaLandRoverClient() {
         </section>
 
         {/* ============================================================
-            6 · MUESTRAS DE PRODUCCIÓN
+            7 · MUESTRAS DE PRODUCCIÓN
            ============================================================ */}
         <section className="relative px-6 md:px-14 py-24 md:py-40 max-w-[1400px] mx-auto">
           <motion.div {...reveal} className="mb-16 md:mb-20 max-w-[820px]">
@@ -701,7 +771,7 @@ export default function PropuestaLandRoverClient() {
         </section>
 
         {/* ============================================================
-            7 · COMUNIDAD, EVENTOS Y ACCESORIOS
+            8 · COMUNIDAD, EVENTOS Y ACCESORIOS
            ============================================================ */}
         <section
           className="relative py-24 md:py-40"
@@ -763,7 +833,7 @@ export default function PropuestaLandRoverClient() {
         </section>
 
         {/* ============================================================
-            8 · FULL AI — capacidad bajo autorización previa
+            9 · FULL AI — capacidad bajo autorización previa
            ============================================================ */}
         <section className="relative px-6 md:px-14 py-24 md:py-40 max-w-[1400px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
@@ -835,7 +905,7 @@ export default function PropuestaLandRoverClient() {
         </section>
 
         {/* ============================================================
-            9 · CÓMO TRABAJAMOS
+            10 · CÓMO TRABAJAMOS
            ============================================================ */}
         <section
           className="relative py-24 md:py-40"
@@ -894,7 +964,7 @@ export default function PropuestaLandRoverClient() {
         </section>
 
         {/* ============================================================
-            10 · INVERSIÓN
+            11 · INVERSIÓN
            ============================================================ */}
         <section
           className="relative px-6 md:px-14 py-24 md:py-32 overflow-hidden"
@@ -1020,7 +1090,7 @@ export default function PropuestaLandRoverClient() {
         </section>
 
         {/* ============================================================
-            11 · CIERRE
+            12 · CIERRE
            ============================================================ */}
         <section
           className="relative overflow-hidden flex items-center justify-center px-6 md:px-14 min-h-screen"
