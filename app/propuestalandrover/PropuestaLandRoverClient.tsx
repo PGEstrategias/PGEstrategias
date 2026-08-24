@@ -7,12 +7,13 @@ import Logo from "@/components/Logo";
 /* ────────────────────────────────────────────────────────────
    Landing de propuesta — Land Rover Puebla × PG Estrategias.
 
-   Se presenta en persona: NO lleva botones, enlaces de contacto ni
-   precios. El cierre es verbal y la última pantalla es el telón de
-   fondo de ese cierre, por eso tampoco monta el Footer del sitio.
+   Versión comercial: expone cómo trabajamos, los servicios y la
+   inversión. Mantiene el sistema visual de la marca PG y las piezas
+   audiovisuales del portafolio.
    ──────────────────────────────────────────────────────────── */
 
 const CLIENTE = "Land Rover Puebla";
+const PRECIO = "15,000";
 
 const HERO_VIDEO =
   "https://res.cloudinary.com/djduba5fd/video/upload/v1785888616/WhatsApp_Video_2026-08-04_at_4.27.42_PM_vcpnm7.mp4";
@@ -27,49 +28,97 @@ const PORTFOLIO = [
   "https://res.cloudinary.com/djduba5fd/video/upload/v1785888058/AQPQOFP2CknFh7iZjtFDWRGeqLuiu-wE6o3L4EaKSH4XoEaxIAgPuWhJrRtB7CHuNDnCAdvL-XfWcEP_h32SaGdC627KoUHNg29_hbI_fz6dxd.mp4",
 ];
 
-/* Visual de la sección «La transformación».
-   PENDIENTE: sustituir por una Defender o Range Rover en paisaje —
-   kit de prensa de JLR o producción propia. Nada de stock genérico.
-   Mientras llega, se muestra una pieza cinematográfica del portafolio. */
 const TRANSFORMACION_VIDEO =
   "https://res.cloudinary.com/djduba5fd/video/upload/v1779379785/AQM00fcFB9UXzP0XHk25z0YsAV6IQq-Q2WvI-l4X-5FOxbB0Y3ZBy5qfCKmYppNZ1uqC6NSFUTJdtATYZoxwS7VKBBgGy7hP7dEnq-g_snczgp.mp4";
 
-const ideas = [
+/* Los entregables concretos del mes. Este es el corazón de la oferta. */
+const incluye = [
   {
     num: "01",
-    title: "Serie «Territorio»",
+    title: "8 reels mensuales",
     desc:
-      "La Defender y la Range Rover filmadas donde pertenecen — haciendas, carreteras a Valle de Bravo, caminos de la Sierra. Contenido de estilo de vida que ninguna otra agencia en Puebla puede igualar, porque ninguna tiene estos vehículos.",
+      "Distribuidos entre oferta comercial del mes, recaps de eventos y rutas de la comunidad, y promociones atemporales. Producción a la altura de la marca, no relleno de calendario.",
   },
   {
     num: "02",
-    title: "Prueba de manejo cinematográfica",
+    title: "100 fotografías",
     desc:
-      "Convertir el test drive en una experiencia filmada que el prospecto quiere vivir — y compartir.",
+      "Para posts, carruseles y artes en redes sociales. Un banco visual que alimenta la operación todo el mes sin depender de una sola sesión.",
   },
   {
     num: "03",
-    title: "Entregas memorables",
+    title: "WhatsApp Bot optimizado",
     desc:
-      "El momento de recibir las llaves de una Range Rover, producido como pieza de marca. Cada cliente se vuelve embajador.",
+      "Para responder a tus leads al instante, calificar interés y modelo, y pasarle a tu equipo solo a quien está listo para hablar.",
   },
   {
     num: "04",
-    title: "Posventa que retiene",
+    title: "Perfil de Google optimizado",
     desc:
-      "Contenido y campañas para servicio y Land Rover Approved — el ingreso recurrente que casi nadie promociona con calidad.",
+      "Más estrategia de reseñas para dominar las búsquedas locales de ventas, servicio y Approved — y llegar bien parados a quien ya te busca.",
   },
   {
     num: "05",
-    title: "Campañas de precisión en Meta y Google",
+    title: "Videollamada estratégica quincenal",
     desc:
-      "Llegar al perfil que realmente puede comprar, no a todo el mundo — y capturar a quien ya busca «Defender», «Range Rover» o «Land Rover seminuevos» en Puebla.",
+      "Cada dos semanas revisamos calendario, prioridades y siguiente ola de contenido. La estrategia sigue siendo tuya; nosotros la ejecutamos.",
   },
   {
     num: "06",
-    title: "Filtro inteligente por WhatsApp",
+    title: "Consultoría de crecimiento mensual",
     desc:
-      "Bot que califica interés, modelo y perfil antes de pasar el lead, para que tu equipo dedique su tiempo a compradores reales.",
+      "Una sesión al mes para mirar el negocio de arriba: qué está funcionando, qué ajustar y dónde está la siguiente oportunidad.",
+  },
+  {
+    num: "07",
+    title: "Reporte quincenal",
+    desc:
+      "En lenguaje claro, sin tecnicismos. Qué se produjo, qué se publicó y cómo respondió tu audiencia — cada quince días.",
+  },
+];
+
+/* La cadencia que resuelve el cuello de botella de aprobación. */
+const cadencia = [
+  {
+    dia: "Semana 1",
+    title: "Ofertas comerciales listas",
+    desc:
+      "Los videos de la oferta comercial del mes quedan entregados en los primeros días. Entran a su ciclo de aprobación de inmediato, no a mitad de mes.",
+  },
+  {
+    dia: "Durante el mes",
+    title: "Recaps y comunidad",
+    desc:
+      "Filmamos fuera de piso: rutas, actividades y eventos de la comunidad Land Rover. El contenido de estilo de vida que hace sentir la marca.",
+  },
+  {
+    dia: "Constante",
+    title: "Atemporales y banco visual",
+    desc:
+      "Promociones atemporales, accesorios originales y las 100 fotografías que sostienen la publicación diaria sin apagar el ritmo.",
+  },
+];
+
+const comunidad = [
+  {
+    title: "Recaps de eventos fuera de piso",
+    desc:
+      "Estamos presentes en rutas y actividades para filmar la experiencia real de la comunidad Land Rover — no una recreación de estudio.",
+  },
+  {
+    title: "Curaduría de eventos",
+    desc:
+      "Sugerimos eventos deportivos y campestres alineados con el público objetivo y con el ADN de la marca, para activar presencia donde importa.",
+  },
+  {
+    title: "Público objetivo que ya conocemos",
+    desc:
+      "Tenemos experiencia con este perfil de comprador. No arrancamos de cero: sabemos qué le mueve y con qué contenido responde.",
+  },
+  {
+    title: "Línea de accesorios originales",
+    desc:
+      "La marca de accesorios originales Land Rover tiene su propio espacio dentro del calendario — un ingreso que casi nadie promociona con calidad.",
   },
 ];
 
@@ -84,50 +133,17 @@ const colaboracion = [
     num: "02",
     title: "Plan conjunto",
     desc:
-      "Definimos juntos prioridades, calendario y metas — la estrategia sigue siendo tuya, nosotros ponemos la maquinaria. Todo dentro de los lineamientos de identidad de Jaguar Land Rover.",
+      "Definimos juntos prioridades, calendario y metas — dentro de los lineamientos de identidad de Jaguar Land Rover.",
   },
   {
     num: "03",
     title: "Producción y activación",
-    desc: "Grabamos, fotografiamos y lanzamos el sistema completo.",
+    desc: "Grabamos, fotografiamos y ponemos el sistema completo en marcha.",
   },
   {
     num: "04",
-    title: "Optimización mensual",
+    title: "Optimización quincenal",
     desc: "Reportería clara y ajustes con datos, no con intuición.",
-  },
-];
-
-const traccion = [
-  {
-    title: "Meta Ads con remarketing",
-    desc:
-      "Quien vio el video de la Defender tres veces recibe el empujón que le faltaba.",
-  },
-  {
-    title: "Google Ads para capturar demanda activa",
-    desc:
-      "Quien busca un modelo específico en Puebla, te encuentra a ti.",
-  },
-  {
-    title: "Optimización de Google Maps",
-    desc:
-      "Para dominar las búsquedas locales — ventas, servicio y Approved.",
-  },
-  {
-    title: "Landing page a la altura de la marca",
-    desc:
-      "Diseñada para convertir visitas en citas de prueba de manejo.",
-  },
-  {
-    title: "Sistema de bots que califica cada lead",
-    desc:
-      "Modelo, perfil, intención — tu equipo solo habla con compradores reales.",
-  },
-  {
-    title: "Carruseles con fotografía profesional",
-    desc:
-      "Que hacen justicia a los vehículos que representan.",
   },
 ];
 
@@ -266,7 +282,7 @@ export default function PropuestaLandRoverClient() {
 
       <main style={{ background: "#1C1C1A", color: "#E4E0DD" }}>
         {/* ============================================================
-            1 · HERO — solo el titular sobre el video
+            1 · HERO
            ============================================================ */}
         <section className="relative w-full h-screen min-h-[720px] overflow-hidden">
           <video
@@ -366,7 +382,7 @@ export default function PropuestaLandRoverClient() {
         </section>
 
         {/* ============================================================
-            2 · EL PROBLEMA
+            2 · EL PROBLEMA — el cuello de botella real
            ============================================================ */}
         <section className="relative px-6 md:px-14 py-24 md:py-40 max-w-[1400px] mx-auto">
           <motion.div {...reveal} className="max-w-[880px]">
@@ -374,20 +390,20 @@ export default function PropuestaLandRoverClient() {
             <SectionTitle>
               No es un problema de visión.{" "}
               <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                Es un problema de manos.
+                Es un problema de ritmo.
               </em>
             </SectionTitle>
             <Body className="mb-7">
-              Land Rover invierte décadas en construir algo que ninguna otra
-              marca tiene: la idea de que un vehículo puede llevarte más lejos —
-              en el terreno y en la vida. Pero sostener ese estándar en lo local
-              exige algo que pocas operaciones tienen a la mano: un equipo de
-              producción capaz de filmar una Defender como se merece, campañas
-              que encuentren al comprador correcto y un seguimiento tan
-              impecable como la experiencia de showroom.
+              Aprobar un anuncio para pautar toma cerca de 20 días. Eso deja
+              apenas 10 para que la oferta comercial del mes salga a la calle —
+              y muchas veces el contenido llega tarde a ese ciclo. El resultado:
+              vehículos que merecen una producción cinematográfica terminan
+              publicados con prisa, o no publicados a tiempo.
             </Body>
             <Body>
-              Y una Range Rover merece una producción a la altura del vehículo.
+              La marca ya es legendaria. Lo que falta es una maquinaria que
+              produzca a la altura de Land Rover y entregue con la anticipación
+              que su calendario exige.
             </Body>
           </motion.div>
         </section>
@@ -410,12 +426,12 @@ export default function PropuestaLandRoverClient() {
                   </em>
                 </SectionTitle>
                 <Body>
-                  Imagina tener un equipo completo de producción y performance
-                  operando como extensión del tuyo: cada vehículo filmado con
-                  calidad cinematográfica, contenido de estilo de vida que hace
-                  sentir la marca antes de manejarla, campañas que llegan
-                  exactamente al perfil que puede comprarla, y un sistema que
-                  convierte interés en citas de prueba de manejo.
+                  Imagina un equipo completo de producción operando como
+                  extensión del tuyo: cada vehículo filmado con calidad
+                  cinematográfica, contenido de estilo de vida que hace sentir la
+                  marca antes de manejarla, y un sistema que responde a cada lead
+                  al instante — todo entregado con la anticipación que tu ciclo
+                  de aprobación necesita.
                 </Body>
               </motion.div>
 
@@ -500,63 +516,79 @@ export default function PropuestaLandRoverClient() {
         </section>
 
         {/* ============================================================
-            5 · IDEAS PARA LAND ROVER PUEBLA
+            5 · QUÉ INCLUYE CADA MES — los entregables concretos
            ============================================================ */}
         <section
           className="relative py-24 md:py-40"
           style={{ background: "#151513" }}
         >
           <div className="px-6 md:px-14 max-w-[1400px] mx-auto">
-            <motion.div {...reveal} className="mb-16 md:mb-20 max-w-[820px]">
-              <Eyebrow>Ideas para {CLIENTE}</Eyebrow>
+            <motion.div {...reveal} className="mb-16 md:mb-20 max-w-[880px]">
+              <Eyebrow>Qué incluye cada mes</Eyebrow>
               <SectionTitle>
-                Esto es lo que{" "}
+                Un sistema completo,{" "}
                 <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                  ya imaginamos para ustedes.
+                  medible por entregables.
                 </em>
               </SectionTitle>
+              <Body>
+                Nada de promesas difusas. Esto es exactamente lo que produce y
+                entrega el equipo, mes con mes.
+              </Body>
             </motion.div>
 
-            <div className="flex flex-col">
-              {ideas.map((idea, i) => (
+            <div
+              className="grid grid-cols-1"
+              style={{ borderTop: "1px solid rgba(228,224,221,0.12)" }}
+            >
+              {incluye.map((item, i) => (
                 <motion.div
-                  key={idea.num}
-                  {...reveal}
-                  transition={{ ...reveal.transition, delay: i * 0.06 }}
-                  className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-16 py-9 md:py-12"
-                  style={{ borderTop: "1px solid rgba(228,224,221,0.12)" }}
+                  key={item.num}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.7, delay: i * 0.05 }}
+                  className="relative grid grid-cols-12 gap-6 md:gap-10 py-8 md:py-10 group"
+                  style={{ borderBottom: "1px solid rgba(228,224,221,0.12)" }}
                 >
-                  <div className="lg:col-span-5 flex items-start gap-5">
-                    <span
-                      className="font-title leading-none shrink-0"
+                  <span
+                    aria-hidden
+                    className="absolute top-0 left-0 h-px w-0 group-hover:w-full transition-all duration-700"
+                    style={{ background: "#D63A27" }}
+                  />
+                  <div className="col-span-12 md:col-span-2">
+                    <p
+                      className="font-title"
                       style={{
-                        fontSize: "34px",
-                        fontWeight: 700,
+                        fontSize: 14,
+                        fontWeight: 500,
+                        letterSpacing: "0.18em",
                         color: "#D63A27",
-                        letterSpacing: "-0.03em",
                       }}
                     >
-                      {idea.num}
-                    </span>
+                      {item.num}
+                    </p>
+                  </div>
+                  <div className="col-span-12 md:col-span-4">
                     <h3
                       className="font-title"
                       style={{
-                        fontSize: "clamp(21px, 2.4vw, 30px)",
+                        fontSize: 22,
                         fontWeight: 700,
-                        lineHeight: 1.12,
                         letterSpacing: "-0.02em",
+                        lineHeight: 1.15,
                         color: "#E4E0DD",
                       }}
                     >
-                      {idea.title}
+                      {item.title}
                     </h3>
                   </div>
-                  <div className="lg:col-span-7">
+                  <div className="col-span-12 md:col-span-6">
                     <p
-                      className="font-body text-[15px] leading-[1.8]"
-                      style={{ color: "rgba(228,224,221,0.68)" }}
+                      className="font-body text-[15px] leading-[1.7]"
+                      style={{ color: "rgba(228,224,221,0.7)" }}
                     >
-                      {idea.desc}
+                      {item.desc}
                     </p>
                   </div>
                 </motion.div>
@@ -566,41 +598,46 @@ export default function PropuestaLandRoverClient() {
         </section>
 
         {/* ============================================================
-            6 · CÓMO COLABORARÍAMOS
+            6 · CADENCIA OPERATIVA — cómo resolvemos el timing
            ============================================================ */}
         <section className="relative px-6 md:px-14 py-24 md:py-40 max-w-[1400px] mx-auto">
-          <motion.div {...reveal} className="mb-16 md:mb-20 max-w-[820px]">
-            <Eyebrow>Cómo colaboraríamos</Eyebrow>
+          <motion.div {...reveal} className="mb-16 md:mb-20 max-w-[880px]">
+            <Eyebrow>Cadencia operativa</Eyebrow>
             <SectionTitle>
-              Cuatro pasos,{" "}
+              La oferta comercial,{" "}
               <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                un solo equipo.
+                lista en la primera semana.
               </em>
             </SectionTitle>
+            <Body>
+              Trabajamos con la anticipación que exige tu ciclo de aprobación:
+              los videos de oferta comercial entran a revisión desde los
+              primeros días del mes, no a mitad de camino.
+            </Body>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px">
-            {colaboracion.map((c, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-px">
+            {cadencia.map((c, i) => (
               <motion.div
-                key={c.num}
+                key={c.title}
                 {...reveal}
                 transition={{ ...reveal.transition, delay: i * 0.08 }}
-                className="p-7 md:p-8"
+                className="p-7 md:p-9 relative group"
                 style={{
                   borderTop: "1px solid rgba(228,224,221,0.12)",
                   background: "rgba(255,255,255,0.015)",
                 }}
               >
+                <span
+                  aria-hidden
+                  className="absolute left-0 top-0 h-full w-[2px] scale-y-0 group-hover:scale-y-100 origin-top transition-transform duration-500"
+                  style={{ background: "#D63A27" }}
+                />
                 <p
-                  className="font-title leading-none mb-5"
-                  style={{
-                    fontSize: "32px",
-                    fontWeight: 700,
-                    color: "#D63A27",
-                    letterSpacing: "-0.03em",
-                  }}
+                  className="font-body text-[11px] uppercase tracking-[0.22em] mb-5"
+                  style={{ color: "#D63A27", fontWeight: 600 }}
                 >
-                  {c.num}
+                  {c.dia}
                 </p>
                 <h3
                   className="font-title text-[20px] mb-3"
@@ -620,60 +657,34 @@ export default function PropuestaLandRoverClient() {
         </section>
 
         {/* ============================================================
-            7 · PAQUETE TRACCIÓN — sin precio, se presenta verbalmente
+            7 · COMUNIDAD Y EVENTOS
            ============================================================ */}
         <section
-          className="relative py-24 md:py-40 overflow-hidden"
+          className="relative py-24 md:py-40"
           style={{ background: "#151513" }}
         >
-          <div
-            aria-hidden
-            className="absolute pointer-events-none"
-            style={{
-              top: "-20%",
-              left: "50%",
-              transform: "translateX(-50%)",
-              width: "70vw",
-              height: "70vw",
-              maxWidth: 800,
-              maxHeight: 800,
-              background:
-                "radial-gradient(circle, rgba(214,58,39,0.10) 0%, transparent 65%)",
-              filter: "blur(50px)",
-            }}
-          />
-          <div className="relative px-6 md:px-14 max-w-[1400px] mx-auto">
+          <div className="px-6 md:px-14 max-w-[1400px] mx-auto">
             <motion.div {...reveal} className="mb-16 md:mb-20 max-w-[880px]">
-              <Eyebrow>El paquete</Eyebrow>
+              <Eyebrow>Comunidad y eventos</Eyebrow>
               <SectionTitle>
-                Tracción:{" "}
+                Donde vive la marca,{" "}
                 <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                  el sistema completo, en marcha.
+                  ahí estamos filmando.
                 </em>
               </SectionTitle>
               <Body>
-                Diseñado para marcas que ya tienen demanda y necesitan
-                convertirla con consistencia: producción de contenido mensual,
-                campañas en Meta Ads, landing pages de campaña y automatización
-                de seguimiento por WhatsApp. Un solo equipo, una sola línea
-                visual, un solo responsable.
+                La comunidad de rutas y actividades Land Rover es un activo que
+                pocas marcas tienen. Lo convertimos en contenido — y sugerimos
+                dónde activar la siguiente experiencia.
               </Body>
             </motion.div>
 
-            <motion.p
-              {...reveal}
-              className="font-body text-[11px] uppercase tracking-[0.22em] mb-10"
-              style={{ color: "rgba(228,224,221,0.4)" }}
-            >
-              El sistema completo incluye
-            </motion.p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px">
-              {traccion.map((t, i) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-px">
+              {comunidad.map((c, i) => (
                 <motion.div
-                  key={t.title}
+                  key={c.title}
                   {...reveal}
-                  transition={{ ...reveal.transition, delay: (i % 3) * 0.07 }}
+                  transition={{ ...reveal.transition, delay: (i % 2) * 0.08 }}
                   className="p-7 md:p-9 relative group"
                   style={{
                     borderTop: "1px solid rgba(228,224,221,0.12)",
@@ -686,7 +697,7 @@ export default function PropuestaLandRoverClient() {
                     style={{ background: "#D63A27" }}
                   />
                   <h3
-                    className="font-title text-[18px] mb-3"
+                    className="font-title text-[19px] mb-3"
                     style={{
                       fontWeight: 700,
                       color: "#E4E0DD",
@@ -694,13 +705,13 @@ export default function PropuestaLandRoverClient() {
                       lineHeight: 1.25,
                     }}
                   >
-                    {t.title}
+                    {c.title}
                   </h3>
                   <p
                     className="font-body text-[14px] leading-[1.7]"
                     style={{ color: "rgba(228,224,221,0.6)" }}
                   >
-                    {t.desc}
+                    {c.desc}
                   </p>
                 </motion.div>
               ))}
@@ -709,7 +720,264 @@ export default function PropuestaLandRoverClient() {
         </section>
 
         {/* ============================================================
-            8 · ESTÁNDARES DE CALIDAD
+            8 · FULL AI — capacidad bajo autorización previa
+           ============================================================ */}
+        <section className="relative px-6 md:px-14 py-24 md:py-40 max-w-[1400px] mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+            <motion.div {...reveal} className="lg:col-span-6">
+              <Eyebrow>Capacidad opcional</Eyebrow>
+              <SectionTitle>
+                Piezas full-AI,{" "}
+                <em style={{ color: "#D63A27", fontStyle: "italic" }}>
+                  como el SuperBee de Dodge.
+                </em>
+              </SectionTitle>
+              <Body className="mb-7">
+                Sabemos que el video generado con IA no es la preferencia por
+                defecto — y está bien. Lo dejamos como una capacidad disponible:
+                cuando una campaña lo pida, podemos producir piezas full-AI de
+                alto impacto, del tipo que ya usan marcas globales.
+              </Body>
+              <Body>
+                Siempre bajo autorización previa y dentro de los lineamientos de
+                identidad de la marca. Nunca sustituye la producción real; la
+                complementa cuando aporta.
+              </Body>
+            </motion.div>
+
+            <motion.div
+              {...reveal}
+              transition={{ ...reveal.transition, delay: 0.15 }}
+              className="lg:col-span-5 lg:col-start-8"
+            >
+              <div
+                className="relative p-8 md:p-10"
+                style={{
+                  border: "1px solid rgba(214,58,39,0.25)",
+                  background: "rgba(214,58,39,0.04)",
+                }}
+              >
+                <p
+                  className="font-body text-[11px] uppercase tracking-[0.22em] mb-6"
+                  style={{ color: "#D63A27", fontWeight: 600 }}
+                >
+                  Cómo funciona
+                </p>
+                {[
+                  "Proponemos el concepto y lo autorizas antes de producir.",
+                  "Se ejecuta dentro de los lineamientos de Jaguar Land Rover.",
+                  "Se cotiza por pieza, aparte del paquete mensual.",
+                ].map((linea) => (
+                  <div
+                    key={linea}
+                    className="py-4 flex items-start gap-4"
+                    style={{ borderTop: "1px solid rgba(228,224,221,0.1)" }}
+                  >
+                    <span
+                      aria-hidden
+                      className="shrink-0 block mt-2"
+                      style={{ width: 16, height: 1, background: "#D63A27" }}
+                    />
+                    <span
+                      className="font-body text-[14px] leading-[1.6]"
+                      style={{ color: "rgba(228,224,221,0.72)" }}
+                    >
+                      {linea}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ============================================================
+            9 · CÓMO COLABORARÍAMOS
+           ============================================================ */}
+        <section
+          className="relative py-24 md:py-40"
+          style={{ background: "#151513" }}
+        >
+          <div className="px-6 md:px-14 max-w-[1400px] mx-auto">
+            <motion.div {...reveal} className="mb-16 md:mb-20 max-w-[820px]">
+              <Eyebrow>Cómo colaboraríamos</Eyebrow>
+              <SectionTitle>
+                Cuatro pasos,{" "}
+                <em style={{ color: "#D63A27", fontStyle: "italic" }}>
+                  un solo equipo.
+                </em>
+              </SectionTitle>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-px">
+              {colaboracion.map((c, i) => (
+                <motion.div
+                  key={c.num}
+                  {...reveal}
+                  transition={{ ...reveal.transition, delay: i * 0.08 }}
+                  className="p-7 md:p-8"
+                  style={{
+                    borderTop: "1px solid rgba(228,224,221,0.12)",
+                    background: "rgba(255,255,255,0.015)",
+                  }}
+                >
+                  <p
+                    className="font-title leading-none mb-5"
+                    style={{
+                      fontSize: "32px",
+                      fontWeight: 700,
+                      color: "#D63A27",
+                      letterSpacing: "-0.03em",
+                    }}
+                  >
+                    {c.num}
+                  </p>
+                  <h3
+                    className="font-title text-[20px] mb-3"
+                    style={{ fontWeight: 700, color: "#E4E0DD" }}
+                  >
+                    {c.title}
+                  </h3>
+                  <p
+                    className="font-body text-[14px] leading-[1.7]"
+                    style={{ color: "rgba(228,224,221,0.6)" }}
+                  >
+                    {c.desc}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================
+            10 · INVERSIÓN
+           ============================================================ */}
+        <section
+          className="relative px-6 md:px-14 py-24 md:py-32 overflow-hidden"
+          style={{
+            background:
+              "linear-gradient(180deg, #1C1C1A 0%, #201F1C 55%, #1C1C1A 100%)",
+          }}
+        >
+          <div
+            aria-hidden
+            className="absolute pointer-events-none"
+            style={{
+              top: "-10%",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "70vw",
+              height: "70vw",
+              maxWidth: 800,
+              maxHeight: 800,
+              background:
+                "radial-gradient(circle, rgba(214,58,39,0.10) 0%, transparent 65%)",
+              filter: "blur(50px)",
+            }}
+          />
+          <div className="relative max-w-[1200px] mx-auto">
+            <motion.div
+              {...reveal}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start"
+            >
+              <div className="lg:col-span-6">
+                <Eyebrow>Inversión</Eyebrow>
+                <SectionTitle>
+                  Todo el sistema,{" "}
+                  <em style={{ color: "#D63A27", fontStyle: "italic" }}>
+                    un solo cargo mensual.
+                  </em>
+                </SectionTitle>
+                <Body className="mb-4">
+                  Un solo equipo, una sola línea visual y un solo responsable.
+                  Producción, fotografía, automatización y estrategia integradas
+                  en un único plan mensual.
+                </Body>
+                <p
+                  className="font-body text-[14px] leading-[1.7]"
+                  style={{ color: "rgba(228,224,221,0.55)" }}
+                >
+                  Las piezas full-AI se cotizan por separado y solo bajo
+                  autorización previa.
+                </p>
+              </div>
+
+              <div className="lg:col-span-6">
+                <div
+                  className="relative p-8 md:p-12"
+                  style={{
+                    background: "rgba(228,224,221,0.03)",
+                    border: "1px solid rgba(228,224,221,0.14)",
+                  }}
+                >
+                  <p
+                    className="font-body text-[11px] tracking-[0.22em] uppercase mb-4"
+                    style={{ color: "rgba(228,224,221,0.5)" }}
+                  >
+                    Iguala mensual
+                  </p>
+
+                  <div className="flex items-baseline gap-3 mb-6">
+                    <span
+                      className="font-title"
+                      style={{
+                        fontSize: 22,
+                        color: "rgba(228,224,221,0.55)",
+                        fontWeight: 400,
+                      }}
+                    >
+                      $
+                    </span>
+                    <span
+                      className="font-title"
+                      style={{
+                        fontSize: "clamp(64px, 9vw, 104px)",
+                        fontWeight: 700,
+                        lineHeight: 1,
+                        letterSpacing: "-0.04em",
+                        color: "#E4E0DD",
+                      }}
+                    >
+                      {PRECIO}
+                    </span>
+                    <div className="flex flex-col">
+                      <span
+                        className="font-body text-[13px] tracking-[0.14em] uppercase"
+                        style={{ color: "rgba(228,224,221,0.7)" }}
+                      >
+                        MXN
+                      </span>
+                      <span
+                        className="font-body text-[12px]"
+                        style={{ color: "rgba(228,224,221,0.5)" }}
+                      >
+                        / mes
+                      </span>
+                    </div>
+                  </div>
+
+                  <div
+                    className="pt-5"
+                    style={{ borderTop: "1px solid rgba(228,224,221,0.12)" }}
+                  >
+                    <p
+                      className="font-body text-[13px] leading-[1.7]"
+                      style={{ color: "rgba(228,224,221,0.6)" }}
+                    >
+                      Más IVA en caso de requerir factura. Sin costos ocultos:
+                      los siete entregables del mes están incluidos en este
+                      cargo.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ============================================================
+            11 · ESTÁNDARES DE CALIDAD
            ============================================================ */}
         <section className="relative px-6 md:px-14 py-24 md:py-40 max-w-[1400px] mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
@@ -760,7 +1028,7 @@ export default function PropuestaLandRoverClient() {
         </section>
 
         {/* ============================================================
-            9 · PRUEBA SOCIAL
+            12 · PRUEBA SOCIAL
            ============================================================ */}
         <section
           className="relative py-24 md:py-40"
@@ -844,7 +1112,7 @@ export default function PropuestaLandRoverClient() {
         </section>
 
         {/* ============================================================
-            10 · CIERRE — telón de fondo del pitch verbal
+            13 · CIERRE
            ============================================================ */}
         <section
           className="relative overflow-hidden flex items-center justify-center px-6 md:px-14 min-h-screen"
