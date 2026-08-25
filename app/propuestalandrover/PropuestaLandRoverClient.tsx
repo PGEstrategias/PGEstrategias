@@ -10,7 +10,7 @@ import Logo from "@/components/Logo";
    Construida desde el brief del cliente: creación de contenido,
    estrategia digital (pauta + orgánico), presencia en eventos,
    comunidad de rutas, accesorios originales y una cadencia que
-   resuelve el ciclo de aprobación de 20 días.
+   se ajusta al ciclo de aprobación de ~28 días.
 
    Sistema visual de PG: negro #1C1C1A, acento #D63A27, Syne/Inter.
    ──────────────────────────────────────────────────────────── */
@@ -105,7 +105,7 @@ const incluye = [
   },
 ];
 
-/* La cadencia que resuelve el ciclo de aprobación de 20 días. */
+/* La cadencia con la que nos adaptamos al ciclo de aprobación de ~28 días. */
 const cadencia = [
   {
     dia: "Semana 1",
@@ -401,15 +401,16 @@ export default function PropuestaLandRoverClient() {
           <motion.div {...reveal} className="mb-16 md:mb-20 max-w-[880px]">
             <Eyebrow>Lo que entendimos</Eyebrow>
             <SectionTitle>
-              Escuchamos primero.{" "}
+              Escuchamos primero,{" "}
               <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                Después proponemos.
+                después proponemos.
               </em>
             </SectionTitle>
             <Body>
-              Land Rover Puebla no necesita otra agencia que publique por
-              publicar. Necesita un equipo que entienda su operación, su
-              comunidad y su calendario — y produzca a la altura de la marca.
+              Land Rover Puebla ya cuenta con una marca sólida y una comunidad
+              propia. Nuestro papel es producir contenido a su altura, entender
+              su operación y su calendario, y sostener el ritmo de publicación
+              mes con mes.
             </Body>
           </motion.div>
 
@@ -461,21 +462,20 @@ export default function PropuestaLandRoverClient() {
           <div className="px-6 md:px-14 max-w-[1400px] mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
               <motion.div {...reveal} className="lg:col-span-6 order-2 lg:order-1">
-                <Eyebrow>Un demo para la marca</Eyebrow>
+                <Eyebrow>Nuestro trabajo para la marca</Eyebrow>
                 <SectionTitle>
-                  No arrancamos de cero.{" "}
+                  Una muestra de lo que{" "}
                   <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                    Ya produjimos para Land Rover.
+                    hemos producido.
                   </em>
                 </SectionTitle>
                 <Body className="mb-7">
-                  Esta pieza la hicimos específicamente para la marca — el tono,
-                  el ritmo y el estándar de producción que Land Rover Puebla
-                  puede tener publicando cada semana.
+                  Esta pieza fue creada para Land Rover. Refleja el tono, el
+                  ritmo y el estándar de producción con el que trabajamos.
                 </Body>
                 <Body>
-                  Es una muestra, no un caso aislado: así se ve el contenido que
-                  el sistema mensual produce de forma constante.
+                  Es el mismo cuidado que aplicamos a cada entrega del plan
+                  mensual.
                 </Body>
               </motion.div>
 
@@ -526,23 +526,22 @@ export default function PropuestaLandRoverClient() {
           <div className="px-6 md:px-14 max-w-[1400px] mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
               <motion.div {...reveal} className="lg:col-span-6">
-                <Eyebrow>El reto del calendario</Eyebrow>
+                <Eyebrow>Nos adaptamos a tus tiempos</Eyebrow>
                 <SectionTitle>
-                  20 días para aprobar.{" "}
+                  Producimos con la{" "}
                   <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                    Solo 10 para vender.
+                    anticipación que tu proceso necesita.
                   </em>
                 </SectionTitle>
                 <Body className="mb-7">
-                  Aprobar un anuncio para pautar toma cerca de 20 días. Eso deja
-                  apenas 10 para que la oferta comercial del mes salga a la calle.
-                  Si el contenido llega tarde a ese ciclo, la oferta pierde días
-                  de exposición — y ventas.
+                  Entendemos que la aprobación de un anuncio para pautar puede
+                  tomar cerca de 28 días. En lugar de trabajar contra ese
+                  calendario, nos organizamos alrededor de él.
                 </Body>
                 <Body>
-                  Por eso trabajamos con anticipación: los videos de oferta
-                  comercial están listos en la primera semana del mes, para que
-                  entren a aprobación desde el día uno.
+                  Las ofertas comerciales se entregan por adelantado —listas en
+                  la primera semana— para que entren a tu proceso de aprobación
+                  con margen y salgan al aire en la fecha planeada.
                 </Body>
               </motion.div>
 
@@ -559,9 +558,9 @@ export default function PropuestaLandRoverClient() {
                   }}
                 >
                   {[
-                    { k: "Semana 1", v: "Ofertas comerciales entregadas" },
-                    { k: "Semana 1–3", v: "En ciclo de aprobación" },
-                    { k: "Semana 3–4", v: "Oferta al aire, con margen real" },
+                    { k: "Por adelantado", v: "Entregamos las ofertas comerciales" },
+                    { k: "≈ 28 días", v: "Tu proceso de aprobación corre con margen" },
+                    { k: "A tiempo", v: "La oferta sale en la fecha planeada" },
                   ].map((row) => (
                     <div
                       key={row.k}
@@ -569,8 +568,8 @@ export default function PropuestaLandRoverClient() {
                       style={{ borderTop: "1px solid rgba(228,224,221,0.1)" }}
                     >
                       <span
-                        className="font-body text-[11px] uppercase tracking-[0.18em] shrink-0 pt-1"
-                        style={{ color: "#D63A27", fontWeight: 600, width: 96 }}
+                        className="font-body text-[11px] uppercase tracking-[0.16em] shrink-0 pt-1"
+                        style={{ color: "#D63A27", fontWeight: 600, width: 118 }}
                       >
                         {row.k}
                       </span>
@@ -731,9 +730,9 @@ export default function PropuestaLandRoverClient() {
           <motion.div {...reveal} className="mb-16 md:mb-20 max-w-[820px]">
             <Eyebrow>Muestras de producción</Eyebrow>
             <SectionTitle>
-              No te contamos cómo se ve la calidad.{" "}
+              Algunas piezas recientes{" "}
               <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                Te la mostramos.
+                de nuestro trabajo.
               </em>
             </SectionTitle>
           </motion.div>
