@@ -40,7 +40,7 @@ const incluye = [
   { title: "100 fotografías", desc: "Para posts, carruseles y artes en redes sociales." },
   { title: "WhatsApp Bot optimizado", desc: "Respuesta inmediata y calificación de tus leads." },
   { title: "Perfil de Google optimizado", desc: "Con estrategia de reseñas para búsquedas locales." },
-  { title: "Videollamada quincenal", desc: "Calendario, prioridades y siguiente ola de contenido." },
+  { title: "Reunión presencial quincenal", desc: "En tu sucursal: calendario, prioridades y siguiente ola de contenido." },
   { title: "Consultoría mensual + reporte quincenal", desc: "Seguimiento claro y ajustes con datos." },
 ];
 
@@ -479,7 +479,8 @@ export default function PropuestaLandRoverResumenClient() {
                       style={{ color: "rgba(228,224,221,0.6)" }}
                     >
                       Más IVA en caso de requerir factura. Todos los entregables
-                      del mes están incluidos en este cargo.
+                      del mes están incluidos en este cargo; los eventos foráneos
+                      no incluyen viáticos.
                     </p>
                   </div>
                 </div>

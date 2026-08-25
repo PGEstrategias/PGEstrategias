@@ -94,9 +94,9 @@ const incluye = [
   },
   {
     num: "05",
-    title: "Videollamada estratégica quincenal",
+    title: "Reunión presencial quincenal",
     desc:
-      "Cada dos semanas revisamos calendario, prioridades y la siguiente ola de contenido. La estrategia sigue siendo tuya.",
+      "Cada dos semanas nos reunimos en tu sucursal para revisar calendario, prioridades y la siguiente ola de contenido. La estrategia sigue siendo tuya.",
   },
   {
     num: "06",
@@ -177,7 +177,7 @@ const proceso = [
     num: "04",
     title: "Optimización quincenal",
     desc:
-      "Videollamada, reporte y ajustes con datos cada dos semanas. Ritmo constante, sin sorpresas.",
+      "Reunión presencial, reporte y ajustes con datos cada dos semanas. Ritmo constante, sin sorpresas.",
   },
 ];
 
@@ -1087,9 +1087,9 @@ export default function PropuestaLandRoverClient() {
                       className="font-body text-[13px] leading-[1.7]"
                       style={{ color: "rgba(228,224,221,0.6)" }}
                     >
-                      Más IVA en caso de requerir factura. Sin costos ocultos:
-                      los siete entregables del mes están incluidos en este
-                      cargo.
+                      Más IVA en caso de requerir factura. Los siete entregables
+                      del mes están incluidos en este cargo; los eventos foráneos
+                      no incluyen viáticos.
                     </p>
                   </div>
                 </div>
