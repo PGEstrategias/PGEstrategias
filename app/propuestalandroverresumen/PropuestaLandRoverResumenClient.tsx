@@ -27,9 +27,16 @@ const MUESTRAS = [
   "https://res.cloudinary.com/djduba5fd/video/upload/v1787612470/Challenger_vur6pe.mp4",
 ];
 
+/* Inserta transformaciones de Cloudinary (formato/calidad automáticos y un
+   ancho máximo) para que los videos —que pesan decenas de MB en su versión
+   original— se sirvan ligeros y reproduzcan en cualquier navegador. */
+function cld(url: string, transform: string) {
+  return url.replace("/upload/", `/upload/${transform}/`);
+}
+
 /* Entregables mensuales, en una línea cada uno. */
 const incluye = [
-  { title: "8 reels mensuales", desc: "Oferta comercial, recaps de eventos y promociones atemporales." },
+  { title: "8 reels mensuales", desc: "Oferta comercial, recaps de eventos y promociones atemporales, con narrativa estilo cine que engancha." },
   { title: "100 fotografías", desc: "Para posts, carruseles y artes en redes sociales." },
   { title: "WhatsApp Bot optimizado", desc: "Respuesta inmediata y calificación de tus leads." },
   { title: "Perfil de Google optimizado", desc: "Con estrategia de reseñas para búsquedas locales." },
@@ -142,7 +149,7 @@ export default function PropuestaLandRoverResumenClient() {
             preload="auto"
             aria-hidden
           >
-            <source src={HERO_VIDEO} type="video/mp4" />
+            <source src={cld(HERO_VIDEO, "f_auto,q_auto,w_1280")} type="video/mp4" />
           </video>
           <div
             aria-hidden
@@ -258,27 +265,29 @@ export default function PropuestaLandRoverResumenClient() {
           <div className="px-6 md:px-14 max-w-[1400px] mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
               <motion.div {...reveal} className="lg:col-span-7 order-2 lg:order-1">
-                <Eyebrow>Nos adaptamos a tus tiempos</Eyebrow>
+                <Eyebrow>Ofertas comerciales que sí se ven</Eyebrow>
                 <SectionTitle>
-                  Producimos con la{" "}
+                  Contenido que posiciona,{" "}
                   <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                    anticipación que tu proceso necesita.
+                    con o sin pauta.
                   </em>
                 </SectionTitle>
                 <p
                   className="font-body text-[15px] md:text-[17px] leading-[1.8] mb-8"
                   style={{ color: "rgba(228,224,221,0.72)" }}
                 >
-                  La aprobación de un anuncio para pautar puede tomar cerca de 28
-                  días. Nos organizamos alrededor de ese calendario: las ofertas
-                  comerciales se entregan por adelantado —listas en la primera
-                  semana— para que salgan al aire en la fecha planeada.
+                  Muchas ofertas comerciales tienen una vida corta en el mes y
+                  poco margen para pautarse. Por eso les damos un enfoque
+                  creativo para redes —narrativas con estilo cinematográfico que
+                  enganchan al espectador— y una estrategia digital que las
+                  posiciona de forma orgánica. Cuando una pieza sí requiere pauta
+                  adicional, nos anticipamos a su proceso de aprobación.
                 </p>
                 <div className="flex flex-col gap-px">
                   {[
-                    { k: "Por adelantado", v: "Entregamos las ofertas comerciales" },
-                    { k: "≈ 28 días", v: "Tu aprobación corre con margen" },
-                    { k: "A tiempo", v: "La oferta sale en la fecha planeada" },
+                    { k: "Orgánico", v: "Estrategia para posicionar sin depender de pauta" },
+                    { k: "Estilo cine", v: "Narrativas que enganchan desde el primer segundo" },
+                    { k: "Con anticipación", v: "Si requiere pauta (~28 días), la entregamos a tiempo" },
                   ].map((row) => (
                     <div
                       key={row.k}
@@ -323,7 +332,7 @@ export default function PropuestaLandRoverResumenClient() {
                     preload="auto"
                     aria-label="Demo de producción de PG Estrategias para Land Rover"
                   >
-                    <source src={LANDROVER_DEMO} type="video/mp4" />
+                    <source src={cld(LANDROVER_DEMO, "f_auto,q_auto,w_720")} type="video/mp4" />
                   </video>
                 </div>
               </motion.div>
@@ -365,7 +374,7 @@ export default function PropuestaLandRoverResumenClient() {
                   preload="auto"
                   aria-label="Muestra de producción de PG Estrategias"
                 >
-                  <source src={src} type="video/mp4" />
+                  <source src={cld(src, "f_auto,q_auto,w_640")} type="video/mp4" />
                 </video>
               </motion.div>
             ))}
