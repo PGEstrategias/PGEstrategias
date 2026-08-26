@@ -76,36 +76,42 @@ const incluye = [
   },
   {
     num: "02",
+    title: "2 a 4 levantamientos al mes",
+    desc:
+      "Sesiones de grabación y fotografía en las que capturamos el material que alimenta todo el contenido del mes.",
+  },
+  {
+    num: "03",
     title: "100 fotografías",
     desc:
       "Para posts, carruseles y artes en redes sociales. Un banco visual que alimenta la operación sin depender de una sola sesión.",
   },
   {
-    num: "03",
+    num: "04",
     title: "WhatsApp Bot optimizado",
     desc:
       "Para responder a tus leads al instante, calificar interés y pasarle a tu equipo solo a quien está listo para hablar.",
   },
   {
-    num: "04",
+    num: "05",
     title: "Perfil de Google optimizado",
     desc:
       "Más estrategia de reseñas, para llegar bien parados a quien ya busca ventas, servicio o seminuevos en Puebla.",
   },
   {
-    num: "05",
+    num: "06",
     title: "Reunión presencial quincenal",
     desc:
       "Cada dos semanas nos reunimos en tu sucursal para revisar calendario, prioridades y la siguiente ola de contenido. La estrategia sigue siendo tuya.",
   },
   {
-    num: "06",
+    num: "07",
     title: "Consultoría de crecimiento mensual",
     desc:
       "Una sesión al mes para mirar el negocio de arriba: qué está funcionando, qué ajustar y dónde está la siguiente oportunidad.",
   },
   {
-    num: "07",
+    num: "08",
     title: "Reporte quincenal",
     desc:
       "En lenguaje claro, sin tecnicismos. Qué se produjo, qué se publicó y cómo respondió tu audiencia — cada quince días.",
@@ -1087,7 +1093,7 @@ export default function PropuestaLandRoverClient() {
                       className="font-body text-[13px] leading-[1.7]"
                       style={{ color: "rgba(228,224,221,0.6)" }}
                     >
-                      Más IVA en caso de requerir factura. Los siete entregables
+                      Más IVA en caso de requerir factura. Todos los entregables
                       del mes están incluidos en este cargo; los eventos foráneos
                       no incluyen viáticos.
                     </p>

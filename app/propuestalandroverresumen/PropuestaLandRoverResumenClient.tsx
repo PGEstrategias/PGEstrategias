@@ -37,6 +37,7 @@ function cld(url: string, transform: string) {
 /* Entregables mensuales, en una línea cada uno. */
 const incluye = [
   { title: "8 reels mensuales", desc: "Oferta comercial, recaps de eventos y promociones atemporales, con narrativa estilo cine que engancha." },
+  { title: "2 a 4 levantamientos al mes", desc: "Sesiones de grabación y foto para alimentar todo el contenido del mes." },
   { title: "100 fotografías", desc: "Para posts, carruseles y artes en redes sociales." },
   { title: "WhatsApp Bot optimizado", desc: "Respuesta inmediata y calificación de tus leads." },
   { title: "Perfil de Google optimizado", desc: "Con estrategia de reseñas para búsquedas locales." },
