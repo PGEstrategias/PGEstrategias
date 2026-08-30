@@ -17,9 +17,6 @@ const CLIENTE = "Legacy";
 
 /* ── Video ──────────────────────────────────────────────────── */
 
-const HERO_VIDEO =
-  "https://res.cloudinary.com/djduba5fd/video/upload/v1787082349/LandRover_LegacyDrop2_lwq2q2.mp4";
-
 const V_DROP =
   "https://res.cloudinary.com/djduba5fd/video/upload/v1787082349/LandRover_LegacyDrop2_lwq2q2.mp4";
 const V_MERCEDES =
@@ -36,17 +33,24 @@ function cld(url: string, transform: string) {
   return url.replace("/upload/", `/upload/${transform}/`);
 }
 
-/* Cada slot puede llevar un video ya producido o quedar reservado como
-   placeholder para las piezas que grabaremos con Legacy. */
-type Slot = { src?: string; label: string };
+/* Todos los slots de video van en vertical (9:16), que es el formato nativo
+   de las piezas: así se ven completas y sin recorte. */
+type Slot = { src: string; label: string };
 
 const MUESTRAS: Slot[] = [
   { src: V_DROP, label: "Drop · lanzamiento" },
   { src: V_ACCION, label: "Acción · entrenamiento" },
   { src: V_HURACAN, label: "Producto · detalle" },
   { src: V_MERCEDES, label: "Recap · evento" },
-  { label: "Legacy · recap de evento" },
-  { label: "Legacy · sesión de drop" },
+];
+
+/* Los espacios que se llenan con material de Legacy. Van como fichas
+   compactas —no como cajas vacías— para que se lean como plan y no como
+   hueco sin contenido. */
+const RESERVADOS = [
+  "Recap de evento Legacy",
+  "Sesión del próximo drop",
+  "Tomas de acción en el gym",
 ];
 
 /* ── Contenido ──────────────────────────────────────────────── */
@@ -57,7 +61,7 @@ const FRENTES = [
     name: "Athletic Performance & Studio",
     line: "Más gente entrenando",
     bullets: ["Tomas de acción en el gym", "Recaps de eventos", "Promos y ofertas vigentes"],
-    slot: { label: "Legacy · tomas de acción en el gym" } as Slot,
+    slot: { src: V_ACCION, label: "Acción · entrenamiento" } as Slot,
   },
   {
     tag: "02",
@@ -176,18 +180,9 @@ const reveal = {
   transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
 };
 
-/* Un mismo componente resuelve las dos caras del grid: si el slot trae
-   video se reproduce en loop; si no, queda el marco reservado para la
-   pieza que se grabará con Legacy. */
-function VideoSlot({
-  slot,
-  aspect = "9/16",
-  width = 640,
-}: {
-  slot: Slot;
-  aspect?: string;
-  width?: number;
-}) {
+/* Slot de video: siempre 9:16, el formato en el que se graban las piezas,
+   para que se vean completas y no recortadas. */
+function VideoSlot({ slot, width = 640 }: { slot: Slot; width?: number }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -204,53 +199,11 @@ function VideoSlot({
     return () => io.disconnect();
   }, [slot.src]);
 
-  if (!slot.src) {
-    return (
-      <div
-        className="relative w-full overflow-hidden flex flex-col items-center justify-center text-center px-4 gap-3"
-        style={{
-          aspectRatio: aspect,
-          background:
-            "repeating-linear-gradient(45deg, rgba(228,224,221,0.02) 0px, rgba(228,224,221,0.02) 10px, transparent 10px, transparent 20px)",
-          border: "1px dashed rgba(228,224,221,0.2)",
-        }}
-      >
-        <span
-          aria-hidden
-          className="flex items-center justify-center"
-          style={{
-            width: 42,
-            height: 42,
-            borderRadius: "50%",
-            border: "1px solid rgba(214,58,39,0.5)",
-            color: "#D63A27",
-            fontSize: 13,
-            paddingLeft: 3,
-          }}
-        >
-          ▶
-        </span>
-        <span
-          className="font-body text-[11px] tracking-[0.16em] uppercase leading-[1.6]"
-          style={{ color: "rgba(228,224,221,0.45)" }}
-        >
-          {slot.label}
-        </span>
-        <span
-          className="font-body text-[10px] tracking-[0.14em] uppercase"
-          style={{ color: "rgba(228,224,221,0.38)" }}
-        >
-          Espacio para video
-        </span>
-      </div>
-    );
-  }
-
   return (
     <div
       className="relative w-full overflow-hidden group"
       style={{
-        aspectRatio: aspect,
+        aspectRatio: "9/16",
         background: "#0e0e0d",
         border: "1px solid rgba(228,224,221,0.1)",
       }}
@@ -279,6 +232,42 @@ function VideoSlot({
         style={{ color: "rgba(228,224,221,0.8)" }}
       >
         {slot.label}
+      </span>
+    </div>
+  );
+}
+
+/* Ficha del espacio reservado: ocupa poco alto y nombra la pieza que va a
+   llenarlo, en lugar de dejar un marco vacío del tamaño de un video. */
+function SlotReservado({ label }: { label: string }) {
+  return (
+    <div
+      className="flex items-center gap-4 px-5 py-5"
+      style={{
+        border: "1px dashed rgba(228,224,221,0.22)",
+        background: "rgba(255,255,255,0.015)",
+      }}
+    >
+      <span
+        aria-hidden
+        className="shrink-0 flex items-center justify-center"
+        style={{
+          width: 34,
+          height: 34,
+          borderRadius: "50%",
+          border: "1px solid rgba(214,58,39,0.5)",
+          color: "#D63A27",
+          fontSize: 11,
+          paddingLeft: 2,
+        }}
+      >
+        ▶
+      </span>
+      <span
+        className="font-body text-[13px] leading-[1.4]"
+        style={{ color: "rgba(228,224,221,0.72)" }}
+      >
+        {label}
       </span>
     </div>
   );
@@ -333,32 +322,34 @@ export default function PropuestaLegacyClient() {
         {/* ============================================================
             1 · HERO
            ============================================================ */}
-        <section className="relative w-full h-[88vh] min-h-[600px] overflow-hidden">
-          <video
-            className="absolute inset-0 w-full h-full object-cover"
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            aria-hidden
-          >
-            <source src={cld(HERO_VIDEO, "f_auto,q_auto,w_1280")} type="video/mp4" />
-          </video>
+        <section
+          className="relative w-full min-h-[78vh] flex items-center overflow-hidden"
+          style={{
+            background:
+              "linear-gradient(180deg, #0e0e0d 0%, #1C1C1A 60%, #1C1C1A 100%)",
+          }}
+        >
           <div
             aria-hidden
-            className="absolute inset-0"
+            className="absolute pointer-events-none"
             style={{
+              top: "8%",
+              right: "-10%",
+              width: "70vw",
+              height: "70vw",
+              maxWidth: 780,
+              maxHeight: 780,
               background:
-                "linear-gradient(180deg, rgba(28,28,26,0.55) 0%, rgba(28,28,26,0.3) 45%, rgba(28,28,26,0.96) 100%)",
+                "radial-gradient(circle, rgba(214,58,39,0.16) 0%, transparent 65%)",
+              filter: "blur(70px)",
             }}
           />
-          <div className="relative z-10 h-full flex flex-col justify-end px-6 md:px-14 pb-16 md:pb-20 max-w-[1400px] mx-auto">
+          <div className="relative z-10 w-full px-6 md:px-14 pt-28 pb-14 md:pb-16 max-w-[1400px] mx-auto">
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="flex items-center gap-3 mb-6"
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="flex items-center gap-3 mb-8"
             >
               <span className="w-12 h-px block" style={{ background: "#D63A27" }} />
               <p
@@ -368,16 +359,16 @@ export default function PropuestaLegacyClient() {
                 {CLIENTE} × PG Estrategias
               </p>
             </motion.div>
-            <div className="overflow-hidden max-w-[1000px]">
+            <div className="overflow-hidden max-w-[1100px]">
               <motion.h1
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
-                transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+                transition={{ duration: 1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
                 className="font-title"
                 style={{
-                  fontSize: "clamp(38px, 6vw, 92px)",
+                  fontSize: "clamp(42px, 7vw, 108px)",
                   fontWeight: 700,
-                  lineHeight: 0.98,
+                  lineHeight: 0.96,
                   letterSpacing: "-0.035em",
                   color: "#E4E0DD",
                 }}
@@ -391,8 +382,8 @@ export default function PropuestaLegacyClient() {
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.7 }}
-              className="font-body text-[15px] md:text-[18px] leading-[1.7] mt-7 max-w-[560px]"
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="font-body text-[15px] md:text-[18px] leading-[1.7] mt-8 max-w-[580px]"
               style={{ color: "rgba(228,224,221,0.75)" }}
             >
               Contenido constante para el gym y la ropa, con una estrategia que
@@ -421,45 +412,49 @@ export default function PropuestaLegacyClient() {
                 key={f.name}
                 {...reveal}
                 transition={{ ...reveal.transition, delay: i * 0.1 }}
-                className="flex flex-col"
+                className="flex gap-5 md:gap-7"
               >
-                <div className="mb-6">
-                  <VideoSlot slot={f.slot} aspect="4/5" width={720} />
+                <div className="w-[38%] max-w-[210px] shrink-0">
+                  <VideoSlot slot={f.slot} width={720} />
                 </div>
-                <div className="flex items-baseline gap-3 mb-2">
-                  <span
-                    className="font-body text-[11px] tracking-[0.2em]"
-                    style={{ color: "#D63A27", fontWeight: 600 }}
-                  >
-                    {f.tag}
-                  </span>
-                  <h3
-                    className="font-title text-[20px] md:text-[24px]"
-                    style={{ fontWeight: 700, color: "#E4E0DD", letterSpacing: "-0.02em" }}
-                  >
-                    {f.name}
-                  </h3>
-                </div>
-                <p
-                  className="font-title text-[17px] md:text-[19px] mb-5"
-                  style={{ color: "#D63A27", fontStyle: "italic", fontWeight: 700 }}
-                >
-                  {f.line}
-                </p>
-                <div className="flex flex-wrap gap-2">
-                  {f.bullets.map((b) => (
+                <div className="flex flex-col justify-center flex-1 min-w-0">
+                  <div className="flex items-baseline gap-3 mb-2">
                     <span
-                      key={b}
-                      className="font-body text-[12px] px-3 py-1.5"
-                      style={{
-                        color: "rgba(228,224,221,0.7)",
-                        border: "1px solid rgba(228,224,221,0.14)",
-                        background: "rgba(255,255,255,0.02)",
-                      }}
+                      className="font-body text-[11px] tracking-[0.2em]"
+                      style={{ color: "#D63A27", fontWeight: 600 }}
                     >
-                      {b}
+                      {f.tag}
                     </span>
-                  ))}
+                    <h3
+                      className="font-title text-[19px] md:text-[23px]"
+                      style={{ fontWeight: 700, color: "#E4E0DD", letterSpacing: "-0.02em" }}
+                    >
+                      {f.name}
+                    </h3>
+                  </div>
+                  <p
+                    className="font-title text-[17px] md:text-[19px] mb-5"
+                    style={{ color: "#D63A27", fontStyle: "italic", fontWeight: 700 }}
+                  >
+                    {f.line}
+                  </p>
+                  <div className="flex flex-col gap-2.5">
+                    {f.bullets.map((b) => (
+                      <div key={b} className="flex items-start gap-3">
+                        <span
+                          aria-hidden
+                          className="shrink-0 mt-[7px] block"
+                          style={{ width: 5, height: 5, background: "#D63A27" }}
+                        />
+                        <span
+                          className="font-body text-[13px] md:text-[14px] leading-[1.5]"
+                          style={{ color: "rgba(228,224,221,0.7)" }}
+                        >
+                          {b}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </motion.div>
             ))}
@@ -481,8 +476,8 @@ export default function PropuestaLegacyClient() {
               </SectionTitle>
             </motion.div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
-              <motion.div {...reveal} className="lg:col-span-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14">
+              <motion.div {...reveal}>
                 <p
                   className="font-body text-[11px] tracking-[0.22em] uppercase mb-6"
                   style={{ color: "rgba(228,224,221,0.5)" }}
@@ -508,7 +503,6 @@ export default function PropuestaLegacyClient() {
               <motion.div
                 {...reveal}
                 transition={{ ...reveal.transition, delay: 0.08 }}
-                className="lg:col-span-4"
               >
                 <p
                   className="font-body text-[11px] tracking-[0.22em] uppercase mb-6"
@@ -532,23 +526,6 @@ export default function PropuestaLegacyClient() {
                 </div>
               </motion.div>
 
-              <motion.div
-                {...reveal}
-                transition={{ ...reveal.transition, delay: 0.16 }}
-                className="lg:col-span-4"
-              >
-                <p
-                  className="font-body text-[11px] tracking-[0.22em] uppercase mb-6"
-                  style={{ color: "rgba(228,224,221,0.5)" }}
-                >
-                  Así se ve
-                </p>
-                <VideoSlot
-                  slot={{ src: V_ACCION, label: "Acción · entrenamiento" }}
-                  aspect="9/16"
-                  width={720}
-                />
-              </motion.div>
             </div>
 
             <motion.p
@@ -563,32 +540,49 @@ export default function PropuestaLegacyClient() {
         </section>
 
         {/* ============================================================
-            4 · GRID DE MUESTRAS + PLACEHOLDERS
+            4 · GRID DE MUESTRAS + ESPACIOS RESERVADOS
            ============================================================ */}
         <section className="relative px-6 md:px-14 py-20 md:py-28 max-w-[1400px] mx-auto">
           <motion.div {...reveal} className="mb-10 md:mb-14 max-w-[820px]">
             <Eyebrow>Muestras de producción</Eyebrow>
             <SectionTitle>
-              Piezas recientes{" "}
+              Así se ve{" "}
               <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                y los espacios que llenaremos con Legacy.
+                nuestro trabajo.
               </em>
             </SectionTitle>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
             {MUESTRAS.map((slot, i) => (
               <motion.div
-                key={slot.label + i}
+                key={slot.label}
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.7, delay: (i % 3) * 0.08 }}
+                transition={{ duration: 0.7, delay: (i % 4) * 0.08 }}
               >
-                <VideoSlot slot={slot} aspect="9/16" width={640} />
+                <VideoSlot slot={slot} width={640} />
               </motion.div>
             ))}
           </div>
+
+          {/* Los espacios reservados van aquí, en fichas de una línea: se
+              entiende qué falta por grabar sin dejar marcos vacíos del alto
+              de un video. */}
+          <motion.div {...reveal} className="mt-14 md:mt-16">
+            <p
+              className="font-body text-[11px] tracking-[0.22em] uppercase mb-5"
+              style={{ color: "rgba(228,224,221,0.5)" }}
+            >
+              Lo que grabamos con Legacy el primer mes
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+              {RESERVADOS.map((label) => (
+                <SlotReservado key={label} label={label} />
+              ))}
+            </div>
+          </motion.div>
         </section>
 
         {/* ============================================================
