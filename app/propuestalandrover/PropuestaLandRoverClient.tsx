@@ -27,6 +27,7 @@ const LANDROVER_DEMO =
 
 /* Muestras de producción de PG en el sector automotriz. Verticales 9:16. */
 const MUESTRAS = [
+  "https://res.cloudinary.com/djduba5fd/video/upload/v1788186349/AutonacionDEMO_ute4wy.mp4",
   "https://res.cloudinary.com/djduba5fd/video/upload/v1787082394/ZenithMustangBlackHorse_ld8o8z.mp4",
   "https://res.cloudinary.com/djduba5fd/video/upload/v1787612227/HuracanZenith_uzna4d.mp4",
   "https://res.cloudinary.com/djduba5fd/video/upload/v1787612470/Challenger_vur6pe.mp4",
@@ -753,7 +754,7 @@ export default function PropuestaLandRoverClient() {
             </SectionTitle>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {MUESTRAS.map((src, i) => (
               <motion.div
                 key={src}

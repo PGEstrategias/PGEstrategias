@@ -18,6 +18,8 @@ const PRECIO = "15,000";
 
 /* ── Video ──────────────────────────────────────────────────── */
 
+const V_AUTONACION =
+  "https://res.cloudinary.com/djduba5fd/video/upload/v1788186349/AutonacionDEMO_ute4wy.mp4";
 const V_LANDROVER =
   "https://res.cloudinary.com/djduba5fd/video/upload/v1787082349/LandRover_LegacyDrop2_lwq2q2.mp4";
 const V_MERCEDES =
@@ -39,6 +41,7 @@ function cld(url: string, transform: string) {
 type Slot = { src: string; label: string };
 
 const MUESTRAS: Slot[] = [
+  { src: V_AUTONACION, label: "Autonación · demo" },
   { src: V_HURACAN, label: "Unidad · detalle" },
   { src: V_ACCION, label: "Unidad · en acción" },
   { src: V_LANDROVER, label: "Test drive" },
@@ -613,7 +616,7 @@ export default function PropuestaAutonacionMensualClient() {
             </SectionTitle>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-5">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-5">
             {MUESTRAS.map((slot, i) => (
               <motion.div
                 key={slot.label}
