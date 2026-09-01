@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import Logo from "@/components/Logo";
+import { legalLinks } from "@/components/legalLinks";
 
 const navLinks = [
   { label: "Servicios", href: "#servicios" },
@@ -12,11 +13,7 @@ const navLinks = [
   { label: "Agendar llamada", href: "#contacto" },
 ];
 
-export const legalLinks = [
-  { label: "Aviso de Privacidad", href: "/privacidad" },
-  { label: "Términos y Condiciones", href: "/terminos" },
-  { label: "Eliminación de datos", href: "/eliminacion-de-datos" },
-];
+
 
 function InstagramIcon() {
   return (

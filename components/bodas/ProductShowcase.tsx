@@ -37,16 +37,16 @@ const highlights = [
 
 export default function BodasProductShowcase() {
   return (
-    <section id="servicios" className="py-24 md:py-32 bg-black relative">
-      <div className="absolute top-0 left-0 right-0 h-px bodas-gold-line" />
+    <section id="servicios" className="py-24 md:py-32 relative">
+      <div className="absolute top-0 left-0 right-0 h-px bodas-rule" />
 
       <div className="bodas-container">
         <div className="text-center mb-16">
-          <p className="bodas-label mb-4">Lo que te llevas</p>
+          <p className="bodas-label mb-5">Lo que te llevas</p>
           <h2 className="bodas-title">
             No es solo un video,
             <br />
-            <span className="italic text-white/60">es tu historia de amor</span>
+            <span style={{ color: "#D63A27" }}>es tu historia de amor</span>
           </h2>
           <p className="bodas-subtitle mx-auto mt-6">
             Nos obsesionamos con cada detalle para que cuando veas tu video,
@@ -58,7 +58,7 @@ export default function BodasProductShowcase() {
           {highlights.map((item, index) => (
             <motion.div
               key={item.title}
-              className="group rounded-2xl border border-white/5 bg-white/[0.02] hover:border-[#C9A050]/20 transition-all duration-500 overflow-hidden"
+              className="bodas-card group overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -71,12 +71,26 @@ export default function BodasProductShowcase() {
                   alt={item.title}
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                <div
+                  className="absolute inset-0"
+                  style={{
+                    background:
+                      "linear-gradient(to top, rgba(28,28,26,0.75), transparent)",
+                  }}
+                />
               </div>
 
-              <div className="p-6">
-                <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
-                <p className="text-sm text-white/40 leading-relaxed">
+              <div className="p-7">
+                <h3
+                  className="font-title text-xl mb-2.5"
+                  style={{ fontWeight: 700, letterSpacing: "-0.02em" }}
+                >
+                  {item.title}
+                </h3>
+                <p
+                  className="font-body text-[14px] leading-[1.7]"
+                  style={{ color: "rgba(228,224,221,0.5)" }}
+                >
                   {item.description}
                 </p>
               </div>

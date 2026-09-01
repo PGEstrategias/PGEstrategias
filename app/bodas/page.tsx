@@ -8,13 +8,13 @@ import BodasFooter from "@/components/bodas/Footer";
 import { BodasWhatsAppButton } from "@/components/bodas/WhatsAppButton";
 
 const DESCRIPTION =
-  "Capturamos tu boda con calidad cinematográfica: cobertura total, cineminuto, video largo y fotografía profesional. Paquetes desde $32,000 MXN.";
+  "PG Estrategias captura tu boda con calidad cinematográfica: cobertura total, cineminuto, video largo y fotografía profesional. Paquetes desde $32,000 MXN.";
 
 export const metadata: Metadata = {
-  title: "Bodas Cinematográficas — Oasis Creativa × PG Estrategias",
+  title: "Bodas Cinematográficas — PG Estrategias",
   description: DESCRIPTION,
   openGraph: {
-    title: "Bodas Cinematográficas — Oasis Creativa × PG Estrategias",
+    title: "Bodas Cinematográficas — PG Estrategias",
     description: DESCRIPTION,
     type: "website",
     locale: "es_MX",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 
 export default function BodasPage() {
   return (
-    /* .bodas-root aísla la paleta negro y oro del resto del sitio */
+    /* .bodas-root aplica el branding PG a la landing sin tocar el resto del sitio */
     <div className="bodas-root">
       <BodasHeader />
       <main>

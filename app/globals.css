@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@400;500;600&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -165,119 +165,138 @@ body {
 }
 
 /* ═══════════════════════════════════════════
-   /bodas — Oasis Creativa × PG Estrategias
-   Sitio de bodas negro y oro. Todo va bajo
-   .bodas-root para que no toque el resto del
-   sitio: el original de Oasis pintaba body y *
-   en global, y aquí eso rompería a PG.
+   /bodas — Bodas cinematográficas
+   Landing con el branding de PG Estrategias:
+   negro cálido, rojo de marca, crema y Syne.
+   Todo cuelga de .bodas-root para que la
+   landing tenga su propio ritmo sin tocar el
+   resto del sitio.
    ═══════════════════════════════════════════ */
 
 .bodas-root {
-  background: #000;
-  color: #fff;
+  background: var(--pg-black);
+  color: var(--pg-cream);
   font-family: var(--font-body);
 }
 
 .bodas-root *,
 .bodas-root *::before,
 .bodas-root *::after {
-  border-color: rgba(255, 255, 255, 0.1);
-}
-
-.bodas-root ::selection {
-  background: #C9A050;
-  color: #000;
-}
-
-.bodas-serif {
-  font-family: 'Playfair Display', serif;
+  border-color: rgba(228, 224, 221, 0.1);
 }
 
 .bodas-container {
-  max-width: 72rem;
+  max-width: 1300px;
   margin-left: auto;
   margin-right: auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+@media (min-width: 768px) {
+  .bodas-container {
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
+  }
 }
 
 .bodas-label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
+  font-family: var(--font-body);
+  font-size: 0.6875rem;
   font-weight: 500;
-  color: #C9A050;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-label);
+  color: var(--pg-red);
+}
+
+.bodas-display {
+  font-family: var(--font-title);
+  font-weight: 700;
+  letter-spacing: var(--ls-display);
+  line-height: var(--lh-h1);
 }
 
 .bodas-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 2.25rem;
-  letter-spacing: -0.025em;
-  line-height: 1.1;
-}
-
-@media (min-width: 768px) {
-  .bodas-title { font-size: 3.75rem; }
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: clamp(34px, 5.4vw, 68px);
+  letter-spacing: var(--ls-h2);
+  line-height: var(--lh-h2);
 }
 
 .bodas-subtitle {
-  font-size: 1.125rem;
-  line-height: 1.625;
-  color: rgba(255, 255, 255, 0.6);
-  max-width: 36rem;
+  font-size: 1.0625rem;
+  line-height: 1.7;
+  color: rgba(228, 224, 221, 0.6);
+  max-width: 38rem;
 }
 
 @media (min-width: 768px) {
-  .bodas-subtitle { font-size: 1.25rem; }
+  .bodas-subtitle { font-size: 1.125rem; }
+}
+
+/* Botones — rectángulos con sweep, como el resto de PG */
+.bodas-btn-primary,
+.bodas-btn-outline {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 0.95rem 2rem;
+  transition: color 0.5s var(--ease-out-expo),
+    border-color 0.5s var(--ease-out-expo);
+}
+
+.bodas-btn-primary::before,
+.bodas-btn-outline::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-101%);
+  transition: transform 0.55s var(--ease-out-expo);
+  z-index: -1;
 }
 
 .bodas-btn-primary {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-weight: 500;
-  padding: 0.875rem 2rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  letter-spacing: 0.025em;
-  transition: transform 0.3s ease-out, filter 0.3s ease-out;
-  background: linear-gradient(135deg, #C9A050, #E8C97A);
-  color: #000;
+  background: var(--pg-red);
+  border: 1px solid var(--pg-red);
+  color: var(--pg-cream);
 }
-
-.bodas-btn-primary:hover { transform: scale(1.02); }
-.bodas-btn-primary:active { transform: scale(0.98); }
+.bodas-btn-primary::before { background: var(--pg-cream); }
+.bodas-btn-primary:hover { color: var(--pg-black); }
+.bodas-btn-primary:hover::before { transform: translateX(0); }
 
 .bodas-btn-outline {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  font-weight: 500;
-  padding: 0.875rem 2rem;
-  border-radius: 9999px;
-  font-size: 0.875rem;
-  letter-spacing: 0.025em;
-  transition: all 0.3s ease-out;
-  border: 1px solid rgba(201, 160, 80, 0.3);
-  color: #C9A050;
+  border: 1px solid rgba(228, 224, 221, 0.3);
+  color: var(--pg-cream);
+}
+.bodas-btn-outline::before { background: var(--pg-red); }
+.bodas-btn-outline:hover { border-color: var(--pg-red); }
+.bodas-btn-outline:hover::before { transform: translateX(0); }
+
+/* Filo rojo que separa secciones */
+.bodas-rule {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(214, 58, 39, 0.55),
+    transparent
+  );
 }
 
-.bodas-btn-outline:hover {
-  background: rgba(201, 160, 80, 0.08);
-  border-color: rgba(201, 160, 80, 0.5);
+.bodas-card {
+  background: var(--pg-black-soft);
+  border: 1px solid rgba(228, 224, 221, 0.08);
+  transition: border-color 0.5s var(--ease-out-expo);
 }
 
-.bodas-btn-outline:active { transform: scale(0.98); }
-
-.bodas-gold-text {
-  background: linear-gradient(135deg, #C9A050, #E8C97A);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.bodas-gold-line {
-  background: linear-gradient(90deg, transparent, #C9A050, transparent);
+.bodas-card:hover {
+  border-color: rgba(214, 58, 39, 0.35);
 }
