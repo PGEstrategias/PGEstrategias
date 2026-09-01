@@ -6,24 +6,33 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "email:dev": "email dev --dir emails/preview --port 3001",
+    "email:render": "tsx scripts/render-preview.ts",
+    "email:enviar": "tsx scripts/enviar.ts"
   },
   "dependencies": {
-    "next": "14.2.5",
-    "react": "^18",
-    "react-dom": "^18",
+    "@react-email/components": "^1.0.12",
     "framer-motion": "^11.3.8",
     "gsap": "^3.12.5",
     "lucide-react": "^0.400.0",
+    "next": "14.2.5",
+    "nodemailer": "^9.1.0",
+    "react": "^18",
+    "react-dom": "^18",
     "zustand": "^5.0.14"
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/nodemailer": "^8.0.1",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "autoprefixer": "^10.0.1",
+    "dotenv": "^17.4.2",
     "postcss": "^8",
+    "react-email": "^6.9.3",
     "tailwindcss": "^3.4.1",
+    "tsx": "^4.23.13",
     "typescript": "^5"
   }
 }
