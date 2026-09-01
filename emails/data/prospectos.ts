@@ -18,7 +18,7 @@ export interface Prospecto {
 export const prospectos: Prospecto[] = [
   {
     id: 'landrover-puebla',
-    para: 'roberto@ejemplo.com',
+    para: 'roberto.carpinteyro96@gmail.com',
     asunto: 'Land Rover Puebla · Propuesta de video demo sin costo',
     props: {
       badge: 'Propuesta · Video demo sin costo',
