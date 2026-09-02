@@ -14,8 +14,11 @@ import { render } from '@react-email/components';
  * (necesitas verificación en 2 pasos activada en la cuenta).
  */
 function crearTransporte() {
-  const user = process.env.GMAIL_USER;
-  const pass = process.env.GMAIL_APP_PASSWORD;
+  // Limpieza defensiva: el App Password de Google se muestra con espacios
+  // ("abcd efgh ijkl mnop") y al pegarlo puede colarse un espacio o salto de
+  // línea. Google rechaza esos caracteres -> 535 Bad Credentials.
+  const user = process.env.GMAIL_USER?.trim();
+  const pass = process.env.GMAIL_APP_PASSWORD?.replace(/\s+/g, '');
 
   if (!user || !pass) {
     throw new Error(
