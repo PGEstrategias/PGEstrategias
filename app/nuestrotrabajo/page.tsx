@@ -4,7 +4,7 @@ import NuestroTrabajoClient from "./NuestroTrabajoClient";
 export const metadata: Metadata = {
   title: "Nuestro Trabajo — Galería de Reels · PG Estrategias",
   description:
-    "Galería de reels producidos por PG Estrategias: contenido dopamínico, spots, marca personal y piezas cinematográficas que convierten atención en clientes.",
+    "Galería de reels producidos por PG Estrategias: contenido dopamínico, spots, marca personal, piezas cinematográficas y recaps de eventos que convierten atención en clientes.",
   openGraph: {
     title: "Nuestro Trabajo — PG Estrategias",
     description:

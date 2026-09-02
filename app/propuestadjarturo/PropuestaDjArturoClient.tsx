@@ -1,0 +1,757 @@
+"use client";
+
+import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import Logo from "@/components/Logo";
+
+/* ────────────────────────────────────────────────────────────
+   Propuesta — DJ Arturo × PG Estrategias.
+
+   El argumento es que cada evento ya es una vitrina: lo que falta es
+   cubrirlo bien y sostener la presencia entre evento y evento. Es la
+   primera propuesta de la serie que mezcla video y fotografía, así que
+   cada formato conserva su proporción en lugar de forzarse a una común.
+   ──────────────────────────────────────────────────────────── */
+
+const CLIENTE = "DJ Arturo";
+const PRECIO = "5,000";
+
+/* ── Media ──────────────────────────────────────────────────── */
+
+const V_EVENTO =
+  "https://res.cloudinary.com/djduba5fd/video/upload/v1788101343/AQOwv63RqC8J3BwK-V_POKwmmLFVReXH7M8uXZdgsEQ0gmI1HZB7SRVutcX3KiZd-tMsOVfqHPTd8pK8Q1N4X8Pf-onaCvuEa79HZzQ_bhzpud.mp4";
+
+const FOTOS = [
+  "https://res.cloudinary.com/djduba5fd/image/upload/v1788101366/WhatsApp_Image_2026-08-29_at_6.45.26_PM_1_cgd3he.jpg",
+  "https://res.cloudinary.com/djduba5fd/image/upload/v1788101366/WhatsApp_Image_2026-08-29_at_6.45.26_PM_o1mhuq.jpg",
+  "https://res.cloudinary.com/djduba5fd/image/upload/v1788101366/WhatsApp_Image_2026-08-29_at_6.45.20_PM_gite1w.jpg",
+];
+
+/* Trabajo de otros giros: es la prueba del acabado comercial que menciona
+   la propuesta, no material de eventos. */
+const OTROS_GIROS = [
+  { src: "https://res.cloudinary.com/djduba5fd/video/upload/v1788051909/DemoMercedes_csof2x.mp4", label: "Automotriz" },
+  { src: "https://res.cloudinary.com/djduba5fd/video/upload/v1787082349/LandRover_LegacyDrop2_lwq2q2.mp4", label: "Automotriz" },
+  { src: "https://res.cloudinary.com/djduba5fd/video/upload/v1779379782/AQNT8_lqO4uOfGx0cDYYLy5qea3MVzTq7nMnuJrqQ10beUeG_V6FfEw4CmGXg5dkSiKwSj-0-g70SxtETMlBb5OsaeYI4fC70KqDoJM_kls3iw.mp4", label: "Retail" },
+];
+
+/* Inserta transformaciones de Cloudinary (formato/calidad automáticos y un
+   ancho máximo) para que el material —que pesa decenas de MB en su versión
+   original— se sirva ligero. */
+function cld(url: string, transform: string) {
+  return url.replace("/upload/", `/upload/${transform}/`);
+}
+
+const RESERVADOS = [
+  "Cobertura del próximo evento",
+  "Detrás de cámaras del set",
+  "Testimonio de novios o anfitriones",
+];
+
+/* ── Contenido ──────────────────────────────────────────────── */
+
+const COBERTURA = [
+  "Mezclas y momentos en vivo",
+  "Ambiente y reacción de la pista",
+  "Detrás de cámaras del set",
+  "Edición con acabado comercial",
+];
+
+const PRESENCIA = [
+  "Perfil de Google optimizado (o creado)",
+  "Estrategia de reseñas por evento",
+  "Anuncios en Meta en tu zona",
+  "Diseños para tarjetas y lonas",
+];
+
+const IGUALA = [
+  {
+    titulo: "Contenido",
+    items: [
+      "10 publicaciones al mes",
+      "Edición de calidad empresarial",
+      "Diseños para medios físicos",
+    ],
+  },
+  {
+    titulo: "Presencia y confianza",
+    items: [
+      "Perfil de Google optimizado o creado",
+      "Estrategia de reseñas",
+    ],
+  },
+  {
+    titulo: "Alcance",
+    items: ["Anuncios en Meta para tu zona"],
+  },
+];
+
+/* ── UI ─────────────────────────────────────────────────────── */
+
+function Eyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="flex items-center gap-3 mb-6">
+      <span className="w-8 h-px block" style={{ background: "#D63A27" }} />
+      <p
+        className="font-body text-[11px] tracking-[0.22em] uppercase"
+        style={{ color: "#D63A27", fontWeight: 500 }}
+      >
+        {children}
+      </p>
+    </div>
+  );
+}
+
+function SectionTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <h2
+      className="font-title mb-7"
+      style={{
+        fontSize: "clamp(30px, 3.8vw, 52px)",
+        fontWeight: 700,
+        lineHeight: 1.05,
+        letterSpacing: "-0.025em",
+        color: "#E4E0DD",
+      }}
+    >
+      {children}
+    </h2>
+  );
+}
+
+const reveal = {
+  initial: { opacity: 0, y: 24 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-80px" },
+  transition: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const },
+};
+
+/* Los videos van en 9:16, que es como se graban y se publican. */
+function VideoSlot({
+  src,
+  label,
+  width = 640,
+}: {
+  src: string;
+  label: string;
+  width?: number;
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const el = videoRef.current;
+    if (!el) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) void el.play().catch(() => {});
+        else el.pause();
+      },
+      { threshold: 0.15 }
+    );
+    io.observe(el);
+    return () => io.disconnect();
+  }, [src]);
+
+  return (
+    <div
+      className="relative w-full overflow-hidden group"
+      style={{
+        aspectRatio: "9/16",
+        background: "#0e0e0d",
+        border: "1px solid rgba(228,224,221,0.1)",
+      }}
+    >
+      <video
+        ref={videoRef}
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        aria-label={`Muestra de producción de PG Estrategias — ${label}`}
+      >
+        <source src={cld(src, `f_auto,q_auto,w_${width}`)} type="video/mp4" />
+      </video>
+      <div
+        aria-hidden
+        className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none"
+        style={{
+          background: "linear-gradient(180deg, transparent 0%, rgba(14,14,13,0.85) 100%)",
+        }}
+      />
+      <span
+        className="absolute left-3 bottom-3 font-body text-[10px] tracking-[0.16em] uppercase"
+        style={{ color: "rgba(228,224,221,0.8)" }}
+      >
+        {label}
+      </span>
+    </div>
+  );
+}
+
+/* La fotografía va en 4:5, el formato de foto para redes: recortarla a
+   9:16 como el video le quitaría demasiado encuadre. */
+function FotoSlot({ src, alt }: { src: string; alt: string }) {
+  return (
+    <div
+      className="relative w-full overflow-hidden group"
+      style={{
+        aspectRatio: "4/5",
+        background: "#0e0e0d",
+        border: "1px solid rgba(228,224,221,0.1)",
+      }}
+    >
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
+        src={cld(src, "f_auto,q_auto,w_800")}
+        alt={alt}
+        loading="lazy"
+        className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+      />
+    </div>
+  );
+}
+
+function SlotReservado({ label }: { label: string }) {
+  return (
+    <div
+      className="flex items-center gap-4 px-5 py-5"
+      style={{
+        border: "1px dashed rgba(228,224,221,0.22)",
+        background: "rgba(255,255,255,0.015)",
+      }}
+    >
+      <span
+        aria-hidden
+        className="shrink-0 flex items-center justify-center"
+        style={{
+          width: 34,
+          height: 34,
+          borderRadius: "50%",
+          border: "1px solid rgba(214,58,39,0.5)",
+          color: "#D63A27",
+          fontSize: 11,
+          paddingLeft: 2,
+        }}
+      >
+        ▶
+      </span>
+      <span
+        className="font-body text-[13px] leading-[1.4]"
+        style={{ color: "rgba(228,224,221,0.72)" }}
+      >
+        {label}
+      </span>
+    </div>
+  );
+}
+
+function ListaChecks({ items }: { items: string[] }) {
+  return (
+    <div className="flex flex-col gap-2.5">
+      {items.map((x) => (
+        <div key={x} className="flex items-start gap-3">
+          <span
+            aria-hidden
+            className="shrink-0 mt-[7px] block"
+            style={{ width: 5, height: 5, background: "#D63A27" }}
+          />
+          <span
+            className="font-body text-[13px] md:text-[14px] leading-[1.6]"
+            style={{ color: "rgba(228,224,221,0.7)" }}
+          >
+            {x}
+          </span>
+        </div>
+      ))}
+    </div>
+  );
+}
+
+export default function PropuestaDjArturoClient() {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <>
+      {/* NAV */}
+      <nav
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+        style={{
+          background: scrolled ? "rgba(28,28,26,0.88)" : "rgba(28,28,26,0.3)",
+          backdropFilter: "blur(18px)",
+          borderBottom: scrolled
+            ? "1px solid rgba(228,224,221,0.08)"
+            : "1px solid transparent",
+        }}
+      >
+        <div className="flex items-center justify-between px-6 md:px-14 h-16 max-w-[1400px] mx-auto">
+          <Logo size={24} tone="cream" />
+          <div className="flex items-center gap-4">
+            <span
+              className="hidden md:block font-body text-[11px] tracking-[0.16em] uppercase"
+              style={{ color: "rgba(228,224,221,0.45)" }}
+            >
+              Propuesta · {CLIENTE}
+            </span>
+            <span
+              className="font-body text-[10px] tracking-[0.16em] uppercase px-3 py-1.5"
+              style={{
+                color: "#D63A27",
+                background: "rgba(214,58,39,0.1)",
+                border: "1px solid rgba(214,58,39,0.25)",
+                fontWeight: 600,
+              }}
+            >
+              Confidencial
+            </span>
+          </div>
+        </div>
+      </nav>
+
+      <main style={{ background: "#1C1C1A", color: "#E4E0DD" }}>
+        {/* ============================================================
+            1 · HERO
+           ============================================================ */}
+        <section
+          className="relative w-full min-h-[78vh] flex items-center overflow-hidden"
+          style={{
+            background:
+              "linear-gradient(180deg, #0e0e0d 0%, #1C1C1A 60%, #1C1C1A 100%)",
+          }}
+        >
+          <div
+            aria-hidden
+            className="absolute pointer-events-none"
+            style={{
+              top: "8%",
+              right: "-10%",
+              width: "70vw",
+              height: "70vw",
+              maxWidth: 780,
+              maxHeight: 780,
+              background:
+                "radial-gradient(circle, rgba(214,58,39,0.16) 0%, transparent 65%)",
+              filter: "blur(70px)",
+            }}
+          />
+          <div className="relative z-10 w-full px-6 md:px-14 pt-28 pb-14 md:pb-16 max-w-[1400px] mx-auto">
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="flex items-center gap-3 mb-8"
+            >
+              <span className="w-12 h-px block" style={{ background: "#D63A27" }} />
+              <p
+                className="font-body text-[11px] tracking-[0.22em] uppercase"
+                style={{ color: "#E4E0DD", fontWeight: 500 }}
+              >
+                {CLIENTE} × PG Estrategias
+              </p>
+            </motion.div>
+            <div className="overflow-hidden max-w-[1100px]">
+              <motion.h1
+                initial={{ y: "100%" }}
+                animate={{ y: 0 }}
+                transition={{ duration: 1, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
+                className="font-title"
+                style={{
+                  fontSize: "clamp(42px, 7vw, 108px)",
+                  fontWeight: 700,
+                  lineHeight: 0.96,
+                  letterSpacing: "-0.035em",
+                  color: "#E4E0DD",
+                }}
+              >
+                Cada evento es tu mejor{" "}
+                <em style={{ color: "#D63A27", fontStyle: "italic" }}>
+                  argumento de venta.
+                </em>
+              </motion.h1>
+            </div>
+            <motion.p
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="font-body text-[15px] md:text-[18px] leading-[1.7] mt-8 max-w-[580px]"
+              style={{ color: "rgba(228,224,221,0.75)" }}
+            >
+              Cada boda y cada fiesta le muestra tu nivel a clientes que aún no
+              te conocen. Lo cubrimos bien y sostenemos la presencia entre un
+              evento y el siguiente.
+            </motion.p>
+          </div>
+        </section>
+
+        {/* ============================================================
+            2 · LO QUE CUBRIMOS
+           ============================================================ */}
+        <section className="relative px-6 md:px-14 py-20 md:py-28 max-w-[1400px] mx-auto">
+          <motion.div {...reveal} className="mb-12 md:mb-16 max-w-[760px]">
+            <Eyebrow>Lo que cubrimos</Eyebrow>
+            <SectionTitle>
+              Del evento{" "}
+              <em style={{ color: "#D63A27", fontStyle: "italic" }}>
+                a la contratación.
+              </em>
+            </SectionTitle>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center">
+            <motion.div {...reveal} className="lg:col-span-3">
+              <div className="max-w-[260px]">
+                <VideoSlot src={V_EVENTO} label="Evento · en vivo" width={720} />
+              </div>
+            </motion.div>
+
+            <motion.div
+              {...reveal}
+              transition={{ ...reveal.transition, delay: 0.1 }}
+              className="lg:col-span-4"
+            >
+              <div className="flex items-baseline gap-3 mb-2">
+                <span
+                  className="font-body text-[11px] tracking-[0.2em]"
+                  style={{ color: "#D63A27", fontWeight: 600 }}
+                >
+                  01
+                </span>
+                <h3
+                  className="font-title text-[20px] md:text-[24px]"
+                  style={{ fontWeight: 700, color: "#E4E0DD", letterSpacing: "-0.02em" }}
+                >
+                  El evento
+                </h3>
+              </div>
+              <p
+                className="font-title text-[17px] md:text-[19px] mb-5"
+                style={{ color: "#D63A27", fontStyle: "italic", fontWeight: 700 }}
+              >
+                Cubierto como se vive
+              </p>
+              <ListaChecks items={COBERTURA} />
+            </motion.div>
+
+            <motion.div
+              {...reveal}
+              transition={{ ...reveal.transition, delay: 0.18 }}
+              className="lg:col-span-5"
+            >
+              <div className="flex items-baseline gap-3 mb-2">
+                <span
+                  className="font-body text-[11px] tracking-[0.2em]"
+                  style={{ color: "#D63A27", fontWeight: 600 }}
+                >
+                  02
+                </span>
+                <h3
+                  className="font-title text-[20px] md:text-[24px]"
+                  style={{ fontWeight: 700, color: "#E4E0DD", letterSpacing: "-0.02em" }}
+                >
+                  Entre evento y evento
+                </h3>
+              </div>
+              <p
+                className="font-title text-[17px] md:text-[19px] mb-5"
+                style={{ color: "#D63A27", fontStyle: "italic", fontWeight: 700 }}
+              >
+                Presencia que no se apaga
+              </p>
+              <ListaChecks items={PRESENCIA} />
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ============================================================
+            3 · FOTOGRAFÍA DE EVENTO
+           ============================================================ */}
+        <section className="relative py-20 md:py-28" style={{ background: "#151513" }}>
+          <div className="px-6 md:px-14 max-w-[1400px] mx-auto">
+            <motion.div {...reveal} className="mb-10 md:mb-14 max-w-[820px]">
+              <Eyebrow>Fotografía de evento</Eyebrow>
+              <SectionTitle>
+                El ambiente real,{" "}
+                <em style={{ color: "#D63A27", fontStyle: "italic" }}>
+                  bien contado.
+                </em>
+              </SectionTitle>
+            </motion.div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-5">
+              {FOTOS.map((src, i) => (
+                <motion.div
+                  key={src}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-60px" }}
+                  transition={{ duration: 0.7, delay: i * 0.08 }}
+                >
+                  <FotoSlot src={src} alt={`Cobertura de evento de ${CLIENTE}`} />
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================
+            4 · ACABADO COMERCIAL (OTROS GIROS)
+           ============================================================ */}
+        <section className="relative px-6 md:px-14 py-20 md:py-28 max-w-[1400px] mx-auto">
+          <motion.div {...reveal} className="mb-10 md:mb-14 max-w-[820px]">
+            <Eyebrow>De dónde sale el acabado</Eyebrow>
+            <SectionTitle>
+              Producción de marca,{" "}
+              <em style={{ color: "#D63A27", fontStyle: "italic" }}>
+                aplicada a tus eventos.
+              </em>
+            </SectionTitle>
+            <p
+              className="font-body text-[15px] md:text-[17px] leading-[1.8] max-w-[680px]"
+              style={{ color: "rgba(228,224,221,0.72)" }}
+            >
+              Trabajamos el nicho de eventos sociales y también producimos para
+              automotriz y retail. De ahí sale el nivel de edición que le damos a
+              cada cobertura.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-3 gap-3 md:gap-5">
+            {OTROS_GIROS.map((v, i) => (
+              <motion.div
+                key={v.src}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.7, delay: i * 0.08 }}
+              >
+                <VideoSlot src={v.src} label={v.label} width={640} />
+              </motion.div>
+            ))}
+          </div>
+
+          <motion.div {...reveal} className="mt-14 md:mt-16">
+            <p
+              className="font-body text-[11px] tracking-[0.22em] uppercase mb-5"
+              style={{ color: "rgba(228,224,221,0.5)" }}
+            >
+              Lo que grabamos contigo el primer mes
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
+              {RESERVADOS.map((label) => (
+                <SlotReservado key={label} label={label} />
+              ))}
+            </div>
+          </motion.div>
+        </section>
+
+        {/* ============================================================
+            5 · IGUALA MENSUAL
+           ============================================================ */}
+        <section
+          className="relative px-6 md:px-14 py-20 md:py-28 overflow-hidden"
+          style={{
+            background:
+              "linear-gradient(180deg, #1C1C1A 0%, #201F1C 55%, #1C1C1A 100%)",
+          }}
+        >
+          <div
+            aria-hidden
+            className="absolute pointer-events-none"
+            style={{
+              top: "-10%",
+              left: "50%",
+              transform: "translateX(-50%)",
+              width: "70vw",
+              height: "70vw",
+              maxWidth: 700,
+              maxHeight: 700,
+              background:
+                "radial-gradient(circle, rgba(214,58,39,0.10) 0%, transparent 65%)",
+              filter: "blur(50px)",
+            }}
+          />
+          <div className="relative max-w-[1200px] mx-auto">
+            <motion.div
+              {...reveal}
+              className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16"
+            >
+              <div className="lg:col-span-5">
+                <Eyebrow>Inversión</Eyebrow>
+                <SectionTitle>
+                  Todo lo anterior,{" "}
+                  <em style={{ color: "#D63A27", fontStyle: "italic" }}>
+                    en una iguala.
+                  </em>
+                </SectionTitle>
+                <div className="flex items-baseline gap-3 mt-8">
+                  <span
+                    className="font-title"
+                    style={{ fontSize: 22, color: "rgba(228,224,221,0.55)", fontWeight: 400 }}
+                  >
+                    $
+                  </span>
+                  <span
+                    className="font-title"
+                    style={{
+                      fontSize: "clamp(56px, 8vw, 96px)",
+                      fontWeight: 700,
+                      lineHeight: 1,
+                      letterSpacing: "-0.04em",
+                      color: "#D63A27",
+                    }}
+                  >
+                    {PRECIO}
+                  </span>
+                  <div className="flex flex-col">
+                    <span
+                      className="font-body text-[13px] tracking-[0.14em] uppercase"
+                      style={{ color: "rgba(228,224,221,0.7)" }}
+                    >
+                      MXN
+                    </span>
+                    <span
+                      className="font-body text-[12px]"
+                      style={{ color: "rgba(228,224,221,0.5)" }}
+                    >
+                      / mes
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="lg:col-span-7">
+                <div
+                  className="p-7 md:p-10 flex flex-col gap-7"
+                  style={{
+                    background: "rgba(228,224,221,0.03)",
+                    border: "1px solid rgba(228,224,221,0.14)",
+                  }}
+                >
+                  {IGUALA.map((grupo, i) => (
+                    <div
+                      key={grupo.titulo}
+                      className={i === 0 ? "" : "pt-7"}
+                      style={
+                        i === 0
+                          ? undefined
+                          : { borderTop: "1px solid rgba(228,224,221,0.12)" }
+                      }
+                    >
+                      <p
+                        className="font-body text-[11px] tracking-[0.22em] uppercase mb-4"
+                        style={{ color: "rgba(228,224,221,0.5)" }}
+                      >
+                        {grupo.titulo}
+                      </p>
+                      <ListaChecks items={grupo.items} />
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              {...reveal}
+              className="mt-8 p-6 md:p-7 flex flex-col md:flex-row md:items-center gap-4 md:gap-7"
+              style={{
+                background: "rgba(255,255,255,0.02)",
+                borderLeft: "2px solid #D63A27",
+              }}
+            >
+              <span
+                className="font-body text-[11px] tracking-[0.2em] uppercase shrink-0"
+                style={{ color: "#D63A27", fontWeight: 600 }}
+              >
+                Nota
+              </span>
+              <p
+                className="font-body text-[14px] leading-[1.7]"
+                style={{ color: "rgba(228,224,221,0.7)" }}
+              >
+                La iguala es mensual y renovable, e incluye la creación y gestión
+                de los anuncios en Meta. El presupuesto de pauta se define
+                aparte, según la zona y el alcance que se busque.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ============================================================
+            6 · CIERRE
+           ============================================================ */}
+        <section
+          className="relative overflow-hidden flex items-center justify-center px-6 md:px-14 py-28 md:py-40"
+          style={{ background: "#0e0e0d" }}
+        >
+          <div
+            aria-hidden
+            className="absolute pointer-events-none"
+            style={{
+              top: "50%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: "80vw",
+              height: "80vw",
+              maxWidth: 800,
+              maxHeight: 800,
+              background:
+                "radial-gradient(circle, rgba(214,58,39,0.13) 0%, transparent 65%)",
+              filter: "blur(60px)",
+            }}
+          />
+          <div className="relative z-10 max-w-[900px] mx-auto text-center">
+            <motion.p
+              {...reveal}
+              className="font-body text-[12px] tracking-[0.3em] uppercase mb-10"
+              style={{ color: "#D63A27", fontWeight: 500 }}
+            >
+              {CLIENTE} × PG Estrategias
+            </motion.p>
+            <motion.h2
+              {...reveal}
+              transition={{ ...reveal.transition, delay: 0.1 }}
+              className="font-title mb-8"
+              style={{
+                fontSize: "clamp(32px, 4.6vw, 66px)",
+                fontWeight: 700,
+                lineHeight: 1.04,
+                letterSpacing: "-0.03em",
+                color: "#E4E0DD",
+              }}
+            >
+              Que cada evento te traiga el siguiente.
+            </motion.h2>
+            <motion.p
+              {...reveal}
+              transition={{ ...reveal.transition, delay: 0.2 }}
+              className="font-title"
+              style={{
+                fontSize: "clamp(22px, 3vw, 42px)",
+                fontWeight: 700,
+                lineHeight: 1.12,
+                letterSpacing: "-0.025em",
+                color: "#D63A27",
+                fontStyle: "italic",
+              }}
+            >
+              Empecemos por el de esta semana.
+            </motion.p>
+            <motion.div
+              {...reveal}
+              transition={{ ...reveal.transition, delay: 0.32 }}
+              className="mt-12 flex justify-center"
+            >
+              <Logo size={28} tone="cream" />
+            </motion.div>
+          </div>
+        </section>
+      </main>
+    </>
+  );
+}

@@ -71,6 +71,18 @@ const CATEGORIES: Category[] = [
       "Para marcas que no compiten por precio, compiten por percepción. Producción con lenguaje de cine, dirección de arte y posproducción detallada para transmitir prestigio, elevar el ticket promedio y proyectar liderazgo de categoría.",
     reels: [
       { src: "https://res.cloudinary.com/djduba5fd/video/upload/q_auto/f_auto/v1779379785/AQM00fcFB9UXzP0XHk25z0YsAV6IQq-Q2WvI-l4X-5FOxbB0Y3ZBy5qfCKmYppNZ1uqC6NSFUTJdtATYZoxwS7VKBBgGy7hP7dEnq-g_snczgp.mp4" },
+      { src: "https://res.cloudinary.com/djduba5fd/video/upload/q_auto/f_auto/v1787082394/ZenithMustangBlackHorse_ld8o8z.mp4" },
+    ],
+  },
+  {
+    id: "recaps",
+    number: "05",
+    kicker: "Eventos · Memoria · Marca viva",
+    title: "Recaps",
+    description:
+      "Resúmenes que reviven el evento y lo convierten en un activo de marca. Capturamos los momentos clave, la energía del lugar y el detalle que nadie ve, para entregar una pieza que sigue vendiendo la experiencia mucho después de que terminó.",
+    reels: [
+      { src: "https://res.cloudinary.com/djduba5fd/video/upload/q_auto/f_auto/v1787082349/LandRover_LegacyDrop2_lwq2q2.mp4" },
       { src: "https://res.cloudinary.com/djduba5fd/video/upload/q_auto/f_auto/v1779379782/AQNT8_lqO4uOfGx0cDYYLy5qea3MVzTq7nMnuJrqQ10beUeG_V6FfEw4CmGXg5dkSiKwSj-0-g70SxtETMlBb5OsaeYI4fC70KqDoJM_kls3iw.mp4" },
     ],
   },
@@ -328,7 +340,7 @@ export default function NuestroTrabajoClient() {
               </p>
               <div className="hero-meta md:col-span-6 md:justify-self-end flex items-center gap-8">
                 <div>
-                  <div className="font-title text-3xl md:text-4xl" style={{ fontWeight: 700, color: "#D63A27" }}>04</div>
+                  <div className="font-title text-3xl md:text-4xl" style={{ fontWeight: 700, color: "#D63A27" }}>05</div>
                   <div className="font-body text-[10px] tracking-[0.22em] uppercase mt-1" style={{ color: "rgba(228,224,221,0.45)" }}>Formatos</div>
                 </div>
                 <div>
