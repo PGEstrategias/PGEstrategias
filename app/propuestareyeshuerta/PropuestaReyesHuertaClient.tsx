@@ -8,8 +8,8 @@ import Logo from "@/components/Logo";
    Propuesta — Mercedes-Benz Reyes Huerta × PG Estrategias.
 
    Marketing digital y producción audiovisual a la altura de la marca.
-   La presentación se apoya en el video: el hero y el clímax son piezas
-   verticales sin texto encima; los alcances van en dos columnas (texto
+   La presentación se apoya en el video: el hero (horizontal) y el clímax
+   (vertical) van sin texto encima; los alcances van en dos columnas (texto
    breve a la izquierda, video a la derecha). Casi todo se platica en la
    reunión, así que el texto se mantiene al mínimo.
    ──────────────────────────────────────────────────────────── */
@@ -19,12 +19,12 @@ const PRECIO = "15,000";
 
 /* ── Video ──────────────────────────────────────────────────── */
 
-/* Demo vertical producida para Reyes Huerta. Se usa como teaser silencioso
-   en el hero y completa, con audio, en el clímax. Si el hero lleva otra
-   pieza, basta con cambiar V_HERO. */
+/* Hero: pieza horizontal (16:9), va a pantalla completa. */
+const V_HERO =
+  "https://res.cloudinary.com/djduba5fd/video/upload/v1788374428/Luxury_SUV_driving_on_road_202609021136_d61v0b.mp4";
+/* Clímax: demo vertical producida para Reyes Huerta, completa y con audio. */
 const V_DEMO =
   "https://res.cloudinary.com/djduba5fd/video/upload/v1788051909/DemoMercedes_csof2x.mp4";
-const V_HERO = V_DEMO;
 
 const V_IA =
   "https://res.cloudinary.com/djduba5fd/video/upload/v1787612227/HuracanZenith_uzna4d.mp4";
@@ -56,11 +56,11 @@ function cld(url: string, transform: string) {
 
 /* Cada alcance: título, una línea de posicionamiento, 2–3 ideas clave y
    —cuando aplica— la referencia que lo respalda. El medio de la derecha
-   puede ser un video, un par de imágenes o un espacio por definir. */
+   puede ser un video, un par de imágenes, o no llevar medio. */
 type Media =
   | { kind: "video"; src: string; label: string }
   | { kind: "images"; srcs: string[]; label: string }
-  | { kind: "pending"; label: string };
+  | { kind: "none" };
 
 type Alcance = {
   num: string;
@@ -187,7 +187,7 @@ const ALCANCES: Alcance[] = [
       "Quien ya sabe qué auto quiere, ya compró.",
       "El objetivo es quien tiene el dinero y duda entre Mercedes-Benz, Land Rover, BMW o un seminuevo exclusivo.",
     ],
-    media: { kind: "pending", label: "Pieza por definir" },
+    media: { kind: "none" },
   },
 ];
 
@@ -372,48 +372,75 @@ function ImagePair({ srcs, label }: { srcs: string[]; label: string }) {
   );
 }
 
-/* Espacio reservado para una pieza que llega después: mismo marco 9:16,
-   marcado como plan y no como hueco. */
-function PendingSlot({ label }: { label: string }) {
-  return (
-    <div
-      className="relative w-full flex flex-col items-center justify-center gap-4"
-      style={{
-        aspectRatio: "9/16",
-        border: "1px dashed rgba(228,224,221,0.22)",
-        background:
-          "linear-gradient(180deg, rgba(255,255,255,0.015) 0%, rgba(214,58,39,0.04) 100%)",
-      }}
-    >
-      <span
-        aria-hidden
-        className="flex items-center justify-center"
-        style={{
-          width: 44,
-          height: 44,
-          borderRadius: "50%",
-          border: "1px solid rgba(214,58,39,0.5)",
-          color: "#D63A27",
-          fontSize: 13,
-          paddingLeft: 3,
-        }}
-      >
-        ▶
-      </span>
-      <span
-        className="font-body text-[11px] tracking-[0.2em] uppercase"
-        style={{ color: "rgba(228,224,221,0.5)" }}
-      >
-        {label}
-      </span>
-    </div>
-  );
-}
-
 function MediaBlock({ media }: { media: Media }) {
   if (media.kind === "video") return <VideoSlot src={media.src} label={media.label} />;
   if (media.kind === "images") return <ImagePair srcs={media.srcs} label={media.label} />;
-  return <PendingSlot label={media.label} />;
+  return null;
+}
+
+/* Hero horizontal: el video llena la pantalla en escritorio (object-cover)
+   y en móvil se muestra completo sobre su propio fondo desenfocado, para
+   que una pieza 16:9 no quede recortada en una pantalla vertical. Sin
+   texto: el video es el protagonista. */
+function HeroWide({ src }: { src: string }) {
+  return (
+    <div
+      className="relative w-full overflow-hidden"
+      style={{ height: "100svh", minHeight: 560, background: "#0a0a09" }}
+    >
+      {/* Fondo ambiental (solo se ve en móvil, detrás del letterbox) */}
+      <video
+        aria-hidden
+        className="absolute inset-0 w-full h-full object-cover md:hidden"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="metadata"
+        style={{
+          filter: "blur(40px) saturate(1.2)",
+          transform: "scale(1.3)",
+          opacity: 0.55,
+        }}
+      >
+        <source src={cld(src, "f_auto,q_auto:low,w_480")} type="video/mp4" />
+      </video>
+
+      <motion.video
+        initial={{ opacity: 0, scale: 1.04 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
+        className="absolute inset-0 w-full h-full object-contain md:object-cover"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        aria-label={`Video de apertura de PG Estrategias para ${CLIENTE}`}
+      >
+        <source src={cld(src, "f_auto,q_auto,w_1920")} type="video/mp4" />
+      </motion.video>
+
+      {/* Degradados: funden el video con el negro de la página y dejan
+          legible la navegación */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(28,28,26,0.75) 0%, rgba(28,28,26,0) 28%, rgba(28,28,26,0) 62%, #1C1C1A 100%)",
+        }}
+      />
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse at center, transparent 45%, rgba(10,10,9,0.55) 100%)",
+        }}
+      />
+    </div>
+  );
 }
 
 /* Escenario para el video vertical: el mismo clip, desenfocado y ampliado,
@@ -567,7 +594,7 @@ export default function PropuestaReyesHuertaClient() {
             1 · HERO — solo video
            ============================================================ */}
         <section className="relative">
-          <VideoStage src={V_HERO} muted />
+          <HeroWide src={V_HERO} />
           {/* Indicador de scroll, sin texto */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -587,41 +614,9 @@ export default function PropuestaReyesHuertaClient() {
         </section>
 
         {/* ============================================================
-            2 · APERTURA
+            2 · ALCANCES — dos columnas
            ============================================================ */}
-        <section className="relative px-6 md:px-14 pt-16 md:pt-24 pb-10 md:pb-14 max-w-[1400px] mx-auto">
-          <motion.div {...reveal} className="max-w-[900px]">
-            <Eyebrow>{CLIENTE} × PG Estrategias</Eyebrow>
-            <h1
-              className="font-title"
-              style={{
-                fontSize: "clamp(40px, 6.4vw, 96px)",
-                fontWeight: 700,
-                lineHeight: 0.98,
-                letterSpacing: "-0.035em",
-                color: "#E4E0DD",
-              }}
-            >
-              Contenido a la altura{" "}
-              <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                de la estrella.
-              </em>
-            </h1>
-            <p
-              className="font-body text-[15px] md:text-[18px] leading-[1.7] mt-8 max-w-[600px]"
-              style={{ color: "rgba(228,224,221,0.75)" }}
-            >
-              Mercedes-Benz no compite por atención: la impone. Proponemos
-              producción audiovisual y marketing digital que hablen el mismo
-              idioma que la marca y que el público que la elige.
-            </p>
-          </motion.div>
-        </section>
-
-        {/* ============================================================
-            3 · ALCANCES — dos columnas
-           ============================================================ */}
-        <section className="relative px-6 md:px-14 py-12 md:py-16 max-w-[1400px] mx-auto">
+        <section className="relative px-6 md:px-14 pt-16 md:pt-24 pb-12 md:pb-16 max-w-[1400px] mx-auto">
           <motion.div {...reveal} className="mb-14 md:mb-20 max-w-[760px]">
             <Eyebrow>Alcances</Eyebrow>
             <SectionTitle>
@@ -639,8 +634,14 @@ export default function PropuestaReyesHuertaClient() {
                 {...reveal}
                 className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 items-center"
               >
-                {/* Texto */}
-                <div className="md:col-span-7 lg:col-span-6">
+                {/* Texto: sin medio, ocupa el ancho de lectura completo */}
+                <div
+                  className={
+                    a.media.kind === "none"
+                      ? "md:col-span-9 lg:col-span-8"
+                      : "md:col-span-7 lg:col-span-6"
+                  }
+                >
                   <div className="flex items-baseline gap-4 mb-4">
                     <span
                       className="font-title text-[13px] tracking-[0.2em]"
@@ -709,18 +710,20 @@ export default function PropuestaReyesHuertaClient() {
                 </div>
 
                 {/* Medio */}
-                <div className="md:col-span-5 lg:col-span-5 lg:col-start-8">
-                  <div className="max-w-[380px] mx-auto md:ml-auto md:mr-0 w-full">
-                    <MediaBlock media={a.media} />
+                {a.media.kind !== "none" && (
+                  <div className="md:col-span-5 lg:col-span-5 lg:col-start-8">
+                    <div className="max-w-[380px] mx-auto md:ml-auto md:mr-0 w-full">
+                      <MediaBlock media={a.media} />
+                    </div>
                   </div>
-                </div>
+                )}
               </motion.article>
             ))}
           </div>
         </section>
 
         {/* ============================================================
-            4 · EL DATO
+            3 · EL DATO
            ============================================================ */}
         <section className="relative py-20 md:py-28" style={{ background: "#151513" }}>
           <div className="px-6 md:px-14 max-w-[1400px] mx-auto">
@@ -780,7 +783,7 @@ export default function PropuestaReyesHuertaClient() {
         </section>
 
         {/* ============================================================
-            5 · CLÍMAX — el demo
+            4 · CLÍMAX — el demo
            ============================================================ */}
         <section className="relative" style={{ background: "#0a0a09" }}>
           <div className="px-6 md:px-14 pt-20 md:pt-28 pb-8 max-w-[1400px] mx-auto">
@@ -856,7 +859,7 @@ export default function PropuestaReyesHuertaClient() {
         </section>
 
         {/* ============================================================
-            6 · ENTREGABLES E INVERSIÓN
+            5 · ENTREGABLES E INVERSIÓN
            ============================================================ */}
         <section
           className="relative px-6 md:px-14 py-20 md:py-28 overflow-hidden"
@@ -1015,7 +1018,7 @@ export default function PropuestaReyesHuertaClient() {
         </section>
 
         {/* ============================================================
-            7 · CIERRE
+            6 · CIERRE
            ============================================================ */}
         <section
           className="relative overflow-hidden flex items-center justify-center px-6 md:px-14 py-28 md:py-40"
