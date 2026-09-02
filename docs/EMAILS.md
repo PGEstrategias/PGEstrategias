@@ -78,6 +78,32 @@ npm run email:enviar landrover-puebla -- --cco=contacto@pgestrategias.com
 
 El `--cco` te manda copia oculta para llevar registro.
 
+## Panel web /enviar (para enviar sin terminal)
+
+Además del script, hay un panel visual en el sitio: **`/enviar`**.
+
+- Está protegido con usuario y contraseña (Basic Auth). Define en las
+  variables de entorno: `PANEL_USER` y `PANEL_PASSWORD`.
+- Llenas un formulario (destino, asunto, título, párrafos, botón, features…),
+  ves la **vista previa** en vivo y presionas **Enviar correo**.
+- El envío real ocurre en `POST /api/enviar` (también protegido por el mismo
+  login). La vista previa usa `POST /api/preview`.
+
+En Vercel agrega estas variables (entornos Production **y** Preview):
+
+| Variable | Para qué |
+|---|---|
+| `GMAIL_USER` | correo remitente |
+| `GMAIL_APP_PASSWORD` | App Password de Google |
+| `PANEL_USER` / `PANEL_PASSWORD` | acceso al panel /enviar |
+| `EMAIL_API_TOKEN` | (opcional) endpoint de prueba por URL |
+
+## Endpoint de prueba por URL (opcional)
+
+`GET /api/enviar-prueba?token=...&para=...` envía una muestra. Útil para probar
+rápido desde el navegador. Si ya usas el panel `/enviar`, puedes borrar la ruta
+`app/api/enviar-prueba` para reducir superficie de ataque.
+
 ## Notas importantes
 
 - **Volumen:** el SMTP de Gmail es ideal para prospección de bajo volumen
