@@ -82,7 +82,7 @@ const defaults = {
   saludo: 'Hola,',
   seccionTitulo: '¿Qué incluye?',
   firmaNombre: 'Pablo Guillermo Grageda',
-  firmaCargo: 'Director de Estrategia · PGE Estrategias',
+  firmaCargo: 'Director de Estrategia · pg estrategias',
   firmaEmail: 'contacto@pgestrategias.com',
   firmaWeb: 'pgestrategias.com',
   footerNota:
@@ -99,7 +99,7 @@ export function PropuestaProspecto(props: PropuestaProspectoProps) {
     ctaTexto,
     ctaEnlace,
     heroImagen,
-    heroAlt = 'PGE Estrategias',
+    heroAlt = 'pg estrategias',
     seccionTitulo = defaults.seccionTitulo,
     features,
     ejemplosTitulo = 'Ejemplos de nuestro trabajo',
@@ -165,8 +165,8 @@ export function PropuestaProspecto(props: PropuestaProspectoProps) {
                   margin: 0,
                 }}
               >
-                <span style={{ color: color.accent }}>◆</span>&nbsp; PGE
-                Estrategias
+                <span style={{ color: color.accent }}>◆</span>&nbsp; pg
+                estrategias
               </Text>
             </Section>
 
@@ -349,7 +349,7 @@ export function PropuestaProspecto(props: PropuestaProspectoProps) {
                   margin: 0,
                 }}
               >
-                PGE Estrategias · Puebla, México
+                pg estrategias · Puebla, México
                 <br />
                 {footerNota}
               </Text>

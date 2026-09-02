@@ -89,11 +89,20 @@ export default function PanelEnviar() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ props: construirProps(f) }),
     });
+    if (res.status === 401) {
+      window.location.href = '/login?next=/enviar';
+      return;
+    }
     if (res.ok) {
       setPreviewHtml(await res.text());
     } else {
       setResultado({ ok: false, texto: await res.text() });
     }
+  }
+
+  async function cerrarSesion() {
+    await fetch('/api/logout', { method: 'POST' });
+    window.location.href = '/login';
   }
 
   async function enviar() {
@@ -111,6 +120,10 @@ export default function PanelEnviar() {
           props: construirProps(f),
         }),
       });
+      if (res.status === 401) {
+        window.location.href = '/login?next=/enviar';
+        return;
+      }
       const data = await res.json();
       setResultado({
         ok: data.ok,
@@ -137,12 +150,27 @@ export default function PanelEnviar() {
       }}
     >
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-        <h1 style={{ fontSize: 24, margin: '0 0 4px' }}>
-          <span style={{ color: '#D63A27' }}>◆</span> Panel de envío · PGE
-        </h1>
-        <p style={{ color: '#A9A5A0', margin: '0 0 24px', fontSize: 14 }}>
-          Llena los datos, revisa la vista previa y envía la propuesta.
-        </p>
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'flex-start',
+            justifyContent: 'space-between',
+            gap: 12,
+          }}
+        >
+          <div>
+            <h1 style={{ fontSize: 24, margin: '0 0 4px' }}>
+              <span style={{ color: '#D63A27' }}>◆</span> Panel de envío · pg
+              estrategias
+            </h1>
+            <p style={{ color: '#A9A5A0', margin: '0 0 24px', fontSize: 14 }}>
+              Llena los datos, revisa la vista previa y envía la propuesta.
+            </p>
+          </div>
+          <button style={btnSec} onClick={cerrarSesion} type="button">
+            Cerrar sesión
+          </button>
+        </div>
 
         <div
           style={{

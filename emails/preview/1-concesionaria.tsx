@@ -14,13 +14,13 @@ export default function PreviewConcesionaria() {
       saludo="Estimado Roberto,"
       parrafos={[
         'Espero que te encuentres muy bien. Te escribo tras conocer el trabajo de la agencia y la línea que están por lanzar.',
-        'Este mes en PGE Estrategias seleccionamos 2 agencias automotrices premium en Puebla para producirles un Video Demo Comercial de alto nivel, 100% libre de costo.',
+        'Este mes en pg estrategias seleccionamos 2 agencias automotrices premium en Puebla para producirles un Video Demo Comercial de alto nivel, 100% libre de costo.',
         'Conociendo la sofisticación visual que Land Rover exige, queremos demostrarte el alcance de nuestra producción con una pieza adaptada a tu showroom o nuevos lanzamientos.',
       ]}
       ctaTexto="Quiero mi video demo gratis"
       ctaEnlace="https://wa.me/5212221234567"
       heroImagen="https://res.cloudinary.com/djduba5fd/video/upload/so_2,w_1040,c_fill,h_600/v1787082349/LandRover_LegacyDrop2_lwq2q2.jpg"
-      heroAlt="Muestra de video Land Rover — PGE Estrategias"
+      heroAlt="Muestra de video Land Rover — pg estrategias"
       seccionTitulo="Qué incluye la demo"
       features={[
         {

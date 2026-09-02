@@ -39,7 +39,7 @@ export interface EnviarOpciones {
   asunto: string;
   /** El componente de email de React Email (JSX). */
   componente: React.ReactElement;
-  /** Nombre visible del remitente. Default: "PGE Estrategias". */
+  /** Nombre visible del remitente. Default: "pg estrategias". */
   nombreRemitente?: string;
   /** Responder-a (útil si envías desde un alias). */
   responderA?: string;
@@ -51,7 +51,7 @@ export interface EnviarOpciones {
 export async function enviarCorreo(opts: EnviarOpciones) {
   const transporte = crearTransporte();
   const { para, asunto, componente, responderA, cco } = opts;
-  const nombreRemitente = opts.nombreRemitente ?? 'PGE Estrategias';
+  const nombreRemitente = opts.nombreRemitente ?? 'pg estrategias';
   const from = `"${nombreRemitente}" <${process.env.GMAIL_USER}>`;
 
   // render() es asíncrono en @react-email/components v0.0.22+

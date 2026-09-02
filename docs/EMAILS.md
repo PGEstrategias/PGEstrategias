@@ -82,8 +82,10 @@ El `--cco` te manda copia oculta para llevar registro.
 
 Además del script, hay un panel visual en el sitio: **`/enviar`**.
 
-- Está protegido con usuario y contraseña (Basic Auth). Define en las
-  variables de entorno: `PANEL_USER` y `PANEL_PASSWORD`.
+- Está protegido con una pantalla de login (`/login`) y cookie de sesión.
+  Define en las variables de entorno: `PANEL_USER` y `PANEL_PASSWORD`.
+  Si el usuario o contraseña están mal, lo rechaza con un mensaje claro y
+  puedes reintentar. Hay botón de **Cerrar sesión** dentro del panel.
 - Llenas un formulario (destino, asunto, título, párrafos, botón, features…),
   ves la **vista previa** en vivo y presionas **Enviar correo**.
 - El envío real ocurre en `POST /api/enviar` (también protegido por el mismo

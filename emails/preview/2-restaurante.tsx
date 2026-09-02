@@ -14,7 +14,7 @@ export default function PreviewRestaurante() {
       saludo="Hola Chef Andrea,"
       parrafos={[
         'Seguimos de cerca lo que hacen en el restaurante y creemos que su propuesta merece verse tan bien como sabe.',
-        'En PGE Estrategias diseñamos y producimos contenido audiovisual que convierte antojo en reservaciones: platillos, ambiente y experiencia, listos para Instagram y TikTok.',
+        'En pg estrategias diseñamos y producimos contenido audiovisual que convierte antojo en reservaciones: platillos, ambiente y experiencia, listos para Instagram y TikTok.',
       ]}
       ctaTexto="Agendar una llamada"
       ctaEnlace="https://wa.me/5212221234567"
