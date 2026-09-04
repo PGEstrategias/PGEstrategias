@@ -17,8 +17,13 @@ import Logo from "@/components/Logo";
 const CLIENTE = "Atónito";
 const PRECIO = "11,000";
 
+/* Marca de Atónito. En cuanto el logotipo esté en Cloudinary se pega la URL
+   aquí y sustituye al texto sin tocar nada más de la página. */
+const LOGO_ATONITO = "";
+
 /* ── Muestras de producción ─────────────────────────────────── */
 
+/* El label ya no se pinta sobre la pieza; queda como texto accesible. */
 const MUESTRAS = [
   { src: "https://res.cloudinary.com/djduba5fd/video/upload/v1779379006/Webinar2_unozlf.mp4", label: "Institucional" },
   { src: "https://res.cloudinary.com/djduba5fd/video/upload/v1779377735/Reel_t5pucv.mp4", label: "Reel de marca" },
@@ -157,13 +162,42 @@ const ENTREGABLES = [
 
 /* ── UI ─────────────────────────────────────────────────────── */
 
+function MarcaAtonito({ size = 30, claro = false }: { size?: number; claro?: boolean }) {
+  const color = claro ? "#FFFFFF" : "#0B7659";
+
+  if (LOGO_ATONITO) {
+    return (
+      /* eslint-disable-next-line @next/next/no-img-element */
+      <img
+        src={LOGO_ATONITO}
+        alt="Atónito"
+        style={{ height: size, width: "auto" }}
+      />
+    );
+  }
+
+  return (
+    <span
+      className="font-title uppercase leading-none"
+      style={{
+        fontSize: Math.round(size * 0.62),
+        fontWeight: 800,
+        letterSpacing: "0.16em",
+        color,
+      }}
+    >
+      Atónito
+    </span>
+  );
+}
+
 function Eyebrow({ children }: { children: React.ReactNode }) {
   return (
     <div className="flex items-center gap-3 mb-6">
-      <span className="w-8 h-px block" style={{ background: "#D63A27" }} />
+      <span className="w-8 h-px block" style={{ background: "#0B7659" }} />
       <p
         className="font-body text-[11px] tracking-[0.22em] uppercase"
-        style={{ color: "#D63A27", fontWeight: 500 }}
+        style={{ color: "#0B7659", fontWeight: 500 }}
       >
         {children}
       </p>
@@ -180,7 +214,7 @@ function SectionTitle({ children }: { children: React.ReactNode }) {
         fontWeight: 700,
         lineHeight: 1.05,
         letterSpacing: "-0.025em",
-        color: "#E4E0DD",
+        color: "#16241F",
       }}
     >
       {children}
@@ -218,7 +252,7 @@ function VideoSlot({ src, label }: { src: string; label: string }) {
       style={{
         aspectRatio: "9/16",
         background: "#0e0e0d",
-        border: "1px solid rgba(228,224,221,0.1)",
+        border: "1px solid rgba(22,36,31,0.14)",
       }}
     >
       <video
@@ -233,19 +267,6 @@ function VideoSlot({ src, label }: { src: string; label: string }) {
       >
         <source src={cld(src, "f_auto,q_auto,w_640")} type="video/mp4" />
       </video>
-      <div
-        aria-hidden
-        className="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none"
-        style={{
-          background: "linear-gradient(180deg, transparent 0%, rgba(14,14,13,0.85) 100%)",
-        }}
-      />
-      <span
-        className="absolute left-3 bottom-3 font-body text-[10px] tracking-[0.16em] uppercase"
-        style={{ color: "rgba(228,224,221,0.8)" }}
-      >
-        {label}
-      </span>
     </div>
   );
 }
@@ -260,14 +281,14 @@ function Chips({ items, fuerte = false }: { items: string[]; fuerte?: boolean })
           style={
             fuerte
               ? {
-                  color: "#E4E0DD",
-                  border: "1px solid rgba(214,58,39,0.4)",
-                  background: "rgba(214,58,39,0.07)",
+                  color: "#16241F",
+                  border: "1px solid rgba(11,118,89,0.4)",
+                  background: "rgba(11,118,89,0.07)",
                 }
               : {
-                  color: "rgba(228,224,221,0.72)",
-                  border: "1px solid rgba(228,224,221,0.16)",
-                  background: "rgba(255,255,255,0.02)",
+                  color: "rgba(22,36,31,0.76)",
+                  border: "1px solid rgba(22,36,31,0.16)",
+                  background: "rgba(11,118,89,0.04)",
                 }
           }
         >
@@ -286,11 +307,11 @@ function ListaChecks({ items }: { items: string[] }) {
           <span
             aria-hidden
             className="shrink-0 mt-[7px] block"
-            style={{ width: 5, height: 5, background: "#D63A27" }}
+            style={{ width: 5, height: 5, background: "#0B7659" }}
           />
           <span
             className="font-body text-[13px] md:text-[14px] leading-[1.6]"
-            style={{ color: "rgba(228,224,221,0.7)" }}
+            style={{ color: "rgba(22,36,31,0.74)" }}
           >
             {x}
           </span>
@@ -314,28 +335,36 @@ export default function PropuestaAtonitoClient() {
       <nav
         className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
         style={{
-          background: scrolled ? "rgba(28,28,26,0.88)" : "rgba(28,28,26,0.3)",
+          background: scrolled ? "rgba(255,255,255,0.92)" : "rgba(255,255,255,0.6)",
           backdropFilter: "blur(18px)",
           borderBottom: scrolled
-            ? "1px solid rgba(228,224,221,0.08)"
+            ? "1px solid rgba(22,36,31,0.08)"
             : "1px solid transparent",
         }}
       >
         <div className="flex items-center justify-between px-6 md:px-14 h-16 max-w-[1400px] mx-auto">
-          <Logo size={24} tone="cream" />
+          <div className="flex items-center gap-4">
+            <MarcaAtonito size={26} />
+            <span
+              aria-hidden
+              className="h-4 w-px block"
+              style={{ background: "rgba(22,36,31,0.2)" }}
+            />
+            <Logo size={20} tone="dark" />
+          </div>
           <div className="flex items-center gap-4">
             <span
               className="hidden md:block font-body text-[11px] tracking-[0.16em] uppercase"
-              style={{ color: "rgba(228,224,221,0.45)" }}
+              style={{ color: "rgba(22,36,31,0.6)" }}
             >
               Propuesta · {CLIENTE}
             </span>
             <span
               className="font-body text-[10px] tracking-[0.16em] uppercase px-3 py-1.5"
               style={{
-                color: "#D63A27",
-                background: "rgba(214,58,39,0.1)",
-                border: "1px solid rgba(214,58,39,0.25)",
+                color: "#0B7659",
+                background: "rgba(11,118,89,0.1)",
+                border: "1px solid rgba(11,118,89,0.25)",
                 fontWeight: 600,
               }}
             >
@@ -345,7 +374,7 @@ export default function PropuestaAtonitoClient() {
         </div>
       </nav>
 
-      <main style={{ background: "#1C1C1A", color: "#E4E0DD" }}>
+      <main style={{ background: "#FFFFFF", color: "#16241F" }}>
         {/* ============================================================
             1 · HERO
            ============================================================ */}
@@ -353,7 +382,7 @@ export default function PropuestaAtonitoClient() {
           className="relative w-full min-h-[78vh] flex items-center overflow-hidden"
           style={{
             background:
-              "linear-gradient(180deg, #0e0e0d 0%, #1C1C1A 60%, #1C1C1A 100%)",
+              "linear-gradient(180deg, #F1F8F5 0%, #FFFFFF 55%, #FFFFFF 100%)",
           }}
         >
           <div
@@ -367,7 +396,7 @@ export default function PropuestaAtonitoClient() {
               maxWidth: 780,
               maxHeight: 780,
               background:
-                "radial-gradient(circle, rgba(214,58,39,0.16) 0%, transparent 65%)",
+                "radial-gradient(circle, rgba(11,118,89,0.16) 0%, transparent 65%)",
               filter: "blur(70px)",
             }}
           />
@@ -378,10 +407,10 @@ export default function PropuestaAtonitoClient() {
               transition={{ duration: 0.6, delay: 0.15 }}
               className="flex items-center gap-3 mb-8"
             >
-              <span className="w-12 h-px block" style={{ background: "#D63A27" }} />
+              <span className="w-12 h-px block" style={{ background: "#0B7659" }} />
               <p
                 className="font-body text-[11px] tracking-[0.22em] uppercase"
-                style={{ color: "#E4E0DD", fontWeight: 500 }}
+                style={{ color: "#16241F", fontWeight: 500 }}
               >
                 {CLIENTE} × PG Estrategias
               </p>
@@ -397,11 +426,11 @@ export default function PropuestaAtonitoClient() {
                   fontWeight: 700,
                   lineHeight: 0.96,
                   letterSpacing: "-0.035em",
-                  color: "#E4E0DD",
+                  color: "#16241F",
                 }}
               >
                 Todo viene del norte.{" "}
-                <em style={{ color: "#D63A27", fontStyle: "italic" }}>
+                <em style={{ color: "#0B7659", fontStyle: "italic" }}>
                   Ese es el contenido.
                 </em>
               </motion.h1>
@@ -411,7 +440,7 @@ export default function PropuestaAtonitoClient() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
               className="font-body text-[15px] md:text-[18px] leading-[1.7] mt-8 max-w-[580px]"
-              style={{ color: "rgba(228,224,221,0.75)" }}
+              style={{ color: "rgba(22,36,31,0.78)" }}
             >
               El sabor auténtico del norte no es un dato de producto: es el
               argumento que sostiene cada pieza, cada dinámica en piso y cada
@@ -428,7 +457,7 @@ export default function PropuestaAtonitoClient() {
             <Eyebrow>A quién le hablamos</Eyebrow>
             <SectionTitle>
               Dos públicos,{" "}
-              <em style={{ color: "#D63A27", fontStyle: "italic" }}>
+              <em style={{ color: "#0B7659", fontStyle: "italic" }}>
                 un mismo sabor.
               </em>
             </SectionTitle>
@@ -444,13 +473,13 @@ export default function PropuestaAtonitoClient() {
                 <div className="flex items-baseline gap-3 mb-4">
                   <span
                     className="font-body text-[11px] tracking-[0.2em]"
-                    style={{ color: "#D63A27", fontWeight: 600 }}
+                    style={{ color: "#0B7659", fontWeight: 600 }}
                   >
                     {seg.tag}
                   </span>
                   <h3
                     className="font-title text-[20px] md:text-[24px]"
-                    style={{ fontWeight: 700, color: "#E4E0DD", letterSpacing: "-0.02em" }}
+                    style={{ fontWeight: 700, color: "#16241F", letterSpacing: "-0.02em" }}
                   >
                     {seg.name}
                   </h3>
@@ -464,7 +493,7 @@ export default function PropuestaAtonitoClient() {
             <motion.div {...reveal}>
               <p
                 className="font-body text-[11px] tracking-[0.22em] uppercase mb-5"
-                style={{ color: "rgba(228,224,221,0.5)" }}
+                style={{ color: "rgba(22,36,31,0.6)" }}
               >
                 Producto
               </p>
@@ -473,7 +502,7 @@ export default function PropuestaAtonitoClient() {
             <motion.div {...reveal} transition={{ ...reveal.transition, delay: 0.1 }}>
               <p
                 className="font-body text-[11px] tracking-[0.22em] uppercase mb-5"
-                style={{ color: "rgba(228,224,221,0.5)" }}
+                style={{ color: "rgba(22,36,31,0.6)" }}
               >
                 Accesorios de marca
               </p>
@@ -485,13 +514,13 @@ export default function PropuestaAtonitoClient() {
         {/* ============================================================
             3 · LOS CUATRO FRENTES
            ============================================================ */}
-        <section className="relative py-20 md:py-28" style={{ background: "#151513" }}>
+        <section className="relative py-20 md:py-28" style={{ background: "#F1F8F5" }}>
           <div className="px-6 md:px-14 max-w-[1400px] mx-auto">
             <motion.div {...reveal} className="mb-12 md:mb-16 max-w-[760px]">
               <Eyebrow>El plan de contenido</Eyebrow>
               <SectionTitle>
                 Cuatro frentes,{" "}
-                <em style={{ color: "#D63A27", fontStyle: "italic" }}>
+                <em style={{ color: "#0B7659", fontStyle: "italic" }}>
                   el mismo origen.
                 </em>
               </SectionTitle>
@@ -504,23 +533,23 @@ export default function PropuestaAtonitoClient() {
                   {...reveal}
                   transition={{ ...reveal.transition, delay: (i % 4) * 0.08 }}
                   className="pt-6"
-                  style={{ borderTop: "1px solid rgba(228,224,221,0.14)" }}
+                  style={{ borderTop: "1px solid rgba(22,36,31,0.14)" }}
                 >
                   <span
                     className="font-body text-[11px] tracking-[0.2em] block mb-3"
-                    style={{ color: "#D63A27", fontWeight: 600 }}
+                    style={{ color: "#0B7659", fontWeight: 600 }}
                   >
                     {f.num}
                   </span>
                   <h3
                     className="font-title text-[20px] md:text-[23px] mb-1"
-                    style={{ fontWeight: 700, color: "#E4E0DD", letterSpacing: "-0.02em" }}
+                    style={{ fontWeight: 700, color: "#16241F", letterSpacing: "-0.02em" }}
                   >
                     {f.titulo}
                   </h3>
                   <p
                     className="font-title text-[15px] md:text-[16px] mb-5"
-                    style={{ color: "#D63A27", fontStyle: "italic", fontWeight: 700 }}
+                    style={{ color: "#0B7659", fontStyle: "italic", fontWeight: 700 }}
                   >
                     {f.linea}
                   </p>
@@ -539,7 +568,7 @@ export default function PropuestaAtonitoClient() {
             <Eyebrow>Fuera del ritmo mensual</Eyebrow>
             <SectionTitle>
               Dos piezas con{" "}
-              <em style={{ color: "#D63A27", fontStyle: "italic" }}>
+              <em style={{ color: "#0B7659", fontStyle: "italic" }}>
                 tiempos propios.
               </em>
             </SectionTitle>
@@ -554,18 +583,18 @@ export default function PropuestaAtonitoClient() {
                 className="p-7 md:p-9"
                 style={{
                   background: e.destacado
-                    ? "rgba(214,58,39,0.05)"
-                    : "rgba(228,224,221,0.03)",
+                    ? "rgba(11,118,89,0.05)"
+                    : "rgba(22,36,31,0.03)",
                   border: e.destacado
-                    ? "1px solid rgba(214,58,39,0.35)"
-                    : "1px solid rgba(228,224,221,0.14)",
+                    ? "1px solid rgba(11,118,89,0.35)"
+                    : "1px solid rgba(22,36,31,0.14)",
                 }}
               >
                 <span
                   className="font-body text-[10px] tracking-[0.18em] uppercase inline-block mb-5 px-3 py-1.5"
                   style={{
-                    color: e.destacado ? "#1C1C1A" : "rgba(228,224,221,0.7)",
-                    background: e.destacado ? "#D63A27" : "rgba(255,255,255,0.05)",
+                    color: e.destacado ? "#FFFFFF" : "rgba(22,36,31,0.74)",
+                    background: e.destacado ? "#0B7659" : "rgba(11,118,89,0.09)",
                     fontWeight: 600,
                   }}
                 >
@@ -573,13 +602,13 @@ export default function PropuestaAtonitoClient() {
                 </span>
                 <h3
                   className="font-title text-[22px] md:text-[27px] mb-4"
-                  style={{ fontWeight: 700, color: "#E4E0DD", letterSpacing: "-0.02em" }}
+                  style={{ fontWeight: 700, color: "#16241F", letterSpacing: "-0.02em" }}
                 >
                   {e.titulo}
                 </h3>
                 <p
                   className="font-body text-[14px] md:text-[15px] leading-[1.7]"
-                  style={{ color: "rgba(228,224,221,0.68)" }}
+                  style={{ color: "rgba(22,36,31,0.76)" }}
                 >
                   {e.texto}
                 </p>
@@ -591,13 +620,13 @@ export default function PropuestaAtonitoClient() {
         {/* ============================================================
             5 · POR DEFINIR
            ============================================================ */}
-        <section className="relative py-20 md:py-24" style={{ background: "#151513" }}>
+        <section className="relative py-20 md:py-24" style={{ background: "#F1F8F5" }}>
           <div className="px-6 md:px-14 max-w-[1400px] mx-auto">
             <motion.div {...reveal} className="mb-10 max-w-[760px]">
               <Eyebrow>Lo que definimos juntos</Eyebrow>
               <SectionTitle>
                 Ocho decisiones{" "}
-                <em style={{ color: "#D63A27", fontStyle: "italic" }}>
+                <em style={{ color: "#0B7659", fontStyle: "italic" }}>
                   antes de arrancar.
                 </em>
               </SectionTitle>
@@ -610,8 +639,8 @@ export default function PropuestaAtonitoClient() {
                   {...reveal}
                   className="flex items-center gap-4 px-5 py-4"
                   style={{
-                    border: "1px dashed rgba(228,224,221,0.22)",
-                    background: "rgba(255,255,255,0.015)",
+                    border: "1px dashed rgba(22,36,31,0.22)",
+                    background: "rgba(11,118,89,0.035)",
                   }}
                 >
                   <span
@@ -621,8 +650,8 @@ export default function PropuestaAtonitoClient() {
                       width: 26,
                       height: 26,
                       borderRadius: "50%",
-                      border: "1px solid rgba(214,58,39,0.5)",
-                      color: "#D63A27",
+                      border: "1px solid rgba(11,118,89,0.5)",
+                      color: "#0B7659",
                       fontSize: 13,
                     }}
                   >
@@ -630,7 +659,7 @@ export default function PropuestaAtonitoClient() {
                   </span>
                   <span
                     className="font-body text-[13px] leading-[1.5]"
-                    style={{ color: "rgba(228,224,221,0.72)" }}
+                    style={{ color: "rgba(22,36,31,0.76)" }}
                   >
                     {x}
                   </span>
@@ -648,7 +677,7 @@ export default function PropuestaAtonitoClient() {
             <Eyebrow>Contenido de ejemplo</Eyebrow>
             <SectionTitle>
               Así se ve{" "}
-              <em style={{ color: "#D63A27", fontStyle: "italic" }}>
+              <em style={{ color: "#0B7659", fontStyle: "italic" }}>
                 lo que producimos.
               </em>
             </SectionTitle>
@@ -676,7 +705,7 @@ export default function PropuestaAtonitoClient() {
           className="relative px-6 md:px-14 py-20 md:py-28 overflow-hidden"
           style={{
             background:
-              "linear-gradient(180deg, #1C1C1A 0%, #201F1C 55%, #1C1C1A 100%)",
+              "linear-gradient(180deg, #FFFFFF 0%, #F7FBF9 55%, #FFFFFF 100%)",
           }}
         >
           <div
@@ -691,7 +720,7 @@ export default function PropuestaAtonitoClient() {
               maxWidth: 700,
               maxHeight: 700,
               background:
-                "radial-gradient(circle, rgba(214,58,39,0.10) 0%, transparent 65%)",
+                "radial-gradient(circle, rgba(11,118,89,0.10) 0%, transparent 65%)",
               filter: "blur(50px)",
             }}
           />
@@ -704,14 +733,14 @@ export default function PropuestaAtonitoClient() {
                 <Eyebrow>Inversión</Eyebrow>
                 <SectionTitle>
                   Paquete Ignición,{" "}
-                  <em style={{ color: "#D63A27", fontStyle: "italic" }}>
+                  <em style={{ color: "#0B7659", fontStyle: "italic" }}>
                     ajustado a Atónito.
                   </em>
                 </SectionTitle>
                 <div className="flex items-baseline gap-3 mt-8">
                   <span
                     className="font-title"
-                    style={{ fontSize: 22, color: "rgba(228,224,221,0.55)", fontWeight: 400 }}
+                    style={{ fontSize: 22, color: "rgba(22,36,31,0.6)", fontWeight: 400 }}
                   >
                     $
                   </span>
@@ -722,7 +751,7 @@ export default function PropuestaAtonitoClient() {
                       fontWeight: 700,
                       lineHeight: 1,
                       letterSpacing: "-0.04em",
-                      color: "#D63A27",
+                      color: "#0B7659",
                     }}
                   >
                     {PRECIO}
@@ -730,13 +759,13 @@ export default function PropuestaAtonitoClient() {
                   <div className="flex flex-col">
                     <span
                       className="font-body text-[13px] tracking-[0.14em] uppercase"
-                      style={{ color: "rgba(228,224,221,0.7)" }}
+                      style={{ color: "rgba(22,36,31,0.74)" }}
                     >
                       MXN
                     </span>
                     <span
                       className="font-body text-[12px]"
-                      style={{ color: "rgba(228,224,221,0.5)" }}
+                      style={{ color: "rgba(22,36,31,0.6)" }}
                     >
                       / mes
                     </span>
@@ -745,19 +774,19 @@ export default function PropuestaAtonitoClient() {
                 <div
                   className="mt-8 inline-flex items-baseline gap-3 px-5 py-4"
                   style={{
-                    background: "rgba(214,58,39,0.07)",
-                    border: "1px solid rgba(214,58,39,0.3)",
+                    background: "rgba(11,118,89,0.07)",
+                    border: "1px solid rgba(11,118,89,0.3)",
                   }}
                 >
                   <span
                     className="font-title text-[22px]"
-                    style={{ fontWeight: 700, color: "#E4E0DD" }}
+                    style={{ fontWeight: 700, color: "#16241F" }}
                   >
                     $2,000
                   </span>
                   <span
                     className="font-body text-[13px]"
-                    style={{ color: "rgba(228,224,221,0.7)" }}
+                    style={{ color: "rgba(22,36,31,0.74)" }}
                   >
                     de pauta publicitaria incluidos
                   </span>
@@ -768,13 +797,13 @@ export default function PropuestaAtonitoClient() {
                 <div
                   className="p-7 md:p-10"
                   style={{
-                    background: "rgba(228,224,221,0.03)",
-                    border: "1px solid rgba(228,224,221,0.14)",
+                    background: "rgba(22,36,31,0.03)",
+                    border: "1px solid rgba(22,36,31,0.14)",
                   }}
                 >
                   <p
                     className="font-body text-[11px] tracking-[0.22em] uppercase mb-6"
-                    style={{ color: "rgba(228,224,221,0.5)" }}
+                    style={{ color: "rgba(22,36,31,0.6)" }}
                   >
                     Entregables mensuales
                   </p>
@@ -784,11 +813,11 @@ export default function PropuestaAtonitoClient() {
                         <span
                           aria-hidden
                           className="shrink-0 mt-[7px] block"
-                          style={{ width: 5, height: 5, background: "#D63A27" }}
+                          style={{ width: 5, height: 5, background: "#0B7659" }}
                         />
                         <span
                           className="font-body text-[13px] md:text-[14px] leading-[1.6]"
-                          style={{ color: "rgba(228,224,221,0.72)" }}
+                          style={{ color: "rgba(22,36,31,0.76)" }}
                         >
                           {x}
                         </span>
@@ -803,19 +832,19 @@ export default function PropuestaAtonitoClient() {
               {...reveal}
               className="mt-8 p-6 md:p-7 flex flex-col md:flex-row md:items-center gap-4 md:gap-7"
               style={{
-                background: "rgba(255,255,255,0.02)",
-                borderLeft: "2px solid #D63A27",
+                background: "rgba(11,118,89,0.04)",
+                borderLeft: "2px solid #0B7659",
               }}
             >
               <span
                 className="font-body text-[11px] tracking-[0.2em] uppercase shrink-0"
-                style={{ color: "#D63A27", fontWeight: 600 }}
+                style={{ color: "#0B7659", fontWeight: 600 }}
               >
                 Nota
               </span>
               <p
                 className="font-body text-[14px] leading-[1.7]"
-                style={{ color: "rgba(228,224,221,0.7)" }}
+                style={{ color: "rgba(22,36,31,0.74)" }}
               >
                 La iguala es mensual y renovable. El desarrollo del bot y la base
                 de datos corre con su propio calendario —mínimo 2 meses— dentro
@@ -831,7 +860,7 @@ export default function PropuestaAtonitoClient() {
            ============================================================ */}
         <section
           className="relative overflow-hidden flex items-center justify-center px-6 md:px-14 py-28 md:py-40"
-          style={{ background: "#0e0e0d" }}
+          style={{ background: "#0B7659" }}
         >
           <div
             aria-hidden
@@ -845,7 +874,7 @@ export default function PropuestaAtonitoClient() {
               maxWidth: 800,
               maxHeight: 800,
               background:
-                "radial-gradient(circle, rgba(214,58,39,0.13) 0%, transparent 65%)",
+                "radial-gradient(circle, rgba(255,255,255,0.14) 0%, transparent 65%)",
               filter: "blur(60px)",
             }}
           />
@@ -853,7 +882,7 @@ export default function PropuestaAtonitoClient() {
             <motion.p
               {...reveal}
               className="font-body text-[12px] tracking-[0.3em] uppercase mb-10"
-              style={{ color: "#D63A27", fontWeight: 500 }}
+              style={{ color: "rgba(255,255,255,0.75)", fontWeight: 500 }}
             >
               {CLIENTE} × PG Estrategias
             </motion.p>
@@ -866,7 +895,7 @@ export default function PropuestaAtonitoClient() {
                 fontWeight: 700,
                 lineHeight: 1.04,
                 letterSpacing: "-0.03em",
-                color: "#E4E0DD",
+                color: "#FFFFFF",
               }}
             >
               Que el sabor del norte se note en pantalla.
@@ -880,7 +909,7 @@ export default function PropuestaAtonitoClient() {
                 fontWeight: 700,
                 lineHeight: 1.12,
                 letterSpacing: "-0.025em",
-                color: "#D63A27",
+                color: "rgba(255,255,255,0.82)",
                 fontStyle: "italic",
               }}
             >
@@ -889,9 +918,15 @@ export default function PropuestaAtonitoClient() {
             <motion.div
               {...reveal}
               transition={{ ...reveal.transition, delay: 0.32 }}
-              className="mt-12 flex justify-center"
+              className="mt-12 flex items-center justify-center gap-5"
             >
-              <Logo size={28} tone="cream" />
+              <MarcaAtonito size={30} claro />
+              <span
+                aria-hidden
+                className="h-5 w-px block"
+                style={{ background: "rgba(255,255,255,0.35)" }}
+              />
+              <Logo size={24} tone="cream" />
             </motion.div>
           </div>
         </section>
