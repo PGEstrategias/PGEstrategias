@@ -3,21 +3,18 @@ import React from "react";
 import { motion } from "framer-motion";
 import { whatsappUrl } from "@/components/bodas/contacto";
 
-const MSG_FLOTANTE =
-  "Hola, quiero información sobre la cobertura de video y foto para mi boda.";
-
-export function BodasWhatsAppButton() {
+export function BodasWhatsAppButton({ mensaje }: { mensaje: string }) {
   return (
     <motion.a
-      href={whatsappUrl(MSG_FLOTANTE)}
+      href={whatsappUrl(mensaje)}
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escríbenos por WhatsApp"
-      className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 transition-colors duration-500"
+      className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14"
       style={{
-        background: "#D63A27",
-        color: "#E4E0DD",
-        boxShadow: "0 6px 28px rgba(214,58,39,0.35)",
+        background: "#C4A052",
+        color: "#14120F",
+        boxShadow: "0 6px 28px rgba(20,18,15,0.4)",
       }}
       whileHover={{ scale: 1.08 }}
       whileTap={{ scale: 0.94 }}

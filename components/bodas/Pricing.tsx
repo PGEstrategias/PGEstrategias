@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { whatsappUrl } from "@/components/bodas/contacto";
 
-const RED = "#D63A27";
+const GOLD = "#C4A052";
 
 type Paquete = {
   id: string;
@@ -62,12 +62,12 @@ function Check() {
       height="12"
       viewBox="0 0 12 12"
       fill="none"
-      className="shrink-0 mt-[6px]"
+      className="shrink-0 mt-[7px]"
       aria-hidden
     >
       <path
         d="M2 6l3 3 5-5"
-        stroke={RED}
+        stroke={GOLD}
         strokeWidth="1.5"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -98,15 +98,14 @@ function CameraIcon() {
 
 export default function BodasPricing() {
   return (
-    <section id="paquetes" className="py-24 md:py-32 relative">
+    <section id="paquetes" className="bodas-dark py-24 md:py-32 relative">
       <div className="absolute top-0 left-0 right-0 h-px bodas-rule" />
 
       <div className="bodas-container">
         <div className="text-center mb-16">
           <p className="bodas-label mb-5">Paquetes</p>
           <h2 className="bodas-title">
-            Dos formas de{" "}
-            <span style={{ color: RED }}>contar tu historia</span>
+            Dos formas de <span className="bodas-em">contar tu historia</span>
           </h2>
           <p className="bodas-subtitle mx-auto mt-6">
             La diferencia entre uno y otro es cuánto de tu día queda grabado — y
@@ -127,21 +126,17 @@ export default function BodasPricing() {
                 className="relative overflow-hidden h-full flex flex-col"
                 style={{
                   border: destacado
-                    ? "1px solid rgba(214,58,39,0.4)"
-                    : "1px solid rgba(228,224,221,0.08)",
+                    ? "1px solid rgba(196,160,82,0.5)"
+                    : "1px solid rgba(247,243,238,0.1)",
                   background: destacado
-                    ? "linear-gradient(160deg, rgba(214,58,39,0.09) 0%, #25241F 55%)"
-                    : "#25241F",
+                    ? "linear-gradient(160deg, rgba(196,160,82,0.1) 0%, #201D19 55%)"
+                    : "#201D19",
                 }}
               >
                 {destacado && (
                   <div
                     aria-hidden
-                    className="absolute inset-x-0 top-0 h-px"
-                    style={{
-                      background:
-                        "linear-gradient(90deg, transparent, #D63A27, transparent)",
-                    }}
+                    className="absolute inset-x-0 top-0 h-px bodas-rule"
                   />
                 )}
 
@@ -149,26 +144,23 @@ export default function BodasPricing() {
                   {/* Encabezado */}
                   <div className="flex items-start justify-between gap-4 mb-6">
                     <div>
-                      <h3
-                        className="font-title text-3xl md:text-4xl mb-1.5"
-                        style={{ fontWeight: 700, letterSpacing: "-0.03em" }}
-                      >
+                      <h3 className="bodas-heading text-4xl md:text-5xl mb-1.5">
                         {p.title}
                       </h3>
                       <p
                         className="font-body text-[13px]"
-                        style={{ color: "rgba(228,224,221,0.45)" }}
+                        style={{ color: "rgba(247,243,238,0.48)" }}
                       >
                         {p.subtitle}
                       </p>
                     </div>
                     {p.badge && (
                       <span
-                        className="font-body text-[10px] uppercase tracking-[0.14em] px-3 py-1.5 whitespace-nowrap"
+                        className="font-body text-[10px] uppercase tracking-[0.16em] px-3 py-1.5 whitespace-nowrap"
                         style={{
-                          color: RED,
-                          background: "rgba(214,58,39,0.12)",
-                          border: "1px solid rgba(214,58,39,0.35)",
+                          color: GOLD,
+                          background: "rgba(196,160,82,0.12)",
+                          border: "1px solid rgba(196,160,82,0.4)",
                         }}
                       >
                         {p.badge}
@@ -179,16 +171,16 @@ export default function BodasPricing() {
                   {/* Precio */}
                   <div
                     className="mb-6 pb-6"
-                    style={{ borderBottom: "1px solid rgba(228,224,221,0.1)" }}
+                    style={{ borderBottom: "1px solid rgba(247,243,238,0.12)" }}
                   >
                     <p
-                      className="font-title text-5xl md:text-6xl leading-none"
-                      style={{ fontWeight: 800, letterSpacing: "-0.04em" }}
+                      className="bodas-heading text-5xl md:text-6xl leading-none"
+                      style={{ color: GOLD }}
                     >
                       {p.price}
                       <span
                         className="font-body text-base ml-2"
-                        style={{ color: "rgba(228,224,221,0.4)" }}
+                        style={{ color: "rgba(247,243,238,0.4)" }}
                       >
                         MXN
                       </span>
@@ -200,12 +192,12 @@ export default function BodasPricing() {
                     className="flex items-center gap-3 px-4 py-3 mb-7"
                     style={{
                       background: destacado
-                        ? "rgba(214,58,39,0.10)"
-                        : "rgba(228,224,221,0.03)",
+                        ? "rgba(196,160,82,0.1)"
+                        : "rgba(247,243,238,0.04)",
                       border: destacado
-                        ? "1px solid rgba(214,58,39,0.28)"
-                        : "1px solid rgba(228,224,221,0.07)",
-                      color: destacado ? RED : "rgba(228,224,221,0.55)",
+                        ? "1px solid rgba(196,160,82,0.3)"
+                        : "1px solid rgba(247,243,238,0.08)",
+                      color: destacado ? GOLD : "rgba(247,243,238,0.6)",
                     }}
                   >
                     <CameraIcon />
@@ -218,7 +210,7 @@ export default function BodasPricing() {
                   {p.heredado && (
                     <p
                       className="font-body text-[13px] mb-5"
-                      style={{ color: "rgba(228,224,221,0.5)" }}
+                      style={{ color: "rgba(247,243,238,0.5)" }}
                     >
                       {p.heredado}
                     </p>
@@ -229,8 +221,8 @@ export default function BodasPricing() {
                       <li key={f} className="flex items-start gap-3">
                         <Check />
                         <span
-                          className="font-body text-[14px] leading-[1.7]"
-                          style={{ color: "rgba(228,224,221,0.75)" }}
+                          className="font-body text-[14px] leading-[1.75]"
+                          style={{ color: "rgba(247,243,238,0.78)" }}
                         >
                           {f}
                         </span>
@@ -242,17 +234,17 @@ export default function BodasPricing() {
                     <div
                       className="px-5 py-4 mb-8"
                       style={{
-                        background: "rgba(214,58,39,0.07)",
-                        border: "1px solid rgba(214,58,39,0.2)",
+                        background: "rgba(231,201,196,0.08)",
+                        border: "1px solid rgba(231,201,196,0.22)",
                       }}
                     >
                       {p.bonus.map((b) => (
                         <p
                           key={b}
                           className="font-body text-[13px] leading-relaxed"
-                          style={{ color: "rgba(228,224,221,0.8)" }}
+                          style={{ color: "rgba(247,243,238,0.82)" }}
                         >
-                          <span style={{ color: RED }}>De regalo · </span>
+                          <span style={{ color: "#E7C9C4" }}>De regalo · </span>
                           {b}
                         </p>
                       ))}
@@ -267,7 +259,7 @@ export default function BodasPricing() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`mt-auto w-full ${
-                      destacado ? "bodas-btn-primary" : "bodas-btn-outline"
+                      destacado ? "bodas-btn-gold" : "bodas-btn-outline"
                     }`}
                   >
                     Reservar {p.title}
@@ -285,9 +277,9 @@ export default function BodasPricing() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="text-center font-body text-[14px] max-w-2xl mx-auto mt-10 leading-relaxed"
-          style={{ color: "rgba(228,224,221,0.45)" }}
+          style={{ color: "rgba(247,243,238,0.48)" }}
         >
-          En <span style={{ color: RED }}>Eterna</span> son dos personas
+          En <span style={{ color: GOLD }}>Eterna</span> son dos personas
           grabando video al mismo tiempo: mientras una sigue a la novia, la otra
           está con el novio. Se cubren dos momentos a la vez y no se pierde nada.
         </motion.p>

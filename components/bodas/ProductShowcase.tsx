@@ -37,16 +37,14 @@ const highlights = [
 
 export default function BodasProductShowcase() {
   return (
-    <section id="servicios" className="py-24 md:py-32 relative">
-      <div className="absolute top-0 left-0 right-0 h-px bodas-rule" />
-
+    <section id="servicios" className="bodas-light py-24 md:py-32">
       <div className="bodas-container">
         <div className="text-center mb-16">
-          <p className="bodas-label mb-5">Lo que te llevas</p>
+          <p className="bodas-label bodas-label-ink mb-5">Lo que te llevas</p>
           <h2 className="bodas-title">
             No es solo un video,
             <br />
-            <span style={{ color: "#D63A27" }}>es tu historia de amor</span>
+            <span className="bodas-em-rose">es tu historia de amor</span>
           </h2>
           <p className="bodas-subtitle mx-auto mt-6">
             Nos obsesionamos con cada detalle para que cuando veas tu video,
@@ -58,7 +56,7 @@ export default function BodasProductShowcase() {
           {highlights.map((item, index) => (
             <motion.div
               key={item.title}
-              className="bodas-card group overflow-hidden"
+              className="bodas-card-light group overflow-hidden"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -71,25 +69,13 @@ export default function BodasProductShowcase() {
                   alt={item.title}
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background:
-                      "linear-gradient(to top, rgba(28,28,26,0.75), transparent)",
-                  }}
-                />
               </div>
 
               <div className="p-7">
-                <h3
-                  className="font-title text-xl mb-2.5"
-                  style={{ fontWeight: 700, letterSpacing: "-0.02em" }}
-                >
-                  {item.title}
-                </h3>
+                <h3 className="bodas-heading text-2xl mb-2.5">{item.title}</h3>
                 <p
-                  className="font-body text-[14px] leading-[1.7]"
-                  style={{ color: "rgba(228,224,221,0.5)" }}
+                  className="font-body text-[14px] leading-[1.75]"
+                  style={{ color: "#4A443D" }}
                 >
                   {item.description}
                 </p>

@@ -2,35 +2,25 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { whatsappUrl } from "@/components/bodas/contacto";
+import WhatsAppIcon from "@/components/bodas/WhatsAppIcon";
 
 const MSG_HERO =
   "Hola, me interesa la cobertura de video y foto para mi boda. ¿Podemos hablar?";
 
-function WhatsAppIcon() {
-  return (
-    <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
-      <path
-        d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.654-.698c1.048.577 1.603.878 2.806.878 3.181 0 5.767-2.587 5.768-5.766.001-3.182-2.585-5.766-5.768-5.766zm3.073 8.237c-.128.36-.744.687-1.037.732-.293.045-.556.064-3.065-.964-2.508-1.027-4.08-3.604-4.204-3.77-.124-.167-.98-1.304-.98-2.486 0-1.183.599-1.764.835-2.01.236-.245.48-.306.648-.306.167 0 .335.002.481.009.167.007.381-.056.583.468.21.543.716 1.867.779 2.002.062.135.09.295.008.468-.083.173-.123.281-.248.431-.124.15-.266.335-.373.449-.124.132-.256.275-.112.542.145.268.645 1.114 1.394 1.812.964.898 1.785 1.18 2.053 1.313.268.133.42.112.579-.056.159-.167.676-.76.861-1.024.185-.264.363-.218.604-.12.24.098 1.532.72 1.795.851.262.13.433.197.496.303.062.106.062.61-.066.97z"
-        fillRule="evenodd"
-      />
-    </svg>
-  );
-}
-
 export default function BodasHero() {
   return (
-    <section className="relative min-h-screen overflow-hidden">
-      {/* Halos de marca, mismo lenguaje que el hero del sitio */}
+    <section className="bodas-dark relative min-h-screen overflow-hidden">
+      {/* Halos cálidos: dorado arriba, rosa abajo */}
       <motion.div
         aria-hidden
         className="absolute pointer-events-none z-[1]"
         style={{
-          top: "-15%",
-          right: "-10%",
-          width: "60vw",
-          height: "60vw",
+          top: "-18%",
+          right: "-8%",
+          width: "58vw",
+          height: "58vw",
           background:
-            "radial-gradient(circle, rgba(214,58,39,0.14) 0%, transparent 62%)",
+            "radial-gradient(circle, rgba(196,160,82,0.16) 0%, transparent 62%)",
           filter: "blur(60px)",
         }}
         animate={{ x: [0, -20, 0], y: [0, 20, 0] }}
@@ -40,43 +30,52 @@ export default function BodasHero() {
         aria-hidden
         className="absolute pointer-events-none z-[1]"
         style={{
-          bottom: "0%",
-          left: "-8%",
-          width: "45vw",
-          height: "45vw",
+          bottom: "-5%",
+          left: "-10%",
+          width: "48vw",
+          height: "48vw",
           background:
-            "radial-gradient(circle, rgba(167,159,153,0.14) 0%, transparent 65%)",
+            "radial-gradient(circle, rgba(231,201,196,0.14) 0%, transparent 65%)",
           filter: "blur(70px)",
         }}
         animate={{ x: [0, 25, 0], y: [0, -15, 0] }}
         transition={{ duration: 20, ease: "easeInOut", repeat: Infinity }}
       />
 
-      <div className="bodas-container relative z-10 pt-32 pb-20">
+      <div className="bodas-container relative z-10 pt-32 pb-24">
         <motion.div
           className="text-center mb-14"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <p className="bodas-label mb-6">Producción audiovisual · PG Estrategias</p>
+          <p className="bodas-label mb-7">Producción audiovisual · PG Estrategias</p>
 
-          <h1
-            className="bodas-display max-w-5xl mx-auto"
-            style={{ fontSize: "var(--t-h1)" }}
-          >
+          <h1 className="bodas-display max-w-5xl mx-auto">
             Tu boda merece{" "}
-            <span style={{ color: "#D63A27" }}>ser una película</span>
+            <span className="bodas-em">ser una película</span>
           </h1>
 
-          <p className="bodas-subtitle mx-auto mt-8">
+          <div className="bodas-ornament my-9" aria-hidden>
+            <span
+              style={{
+                display: "block",
+                width: 6,
+                height: 6,
+                transform: "rotate(45deg)",
+                background: "#C4A052",
+              }}
+            />
+          </div>
+
+          <p className="bodas-subtitle mx-auto">
             Cada mirada, cada risa, cada lágrima de felicidad merece ser
             capturada como se siente — con la emoción intacta y la belleza que
             solo el cine puede darle.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mt-10">
-            <a href="#paquetes" className="bodas-btn-primary">
+            <a href="#paquetes" className="bodas-btn-gold">
               Ver paquetes
             </a>
             <a
@@ -99,11 +98,8 @@ export default function BodasHero() {
           transition={{ duration: 0.8, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         >
           <div
-            className="relative overflow-hidden aspect-video"
-            style={{
-              border: "1px solid rgba(228,224,221,0.12)",
-              boxShadow: "0 0 80px rgba(0,0,0,0.5)",
-            }}
+            className="bodas-frame relative overflow-hidden aspect-video"
+            style={{ boxShadow: "0 0 90px rgba(0,0,0,0.55)" }}
           >
             <iframe
               src="https://drive.google.com/file/d/1AtBE8gsV4VG2UIUVbKNvwzLniZIjwzvT/preview"
@@ -116,8 +112,8 @@ export default function BodasHero() {
           </div>
 
           <p
-            className="text-center font-body text-[11px] uppercase tracking-[0.14em] mt-5"
-            style={{ color: "rgba(228,224,221,0.35)" }}
+            className="text-center font-body text-[11px] uppercase tracking-[0.2em] mt-8"
+            style={{ color: "rgba(247,243,238,0.38)" }}
           >
             Demo reel — así se vive una boda con nosotros
           </p>

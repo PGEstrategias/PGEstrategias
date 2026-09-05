@@ -1,15 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Logo from "@/components/Logo";
-import { WHATSAPP_URL } from "@/components/bodas/contacto";
+import { GOLD, whatsappUrl, type NavLink } from "@/components/bodas/contacto";
 
-const links = [
-  { label: "Servicios", href: "#servicios" },
-  { label: "Paquetes", href: "#paquetes" },
-  { label: "Contacto", href: "#contacto" },
-];
+type Props = {
+  links: NavLink[];
+  ctaLabel: string;
+  ctaMessage: string;
+};
 
-export default function BodasHeader() {
+export default function BodasHeader({ links, ctaLabel, ctaMessage }: Props) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -19,14 +19,21 @@ export default function BodasHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   return (
     <header
       className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
       style={{
-        background: scrolled ? "rgba(28,28,26,0.9)" : "transparent",
+        background: scrolled ? "rgba(20,18,15,0.92)" : "transparent",
         backdropFilter: scrolled ? "blur(14px)" : "none",
         WebkitBackdropFilter: scrolled ? "blur(14px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(228,224,221,0.08)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(196,160,82,0.22)" : "none",
       }}
     >
       <div className="bodas-container flex items-center justify-between h-20">
@@ -35,7 +42,7 @@ export default function BodasHeader() {
           className="flex items-center transition-opacity duration-500 hover:opacity-80"
           aria-label="Ir al inicio de PG Estrategias"
         >
-          <Logo size={30} tone="cream" />
+          <Logo size={30} tone="cream" accent={GOLD} />
         </a>
 
         {/* Desktop */}
@@ -44,23 +51,23 @@ export default function BodasHeader() {
             <a
               key={link.href}
               href={link.href}
-              className="link-underline font-body text-[12px] tracking-[0.08em] transition-colors duration-500 hover:text-[color:#E4E0DD]"
-              style={{ color: "rgba(228,224,221,0.55)" }}
+              className="font-body text-[12px] tracking-[0.1em] transition-colors duration-500"
+              style={{ color: "rgba(247,243,238,0.6)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = GOLD)}
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = "rgba(247,243,238,0.6)")
+              }
             >
               {link.label}
             </a>
           ))}
           <a
-            href={WHATSAPP_URL}
+            href={whatsappUrl(ctaMessage)}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn-sweep relative font-body text-[12px] tracking-wide px-5 py-2.5 transition-colors duration-500 hover:text-[color:#E4E0DD]"
-            style={{
-              border: "1px solid rgba(228,224,221,0.3)",
-              color: "#E4E0DD",
-            }}
+            className="bodas-btn-outline !py-2.5 !px-5 !text-[12px]"
           >
-            <span className="relative">Reservar fecha</span>
+            {ctaLabel}
           </a>
         </nav>
 
@@ -71,20 +78,20 @@ export default function BodasHeader() {
           aria-label="Abrir menú"
           aria-expanded={menuOpen}
         >
-          <span className="w-5 h-px block" style={{ background: "#E4E0DD" }} />
+          <span className="w-5 h-px block" style={{ background: GOLD }} />
           <span
             className="h-px block transition-all duration-300"
-            style={{ background: "#E4E0DD", width: menuOpen ? "1.25rem" : "0.875rem" }}
+            style={{ background: GOLD, width: menuOpen ? "1.25rem" : "0.875rem" }}
           />
         </button>
       </div>
 
       {menuOpen && (
         <div
-          className="md:hidden bodas-container py-8 flex flex-col gap-6"
+          className="md:hidden bodas-container py-10 flex flex-col gap-5"
           style={{
-            background: "rgba(28,28,26,0.98)",
-            borderTop: "1px solid rgba(228,224,221,0.08)",
+            background: "rgba(20,18,15,0.98)",
+            borderTop: "1px solid rgba(196,160,82,0.22)",
           }}
         >
           {links.map((link) => (
@@ -92,20 +99,20 @@ export default function BodasHeader() {
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
-              className="font-title text-3xl transition-colors duration-500 hover:text-[color:#D63A27]"
-              style={{ color: "#E4E0DD", letterSpacing: "-0.02em" }}
+              className="bodas-heading text-3xl"
+              style={{ color: "#F7F3EE" }}
             >
               {link.label}
             </a>
           ))}
           <a
-            href={WHATSAPP_URL}
+            href={whatsappUrl(ctaMessage)}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
-            className="bodas-btn-primary mt-2 self-start"
+            className="bodas-btn-gold mt-3 self-start"
           >
-            Reservar fecha
+            {ctaLabel}
           </a>
         </div>
       )}
