@@ -5,6 +5,9 @@ type LogoProps = {
   wordmark?: boolean;
   className?: string;
   tone?: "cream" | "dark";
+  /* Color del triángulo. Por defecto el rojo de marca; el vertical de
+     bodas lo usa en dorado para no pelearse con su paleta. */
+  accent?: string;
 };
 
 export default function Logo({
@@ -12,6 +15,7 @@ export default function Logo({
   wordmark = true,
   className = "",
   tone = "cream",
+  accent = "#D63A27",
 }: LogoProps) {
   const color = tone === "cream" ? "#E4E0DD" : "#1C1C1A";
   const triangleWidth = Math.round(size * 0.32);
@@ -51,7 +55,7 @@ export default function Logo({
           viewBox="0 0 10 12"
           fill="none"
         >
-          <path d="M0 0 L10 6 L0 12 Z" fill="#D63A27" />
+          <path d="M0 0 L10 6 L0 12 Z" fill={accent} />
         </svg>
       </span>
 

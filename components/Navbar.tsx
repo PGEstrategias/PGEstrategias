@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useContactMenu } from "@/context/ContactMenuContext";
 import Logo from "@/components/Logo";
-import { legalLinks } from "@/components/Footer";
+import { legalLinks } from "@/components/legalLinks";
 
 const MSG_NAVBAR =
   "Hola, me interesa saber más sobre los servicios de PG Estrategias. ¿Podemos hablar?";

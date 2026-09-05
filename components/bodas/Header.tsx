@@ -1,9 +1,15 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import Logo from "@/components/Logo";
+import { GOLD, whatsappUrl, type NavLink } from "@/components/bodas/contacto";
 
-const WHATSAPP = "https://wa.me/528141558165";
+type Props = {
+  links: NavLink[];
+  ctaLabel: string;
+  ctaMessage: string;
+};
 
-export default function BodasHeader() {
+export default function BodasHeader({ links, ctaLabel, ctaMessage }: Props) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -13,101 +19,100 @@ export default function BodasHeader() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [menuOpen]);
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-black/80 backdrop-blur-xl border-b border-white/5"
-          : "bg-transparent"
-      }`}
+      className="fixed top-0 left-0 right-0 z-50 transition-all duration-500"
+      style={{
+        background: scrolled ? "rgba(20,18,15,0.92)" : "transparent",
+        backdropFilter: scrolled ? "blur(14px)" : "none",
+        WebkitBackdropFilter: scrolled ? "blur(14px)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(196,160,82,0.22)" : "none",
+      }}
     >
-      <div className="bodas-container flex items-center justify-between h-16 md:h-20">
-        <a href="/bodas" className="flex items-center">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/bodas/logotipo.svg"
-            alt="Oasis Creativa"
-            className="h-6 md:h-7 w-auto"
-          />
+      <div className="bodas-container flex items-center justify-between h-20">
+        <a
+          href="/"
+          className="flex items-center transition-opacity duration-500 hover:opacity-80"
+          aria-label="Ir al inicio de PG Estrategias"
+        >
+          <Logo size={30} tone="cream" accent={GOLD} />
         </a>
 
         {/* Desktop */}
-        <nav className="hidden md:flex items-center gap-8 text-sm text-white/60">
-          <a href="#servicios" className="hover:text-white transition-colors duration-200">
-            Servicios
-          </a>
-          <a href="#paquetes" className="hover:text-white transition-colors duration-200">
-            Paquetes
-          </a>
-          <a href="#contacto" className="hover:text-white transition-colors duration-200">
-            Contacto
-          </a>
+        <nav className="hidden md:flex items-center gap-9">
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="font-body text-[12px] tracking-[0.1em] transition-colors duration-500"
+              style={{ color: "rgba(247,243,238,0.6)" }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = GOLD)}
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.color = "rgba(247,243,238,0.6)")
+              }
+            >
+              {link.label}
+            </a>
+          ))}
           <a
-            href={WHATSAPP}
+            href={whatsappUrl(ctaMessage)}
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-gradient-to-r from-[#C9A050] to-[#E8C97A] text-black font-medium px-6 py-2.5 rounded-full text-xs tracking-wide hover:opacity-90 transition-opacity"
+            className="bodas-btn-outline !py-2.5 !px-5 !text-[12px]"
           >
-            Reservar Fecha
+            {ctaLabel}
           </a>
         </nav>
 
         {/* Mobile */}
         <button
-          className="md:hidden flex flex-col gap-1.5 p-2"
+          className="md:hidden flex flex-col gap-1.5 p-1"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Abrir menú"
           aria-expanded={menuOpen}
         >
+          <span className="w-5 h-px block" style={{ background: GOLD }} />
           <span
-            className={`block h-0.5 w-6 bg-white transition-transform duration-300 ${
-              menuOpen ? "rotate-45 translate-y-2" : ""
-            }`}
-          />
-          <span
-            className={`block h-0.5 w-6 bg-white transition-opacity duration-300 ${
-              menuOpen ? "opacity-0" : ""
-            }`}
-          />
-          <span
-            className={`block h-0.5 w-6 bg-white transition-transform duration-300 ${
-              menuOpen ? "-rotate-45 -translate-y-2" : ""
-            }`}
+            className="h-px block transition-all duration-300"
+            style={{ background: GOLD, width: menuOpen ? "1.25rem" : "0.875rem" }}
           />
         </button>
       </div>
 
       {menuOpen && (
-        <div className="md:hidden bg-black/95 backdrop-blur-xl border-t border-white/5 px-6 py-8 flex flex-col gap-6">
+        <div
+          className="md:hidden bodas-container py-10 flex flex-col gap-5"
+          style={{
+            background: "rgba(20,18,15,0.98)",
+            borderTop: "1px solid rgba(196,160,82,0.22)",
+          }}
+        >
+          {links.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setMenuOpen(false)}
+              className="bodas-heading text-3xl"
+              style={{ color: "#F7F3EE" }}
+            >
+              {link.label}
+            </a>
+          ))}
           <a
-            href="#servicios"
-            onClick={() => setMenuOpen(false)}
-            className="text-lg text-white/70 hover:text-white transition-colors"
-          >
-            Servicios
-          </a>
-          <a
-            href="#paquetes"
-            onClick={() => setMenuOpen(false)}
-            className="text-lg text-white/70 hover:text-white transition-colors"
-          >
-            Paquetes
-          </a>
-          <a
-            href="#contacto"
-            onClick={() => setMenuOpen(false)}
-            className="text-lg text-white/70 hover:text-white transition-colors"
-          >
-            Contacto
-          </a>
-          <a
-            href={WHATSAPP}
+            href={whatsappUrl(ctaMessage)}
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setMenuOpen(false)}
-            className="bg-gradient-to-r from-[#C9A050] to-[#E8C97A] text-black font-medium px-6 py-3 rounded-full w-full text-center"
+            className="bodas-btn-gold mt-3 self-start"
           >
-            Reservar Fecha
+            {ctaLabel}
           </a>
         </div>
       )}
