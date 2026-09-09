@@ -157,14 +157,17 @@ export const REGALOS = [
 ] as const;
 
 /**
- * Música de fondo. Sube el fragmento (45-60 s, en loop) a Cloudinary y pega
- * aquí la URL del mp3. Mientras esté vacía, el control no se dibuja: vale más
- * no tener música que tener un botón que no suena.
+ * Música de fondo. Mientras la URL esté vacía el control no se dibuja: vale
+ * más no tener música que tener un botón que no suena.
+ *
+ * Gymnopédie No. 3 es de Satie, o sea dominio público. Lo que sí tiene dueño
+ * es la grabación, así que si algún día se cambia la pista hay que revisar
+ * los derechos: esta página es comercial, no la boda de un cliente.
  */
 export const MUSICA = {
-  url: "",
-  titulo: "",
-  artista: "",
+  url: "https://res.cloudinary.com/djduba5fd/video/upload/v1788933236/Bishara_Haroni_-_Gymnop%C3%A9die_No_3_j45vid.mp3",
+  titulo: "Gymnopédie No. 3",
+  artista: "Erik Satie · Bishara Haroni",
 };
 
 /* Pases asignados al invitado de muestra. En el producto real sale de la

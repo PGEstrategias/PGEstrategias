@@ -50,7 +50,12 @@ export default function Musica() {
       <button
         type="button"
         onClick={alternar}
-        aria-label={sonando ? "Silenciar la música" : "Poner la música"}
+        aria-label={
+          sonando
+            ? `Silenciar ${MUSICA.titulo}`
+            : `Poner la música: ${MUSICA.titulo}, ${MUSICA.artista}`
+        }
+        title={`${MUSICA.titulo} — ${MUSICA.artista}`}
         aria-pressed={sonando}
         className="fixed bottom-[5.5rem] right-5 z-40 w-11 h-11 flex items-center justify-center transition-colors duration-500"
         style={{
