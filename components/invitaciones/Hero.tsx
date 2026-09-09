@@ -3,12 +3,14 @@ import React from "react";
 import { motion } from "framer-motion";
 import { whatsappUrl } from "@/components/bodas/contacto";
 import WhatsAppIcon from "@/components/bodas/WhatsAppIcon";
+import { NOVIOS, SEDES } from "@/lib/invitaciones/demo";
 
 const MSG_HERO =
   "Hola, me interesan las invitaciones digitales con confirmación automática para mi boda.";
 
-/* Muestra estática de la invitación: sirve de "producto" en el hero
-   sin depender de imágenes externas. */
+/* Muestra de la invitación: sirve de "producto" en el hero sin depender de
+   imágenes externas, y abre el demo navegable de Lucía y Mateo. Los nombres
+   y la sede salen del mismo módulo que el demo para que no se separen. */
 function InvitacionPreview() {
   return (
     <div className="bodas-frame relative bg-[#F7F3EE] text-[#14120F] px-8 py-12 md:px-14 md:py-16 text-center">
@@ -20,11 +22,11 @@ function InvitacionPreview() {
       </p>
 
       <p className="bodas-heading text-4xl md:text-5xl leading-tight">
-        María
+        {NOVIOS.ella}
         <span className="mx-3" style={{ color: "#C4A052" }}>
           &amp;
         </span>
-        Carlos
+        {NOVIOS.el}
       </p>
 
       <div className="bodas-ornament my-7" aria-hidden>
@@ -43,13 +45,13 @@ function InvitacionPreview() {
         className="font-body text-[12px] tracking-[0.16em] uppercase"
         style={{ color: "#4A443D" }}
       >
-        Sábado 14 de marzo · 17:00 h
+        Sábado 14 de noviembre · {SEDES[0].hora}
       </p>
       <p
         className="font-body text-[12px] tracking-[0.16em] uppercase mt-1.5"
         style={{ color: "#4A443D" }}
       >
-        Hacienda San Miguel · Puebla
+        Templo de San Francisco · Puebla
       </p>
 
       {/* Bloque RSVP — el corazón del producto */}
@@ -169,12 +171,18 @@ export default function InvitacionesHero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
           >
-            <InvitacionPreview />
+            <a
+              href="/invitacionesdebodas/demo/estandar"
+              className="block transition-transform duration-500 hover:scale-[1.015]"
+              aria-label="Abrir la invitación de muestra completa"
+            >
+              <InvitacionPreview />
+            </a>
             <p
               className="text-center font-body text-[11px] uppercase tracking-[0.2em] mt-8"
               style={{ color: "rgba(247,243,238,0.38)" }}
             >
-              Ejemplo — cada invitación se diseña con su historia
+              Tócala para abrir la invitación completa
             </p>
           </motion.div>
         </div>

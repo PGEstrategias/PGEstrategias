@@ -48,12 +48,14 @@ export interface EnviarOpciones {
   responderA?: string;
   /** Copia oculta (ej. tu propio correo para llevar registro). */
   cco?: string;
+  /** Archivos adjuntos. Se usan para mandar el pase del invitado en PDF. */
+  adjuntos?: { nombre: string; contenido: Buffer | Uint8Array; tipo?: string }[];
 }
 
 /** Renderiza la plantilla React Email a HTML y la envía por Gmail. */
 export async function enviarCorreo(opts: EnviarOpciones) {
   const transporte = crearTransporte();
-  const { para, asunto, componente, responderA, cco } = opts;
+  const { para, asunto, componente, responderA, cco, adjuntos } = opts;
   const nombreRemitente = opts.nombreRemitente ?? 'pg estrategias';
   const from = `"${nombreRemitente}" <${process.env.GMAIL_USER}>`;
 
@@ -69,6 +71,11 @@ export async function enviarCorreo(opts: EnviarOpciones) {
     text,
     replyTo: responderA,
     bcc: cco,
+    attachments: adjuntos?.map((a) => ({
+      filename: a.nombre,
+      content: Buffer.from(a.contenido),
+      contentType: a.tipo ?? 'application/octet-stream',
+    })),
   });
 
   return info;

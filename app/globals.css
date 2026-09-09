@@ -420,3 +420,20 @@ body {
 .bodas-ornament::after {
   background: linear-gradient(90deg, rgba(196, 160, 82, 0.7), transparent);
 }
+
+/* Barras del control de música: solo bailan cuando de verdad hay sonido.
+   Se detienen con prefers-reduced-motion, que en una invitación que la
+   gente abre en el camión se agradece. */
+@keyframes bodas-musica {
+  0%, 100% { height: 5px; }
+  50% { height: 15px; }
+}
+
+.musica-barra {
+  height: 5px;
+  animation: bodas-musica 0.9s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .musica-barra { animation: none; height: 10px; }
+}

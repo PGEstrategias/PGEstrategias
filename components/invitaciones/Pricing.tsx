@@ -7,6 +7,9 @@ const GOLD = "#C4A052";
 
 type Paquete = {
   id: string;
+  /* Slug del demo navegable. Solo los dos primeros niveles lo tienen: son
+     los únicos cuyos entregables se pueden enseñar completos en una página. */
+  demo?: string;
   title: string;
   tag: string;
   subtitle: string;
@@ -22,6 +25,7 @@ type Paquete = {
 const paquetes: Paquete[] = [
   {
     id: "basico",
+    demo: "basico",
     title: "Básico",
     tag: "Essential",
     subtitle: "Tu invitación en línea, con confirmaciones ordenadas.",
@@ -34,6 +38,7 @@ const paquetes: Paquete[] = [
   },
   {
     id: "estandar",
+    demo: "estandar",
     title: "Estándar",
     tag: "Pro",
     subtitle: "El pase llega solo al correo, en PDF y con su nombre.",
@@ -68,13 +73,33 @@ const paquetes: Paquete[] = [
     priceNote: "Desde",
     heredado: "Todo lo del Premium VIP, más:",
     features: [
-      "Dominio web propio (ej. mariaycarlos.com)",
+      "Dominio web propio (ej. luciaymateo.com)",
       "Automatizaciones por WhatsApp API en lugar de correo",
       "Validación con código QR en la recepción del evento",
       "Galería para que los invitados suban fotos en tiempo real",
     ],
   },
 ];
+
+function PlayIcon() {
+  return (
+    <svg
+      width="11"
+      height="11"
+      viewBox="0 0 12 12"
+      fill="currentColor"
+      className="shrink-0"
+      aria-hidden
+    >
+      <path d="M3 1.8v8.4L10 6z" />
+    </svg>
+  );
+}
+
+function mensajeCotizar(p: Paquete) {
+  const precio = p.priceNote ? `desde ${p.price}` : p.price;
+  return `Hola, me interesa el paquete ${p.title} de invitaciones digitales (${precio} MXN) para mi boda.`;
+}
 
 function Check() {
   return (
@@ -111,7 +136,8 @@ export default function InvitacionesPricing() {
           </h2>
           <p className="bodas-subtitle mx-auto mt-6">
             Todos incluyen la invitación y el RSVP. Lo que cambia es cuánto del
-            trabajo se hace solo — y cuánto dejas de hacer tú.
+            trabajo se hace solo — y cuánto dejas de hacer tú. Los dos primeros
+            los puedes probar ahora mismo, con todo y confirmación.
           </p>
         </div>
 
@@ -225,21 +251,43 @@ export default function InvitacionesPricing() {
                     ))}
                   </ul>
 
-                  {/* CTA — pegado abajo */}
-                  <a
-                    href={whatsappUrl(
-                      `Hola, me interesa el paquete ${p.title} de invitaciones digitales (${
-                        p.priceNote ? `desde ${p.price}` : p.price
-                      } MXN) para mi boda.`
+                  {/* CTA — pegado abajo.
+                      Donde hay demo, probarlo es la acción principal: quien
+                      confirma en la invitación de muestra llega a WhatsApp
+                      sabiendo ya qué está comprando. */}
+                  <div className="mt-auto flex flex-col gap-3">
+                    {p.demo ? (
+                      <>
+                        <a
+                          href={`/invitacionesdebodas/demo/${p.demo}`}
+                          className="bodas-btn-gold w-full !px-4"
+                        >
+                          <PlayIcon />
+                          Probar demo
+                        </a>
+                        <a
+                          href={whatsappUrl(mensajeCotizar(p))}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-body text-[12px] tracking-[0.06em] text-center underline underline-offset-4 transition-colors duration-500 hover:text-[color:#C4A052]"
+                          style={{ color: "rgba(247,243,238,0.5)" }}
+                        >
+                          Cotizar por WhatsApp
+                        </a>
+                      </>
+                    ) : (
+                      <a
+                        href={whatsappUrl(mensajeCotizar(p))}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`w-full !px-4 ${
+                          destacado ? "bodas-btn-gold" : "bodas-btn-outline"
+                        }`}
+                      >
+                        Lo quiero
+                      </a>
                     )}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`mt-auto w-full !px-4 ${
-                      destacado ? "bodas-btn-gold" : "bodas-btn-outline"
-                    }`}
-                  >
-                    Lo quiero
-                  </a>
+                  </div>
                 </div>
               </motion.div>
             );
