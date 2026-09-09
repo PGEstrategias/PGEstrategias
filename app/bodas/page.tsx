@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import BodasHeader from "@/components/bodas/Header";
 import BodasHero from "@/components/bodas/Hero";
 import BodasProductShowcase from "@/components/bodas/ProductShowcase";
+import BodasVideoGallery from "@/components/bodas/VideoGallery";
 import BodasPricing from "@/components/bodas/Pricing";
 import BodasCallToAction from "@/components/bodas/CallToAction";
 import BodasFooter from "@/components/bodas/Footer";
@@ -43,6 +44,7 @@ export default function BodasPage() {
       <main>
         <BodasHero />
         <BodasProductShowcase />
+        <BodasVideoGallery />
         <BodasPricing />
         <BodasCallToAction
           title="Tu fecha se puede"
