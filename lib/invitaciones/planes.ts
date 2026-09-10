@@ -29,7 +29,7 @@ export const FICHAS: Record<Plan, FichaPlan> = {
   basico: {
     slug: "basico",
     nombre: "Básico",
-    precio: "$1,999",
+    precio: "$2,999",
     promesa: "Tu pase aparece en pantalla, listo para capturar.",
     pidecorreo: false,
     otro: "estandar",

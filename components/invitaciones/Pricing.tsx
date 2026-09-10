@@ -29,7 +29,7 @@ const paquetes: Paquete[] = [
     title: "Básico",
     tag: "Essential",
     subtitle: "Tu invitación en línea, con confirmaciones ordenadas.",
-    price: "$1,999",
+    price: "$2,999",
     features: [
       "Landing page con fotos, historia, música, Maps y código de vestimenta",
       "Formulario RSVP conectado a Excel",

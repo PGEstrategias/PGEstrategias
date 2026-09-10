@@ -8,7 +8,7 @@ import InvitacionesComoFunciona from "@/components/invitaciones/ComoFunciona";
 import InvitacionesPricing from "@/components/invitaciones/Pricing";
 
 const DESCRIPTION =
-  "Invitaciones de boda digitales con confirmación automática: landing con tu historia, RSVP conectado a Excel, pases en PDF y reporte para el banquetero. Desde $1,999 MXN.";
+  "Invitaciones de boda digitales con confirmación automática: landing con tu historia, RSVP conectado a Excel, pases en PDF y reporte para el banquetero. Desde $2,999 MXN.";
 
 export const metadata: Metadata = {
   title: "Invitaciones de Boda Digitales — PG Estrategias",
