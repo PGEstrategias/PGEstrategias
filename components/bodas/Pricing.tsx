@@ -11,14 +11,42 @@ type Paquete = {
   subtitle: string;
   price: string;
   badge?: string;
-  /* Nota corta de cobertura — el diferenciador real entre los dos. */
-  cobertura: string;
+  /* Nota corta de cobertura: sólo la traen los paquetes que especifican
+     equipo de grabación. */
+  cobertura?: string;
   heredado?: string;
   features: string[];
   bonus?: string[];
 };
 
 const paquetes: Paquete[] = [
+  {
+    id: "momentos",
+    title: "Momentos",
+    subtitle: "Los momentos que importan",
+    price: "$4,000",
+    features: [
+      "Video principal de 4–6 min",
+      "2 videos cortos",
+      "20 fotografías editadas",
+      "Web de la boda con diseño y contenido personalizado",
+    ],
+  },
+  {
+    id: "parasiempre",
+    title: "Para siempre",
+    subtitle: "Cobertura completa de tu boda",
+    price: "$8,500",
+    features: [
+      "100–120 fotografías editadas",
+      "Video principal de 4–6 min",
+      "4 videos cortos para redes sociales",
+      "Photobook digital con web propia",
+      "Entrevistas a invitados en vivo",
+      "Cobertura total: ceremonia y recepción",
+      "Archivos originales incluidos",
+    ],
+  },
   {
     id: "esencia",
     title: "Esencia",
@@ -105,11 +133,11 @@ export default function BodasPricing() {
         <div className="text-center mb-16">
           <p className="bodas-label mb-5">Paquetes</p>
           <h2 className="bodas-title">
-            Dos formas de <span className="bodas-em">contar tu historia</span>
+            Cuatro formas de <span className="bodas-em">contar tu historia</span>
           </h2>
           <p className="bodas-subtitle mx-auto mt-6">
-            La diferencia entre uno y otro es cuánto de tu día queda grabado — y
-            cuántas cámaras lo están grabando.
+            De la pieza para redes a la cobertura de cine: lo que cambia es
+            cuánto de tu día queda grabado — y cuántas cámaras lo graban.
           </p>
         </div>
 
@@ -187,7 +215,8 @@ export default function BodasPricing() {
                     </p>
                   </div>
 
-                  {/* Cobertura — el diferenciador */}
+                  {/* Cobertura — sólo en los paquetes que declaran equipo */}
+                  {p.cobertura && (
                   <div
                     className="flex items-center gap-3 px-4 py-3 mb-7"
                     style={{
@@ -205,6 +234,7 @@ export default function BodasPricing() {
                       {p.cobertura}
                     </span>
                   </div>
+                  )}
 
                   {/* Entregables */}
                   {p.heredado && (
