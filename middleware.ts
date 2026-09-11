@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { AUTH_COOKIE, sessionToken } from '@/lib/auth';
 
 /**
- * Protege el panel de envío y sus endpoints con una cookie de sesión.
+ * Protege el panel de envío y el panel de Lista Médica con una cookie de sesión.
  * Si no hay sesión válida:
  *   - páginas  -> redirige a /login
  *   - endpoints -> responde 401 JSON
@@ -10,7 +10,16 @@ import { AUTH_COOKIE, sessionToken } from '@/lib/auth';
  * Requiere PANEL_USER y PANEL_PASSWORD en las variables de entorno.
  */
 export const config = {
-  matcher: ['/enviar', '/enviar/:path*', '/api/enviar', '/api/preview'],
+  matcher: [
+    '/enviar',
+    '/enviar/:path*',
+    '/api/enviar',
+    '/api/preview',
+    // Lista Médica: el panel y todo lo que escribe en su base.
+    '/listamedicamx/admin',
+    '/listamedicamx/admin/:path*',
+    '/api/listamedica/admin/:path*',
+  ],
 };
 
 export async function middleware(req: NextRequest) {

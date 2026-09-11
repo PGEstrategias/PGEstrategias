@@ -9,7 +9,8 @@
     "lint": "next lint",
     "email:dev": "email dev --dir emails/preview --port 3001",
     "email:render": "tsx scripts/render-preview.ts",
-    "email:enviar": "tsx scripts/enviar.ts"
+    "email:enviar": "tsx scripts/enviar.ts",
+    "listamedica:semilla": "tsx scripts/listamedica-semilla.ts"
   },
   "dependencies": {
     "@react-email/components": "^1.0.12",

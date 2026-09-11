@@ -1,0 +1,244 @@
+[
+  {
+    "id": "esp-medicina-general",
+    "nombre": "Medicina general",
+    "nombre_plural": "Médicos generales",
+    "slug": "medicos-generales",
+    "descripcion": "Primera consulta, seguimiento de padecimientos comunes y referencia a especialista cuando hace falta.",
+    "sinonimos": [
+      "medico general",
+      "doctor general",
+      "medicina familiar",
+      "consulta general"
+    ]
+  },
+  {
+    "id": "esp-dermatologia",
+    "nombre": "Dermatología",
+    "nombre_plural": "Dermatólogos",
+    "slug": "dermatologos",
+    "descripcion": "Atención de piel, cabello y uñas, tanto clínica como estética.",
+    "sinonimos": [
+      "dermatologo",
+      "piel",
+      "acne",
+      "lunares",
+      "dermatologia estetica"
+    ]
+  },
+  {
+    "id": "esp-cardiologia",
+    "nombre": "Cardiología",
+    "nombre_plural": "Cardiólogos",
+    "slug": "cardiologos",
+    "descripcion": "Corazón y sistema circulatorio: presión, arritmias y estudios de gabinete.",
+    "sinonimos": [
+      "cardiologo",
+      "corazon",
+      "presion alta",
+      "arritmia"
+    ]
+  },
+  {
+    "id": "esp-pediatria",
+    "nombre": "Pediatría",
+    "nombre_plural": "Pediatras",
+    "slug": "pediatras",
+    "descripcion": "Atención de recién nacidos, niñas y niños hasta la adolescencia.",
+    "sinonimos": [
+      "pediatra",
+      "niños",
+      "bebes",
+      "medico de niños"
+    ]
+  },
+  {
+    "id": "esp-ginecologia",
+    "nombre": "Ginecología y obstetricia",
+    "nombre_plural": "Ginecólogos",
+    "slug": "ginecologos",
+    "descripcion": "Salud reproductiva, control prenatal y seguimiento del embarazo.",
+    "sinonimos": [
+      "ginecologo",
+      "ginecologa",
+      "obstetra",
+      "embarazo",
+      "papanicolaou"
+    ]
+  },
+  {
+    "id": "esp-ortopedia",
+    "nombre": "Ortopedia y traumatología",
+    "nombre_plural": "Ortopedistas",
+    "slug": "ortopedistas",
+    "descripcion": "Huesos, articulaciones, lesiones deportivas y rehabilitación posquirúrgica.",
+    "sinonimos": [
+      "ortopedista",
+      "traumatologo",
+      "huesos",
+      "rodilla",
+      "columna"
+    ]
+  },
+  {
+    "id": "esp-oftalmologia",
+    "nombre": "Oftalmología",
+    "nombre_plural": "Oftalmólogos",
+    "slug": "oftalmologos",
+    "descripcion": "Vista, graduación, cirugía de catarata y retina.",
+    "sinonimos": [
+      "oftalmologo",
+      "ojos",
+      "vista",
+      "catarata"
+    ]
+  },
+  {
+    "id": "esp-psiquiatria",
+    "nombre": "Psiquiatría",
+    "nombre_plural": "Psiquiatras",
+    "slug": "psiquiatras",
+    "descripcion": "Diagnóstico y tratamiento médico de padecimientos de salud mental.",
+    "sinonimos": [
+      "psiquiatra",
+      "salud mental",
+      "depresion",
+      "ansiedad"
+    ]
+  },
+  {
+    "id": "esp-psicologia",
+    "nombre": "Psicología",
+    "nombre_plural": "Psicólogos",
+    "slug": "psicologos",
+    "descripcion": "Terapia individual, de pareja e infantil.",
+    "sinonimos": [
+      "psicologo",
+      "psicologa",
+      "terapia",
+      "terapeuta",
+      "psicoterapia"
+    ]
+  },
+  {
+    "id": "esp-odontologia",
+    "nombre": "Odontología",
+    "nombre_plural": "Dentistas",
+    "slug": "dentistas",
+    "descripcion": "Salud dental: limpieza, restauraciones, endodoncia, ortodoncia e implantes.",
+    "sinonimos": [
+      "dentista",
+      "odontologo",
+      "muelas",
+      "ortodoncia",
+      "brackets",
+      "endodoncia"
+    ]
+  },
+  {
+    "id": "esp-nutricion",
+    "nombre": "Nutrición",
+    "nombre_plural": "Nutriólogos",
+    "slug": "nutriologos",
+    "descripcion": "Planes de alimentación, composición corporal y nutrición clínica.",
+    "sinonimos": [
+      "nutriologo",
+      "nutriologa",
+      "nutricionista",
+      "dieta",
+      "bajar de peso"
+    ]
+  },
+  {
+    "id": "esp-endocrinologia",
+    "nombre": "Endocrinología",
+    "nombre_plural": "Endocrinólogos",
+    "slug": "endocrinologos",
+    "descripcion": "Diabetes, tiroides y padecimientos hormonales.",
+    "sinonimos": [
+      "endocrinologo",
+      "tiroides",
+      "diabetes",
+      "hormonas"
+    ]
+  },
+  {
+    "id": "esp-gastroenterologia",
+    "nombre": "Gastroenterología",
+    "nombre_plural": "Gastroenterólogos",
+    "slug": "gastroenterologos",
+    "descripcion": "Aparato digestivo, endoscopia y colonoscopia.",
+    "sinonimos": [
+      "gastroenterologo",
+      "gastro",
+      "estomago",
+      "colitis",
+      "endoscopia"
+    ]
+  },
+  {
+    "id": "esp-urologia",
+    "nombre": "Urología",
+    "nombre_plural": "Urólogos",
+    "slug": "urologos",
+    "descripcion": "Vías urinarias y salud masculina.",
+    "sinonimos": [
+      "urologo",
+      "prostata",
+      "riñon",
+      "vias urinarias"
+    ]
+  },
+  {
+    "id": "esp-neurologia",
+    "nombre": "Neurología",
+    "nombre_plural": "Neurólogos",
+    "slug": "neurologos",
+    "descripcion": "Sistema nervioso: migraña, epilepsia y trastornos del movimiento.",
+    "sinonimos": [
+      "neurologo",
+      "migraña",
+      "epilepsia",
+      "dolor de cabeza"
+    ]
+  },
+  {
+    "id": "esp-otorrinolaringologia",
+    "nombre": "Otorrinolaringología",
+    "nombre_plural": "Otorrinolaringólogos",
+    "slug": "otorrinolaringologos",
+    "descripcion": "Oído, nariz y garganta, incluidos estudios de audición.",
+    "sinonimos": [
+      "otorrino",
+      "otorrinolaringologo",
+      "oido",
+      "garganta",
+      "nariz",
+      "amigdalas"
+    ]
+  },
+  {
+    "id": "esp-medicina-interna",
+    "nombre": "Medicina interna",
+    "nombre_plural": "Internistas",
+    "slug": "internistas",
+    "descripcion": "Atención integral del adulto con más de un padecimiento crónico.",
+    "sinonimos": [
+      "internista",
+      "medicina interna"
+    ]
+  },
+  {
+    "id": "esp-fisioterapia",
+    "nombre": "Fisioterapia y rehabilitación",
+    "nombre_plural": "Fisioterapeutas",
+    "slug": "fisioterapeutas",
+    "descripcion": "Rehabilitación física, terapia manual y recuperación de lesiones.",
+    "sinonimos": [
+      "fisioterapeuta",
+      "rehabilitacion",
+      "terapia fisica",
+      "fisio"
+    ]
+  }
+]

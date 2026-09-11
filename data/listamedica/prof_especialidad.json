@@ -1,0 +1,67 @@
+[
+  {
+    "profesional_id": "demo-01",
+    "especialidad_id": "esp-dermatologia",
+    "es_principal": true
+  },
+  {
+    "profesional_id": "demo-02",
+    "especialidad_id": "esp-cardiologia",
+    "es_principal": true
+  },
+  {
+    "profesional_id": "demo-02",
+    "especialidad_id": "esp-medicina-interna",
+    "es_principal": false
+  },
+  {
+    "profesional_id": "demo-03",
+    "especialidad_id": "esp-pediatria",
+    "es_principal": true
+  },
+  {
+    "profesional_id": "demo-04",
+    "especialidad_id": "esp-odontologia",
+    "es_principal": true
+  },
+  {
+    "profesional_id": "demo-05",
+    "especialidad_id": "esp-psicologia",
+    "es_principal": true
+  },
+  {
+    "profesional_id": "demo-06",
+    "especialidad_id": "esp-nutricion",
+    "es_principal": true
+  },
+  {
+    "profesional_id": "demo-07",
+    "especialidad_id": "esp-ginecologia",
+    "es_principal": true
+  },
+  {
+    "profesional_id": "demo-08",
+    "especialidad_id": "esp-ortopedia",
+    "es_principal": true
+  },
+  {
+    "profesional_id": "demo-09",
+    "especialidad_id": "esp-medicina-general",
+    "es_principal": true
+  },
+  {
+    "profesional_id": "demo-10",
+    "especialidad_id": "esp-odontologia",
+    "es_principal": true
+  },
+  {
+    "profesional_id": "demo-11",
+    "especialidad_id": "esp-psicologia",
+    "es_principal": true
+  },
+  {
+    "profesional_id": "demo-12",
+    "especialidad_id": "esp-oftalmologia",
+    "es_principal": true
+  }
+]

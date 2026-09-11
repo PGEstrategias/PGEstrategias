@@ -1,0 +1,289 @@
+[
+  {
+    "id": "demo-01-serv-1",
+    "profesional_id": "demo-01",
+    "nombre": "Consulta dermatológica",
+    "precio_desde": 900,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-01-serv-2",
+    "profesional_id": "demo-01",
+    "nombre": "Revisión de lunares con dermatoscopía",
+    "precio_desde": 1200,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-01-serv-3",
+    "profesional_id": "demo-01",
+    "nombre": "Criocirugía de lesiones benignas",
+    "precio_desde": 1500,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-01-serv-4",
+    "profesional_id": "demo-01",
+    "nombre": "Biopsia de piel",
+    "precio_desde": null,
+    "publicar_precio": false
+  },
+  {
+    "id": "demo-02-serv-1",
+    "profesional_id": "demo-02",
+    "nombre": "Consulta de cardiología",
+    "precio_desde": 1100,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-02-serv-2",
+    "profesional_id": "demo-02",
+    "nombre": "Electrocardiograma",
+    "precio_desde": 450,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-02-serv-3",
+    "profesional_id": "demo-02",
+    "nombre": "Ecocardiograma",
+    "precio_desde": 2200,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-02-serv-4",
+    "profesional_id": "demo-02",
+    "nombre": "Prueba de esfuerzo",
+    "precio_desde": 2600,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-03-serv-1",
+    "profesional_id": "demo-03",
+    "nombre": "Consulta pediátrica",
+    "precio_desde": 700,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-03-serv-2",
+    "profesional_id": "demo-03",
+    "nombre": "Control del niño sano",
+    "precio_desde": 700,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-03-serv-3",
+    "profesional_id": "demo-03",
+    "nombre": "Aplicación de vacunas",
+    "precio_desde": null,
+    "publicar_precio": false
+  },
+  {
+    "id": "demo-04-serv-1",
+    "profesional_id": "demo-04",
+    "nombre": "Consulta y diagnóstico",
+    "precio_desde": 400,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-04-serv-2",
+    "profesional_id": "demo-04",
+    "nombre": "Limpieza dental",
+    "precio_desde": 850,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-04-serv-3",
+    "profesional_id": "demo-04",
+    "nombre": "Resina",
+    "precio_desde": 950,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-04-serv-4",
+    "profesional_id": "demo-04",
+    "nombre": "Endodoncia",
+    "precio_desde": 3200,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-04-serv-5",
+    "profesional_id": "demo-04",
+    "nombre": "Ortodoncia, primer pago",
+    "precio_desde": 6500,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-05-serv-1",
+    "profesional_id": "demo-05",
+    "nombre": "Sesión individual",
+    "precio_desde": 650,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-05-serv-2",
+    "profesional_id": "demo-05",
+    "nombre": "Terapia de pareja",
+    "precio_desde": 900,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-06-serv-1",
+    "profesional_id": "demo-06",
+    "nombre": "Primera consulta con plan de alimentación",
+    "precio_desde": 800,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-06-serv-2",
+    "profesional_id": "demo-06",
+    "nombre": "Consulta de seguimiento",
+    "precio_desde": 500,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-06-serv-3",
+    "profesional_id": "demo-06",
+    "nombre": "Medición de composición corporal",
+    "precio_desde": 350,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-07-serv-1",
+    "profesional_id": "demo-07",
+    "nombre": "Consulta ginecológica",
+    "precio_desde": 900,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-07-serv-2",
+    "profesional_id": "demo-07",
+    "nombre": "Control prenatal",
+    "precio_desde": 900,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-07-serv-3",
+    "profesional_id": "demo-07",
+    "nombre": "Papanicolaou y colposcopía",
+    "precio_desde": 1400,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-07-serv-4",
+    "profesional_id": "demo-07",
+    "nombre": "Ultrasonido obstétrico",
+    "precio_desde": 1100,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-08-serv-1",
+    "profesional_id": "demo-08",
+    "nombre": "Consulta de ortopedia",
+    "precio_desde": 1000,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-08-serv-2",
+    "profesional_id": "demo-08",
+    "nombre": "Infiltración articular",
+    "precio_desde": 2500,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-08-serv-3",
+    "profesional_id": "demo-08",
+    "nombre": "Valoración de lesión deportiva",
+    "precio_desde": 1000,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-09-serv-1",
+    "profesional_id": "demo-09",
+    "nombre": "Consulta general",
+    "precio_desde": 400,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-09-serv-2",
+    "profesional_id": "demo-09",
+    "nombre": "Certificado médico",
+    "precio_desde": 350,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-09-serv-3",
+    "profesional_id": "demo-09",
+    "nombre": "Curación y retiro de puntos",
+    "precio_desde": 300,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-10-serv-1",
+    "profesional_id": "demo-10",
+    "nombre": "Consulta y valoración",
+    "precio_desde": 300,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-10-serv-2",
+    "profesional_id": "demo-10",
+    "nombre": "Limpieza dental",
+    "precio_desde": 700,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-10-serv-3",
+    "profesional_id": "demo-10",
+    "nombre": "Extracción simple",
+    "precio_desde": 800,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-10-serv-4",
+    "profesional_id": "demo-10",
+    "nombre": "Blanqueamiento",
+    "precio_desde": 2800,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-11-serv-1",
+    "profesional_id": "demo-11",
+    "nombre": "Sesión infantil",
+    "precio_desde": 700,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-11-serv-2",
+    "profesional_id": "demo-11",
+    "nombre": "Sesión para adolescentes",
+    "precio_desde": 700,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-11-serv-3",
+    "profesional_id": "demo-11",
+    "nombre": "Orientación a padres",
+    "precio_desde": 800,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-12-serv-1",
+    "profesional_id": "demo-12",
+    "nombre": "Consulta oftalmológica",
+    "precio_desde": 950,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-12-serv-2",
+    "profesional_id": "demo-12",
+    "nombre": "Estudio de campos visuales",
+    "precio_desde": 1300,
+    "publicar_precio": true
+  },
+  {
+    "id": "demo-12-serv-3",
+    "profesional_id": "demo-12",
+    "nombre": "Cirugía de catarata",
+    "precio_desde": null,
+    "publicar_precio": false
+  }
+]

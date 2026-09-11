@@ -1,0 +1,170 @@
+[
+  {
+    "id": "demo-01-faq-1",
+    "profesional_id": "demo-01",
+    "pregunta": "¿Necesito llevar estudios previos?",
+    "respuesta": "Si ya te hicieron biopsias o estudios de laboratorio relacionados con la piel, llévalos. Si no tienes ninguno, no hace falta: la primera consulta incluye la revisión completa.",
+    "orden": 1
+  },
+  {
+    "id": "demo-01-faq-2",
+    "profesional_id": "demo-01",
+    "pregunta": "¿Atiende niños?",
+    "respuesta": "A partir de los 12 años. Para menores de esa edad conviene una consulta con dermatología pediátrica y con gusto te oriento a dónde acudir.",
+    "orden": 2
+  },
+  {
+    "id": "demo-02-faq-1",
+    "profesional_id": "demo-02",
+    "pregunta": "¿Debo ir en ayunas?",
+    "respuesta": "Para la consulta no es necesario. Si te vamos a hacer prueba de esfuerzo, sí conviene: te lo indicamos al confirmar.",
+    "orden": 1
+  },
+  {
+    "id": "demo-02-faq-2",
+    "profesional_id": "demo-02",
+    "pregunta": "¿Puedo llevar estudios de otro médico?",
+    "respuesta": "Sí, y ayuda mucho. Lleva electrocardiogramas, análisis de laboratorio y la lista de medicamentos que tomas.",
+    "orden": 2
+  },
+  {
+    "id": "demo-03-faq-1",
+    "profesional_id": "demo-03",
+    "pregunta": "¿Aplica vacunas del esquema nacional?",
+    "respuesta": "Sí, y también las que no entran en el esquema gratuito. El costo depende de la vacuna; te lo confirmo por WhatsApp antes de tu visita.",
+    "orden": 1
+  },
+  {
+    "id": "demo-03-faq-2",
+    "profesional_id": "demo-03",
+    "pregunta": "¿Atiende recién nacidos?",
+    "respuesta": "Sí, desde el alta del hospital. La primera consulta del recién nacido conviene tenerla dentro de la primera semana.",
+    "orden": 2
+  },
+  {
+    "id": "demo-04-faq-1",
+    "profesional_id": "demo-04",
+    "pregunta": "¿Cuánto cuesta un tratamiento de ortodoncia completo?",
+    "respuesta": "Depende del caso. En la consulta de valoración se entrega el plan por escrito con el total y las mensualidades, sin costos que aparezcan después.",
+    "orden": 1
+  },
+  {
+    "id": "demo-04-faq-2",
+    "profesional_id": "demo-04",
+    "pregunta": "¿Atiende urgencias por dolor?",
+    "respuesta": "Sí. Escríbeme por WhatsApp describiendo lo que pasa y busco espacio el mismo día.",
+    "orden": 2
+  },
+  {
+    "id": "demo-05-faq-1",
+    "profesional_id": "demo-05",
+    "pregunta": "¿Cada cuándo son las sesiones?",
+    "respuesta": "Al principio suelen ser semanales. Conforme avanza el proceso se espacian; eso se decide contigo, no de entrada.",
+    "orden": 1
+  },
+  {
+    "id": "demo-05-faq-2",
+    "profesional_id": "demo-05",
+    "pregunta": "¿La psicóloga receta medicamento?",
+    "respuesta": "No. La prescripción de medicamento corresponde a psiquiatría; si tu caso lo requiere, se te canaliza.",
+    "orden": 2
+  },
+  {
+    "id": "demo-06-faq-1",
+    "profesional_id": "demo-06",
+    "pregunta": "¿Tengo que llevar estudios de laboratorio?",
+    "respuesta": "Si los tienes recientes, llévalos. Si no, en la primera consulta te indico cuáles conviene hacer.",
+    "orden": 1
+  },
+  {
+    "id": "demo-06-faq-2",
+    "profesional_id": "demo-06",
+    "pregunta": "¿Los planes incluyen suplementos?",
+    "respuesta": "Solo si hacen falta y se justifica. No se venden suplementos en el consultorio.",
+    "orden": 2
+  },
+  {
+    "id": "demo-07-faq-1",
+    "profesional_id": "demo-07",
+    "pregunta": "¿Atiende partos?",
+    "respuesta": "Sí, en hospital. En la consulta se revisa el plan de parto y el hospital donde se atendería.",
+    "orden": 1
+  },
+  {
+    "id": "demo-07-faq-2",
+    "profesional_id": "demo-07",
+    "pregunta": "¿Puedo ir acompañada?",
+    "respuesta": "Siempre. Puedes entrar al consultorio con quien tú decidas.",
+    "orden": 2
+  },
+  {
+    "id": "demo-08-faq-1",
+    "profesional_id": "demo-08",
+    "pregunta": "¿Necesito una resonancia antes de la consulta?",
+    "respuesta": "No necesariamente. En la consulta se define qué estudio hace falta, si es que hace falta alguno.",
+    "orden": 1
+  },
+  {
+    "id": "demo-08-faq-2",
+    "profesional_id": "demo-08",
+    "pregunta": "¿Da seguimiento con fisioterapia?",
+    "respuesta": "Sí. El plan de rehabilitación se coordina con el fisioterapeuta y se revisa en cada cita.",
+    "orden": 2
+  },
+  {
+    "id": "demo-09-faq-1",
+    "profesional_id": "demo-09",
+    "pregunta": "¿Atiende sin cita?",
+    "respuesta": "Sí, por orden de llegada. Si escribes por WhatsApp te digo cómo está la sala en ese momento.",
+    "orden": 1
+  },
+  {
+    "id": "demo-09-faq-2",
+    "profesional_id": "demo-09",
+    "pregunta": "¿Hace visitas a domicilio?",
+    "respuesta": "En casos justificados dentro de Atlixco centro. Se acuerda por WhatsApp.",
+    "orden": 2
+  },
+  {
+    "id": "demo-10-faq-1",
+    "profesional_id": "demo-10",
+    "pregunta": "¿Atiende niños?",
+    "respuesta": "Sí, desde los cuatro años para limpieza y revisión.",
+    "orden": 1
+  },
+  {
+    "id": "demo-10-faq-2",
+    "profesional_id": "demo-10",
+    "pregunta": "¿Aceptan pago con tarjeta?",
+    "respuesta": "Sí, tarjeta de débito y crédito, y transferencia.",
+    "orden": 2
+  },
+  {
+    "id": "demo-11-faq-1",
+    "profesional_id": "demo-11",
+    "pregunta": "¿Los papás entran a la sesión?",
+    "respuesta": "La primera entrevista es con los papás. Después las sesiones son con el niño o la niña, y cada cierto tiempo hay una de devolución con ustedes.",
+    "orden": 1
+  },
+  {
+    "id": "demo-11-faq-2",
+    "profesional_id": "demo-11",
+    "pregunta": "¿Hacen evaluaciones psicométricas?",
+    "respuesta": "Sí, cuando la escuela las solicita o el caso lo amerita. Se cotizan aparte.",
+    "orden": 2
+  },
+  {
+    "id": "demo-12-faq-1",
+    "profesional_id": "demo-12",
+    "pregunta": "¿Puedo manejar después de la consulta?",
+    "respuesta": "Si te dilatamos la pupila, no conviene manejar en las siguientes horas. Ven acompañado o considera un taxi de regreso.",
+    "orden": 1
+  },
+  {
+    "id": "demo-12-faq-2",
+    "profesional_id": "demo-12",
+    "pregunta": "¿Recetan lentes ahí mismo?",
+    "respuesta": "La graduación se entrega en el consultorio. La óptica donde los mandas hacer la eliges tú.",
+    "orden": 2
+  }
+]

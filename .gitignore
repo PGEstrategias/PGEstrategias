@@ -37,3 +37,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Lista Médica: analítica y evidencias de verificación.
+# Las tablas de clics y búsquedas crecen en cada visita, así que no se
+# versionan (si el archivo no existe, el almacén las trata como vacías).
+# Las evidencias de cédula son respaldo interno y no van al repo.
+/data/listamedica/clics.json
+/data/listamedica/busquedas.json
+/data/listamedica/evidencias/
