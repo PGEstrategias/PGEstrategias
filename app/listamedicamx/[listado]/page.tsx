@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import DatosEstructurados from '@/components/listamedica/DatosEstructurados';
+import { imagenCompartir } from '@/lib/listamedica/archivosDeMarca';
 import FilaProfesional from '@/components/listamedica/FilaProfesional';
 import Filtros from '@/components/listamedica/Filtros';
 import {
@@ -51,7 +52,7 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
     title: titulo,
     description: `${titulo} con cédula profesional verificada ante la SEP. Compara zona, precio de consulta y horarios, y escribe por WhatsApp desde Lista Médica.`,
     alternates: { canonical: urlAbsoluta(`/${params.listado}`) },
-    openGraph: { title: titulo, url: urlAbsoluta(`/${params.listado}`) },
+    openGraph: { title: titulo, url: urlAbsoluta(`/${params.listado}`), images: imagenCompartir() },
   };
 }
 

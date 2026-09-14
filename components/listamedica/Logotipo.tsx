@@ -1,5 +1,4 @@
-import fs from 'node:fs';
-import path from 'node:path';
+import { archivoDeMarca } from '@/lib/listamedica/archivosDeMarca';
 
 /**
  * Logotipo de Lista Médica.
@@ -12,25 +11,11 @@ import path from 'node:path';
  * marino del logotipo a color se pierde ahí.
  */
 
-const CARPETA = path.join(process.cwd(), 'public', 'listamedica');
-
-/** Se resuelve una sola vez por proceso, no en cada render. */
-function primeroQueExista(nombres: string[]): string | null {
-  for (const nombre of nombres) {
-    try {
-      if (fs.existsSync(path.join(CARPETA, nombre))) return `/listamedica/${nombre}`;
-    } catch {
-      // Sistema de archivos inaccesible: se usa el nombre tipográfico.
-    }
-  }
-  return null;
-}
-
-const COLOR = primeroQueExista(['logo.svg', 'logo.png', 'logo.webp']);
-const CLARO = primeroQueExista(['logo-claro.svg', 'logo-claro.png', 'logo-claro.webp']);
+const COLOR = archivoDeMarca(['logo.svg', 'logo.png', 'logo.webp']);
+const CLARO = archivoDeMarca(['logo-claro.svg', 'logo-claro.png', 'logo-claro.webp']);
 
 export function hayLogotipo(variante: 'color' | 'claro' = 'color'): boolean {
-  return Boolean(variante === 'claro' ? CLARO ?? COLOR : COLOR);
+  return Boolean(variante === 'claro' ? CLARO : COLOR);
 }
 
 export default function Logotipo({

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import PerfilPublico from '@/components/listamedica/PerfilPublico';
+import { imagenCompartir } from '@/lib/listamedica/archivosDeMarca';
 import { esVisible, obtenerPorSlug, todosCompletos } from '@/lib/listamedica/datos';
 import { urlAbsoluta } from '@/lib/listamedica/rutas';
 import { nombreCiudad, nombreCompleto } from '@/lib/listamedica/texto';
@@ -34,7 +35,7 @@ export async function generateMetadata({
       title: `${nombreCompleto(p)} — ${especialidad} en ${zona}`,
       description: `${especialidad} en ${zona}. Cédula verificada ante la SEP.`,
       url: urlAbsoluta(`/dr/${p.slug}`),
-      images: p.foto_url ? [p.foto_url] : undefined,
+      images: imagenCompartir(p.foto_url || undefined),
     },
   };
 }

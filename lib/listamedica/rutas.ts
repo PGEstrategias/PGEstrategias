@@ -40,13 +40,22 @@ export const rutas = {
   sitemap: () => ruta('/sitemap.xml'),
 };
 
+/**
+ * Solo el origen, sin base path.
+ *
+ * Es lo que necesita metadataBase de Next: contra ese valor resuelve las
+ * rutas de icon y opengraph-image, que ya vienen con el base path adentro.
+ * Si se le pasa el origen con el subpath, la URL sale duplicada
+ * (/listamedicamx/listamedicamx/opengraph-image.png) y la vista previa al
+ * compartir en WhatsApp se rompe.
+ */
+export function origenSitio(): string {
+  return (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pgestrategias.com').replace(/\/+$/, '');
+}
+
 /** URL absoluta, para JSON-LD, canonical y sitemap. */
 export function urlAbsoluta(camino = '/'): string {
-  const origen = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://pgestrategias.com').replace(
-    /\/+$/,
-    '',
-  );
-  return `${origen}${ruta(camino)}`;
+  return `${origenSitio()}${ruta(camino)}`;
 }
 
 /** Separa "dermatologos-en-puebla" en sus dos mitades. */

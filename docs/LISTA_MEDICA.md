@@ -100,9 +100,23 @@ Mientras un archivo no exista, esa pieza muestra el nombre tipográfico en
 Fraunces en lugar de una imagen rota. Los detalles de formato están en
 `public/listamedica/README.md`.
 
-El favicon y la imagen de compartir van por convención de Next.js en
-`app/listamedicamx/icon.png` y `app/listamedicamx/opengraph-image.png`, y
-aplican solo a esta sección: el resto de pgestrategias.com conserva los suyos.
+La imagen de vista previa al compartir sale de la misma carpeta
+(`compartir.png`), y se declara a mano en cada página que define su propio
+bloque `openGraph`: cuando una página lo declara, Next deja de heredar el del
+layout, así que confiar en la convención de archivo dejaba sin imagen al
+listado y al perfil. Los perfiles con fotografía comparten el retrato del
+profesional en vez de la genérica.
+
+El favicon sí va por convención de Next, en `app/listamedicamx/icon.png`, y
+queda acotado a esta sección: las páginas de PG Estrategias conservan el suyo,
+y si algún día se agrega `app/icon.png` para PG, el de Lista Médica lo sigue
+ganando en sus propias rutas.
+
+`metadataBase` del layout apunta al origen **sin** el base path
+(`origenSitio()`). Si se le pasa el origen con el subpath, Next resuelve las
+imágenes de metadatos contra él y la URL sale duplicada
+(`/listamedicamx/listamedicamx/...`), lo que rompe la vista previa al
+compartir.
 
 ---
 

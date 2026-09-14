@@ -3,10 +3,11 @@ import './listamedica.css';
 import Cabecera from '@/components/listamedica/Cabecera';
 import Pie from '@/components/listamedica/Pie';
 import PixelMeta from '@/components/listamedica/PixelMeta';
-import { urlAbsoluta } from '@/lib/listamedica/rutas';
+import { imagenCompartir } from '@/lib/listamedica/archivosDeMarca';
+import { origenSitio } from '@/lib/listamedica/rutas';
 
 export const metadata: Metadata = {
-  metadataBase: new URL(urlAbsoluta('/')),
+  metadataBase: new URL(origenSitio()),
   title: {
     default: 'Lista Médica — Directorio de profesionales de la salud en Puebla',
     template: '%s · Lista Médica',
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
     siteName: 'Lista Médica',
     locale: 'es_MX',
     type: 'website',
+    images: imagenCompartir(),
   },
 };
 
