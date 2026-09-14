@@ -134,18 +134,37 @@
 }
 
 .lm-marca {
+  display: inline-flex;
+  align-items: center;
+  color: var(--tinta);
+  text-decoration: none;
+}
+
+.lm-marca:hover { color: var(--tinta); }
+
+/* Nombre tipográfico. Se usa mientras no haya archivo de logotipo. */
+.lm-marca__texto {
   font-family: var(--serif);
   font-optical-sizing: auto;
   font-weight: 600;
   font-size: 21px;
   letter-spacing: -0.025em;
-  color: var(--tinta);
-  text-decoration: none;
   white-space: nowrap;
 }
 
-.lm-marca:hover { color: var(--tinta); }
-.lm-marca em { font-style: normal; color: var(--azul); }
+.lm-marca__texto em { font-style: normal; color: var(--azul); }
+
+.lm-marca__logo {
+  height: var(--alto-logo, 30px);
+  width: auto;
+  display: block;
+}
+
+/* En pantallas angostas el logotipo cede espacio al botón de la derecha. */
+@media (max-width: 560px) {
+  .lm-marca__logo { height: calc(var(--alto-logo, 30px) * 0.78); }
+  .lm-marca__texto { font-size: 19px; }
+}
 
 .lm-nav {
   display: flex;
@@ -505,6 +524,8 @@
 
 .lm-pie a { color: #fff; }
 .lm-pie__marca { font-family: var(--serif); font-size: 20px; color: #fff; margin-bottom: 10px; }
+.lm-pie__marca .lm-marca__texto { font-size: 20px; color: #fff; }
+.lm-pie__marca .lm-marca__texto em { color: #fff; }
 .lm-pie__enlaces { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 18px; }
 .lm-pie__legal { margin-top: 18px; padding-top: 16px; border-top: 1px solid rgba(255, 255, 255, 0.14); color: #98a1ab; font-size: 13px; }
 .lm-pie__legal p { max-width: 72ch; }

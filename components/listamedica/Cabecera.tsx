@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Logotipo from './Logotipo';
 import { rutas } from '@/lib/listamedica/rutas';
 
 export default function Cabecera() {
@@ -6,8 +7,8 @@ export default function Cabecera() {
     <header className="lm-cabecera">
       <div className="lm-marco">
         <div className="lm-cabecera__fila">
-          <Link href={rutas.home()} className="lm-marca">
-            Lista <em>Médica</em>
+          <Link href={rutas.home()} className="lm-marca" aria-label="Lista Médica, ir al inicio">
+            <Logotipo />
           </Link>
           <nav className="lm-nav" aria-label="Navegación principal">
             <Link href={rutas.comoVerificamos()} className="lm-nav__secundario">

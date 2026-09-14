@@ -92,6 +92,20 @@ docs/listamedica-esquema.sql    El mismo modelo en PostgreSQL
 
 ---
 
+## Marca
+
+El logotipo se toma de `public/listamedica/` por nombre de archivo: `logo.svg`
+para la cabecera y `logo-claro.svg` para el pie, que va sobre fondo casi negro.
+Mientras un archivo no exista, esa pieza muestra el nombre tipográfico en
+Fraunces en lugar de una imagen rota. Los detalles de formato están en
+`public/listamedica/README.md`.
+
+El favicon y la imagen de compartir van por convención de Next.js en
+`app/listamedicamx/icon.png` y `app/listamedicamx/opengraph-image.png`, y
+aplican solo a esta sección: el resto de pgestrategias.com conserva los suyos.
+
+---
+
 ## Persistencia
 
 Los datos viven en `data/listamedica/*.json`, una tabla por archivo, detrás de

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Logotipo from './Logotipo';
 import { MARCA } from '@/lib/listamedica/marca';
 import { rutas } from '@/lib/listamedica/rutas';
 
@@ -6,7 +7,9 @@ export default function Pie() {
   return (
     <footer className="lm-pie">
       <div className="lm-marco">
-        <div className="lm-pie__marca">Lista Médica</div>
+        <div className="lm-pie__marca">
+          <Logotipo variante="claro" alto={34} />
+        </div>
         <p>
           <a href={`mailto:${MARCA.correo}`}>{MARCA.correo}</a>
           {'  ·  '}
