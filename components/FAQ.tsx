@@ -145,9 +145,7 @@ export default function FAQ() {
           >
             Todo lo que necesitas saber
             <br />
-            <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-              antes de empezar.
-            </em>
+            antes de empezar.
           </motion.h2>
         </div>
 

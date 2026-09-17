@@ -83,6 +83,7 @@ const CATEGORIES: Category[] = [
       "Resúmenes que reviven el evento y lo convierten en un activo de marca. Capturamos los momentos clave, la energía del lugar y el detalle que nadie ve, para entregar una pieza que sigue vendiendo la experiencia mucho después de que terminó.",
     reels: [
       { src: "https://res.cloudinary.com/djduba5fd/video/upload/q_auto/f_auto/v1787082349/LandRover_LegacyDrop2_lwq2q2.mp4" },
+      { src: "https://res.cloudinary.com/djduba5fd/video/upload/q_auto/f_auto/v1788051909/DemoMercedes_csof2x.mp4" },
       { src: "https://res.cloudinary.com/djduba5fd/video/upload/q_auto/f_auto/v1779379782/AQNT8_lqO4uOfGx0cDYYLy5qea3MVzTq7nMnuJrqQ10beUeG_V6FfEw4CmGXg5dkSiKwSj-0-g70SxtETMlBb5OsaeYI4fC70KqDoJM_kls3iw.mp4" },
     ],
   },

@@ -46,7 +46,6 @@ const planes = [
       "4 reels mensuales (1 para anuncios, 3 para redes)",
       "3 diseños gráficos con texto persuasivo",
       "3 carruseles para redes sociales",
-      "500 mensajes por WhatsApp o correo al mes",
       "Página de ventas diseñada e incluida",
       "Configuración técnica completa (rastreo, píxeles)",
       "Perfil de Google optimizado + estrategia de reseñas",
@@ -86,13 +85,13 @@ const planes = [
     publicidad: "$7,000 en publicidad incluidos",
     paraQuien:
       "Ideal si facturas más de $300,000 al mes y necesitas un equipo de marketing digital externo que opere todo.",
-    cta: "Hablemos de Dominio",
+    cta: "Empezar con Dominio",
     destacado: false,
     items: [
       "Publicidad en Meta y/o Google — $7,000 incluidos",
       "1 video de 1 minuto para página de ventas",
       "10 reels mensuales (4 para anuncios, 6 para redes)",
-      "2,000 mensajes por WhatsApp o correo al mes",
+      "WhatsApp Bot para responder a tus leads",
       "2 páginas de ventas + CRM + hosting permanente + dominio",
       "Configuración técnica completa",
       "Perfil de Google optimizado + estrategia de reseñas",
@@ -292,9 +291,7 @@ export default function Paquetes() {
             >
               Elige el nivel que
               <br />
-              <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                le corresponde
-              </em>{" "}
+              le corresponde{" "}
               a tu negocio hoy.
             </motion.h2>
 
@@ -386,7 +383,7 @@ export default function Paquetes() {
                       {[
                         ["Presupuesto publicidad incluido", "$2,500", "$4,000", "$7,000"],
                         ["Reels mensuales", "4", "7", "10"],
-                        ["Mensajes WhatsApp/email", "500", "WhatsApp Bot", "2,000"],
+                        ["WhatsApp Bot para tus leads", "—", "Incluido", "Incluido"],
                         ["Videollamada estratégica", "Mensual", "Quincenal", "Semanal"],
                         ["Páginas de ventas", "1", "1 + CRM", "2 + CRM"],
                         ["Hosting incluido", "—", "6 meses", "Permanente"],
@@ -483,7 +480,7 @@ export default function Paquetes() {
                   className="absolute inset-0 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"
                   style={{ background: "#1C1C1A" }}
                 />
-                <span className="relative">Agendar llamada gratuita</span>
+                <span className="relative">Agendar llamada de 20 min</span>
               </button>
             </div>
           </div>

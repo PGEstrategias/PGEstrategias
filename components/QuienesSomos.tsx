@@ -5,34 +5,29 @@ import { motion, useInView } from "framer-motion";
 
 const servicios = [
   {
-    num: "01",
-    title: "Pauta Digital",
-    desc: "Anuncios en Meta y Google diseñados para conseguir clientes nuevos, no solo clics. Optimizamos el costo de cada cliente que obtienes.",
+    title: "Anuncios en Meta y Google",
+    desc: "Pagamos por clientes, no por clics. Medimos lo que cuesta cada uno.",
   },
   {
-    num: "02",
-    title: "Producción Audiovisual",
-    desc: "Videos y creatividades con un solo objetivo: que el espectador actúe. Cada pieza tiene un gancho, un beneficio claro y un llamado a la acción.",
+    title: "Video que vende",
+    desc: "Grabamos con equipo de cine. Cada pieza tiene un gancho, un beneficio y una instrucción clara.",
   },
   {
-    num: "03",
-    title: "Mensajería Masiva",
-    desc: "WhatsApp y email coordinados con tu pauta. Captamos prospectos y mantenemos la relación con quienes aún no se deciden a comprar.",
+    title: "Seguimiento por WhatsApp",
+    desc: "Quien no compró hoy recibe el mensaje correcto hasta que agenda.",
   },
   {
-    num: "04",
-    title: "Ecosistema Digital",
-    desc: "Tu perfil de Google, WhatsApp Business, landing page y posicionamiento en buscadores trabajando como un solo sistema. La base que convierte.",
+    title: "Base que convierte",
+    desc: "Página de ventas, perfil de Google y rastreo conectados desde el día uno.",
   },
 ];
 
 const diferenciadores = [
-  "Todo integrado — un solo equipo, un solo cargo mensual.",
+  "Un solo equipo, un solo cargo mensual.",
   "Presencia en Google desde el primer mes, sin costo extra.",
-  "Videos y anuncios hechos para vender, no para decorar redes.",
-  "Solo trabajamos con quienes tienen algo claro que vender.",
-  "Te explicamos todo en español, sin términos técnicos.",
+  "Solo trabajamos con negocios que ya tienen algo claro que vender.",
 ];
+
 
 export default function QuienesSomos() {
   const ref = useRef(null);
@@ -100,12 +95,9 @@ export default function QuienesSomos() {
                 color: "#1C1C1A",
               }}
             >
-              No somos una agencia.
+              El problema no es tu publicidad.
               <br />
-              Somos{" "}
-              <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                growth partners.
-              </em>
+              Es que nadie la conecta con tu venta.
             </motion.h2>
 
             <motion.div
@@ -178,7 +170,7 @@ export default function QuienesSomos() {
         >
           {servicios.map((s, i) => (
             <motion.div
-              key={s.num}
+              key={s.title}
               initial={{ opacity: 0, y: 20 }}
               animate={gridInView ? { opacity: 1, y: 0 } : {}}
               transition={{
@@ -199,15 +191,6 @@ export default function QuienesSomos() {
                   transitionTimingFunction: "cubic-bezier(0.16, 1, 0.3, 1)",
                 }}
               />
-              <p
-                className="font-body text-[11px] mb-6 tabular-nums transition-colors duration-500 group-hover:text-[color:#D63A27]"
-                style={{
-                  color: "rgba(28,28,26,0.4)",
-                  letterSpacing: "0.06em",
-                }}
-              >
-                {s.num}
-              </p>
               <h3
                 className="font-title mb-4 leading-snug transition-colors duration-500"
                 style={{

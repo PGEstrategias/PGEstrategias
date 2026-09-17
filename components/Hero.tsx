@@ -115,7 +115,7 @@ export default function Hero() {
               className="font-body text-[11px] tracking-[var(--ls-label)] uppercase"
               style={{ color: "#D63A27", fontWeight: 500 }}
             >
-              Growth Partners · Ciudad de Puebla
+              Agencia de marketing y producción audiovisual en Puebla
             </p>
           </motion.div>
 
@@ -138,12 +138,9 @@ export default function Hero() {
                 color: "#1C1C1A",
               }}
             >
-              Convertimos tu
+              Tu publicidad no necesita más likes.
               <br />
-              inversión en{" "}
-              <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                clientes.
-              </em>
+              Necesita que suene tu WhatsApp.
             </motion.h1>
           </div>
 
@@ -151,11 +148,12 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.55 }}
-            className="font-body text-[11px] tracking-[0.18em] uppercase mb-10 max-w-[520px]"
-            style={{ color: "rgba(28,28,26,0.55)" }}
+            className="font-body text-[16px] md:text-[18px] leading-[1.7] mb-10 max-w-[560px]"
+            style={{ color: "rgba(28,28,26,0.7)" }}
           >
-            El primer mes lanzamos · el segundo optimizamos · el tercero
-            triplicamos lo invertido
+            Anuncios, video y seguimiento por WhatsApp operados por un solo
+            equipo en Puebla. Campaña al aire en 14 días, con una meta por
+            escrito y garantía si no la alcanzamos.
           </motion.p>
 
           <motion.div
@@ -175,14 +173,7 @@ export default function Hero() {
                 style={{ background: "#1C1C1A" }}
               />
               <span className="relative flex items-center gap-2">
-                Quiero crecer
-                <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
-                  <path
-                    d="M1 5H13M13 5L9 1M13 5L9 9"
-                    stroke="currentColor"
-                    strokeWidth="1.5"
-                  />
-                </svg>
+Agendar llamada de 20 min
               </span>
             </button>
             <a
@@ -276,22 +267,6 @@ export default function Hero() {
                       : "rgba(28,28,26,0.85)",
                   }}
                 >
-                  {/* Etiqueta del último bar */}
-                  {bar.accent && (
-                    <motion.div
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ duration: 0.6, delay: 2.2 }}
-                      className="absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap"
-                    >
-                      <span
-                        className="font-body text-[10px] tracking-[0.16em] uppercase"
-                        style={{ color: "#D63A27" }}
-                      >
-                        +3.8×
-                      </span>
-                    </motion.div>
-                  )}
                 </motion.div>
               ))}
             </div>

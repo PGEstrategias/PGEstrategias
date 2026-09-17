@@ -166,7 +166,7 @@ export default function Navbar() {
               <span
                 className="relative transition-colors duration-500 group-hover:text-[#E4E0DD]"
               >
-                Agenda una llamada
+                Agendar llamada de 20 min
               </span>
             </button>
             <button
@@ -244,7 +244,7 @@ export default function Navbar() {
                 className="mt-8 inline-block font-title font-bold text-[13px] tracking-wide px-6 py-3.5 self-start transition-opacity duration-500 hover:opacity-85"
                 style={{ background: "#D63A27", color: "#E4E0DD" }}
               >
-                Agenda una llamada
+                Agendar llamada de 20 min
               </motion.button>
 
               {/* Legal — secundario, no compite con la navegación */}

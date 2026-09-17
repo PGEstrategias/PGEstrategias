@@ -93,13 +93,11 @@ export default function Metodologia() {
                 color: "#1C1C1A",
               }}
             >
-              Del primer click
+              De la firma
               <br />
-              al cliente recurrente
+              a tu primera campaña
               <br />
-              <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                en 2 meses.
-              </em>
+              en 14 días.
             </motion.h2>
 
             <motion.p
@@ -258,7 +256,7 @@ export default function Metodologia() {
             className="link-underline font-body text-[13px] tracking-[0.12em] uppercase inline-flex items-center gap-3 transition-colors duration-500"
             style={{ color: "rgba(28,28,26,0.75)" }}
           >
-            Empieza en 14 días{" "}
+            Agendar llamada de 20 min{" "}
             <span style={{ color: "#D63A27" }}>→</span>
           </a>
         </motion.div>

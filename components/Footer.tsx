@@ -94,14 +94,7 @@ export default function Footer() {
               >
                 <InstagramIcon />
               </a>
-              <a
-                href="#"
-                className="transition-colors duration-500 hover:text-[color:#D63A27]"
-                style={{ color: "rgba(228,224,221,0.45)" }}
-                aria-label="LinkedIn de PG Estrategias"
-              >
-                <LinkedInIcon />
-              </a>
+              
             </div>
           </div>
 
