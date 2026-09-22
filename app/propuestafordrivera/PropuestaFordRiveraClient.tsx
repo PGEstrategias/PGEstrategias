@@ -117,7 +117,7 @@ const IGUALA = {
   specs: [
     { k: "Reels al mes", v: "9" },
     { k: "Fotos de unidades", v: "250" },
-    { k: "Carruseles / artes", v: "20" },
+    { k: "Carruseles / artes", v: "10" },
     { k: "Levantamientos al mes", v: "4" },
     { k: "Videollamadas", v: "2 al mes" },
     { k: "Pauta publicitaria", v: "Aparte" },
