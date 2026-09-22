@@ -77,11 +77,9 @@ export default function Contacto() {
                   color: "#E4E0DD",
                 }}
               >
-                ¿Listo para
+                20 minutos para saber
                 <br />
-                <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                  crecer de verdad?
-                </em>
+                si podemos llenar tu agenda.
               </motion.h2>
               <motion.p
                 initial={{ opacity: 0 }}
@@ -90,8 +88,8 @@ export default function Contacto() {
                 className="font-body text-[16px] leading-[1.75] mb-14"
                 style={{ color: "rgba(228,224,221,0.55)" }}
               >
-                Agenda una llamada de 20 minutos. Sin costo, sin compromiso.
-                Te decimos si podemos ayudarte — y si no, también.
+                Sin costo. Si no somos la opción correcta para tu negocio, te
+                lo decimos en la llamada.
               </motion.p>
 
               <motion.div
@@ -302,7 +300,7 @@ export default function Contacto() {
                       className="absolute inset-0 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"
                       style={{ background: "#1C1C1A" }}
                     />
-                    <span className="relative">Quiero mi llamada gratuita</span>
+                    <span className="relative">Agendar llamada de 20 min</span>
                   </button>
                   <p
                     className="font-body text-[12px] text-center"

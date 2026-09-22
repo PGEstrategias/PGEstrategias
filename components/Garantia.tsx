@@ -185,9 +185,7 @@ export default function Garantia() {
               }}
             >
               30 días de honorarios{" "}
-              <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                sin costo.
-              </em>
+              sin costo.
             </motion.h2>
 
             <motion.p
@@ -285,7 +283,7 @@ export default function Garantia() {
                 className="absolute inset-0 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"
                 style={{ background: "#D63A27" }}
               />
-              <span className="relative">Quiero conocer los detalles</span>
+              <span className="relative">Agendar llamada de 20 min</span>
               <span
                 className="relative inline-flex transition-transform duration-500 group-hover:translate-x-1"
                 aria-hidden

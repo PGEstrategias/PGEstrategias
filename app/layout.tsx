@@ -3,20 +3,20 @@ import "./globals.css";
 import ClientProviders from "@/components/ClientProviders";
 
 export const metadata: Metadata = {
-  title: "PG Estrategias — Growth Partners",
-  description: "Convertimos tu inversión publicitaria en clientes. Paid Media · Producción Audiovisual · Mensajería · Ecosistema Digital.",
-  keywords: "marketing digital, pauta digital, growth partners, CDMX, publicidad digital, Meta Ads, Google Ads",
+  title: "Agencia de Marketing Digital y Producción Audiovisual en Puebla | PG Estrategias",
+  description: "Anuncios, video y WhatsApp operados por un solo equipo en Puebla. Campaña activa en 14 días con garantía por escrito.",
+  keywords: "agencia de marketing Puebla, producción audiovisual Puebla, pauta digital, publicidad digital, Meta Ads, Google Ads",
   openGraph: {
-    title: "PG Estrategias — Growth Partners",
-    description: "Convertimos tu inversión publicitaria en clientes. 14 días de firma a campaña activa.",
+    title: "Agencia de Marketing Digital y Producción Audiovisual en Puebla | PG Estrategias",
+    description: "Anuncios, video y WhatsApp operados por un solo equipo en Puebla. Campaña activa en 14 días con garantía por escrito.",
     type: "website",
     locale: "es_MX",
     siteName: "PG Estrategias",
   },
   twitter: {
     card: "summary_large_image",
-    title: "PG Estrategias — Growth Partners",
-    description: "Convertimos tu inversión publicitaria en clientes.",
+    title: "Agencia de Marketing Digital y Producción Audiovisual en Puebla | PG Estrategias",
+    description: "Anuncios, video y WhatsApp operados por un solo equipo en Puebla.",
   },
 };
 

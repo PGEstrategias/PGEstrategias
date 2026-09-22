@@ -27,7 +27,7 @@ const testimonios = [
       "https://res.cloudinary.com/dieszqcrn/image/upload/v1778400307/ChatGPT_Image_10_may_2026_02_04_57_a.m_gdkjn9.png",
     quote: "Hemos triplicado el número de contratos firmados.",
     nombre: "Ex Hacienda de San Bartolo",
-    industria: "Bienes Raíces · Puebla",
+    industria: "Eventos y bodas · Puebla",
   },
   {
     id: 3,
@@ -235,9 +235,7 @@ export default function Testimonios() {
                 Resultados reales,
                 <br />
                 en sus{" "}
-                <em style={{ color: "#D63A27", fontStyle: "italic" }}>
-                  propias palabras.
-                </em>
+                propias palabras.
               </motion.h2>
             </div>
           </div>
