@@ -9,6 +9,10 @@ const nextConfig = {
         source: "/lpdoctores",
         destination: "/lpdoctores.html",
       },
+      {
+        source: "/propuestaimagenautomotrizlimon",
+        destination: "/propuesta-imagen-automotriz-limon.html",
+      },
     ];
   },
   async redirects() {
