@@ -33,6 +33,7 @@
     "addressCountry": "MX"
   },
   "areaServed": "Puebla",
+  "hasMap": "https://maps.app.goo.gl/NQVDjZ7qJREG5Wx47",
   "makesOffer": [
     {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Hojalatería"}},
     {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Pintura automotriz"}},
@@ -174,6 +175,21 @@
   .info li span { font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); padding-top: 2px; }
   .map { min-height: 360px; border: 1px solid var(--line); filter: grayscale(1) invert(0.92) contrast(0.9); }
   .map iframe { width: 100%; height: 100%; min-height: 360px; border: 0; display: block; }
+  .map-col { display: flex; flex-direction: column; gap: 12px; }
+  .map-col .map { flex: 1; }
+  .map-links { display: flex; flex-wrap: wrap; gap: 10px; }
+  .map-links .btn { flex: 1; min-width: 180px; }
+
+  /* Reseñas */
+  .rating { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; margin-top: 40px; }
+  @media (min-width: 900px) { .rating { grid-template-columns: 1fr 2fr; gap: 56px; } }
+  .score { border: 1px solid var(--gold); padding: 34px 28px; text-align: center; }
+  .score .big { font-family: var(--display); font-size: 84px; line-height: 1; color: var(--gold); }
+  .score .stars { font-size: 22px; letter-spacing: 4px; color: var(--gold); margin: 10px 0 6px; }
+  .score .stars span { color: rgba(232,174,79,0.3); }
+  .score p { color: var(--soft); font-size: 14px; }
+  .rating-copy p.lead + p.lead { margin-top: 14px; }
+  .rating-copy .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 26px; }
 
   /* CTA final */
   .final { text-align: center; padding: 110px 0; position: relative; overflow: hidden; }
@@ -216,6 +232,7 @@
         <li><a href="#nosotros">Nosotros</a></li>
         <li><a href="#proceso">Proceso</a></li>
         <li><a href="#instalaciones">Instalaciones</a></li>
+        <li><a href="#resenas">Reseñas</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
@@ -236,7 +253,7 @@
         <a class="btn btn-line" href="#servicios">Ver servicios</a>
       </div>
       <div class="trust">
-        <div><b>4.2 ★</b> en Google Maps</div>
+        <div><a href="https://maps.app.goo.gl/NQVDjZ7qJREG5Wx47" target="_blank" rel="noopener"><b>4.2 ★</b> en Google Maps · 30 reseñas</a></div>
         <div><b>Alta tecnología</b> en hojalatería y pintura</div>
         <div><b>Atención personalizada</b> de principio a fin</div>
       </div>
@@ -387,6 +404,31 @@
     </div>
   </section>
 
+  <!-- RESEÑAS -->
+  <section id="resenas">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="kicker">Reseñas</span>
+        <h2>Lo que dicen <span class="gold">nuestros clientes.</span></h2>
+      </div>
+      <div class="rating">
+        <div class="score reveal">
+          <div class="big">4.2</div>
+          <div class="stars" aria-label="4.2 de 5 estrellas">★★★★<span>★</span></div>
+          <p>30 reseñas en Google Maps</p>
+        </div>
+        <div class="rating-copy reveal">
+          <p class="lead">Nuestros clientes califican el servicio directamente en Google. Lee sus opiniones antes de visitarnos.</p>
+          <p class="lead">¿Ya nos visitaste? Tu reseña ayuda a que más personas en Puebla conozcan el taller.</p>
+          <div class="ctas">
+            <a class="btn btn-gold" href="https://maps.app.goo.gl/NQVDjZ7qJREG5Wx47" target="_blank" rel="noopener">Leer reseñas en Google</a>
+            <a class="btn btn-line" href="https://maps.app.goo.gl/NQVDjZ7qJREG5Wx47" target="_blank" rel="noopener">Dejar una reseña</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACTO -->
   <section id="contacto">
     <div class="wrap split">
@@ -400,9 +442,15 @@
         </ul>
         <a class="btn btn-gold" data-wa="Hola, quiero agendar una visita al taller." href="#"><svg><use href="#wa"/></svg>Agendar por WhatsApp</a>
       </div>
-      <div class="map reveal">
+      <div class="map-col reveal">
+      <div class="map">
         <iframe title="Ubicación de Imagen Automotriz en Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
           src="https://maps.google.com/maps?q=Imagen%20Automotriz%2C%20Av%2019%20Pte%202323%2C%20El%20%C3%81guila%2C%20Puebla&z=16&output=embed"></iframe>
+      </div>
+      <div class="map-links">
+        <a class="btn btn-gold" href="https://maps.app.goo.gl/NQVDjZ7qJREG5Wx47" target="_blank" rel="noopener">Cómo llegar</a>
+        <a class="btn btn-line" href="https://maps.app.goo.gl/NQVDjZ7qJREG5Wx47" target="_blank" rel="noopener">Ver en Google Maps</a>
+      </div>
       </div>
     </div>
   </section>
