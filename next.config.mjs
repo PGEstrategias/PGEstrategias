@@ -13,6 +13,10 @@ const nextConfig = {
         source: "/propuestaimagenautomotrizlimon",
         destination: "/propuesta-imagen-automotriz-limon.html",
       },
+      {
+        source: "/webimagenautomotriz",
+        destination: "/webimagenautomotriz/index.html",
+      },
     ];
   },
   async redirects() {
