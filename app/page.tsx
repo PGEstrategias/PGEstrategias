@@ -5,6 +5,7 @@ import VideoGrid from "@/components/site/VideoGrid";
 import WhatsAppIcon from "@/components/site/WhatsAppIcon";
 import HeroVideo from "@/components/home/HeroVideo";
 import ContactoForm from "@/components/home/ContactoForm";
+import RotatingWord from "@/components/home/RotatingWord";
 import s from "@/components/home/home.module.css";
 import {
   HERO_POSTER,
@@ -70,6 +71,13 @@ const orgJsonLd = {
 };
 
 const H1 = "Videos que venden. Campañas que se miden.";
+const INDUSTRIAS_HERO = [
+  "concesionarias",
+  "médicos y clínicas",
+  "eventos y bodas",
+  "restaurantes",
+  "industria",
+];
 
 function Ph({ children }: { children: string }) {
   return children.startsWith("[") ? <span className={s.ph}>{children}</span> : <>{children}</>;
@@ -100,6 +108,18 @@ export default function Home() {
             <p className={s.heroSub}>
               Producción audiovisual, Meta Ads y landing pages para marcas en Puebla.
             </p>
+            <p className={s.heroIndustries}>
+              <span className={s.srOnly}>
+                Atendemos concesionarias, médicos y clínicas, eventos y bodas, restaurantes, industria y
+                otros giros.
+              </span>
+              <span aria-hidden="true">Atendemos </span>
+              <RotatingWord words={INDUSTRIAS_HERO} />
+              <span aria-hidden="true"> y más.</span>{" "}
+              <Link prefetch={false} href="/industrias" className={s.heroLink}>
+                Ver industrias <span aria-hidden="true">→</span>
+              </Link>
+            </p>
             <div className={s.ctas}>
               <a
                 className={`${s.btn} ${s.btnPrimary}`}
@@ -123,28 +143,27 @@ export default function Home() {
             <h2 id="marcas-title" className={`${s.h2} ${s.head} ${s.reveal}`} data-reveal>
               Marcas con las que hemos colaborado
             </h2>
-            <ul className={s.logos}>
-              {LOGOS.map((l, i) => (
-                <li
-                  key={l.nombre}
-                  className={`${s.logo} ${s.reveal}`}
-                  data-reveal
-                  data-reveal-delay={i * 70}
-                >
-                  <picture>
-                    {l.fallback && <source srcSet={l.src} type="image/webp" />}
-                    <img
-                      src={l.fallback ?? l.src}
-                      alt={l.nombre}
-                      width={l.w}
-                      height={l.h}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                  </picture>
-                </li>
+            <div className={s.marquee}>
+              {[0, 1].map((copia) => (
+                <ul key={copia} className={s.track} aria-hidden={copia === 1 ? true : undefined}>
+                  {LOGOS.map((l) => (
+                    <li key={l.nombre} className={s.logo}>
+                      <picture>
+                        {l.fallback && <source srcSet={l.src} type="image/webp" />}
+                        <img
+                          src={l.fallback ?? l.src}
+                          alt={copia === 0 ? l.nombre : ""}
+                          width={l.w}
+                          height={l.h}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      </picture>
+                    </li>
+                  ))}
+                </ul>
               ))}
-            </ul>
+            </div>
           </div>
         </section>
 

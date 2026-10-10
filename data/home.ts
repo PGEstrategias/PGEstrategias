@@ -15,7 +15,7 @@ export function posterDe(video: string, t = "so_1,f_auto,q_auto,w_960") {
 
 /* ── Hero ─────────────────────────────────────────────────────── */
 
-/* Mercedes-Benz Reyes Huerta. A CONFIRMAR: que sea el corte de 10–15 s final. */
+/* Video de Mercedes-Benz, recortado a 15 s para el hero. */
 export const HERO_VIDEO =
   "https://res.cloudinary.com/djduba5fd/video/upload/v1788051909/DemoMercedes_csof2x.mp4";
 
@@ -44,18 +44,17 @@ export const HERO_POSTER = {
 
 /* ── Marcas ───────────────────────────────────────────────────── */
 
-/* Archivos en /public/assets/logos/ (WebP con respaldo PNG). Los de los
-   doctores siguen como PLACEHOLDER: reemplazar el .svg con el logo oficial. */
+/* Archivos en /public/assets/logos/ (WebP con respaldo PNG). */
 export type Marca = { nombre: string; src: string; fallback?: string; w: number; h: number };
 
 export const LOGOS: Marca[] = [
-  { nombre: "Mercedes-Benz", src: "/assets/logos/mercedes-benz.webp", fallback: "/assets/logos/mercedes-benz.png", w: 176, h: 176 },
+  { nombre: "Mercedes-Benz", src: "/assets/logos/mercedes-benz.webp", fallback: "/assets/logos/mercedes-benz.png", w: 175, h: 176 },
   { nombre: "Land Rover", src: "/assets/logos/land-rover.webp", fallback: "/assets/logos/land-rover.png", w: 317, h: 176 },
-  { nombre: "Zenith Motors", src: "/assets/logos/zenith-motors.webp", fallback: "/assets/logos/zenith-motors.png", w: 416, h: 102 },
+  { nombre: "Zenith Motors", src: "/assets/logos/zenith-motors.webp", fallback: "/assets/logos/zenith-motors.png", w: 436, h: 107 },
   { nombre: "BMW Grupo Vecsa", src: "/assets/logos/bmw-vecsa.webp", fallback: "/assets/logos/bmw-vecsa.png", w: 161, h: 176 },
   { nombre: "Kigo", src: "/assets/logos/kigo.webp", fallback: "/assets/logos/kigo.png", w: 157, h: 70 },
-  { nombre: "Dr. Manuel Fernández", src: "/assets/logos/dr-manuel-fernandez.svg", w: 160, h: 48 },
-  { nombre: "Dr. Aarón Zarain", src: "/assets/logos/dr-aaron-zarain.svg", w: 160, h: 48 },
+  { nombre: "Dr. José Manuel Fernández", src: "/assets/logos/dr-manuel-fernandez.webp", fallback: "/assets/logos/dr-manuel-fernandez.png", w: 518, h: 124 },
+  { nombre: "Dr. Aarón Zarain", src: "/assets/logos/dr-aaron-zarain.webp", fallback: "/assets/logos/dr-aaron-zarain.png", w: 400, h: 113 },
 ];
 
 /* ── Videos de clientes ───────────────────────────────────────── */
@@ -75,16 +74,16 @@ export const V = {
 export const TRABAJOS: VideoItem[] = [
   {
     etiqueta: "Concesionarias",
-    titulo: "Mercedes-Benz Reyes Huerta",
-    texto: "[PLACEHOLDER: una línea]",
+    titulo: "Mercedes-Benz",
+    texto: "Video de sucursal con tomas de detrás de cámara.",
     video: V.reyesHuerta,
     href: "/industrias/concesionarias",
     hrefLabel: "Ver concesionarias",
   },
   {
     etiqueta: "Médicos",
-    titulo: "Dr. Manuel Fernández",
-    texto: "[PLACEHOLDER: una línea]",
+    titulo: "Dr. José Manuel Fernández",
+    texto: "Testimonio en video del doctor sobre su trabajo con nosotros.",
     video: V.drManuel,
     href: "/industrias/medicos",
     hrefLabel: "Ver médicos",
@@ -92,7 +91,7 @@ export const TRABAJOS: VideoItem[] = [
   {
     etiqueta: "Eventos",
     titulo: "Ex Hacienda San Bartolo",
-    texto: "[PLACEHOLDER: una línea]",
+    texto: "Producción de espacios y servicios del venue para sus campañas.",
     video: V.exHacienda,
     href: "/industrias/eventos-restaurantes",
     hrefLabel: "Ver eventos y restaurantes",
@@ -118,10 +117,12 @@ export const PAQUETES = [
     nombre: "Ignición",
     linea: "Arranca con contenido y tus primeras campañas.",
     incluye: [
-      "Producción de contenido mensual",
-      "Campañas en Meta o Google",
-      "Página de ventas con rastreo configurado",
-      "Perfil de Google + estrategia de reseñas",
+      "4 reels al mes",
+      "6 posts al mes (3 diseños + 3 carruseles)",
+      "1 video de 1 minuto para tu web",
+      "1 página de ventas",
+      "Anuncios en Meta o Google",
+      "1 sesión estratégica al mes",
     ],
     destacado: false,
   },
@@ -129,21 +130,25 @@ export const PAQUETES = [
     nombre: "Tracción",
     linea: "Campañas constantes, landing y automatización de seguimiento.",
     incluye: [
-      "Campañas constantes en Meta y Google",
-      "Landing page + CRM",
-      "Bot de WhatsApp para dar seguimiento a tus leads",
-      "Videollamada estratégica quincenal",
+      "7 reels al mes",
+      "8 carruseles al mes",
+      "1 video de 1 minuto para tu web",
+      "1 página de ventas + CRM",
+      "Anuncios en Meta y Google + bot de WhatsApp",
+      "2 sesiones estratégicas al mes",
     ],
-    destacado: true, // A CONFIRMAR: "Más elegido"
+    destacado: true,
   },
   {
     nombre: "Dominio",
     linea: "Producción de alto nivel y estrategia completa de marca.",
     incluye: [
-      "Producción audiovisual de alto nivel",
-      "Operación completa de campañas",
+      "10 reels al mes",
+      "1 video de 1 minuto para tu web",
+      "2 páginas de ventas + CRM + dominio",
+      "Anuncios en Meta y Google + bot de WhatsApp",
+      "4 sesiones estratégicas al mes",
       "Tablero de métricas en vivo",
-      "Videollamada estratégica semanal",
     ],
     destacado: false,
   },

@@ -82,7 +82,7 @@ export const INDUSTRIAS_DETALLE: Industria[] = [
       { titulo: "Perfil de Google", texto: "Fotos reales del showroom, horarios correctos y reseñas respondidas." },
     ],
     trabajos: [
-      { etiqueta: "Concesionaria", titulo: "Mercedes-Benz Reyes Huerta", video: V.reyesHuerta },
+      { etiqueta: "Concesionaria", titulo: "Mercedes-Benz", video: V.reyesHuerta },
       { etiqueta: "Concesionaria", titulo: "Zenith Motors", video: V.zenith },
       { etiqueta: "Concesionaria", titulo: "Land Rover Puebla", video: V.landRover },
     ],
@@ -106,7 +106,7 @@ export const INDUSTRIAS_DETALLE: Industria[] = [
       { titulo: "Campañas locales", texto: "Anuncios hacia pacientes de la zona que atiende el consultorio." },
     ],
     trabajos: [
-      { etiqueta: "Médicos", titulo: "Dr. Manuel", video: V.drManuel },
+      { etiqueta: "Médicos", titulo: "Dr. José Manuel Fernández", video: V.drManuel },
       { etiqueta: "Médicos", titulo: "Dr. Aarón Zarain", video: V.aaronZarain },
     ],
     mensaje: "Hola, soy médico y me interesa trabajar con PG Estrategias.",

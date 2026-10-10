@@ -1,6 +1,6 @@
 ---
 name: meta-ads-negocios-locales-puebla-presupuesto
-title: "Meta Ads para negocios locales en Puebla: presupuesto y resultados"
+title: "Meta Ads para negocios locales en Puebla: presupuesto"
 slug: meta-ads-negocios-locales-puebla-presupuesto
 description: Cuánto invertir en Meta Ads si tienes un negocio local en Puebla, qué objetivo elegir, cómo segmentar por zona y qué esperar en las primeras semanas de campaña.
 date: 2026-10-16
@@ -8,19 +8,19 @@ pillar: meta-ads
 primary_keyword: Meta Ads Puebla
 caso_real:
   cliente: Ex Hacienda San Bartolo
-  video_url: "[PLACEHOLDER - URL del video]"
-  que_hicimos: "[PLACEHOLDER - describir la campaña o producción en 1-2 frases]"
-  resultado: "[RESULTADO - confirmar métrica con cliente o eliminar]"
-  permiso_publicacion: false
+  video_url: https://res.cloudinary.com/dieszqcrn/video/upload/v1778398752/ExHaciendaPGTestimonio_ut7ja4.mp4
+  que_hicimos: Producción audiovisual de sus espacios y servicios, y campañas en Meta Ads para generar solicitudes de eventos.
+  resultado: "En palabras del cliente: «Hemos triplicado el número de contratos firmados.»"
+  permiso_publicacion: true
 ---
 
-# Meta Ads para negocios locales en Puebla: presupuesto y resultados
+# Meta Ads para negocios locales en Puebla: presupuesto
 
 Para un negocio local en Puebla, Meta Ads funciona cuando tiene un objetivo claro, una audiencia de la zona, un presupuesto suficiente para aprender y un anuncio que muestre el producto o servicio con video. No existe una cifra mágica; el presupuesto correcto depende de tu margen, de tu ticket promedio y de cuántos clientes necesitas al mes.
 
 ## Define el objetivo antes que el presupuesto
 
-El objetivo de la campaña le dice a Meta qué optimizar:
+El objetivo de la [campaña en Meta Ads](/servicios#meta-ads) le dice a Meta qué optimizar:
 
 - **Mensajes o WhatsApp:** ideal si el cierre ocurre en la conversación. Común en servicios, restaurantes y eventos.
 - **Clientes potenciales:** formulario dentro de Meta. Útil si tienes un proceso de calificación.
@@ -36,7 +36,7 @@ No hay un monto universal. Calcula primero cuánto vale un cliente para ti:
 2. Tu margen sobre ese ticket.
 3. Cuántos clientes nuevos necesitas al mes.
 
-Con esos tres datos calculas un costo por cliente aceptable y, a partir de ahí, un presupuesto de prueba. [PRESUPUESTO DIARIO DE PRUEBA - definir según mercado, objetivo y ticket promedio de cada cliente]
+Con esos tres datos calculas un costo por cliente aceptable y, a partir de ahí, un presupuesto de prueba que depende de tu mercado, tu objetivo y tu ticket promedio.
 
 Una prueba corta con presupuesto muy bajo no da datos útiles: Meta necesita volumen de conversiones para aprender qué audiencia responde. Si el presupuesto es demasiado pequeño, la campaña tarda en salir de la fase de aprendizaje y los resultados parecen inestables.
 
@@ -59,8 +59,6 @@ Una prueba corta con presupuesto muy bajo no da datos útiles: Meta necesita vol
 - **Semana 1:** la campaña aprende. Los costos pueden variar y no conviene tomar decisiones definitivas.
 - **Semanas 2 a 4:** con suficiente volumen, empiezan a verse qué anuncios y audiencias responden mejor.
 - **Después:** retira lo que no funciona, replica lo que sí, y escala el presupuesto de forma gradual. Subir mucho el presupuesto de golpe suele reiniciar el aprendizaje.
-
-[TIEMPOS DE RESULTADO - confirmar con datos de campañas reales]
 
 ## Errores frecuentes
 
@@ -86,11 +84,8 @@ Revisa primero la creatividad (los primeros 3 segundos) y después la audiencia.
 
 ## Caso real: Ex Hacienda San Bartolo
 
-[PLACEHOLDER - video embed o miniatura con enlace]
+**Qué hicimos:** producción audiovisual de sus espacios y servicios, y campañas en Meta Ads.
 
-**Qué hicimos:** [PLACEHOLDER - describir la campaña o producción]
-**Resultado:** [RESULTADO - confirmar]
-
-¿Quieres una campaña de Meta Ads para tu negocio en Puebla? [Escríbenos por WhatsApp](https://wa.me/[NÚMERO A CONFIRMAR]) y te decimos qué presupuesto necesitas para probarla.
+¿Quieres una campaña de Meta Ads para tu negocio en Puebla? [Escríbenos por WhatsApp](https://wa.me/522218417356) y te decimos qué presupuesto necesitas para probarla, o conoce cómo trabajamos con [eventos y restaurantes](/industrias/eventos-restaurantes).
 
 Ver todos los testimonios: [/testimonios](/testimonios)

@@ -2,16 +2,16 @@
 name: google-maps-medicos-puebla
 title: Cómo aparecer en Google Maps si eres médico en Puebla
 slug: google-maps-medicos-puebla
-description: Guía práctica para que tu consultorio aparezca en Google Maps y en el Perfil de Empresa de Google en Puebla, con categorías, fotos, reseñas y servicios bien configurados.
+description: "Guía para que tu consultorio aparezca en Google Maps en Puebla: categoría correcta, fotos reales, reseñas y servicios bien configurados en tu perfil de Google."
 date: 2026-10-14
 pillar: medicos
 primary_keyword: Google Maps médicos Puebla
 caso_real:
   cliente: Dr. Aarón Zarain
-  video_url: "[PLACEHOLDER - URL del video]"
+  video_url: https://res.cloudinary.com/djduba5fd/video/upload/v1779377487/AronZarainLandingPage_femgcw.mp4
   que_hicimos: Optimización del Perfil de Empresa de Google y construcción de su página web con landing pages por procedimiento.
-  resultado: "[RESULTADO - confirmar métrica con el doctor o eliminar]"
-  permiso_publicacion: false
+  resultado: "[RESULTADO - sin métrica confirmada]"
+  permiso_publicacion: true
 ---
 
 # Cómo aparecer en Google Maps si eres médico en Puebla
@@ -47,7 +47,7 @@ En la sección de servicios, enumera los procedimientos o consultas que ofreces,
 
 ## Paso 7: Publicaciones y landing por procedimiento
 
-Usa las publicaciones de Google para anunciar jornadas, horarios especiales o contenido educativo breve. Y enlaza tu perfil a una landing específica por procedimiento en tu sitio web. Así, quien busca un tratamiento concreto llega a una página que responde esa necesidad.
+Usa las publicaciones de Google para anunciar jornadas, horarios especiales o contenido educativo breve. Y enlaza tu perfil a una [landing específica por procedimiento](/servicios#landing-pages) en tu sitio web. Así, quien busca un tratamiento concreto llega a una página que responde esa necesidad.
 
 ## Errores frecuentes
 
@@ -61,7 +61,7 @@ Usa las publicaciones de Google para anunciar jornadas, horarios especiales o co
 
 ### ¿Cuánto tarda en aparecer mi consultorio en Google Maps?
 
-Después de verificar el perfil, puede aparecer en días. El posicionamiento local mejora con el tiempo, a medida que acumulas reseñas, fotos y datos consistentes. [TIEMPO ESTIMADO - confirmar con caso real]
+Después de verificar el perfil, puede aparecer en días. El posicionamiento local mejora con el tiempo, a medida que acumulas reseñas, fotos y datos consistentes.
 
 ### ¿Necesito una página web además del perfil de Google?
 
@@ -73,11 +73,8 @@ Sí, siempre que el perfil refleje la especialidad real, la dirección y los ser
 
 ## Caso real: Dr. Aarón Zarain
 
-[PLACEHOLDER - video embed o miniatura con enlace]
+**Qué hicimos:** optimización de su Perfil de Empresa de Google y construcción de su página web con landing pages por procedimiento.
 
-**Qué hicimos:** Optimización de su Perfil de Empresa de Google y construcción de su página web con landing pages por procedimiento.
-**Resultado:** [RESULTADO - confirmar]
-
-¿Quieres revisar tu perfil de Google? [Escríbenos por WhatsApp](https://wa.me/[NÚMERO A CONFIRMAR]) y te hacemos una auditoría inicial.
+¿Quieres revisar tu perfil de Google? [Escríbenos por WhatsApp](https://wa.me/522218417356) y te hacemos una auditoría inicial, o conoce cómo trabajamos con [médicos y clínicas](/industrias/medicos).
 
 Ver todos los testimonios: [/testimonios](/testimonios)

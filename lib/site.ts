@@ -4,9 +4,9 @@
 
 export const SITE_URL = "https://pgestrategias.com";
 
-/* A CONFIRMAR: número de WhatsApp de la home. Es el que usa hoy el sitio. */
-export const WHATSAPP_NUMERO = "5212221215051";
-export const WHATSAPP_VISIBLE = "222 121 5051";
+/* Número de WhatsApp de todos los CTA del sitio principal. */
+export const WHATSAPP_NUMERO = "522218417356";
+export const WHATSAPP_VISIBLE = "221 841 7356";
 
 /* A CONFIRMAR: correo de contacto. Es el que usa hoy el sitio. */
 export const EMAIL = "contacto@pgestrategias.com";

@@ -8,10 +8,10 @@ pillar: concesionarias
 primary_keyword: marketing digital concesionarias Puebla
 caso_real:
   cliente: Zenith Motors
-  video_url: "[PLACEHOLDER - URL del video]"
-  que_hicimos: "[PLACEHOLDER - describir la producción o campaña en 1-2 frases]"
-  resultado: "[RESULTADO - confirmar métrica con cliente o eliminar]"
-  permiso_publicacion: false
+  video_url: https://res.cloudinary.com/djduba5fd/video/upload/v1787612227/HuracanZenith_uzna4d.mp4
+  que_hicimos: Producción de videos de establecimiento para sus sucursales de Chachapa y Lomas, pensados para redes y campañas.
+  resultado: "[RESULTADO - sin métrica confirmada]"
+  permiso_publicacion: true
 ---
 
 # Marketing digital para concesionarias en Puebla (2026)
@@ -27,13 +27,13 @@ El comprador de auto investiga antes de visitar la agencia. Compara modelos, rev
 1. **Perfil de Empresa de Google (Google Maps).** Es lo primero que ve quien busca "concesionaria cerca de mí" o "seminuevos en Puebla". Debe tener fotos reales del showroom, horarios correctos y reseñas respondidas.
 2. **Video de unidad y showroom.** Un video corto por unidad (9:16 para redes, 16:9 para la web) muestra detalles que una foto no transmite: sonido del motor, interior, acabados.
 3. **Meta Ads con catálogo.** Permite mostrar cada unidad a personas de tu zona que ya han visto vehículos o interactuado con cuentas automotrices. Conviene separar campañas de nuevos y de seminuevos.
-4. **Landing page de inventario.** Una página por categoría (seminuevos, SUV, sedán) con filtros, fotos y un botón directo a WhatsApp. Reduce el tiempo entre el interés y el primer contacto.
+4. **[Landing page](/servicios#landing-pages) de inventario.** Una página por categoría (seminuevos, SUV, sedán) con filtros, fotos y un botón directo a WhatsApp. Reduce el tiempo entre el interés y el primer contacto.
 
 ## Meta Ads para inventario: cómo estructurarlo
 
 - **Campaña de seminuevos:** objetivo de mensajes o clientes potenciales, con audiencia local (radio alrededor de la agencia).
 - **Campaña de nuevos:** objetivo de tráfico a la landing de modelo, con creatividades por modelo.
-- **Presupuesto de prueba:** [PRESUPUESTO DIARIO - definir según mercado y número de unidades]. Durante las primeras semanas, Meta necesita volumen de conversiones para optimizar; un presupuesto muy bajo prolonga esa fase de aprendizaje.
+- **Presupuesto de prueba:** se define según el mercado y el número de unidades que quieres mover. Durante las primeras semanas, Meta necesita volumen de conversiones para optimizar; un presupuesto muy bajo prolonga esa fase de aprendizaje.
 - **Creatividades:** video vertical de 15 a 30 segundos por unidad, con el precio o el enganche en pantalla y una llamada a la acción clara.
 - **Revisión:** cada 7 a 14 días, retirar los anuncios con costo por lead alto y replicar los que sí responden.
 
@@ -69,11 +69,8 @@ Para seminuevos, muy importante: el video permite mostrar el estado real de la u
 
 ## Caso real: Zenith Motors
 
-[PLACEHOLDER - video embed o miniatura con enlace]
+**Qué hicimos:** producción de videos de establecimiento para sus sucursales de Chachapa y Lomas.
 
-**Qué hicimos:** [PLACEHOLDER - describir la producción o campaña]
-**Resultado:** [RESULTADO - confirmar]
-
-¿Tu concesionaria necesita una estrategia para seminuevos o nuevos? [Escríbenos por WhatsApp](https://wa.me/[NÚMERO A CONFIRMAR]).
+¿Tu concesionaria necesita una estrategia para seminuevos o nuevos? [Escríbenos por WhatsApp](https://wa.me/522218417356) o conoce cómo trabajamos con [concesionarias](/industrias/concesionarias).
 
 Ver todos los testimonios: [/testimonios](/testimonios)
