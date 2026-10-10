@@ -1,35 +1,355 @@
-import Navbar from "@/components/Navbar";
-import Hero from "@/components/Hero";
-import Problema from "@/components/Problema";
-import QuienesSomos from "@/components/QuienesSomos";
-import Testimonios from "@/components/Testimonios";
-import Metodologia from "@/components/Metodologia";
-import Garantia from "@/components/Garantia";
-import Paquetes from "@/components/Paquetes";
-import FAQ from "@/components/FAQ";
-import Contacto from "@/components/Contacto";
-import Footer from "@/components/Footer";
+import type { Metadata } from "next";
+import { Inter, Syne } from "next/font/google";
+import Link from "next/link";
+import SiteHeader from "@/components/site/SiteHeader";
+import SiteFooter from "@/components/site/SiteFooter";
+import WhatsAppIcon from "@/components/site/WhatsAppIcon";
+import HeroVideo from "@/components/home/HeroVideo";
+import TrabajosDestacados from "@/components/home/TrabajosDestacados";
+import ContactoForm from "@/components/home/ContactoForm";
+import RevealObserver from "@/components/home/RevealObserver";
+import s from "@/components/home/home.module.css";
+import {
+  HERO_POSTER,
+  INDUSTRIAS,
+  LOGOS,
+  PAQUETES,
+  PASOS,
+  TESTIMONIO,
+} from "@/data/home";
+import { ultimosArticulos } from "@/data/blog";
+import { EMAIL, SITE_URL, WHATSAPP_NUMERO, waLink } from "@/lib/site";
 
-/* Orden del ciclo de persuasión: atención → dolor → solución → prueba →
-   claridad → reducir riesgo → oferta → objeciones → acción.
-   El cambio de fondo respecto al orden anterior es que la garantía pasa a
-   estar justo antes de los planes, para quitar el riesgo pegado al precio. */
+/* Dos familias, subset latino, swap y precarga. Solo se cargan en esta ruta. */
+const syne = Syne({ subsets: ["latin"], display: "swap", variable: "--font-syne" });
+const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
+
+/* PLACEHOLDER: título y descripción definitivos de la home. */
+const TITLE = "PG Estrategias | Producción audiovisual y Meta Ads en Puebla";
+const DESCRIPTION =
+  "Videos que venden y campañas que se miden: producción audiovisual, Meta Ads y landing pages para marcas en Puebla.";
+/* PLACEHOLDER: imagen OG definitiva (1200×630). */
+const OG_IMAGE = HERO_POSTER.desktop(1200);
+
+export const metadata: Metadata = {
+  title: TITLE,
+  description: DESCRIPTION,
+  alternates: { canonical: "/" },
+  metadataBase: new URL(SITE_URL),
+  openGraph: {
+    title: TITLE,
+    description: DESCRIPTION,
+    url: "/",
+    type: "website",
+    locale: "es_MX",
+    siteName: "PG Estrategias",
+    images: [{ url: OG_IMAGE, width: 1200, height: 675 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: TITLE,
+    description: DESCRIPTION,
+    images: [OG_IMAGE],
+  },
+};
+
+const orgJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "PG Estrategias",
+  url: SITE_URL,
+  logo: `${SITE_URL}/icon.png`, // PLACEHOLDER: logo en archivo (PNG/SVG)
+  email: EMAIL,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Puebla",
+    addressRegion: "Puebla",
+    addressCountry: "MX",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: `+${WHATSAPP_NUMERO}`,
+    contactType: "sales",
+    areaServed: "MX",
+    availableLanguage: "es",
+  },
+};
+
+const H1 = "Videos que venden. Campañas que se miden.";
+
+function Ph({ children }: { children: string }) {
+  return children.startsWith("[") ? <span className={s.ph}>{children}</span> : <>{children}</>;
+}
+
 export default function Home() {
+  const articulos = ultimosArticulos(3);
+
   return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        <Problema />
-        <QuienesSomos />
-        <Testimonios />
-        <Metodologia />
-        <Garantia />
-        <Paquetes />
-        <FAQ />
-        <Contacto />
+    <div className={`${s.page} ${syne.variable} ${inter.variable}`}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
+      />
+      <noscript>
+        <style>{"[data-reveal]{opacity:1!important;transform:none!important}"}</style>
+      </noscript>
+
+      <SiteHeader overHero />
+
+      <main id="contenido">
+        {/* 1 · HERO */}
+        <section className={s.hero} aria-labelledby="hero-title">
+          <HeroVideo />
+          <div className={`${s.container} ${s.heroInner}`}>
+            <h1 id="hero-title" className={s.h1} aria-label={H1}>
+              {H1.split(" ").map((w, i) => (
+                <span key={i} aria-hidden="true">
+                  <span className={s.word} style={{ animationDelay: `${i * 40}ms` }}>
+                    {w}
+                  </span>{" "}
+                </span>
+              ))}
+            </h1>
+            <p className={s.heroSub}>
+              Producción audiovisual, Meta Ads y landing pages para marcas en Puebla.
+            </p>
+            <div className={s.ctas}>
+              <a
+                className={`${s.btn} ${s.btnPrimary}`}
+                href={waLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <WhatsAppIcon />
+                Hablemos por WhatsApp
+              </a>
+              <Link prefetch={false} className={`${s.btn} ${s.btnOnDark}`} href="/testimonios">
+                Ver testimonios
+              </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* 2 · MARCAS */}
+        <section className={s.section} aria-labelledby="marcas-title">
+          <div className={s.container}>
+            <h2 id="marcas-title" className={`${s.h2} ${s.head} ${s.reveal}`} data-reveal>
+              Marcas con las que hemos colaborado
+            </h2>
+            <ul className={s.logos}>
+              {LOGOS.map((l, i) => (
+                <li
+                  key={l.nombre}
+                  className={`${s.logo} ${s.reveal}`}
+                  data-reveal
+                  data-reveal-delay={i * 70}
+                >
+                  <img src={l.src} alt={l.nombre} width={160} height={48} loading="lazy" decoding="async" />
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* 3 · TRABAJOS DESTACADOS */}
+        <section className={`${s.section} ${s.sectionAlt}`} aria-labelledby="trabajos-title">
+          <div className={s.container}>
+            <div className={`${s.head} ${s.reveal}`} data-reveal>
+              <h2 id="trabajos-title" className={s.h2}>
+                Trabajos que hablan por nosotros
+              </h2>
+              <p className={s.sub}>Tres proyectos, tres industrias.</p>
+            </div>
+            <TrabajosDestacados />
+          </div>
+        </section>
+
+        {/* 4 · TESTIMONIO (solo con permiso de publicación) */}
+        {TESTIMONIO.permisoConfirmado && (
+          <section className={s.section} aria-labelledby="testimonio-title">
+            <div className={`${s.container} ${s.reveal}`} data-reveal>
+              <h2 id="testimonio-title" className={`${s.h2} ${s.head}`}>
+                Lo que dicen nuestros clientes
+              </h2>
+              <figure>
+                <blockquote className={s.quote}>“{TESTIMONIO.cita}”</blockquote>
+                <figcaption className={s.quoteAuthor}>— {TESTIMONIO.autor}</figcaption>
+              </figure>
+              <p style={{ marginTop: 28 }}>
+                <Link prefetch={false} href="/testimonios" className={s.link}>
+                  Ver todos los testimonios <span aria-hidden="true">→</span>
+                </Link>
+              </p>
+            </div>
+          </section>
+        )}
+
+        {/* 5 · SERVICIOS */}
+        <section className={s.section} aria-labelledby="servicios-title">
+          <div className={s.container}>
+            <div className={`${s.head} ${s.reveal}`} data-reveal>
+              <h2 id="servicios-title" className={s.h2}>
+                Tres niveles según tu etapa
+              </h2>
+              <p className={s.sub}>Empieza donde lo necesitas y crece cuando quieras.</p>
+            </div>
+            <div className={s.grid3}>
+              {PAQUETES.map((p, i) => (
+                <article
+                  key={p.nombre}
+                  className={`${s.card} ${s.plan} ${s.lift} ${s.reveal} ${p.destacado ? s.planFeatured : ""}`}
+                  data-reveal
+                  data-reveal-delay={i * 80}
+                  style={{ overflow: "visible" }}
+                >
+                  {p.destacado && <span className={s.badge}>Más elegido</span>}
+                  <h3 className={s.planName}>{p.nombre}</h3>
+                  <p className={s.cardText}>{p.linea}</p>
+                  <ul className={s.list}>
+                    {p.incluye.map((x) => (
+                      <li key={x}>{x}</li>
+                    ))}
+                  </ul>
+                  <a
+                    className={`${s.btn} ${p.destacado ? s.btnPrimary : s.btnGhost}`}
+                    href={waLink(`Hola, quiero el paquete ${p.nombre.toUpperCase()} de PG Estrategias.`)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Quiero {p.nombre}
+                  </a>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 6 · CÓMO TRABAJAMOS */}
+        <section className={`${s.section} ${s.sectionDark}`} aria-labelledby="proceso-title">
+          <div className={s.container}>
+            <h2 id="proceso-title" className={`${s.h2} ${s.head} ${s.reveal}`} data-reveal>
+              Del diagnóstico a los resultados
+            </h2>
+            <ol className={s.steps}>
+              {PASOS.map((p, i) => (
+                <li
+                  key={p.titulo}
+                  className={`${s.step} ${s.reveal}`}
+                  data-reveal
+                  data-reveal-delay={i * 200}
+                >
+                  <span className={s.stepNum} aria-hidden="true">
+                    {i + 1}
+                  </span>
+                  <div>
+                    <h3 className={s.stepTitle}>{p.titulo}</h3>
+                    <p className={s.stepText}>{p.texto}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* 7 · INDUSTRIAS */}
+        <section className={s.section} aria-labelledby="industrias-title">
+          <div className={s.container}>
+            <h2 id="industrias-title" className={`${s.h2} ${s.head} ${s.reveal}`} data-reveal>
+              Industrias que atendemos
+            </h2>
+            <div className={s.grid3}>
+              {INDUSTRIAS.map((ind, i) => (
+                <Link
+                  prefetch={false}
+                  key={ind.href}
+                  href={ind.href}
+                  className={`${s.card} ${s.industry} ${s.lift} ${s.reveal}`}
+                  data-reveal
+                  data-reveal-delay={i * 80}
+                >
+                  <h3 className={s.cardTitle}>{ind.nombre}</h3>
+                  <p className={s.cardText}>
+                    <Ph>{ind.linea}</Ph>
+                  </p>
+                  <span className={s.arrow} aria-hidden="true">→</span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 8 · BLOG */}
+        {articulos.length > 0 && (
+          <section className={`${s.section} ${s.sectionAlt}`} aria-labelledby="blog-title">
+            <div className={s.container}>
+              <h2 id="blog-title" className={`${s.h2} ${s.head} ${s.reveal}`} data-reveal>
+                Desde el blog
+              </h2>
+              <div className={s.grid3}>
+                {articulos.map((a, i) => (
+                  <article
+                    key={a.slug}
+                    className={`${s.card} ${s.post} ${s.reveal}`}
+                    data-reveal
+                    data-reveal-delay={i * 80}
+                  >
+                    <time className={s.date} dateTime={a.fecha}>
+                      {new Date(`${a.fecha}T12:00:00`).toLocaleDateString("es-MX", {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      })}
+                    </time>
+                    <h3 className={s.cardTitle}>
+                      <Ph>{a.titulo}</Ph>
+                    </h3>
+                    <p className={s.cardText}>
+                      <Ph>{a.descripcion}</Ph>
+                    </p>
+                    <Link prefetch={false} href={`/blog/${a.slug}`} className={s.link}>
+                      Leer artículo <span aria-hidden="true">→</span>
+                    </Link>
+                  </article>
+                ))}
+              </div>
+              <p style={{ marginTop: 32 }}>
+                <Link prefetch={false} href="/blog" className={s.link}>
+                  Ver todos los artículos <span aria-hidden="true">→</span>
+                </Link>
+              </p>
+            </div>
+          </section>
+        )}
+
+        {/* 9 · CTA FINAL */}
+        <section className={s.section} aria-labelledby="cta-title" id="contacto">
+          <div className={`${s.container} ${s.ctaGrid}`}>
+            <div className={s.reveal} data-reveal>
+              <h2 id="cta-title" className={s.h2}>
+                ¿Tu marca es la siguiente?
+              </h2>
+              <p className={s.sub}>Cuéntanos qué necesitas y te respondemos con una propuesta.</p>
+              <div className={s.ctas}>
+                <a
+                  className={`${s.btn} ${s.btnPrimary}`}
+                  href={waLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <WhatsAppIcon />
+                  Escribir por WhatsApp
+                </a>
+              </div>
+            </div>
+            <div className={s.reveal} data-reveal data-reveal-delay={100}>
+              <ContactoForm />
+            </div>
+          </div>
+        </section>
       </main>
-      <Footer />
-    </>
+
+      <SiteFooter />
+      <RevealObserver />
+    </div>
   );
 }

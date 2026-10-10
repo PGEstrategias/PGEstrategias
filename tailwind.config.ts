@@ -19,8 +19,8 @@ const config: Config = {
         "pg-light": "#E4E0DD",
       },
       fontFamily: {
-        title: ["Syne", "sans-serif"],
-        body: ["Inter", "sans-serif"],
+        title: ["var(--font-title)"],
+        body: ["var(--font-body)"],
       },
     },
   },
