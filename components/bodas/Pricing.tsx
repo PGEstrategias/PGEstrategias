@@ -25,12 +25,7 @@ const paquetes: Paquete[] = [
     title: "Momentos",
     subtitle: "Los momentos que importan",
     price: "$4,000",
-    features: [
-      "Video principal de 4–6 min",
-      "2 videos cortos",
-      "20 fotografías editadas",
-      "Web de la boda con diseño y contenido personalizado",
-    ],
+    features: ["Video de 2 minutos con los mejores momentos"],
   },
   {
     id: "parasiempre",
