@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 const NAV = [
   { label: "Cómo funciona", href: "#como-funciona" },
   { label: "Paquetes", href: "#paquetes" },
-  { label: "Event Films", href: "/bodas" },
+  { label: "Event Films", href: "/eventfilms" },
   { label: "Contacto", href: "#contacto" },
 ];
 
@@ -49,7 +49,7 @@ export default function InvitacionesDeBodasPage() {
           ctaLabel="Cotizar por WhatsApp"
           ctaMessage="Hola, quiero cotizar invitaciones digitales para mi evento."
           secondaryLabel="Ver PG Event Films: video y foto"
-          secondaryHref="/bodas"
+          secondaryHref="/eventfilms"
         />
       </main>
       <BodasFooter
@@ -57,7 +57,7 @@ export default function InvitacionesDeBodasPage() {
         links={[
           { label: "Cómo funciona", href: "#como-funciona" },
           { label: "Paquetes", href: "#paquetes" },
-          { label: "Video y foto de eventos", href: "/bodas" },
+          { label: "Video y foto de eventos", href: "/eventfilms" },
           { label: "Nuestro trabajo", href: "/nuestrotrabajo" },
         ]}
       />

@@ -24,6 +24,8 @@ const nextConfig = {
       // La propuesta de Pádel Lomas vivía en /padellomas antes de
       // homologar el nombre con /propuestawasabi.
       { source: "/padellomas", destination: "/propuestapadel", permanent: true },
+      // /bodas se volvió PG Event Films (bodas, XV años y eventos sociales).
+      { source: "/bodas", destination: "/eventfilms", permanent: true },
       // Alias legales — por si el enlace se comparte con la ruta larga.
       {
         source: "/terminos-y-condiciones",

@@ -38,7 +38,7 @@ export default function BodasHeader({ links, ctaLabel, ctaMessage }: Props) {
     >
       <div className="bodas-container flex items-center justify-between h-20">
         <a
-          href="/bodas"
+          href="/eventfilms"
           className="flex items-center transition-opacity duration-500 hover:opacity-80"
          
         >

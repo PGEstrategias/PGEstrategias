@@ -304,7 +304,7 @@ export default function InvitacionesPricing() {
         >
           ¿Ya contrataste la cobertura de video?{" "}
           <a
-            href="/bodas"
+            href="/eventfilms"
             className="underline underline-offset-4 transition-colors duration-500 hover:text-[color:#D2AE6D]"
             style={{ color: "rgba(247,243,238,0.7)" }}
           >

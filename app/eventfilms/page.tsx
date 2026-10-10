@@ -20,11 +20,11 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
-  alternates: { canonical: "/bodas" },
+  alternates: { canonical: "/eventfilms" },
   openGraph: {
     title: TITLE,
     description: DESCRIPTION,
-    url: "/bodas",
+    url: "/eventfilms",
     type: "website",
     locale: "es_MX",
     siteName: "PG Event Films",
@@ -52,7 +52,7 @@ const orgLd = {
   "@type": "LocalBusiness",
   name: "PG Event Films",
   description: DESCRIPTION,
-  url: "https://pgestrategias.com/bodas",
+  url: "https://pgestrategias.com/eventfilms",
   parentOrganization: { "@type": "Organization", name: "PG Estrategias", url: "https://pgestrategias.com" },
   areaServed: "Puebla",
   address: { "@type": "PostalAddress", addressLocality: "Puebla", addressRegion: "Puebla", addressCountry: "MX" },

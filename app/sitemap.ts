@@ -27,6 +27,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.6,
     })),
     pagina("/contacto", 0.6),
+    pagina("/eventfilms", 0.8),
+    pagina("/invitacionesdebodas", 0.6),
     pagina("/privacidad", 0.2, "yearly"),
     pagina("/terminos", 0.2, "yearly"),
   ];
