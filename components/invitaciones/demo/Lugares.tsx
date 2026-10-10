@@ -52,7 +52,7 @@ export default function Lugares() {
             >
               <p
                 className="font-body text-[10px] uppercase tracking-[0.2em] mb-4"
-                style={{ color: "#C4A052" }}
+                style={{ color: "#D2AE6D" }}
               >
                 {sede.etiqueta}
               </p>
@@ -61,7 +61,7 @@ export default function Lugares() {
 
               <p
                 className="bodas-heading text-3xl mb-4"
-                style={{ color: "#C4A052" }}
+                style={{ color: "#D2AE6D" }}
               >
                 {sede.hora}
               </p>
@@ -108,7 +108,7 @@ export default function Lugares() {
           </button>
           <p
             className="font-body text-[12px] mt-4"
-            style={{ color: "rgba(247,243,238,0.4)" }}
+            style={{ color: "rgba(247,243,238,0.66)" }}
           >
             Se guarda en tu celular con recordatorio un día antes.
           </p>

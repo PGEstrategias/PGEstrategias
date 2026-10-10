@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 import { MUSICA } from "@/lib/invitaciones/demo";
+import { EVENTO_ABRIR } from "./Sobre";
 
 /**
  * La música viene incluida desde el paquete Básico y es lo que peor resuelve
@@ -20,6 +21,18 @@ export default function Musica() {
     return () => {
       audio?.pause();
     };
+  }, []);
+
+  /* Abrir el sobre es un toque del invitado: se aprovecha para arrancar
+     la música, que es lo que los navegadores permiten. */
+  useEffect(() => {
+    const onAbrir = () => {
+      const audio = audioRef.current;
+      if (!audio) return;
+      audio.play().then(() => setSonando(true)).catch(() => setSonando(false));
+    };
+    window.addEventListener(EVENTO_ABRIR, onAbrir);
+    return () => window.removeEventListener(EVENTO_ABRIR, onAbrir);
   }, []);
 
   if (!MUSICA.url) return null;
@@ -57,10 +70,10 @@ export default function Musica() {
         }
         title={`${MUSICA.titulo} — ${MUSICA.artista}`}
         aria-pressed={sonando}
-        className="fixed bottom-[5.5rem] right-5 z-40 w-11 h-11 flex items-center justify-center transition-colors duration-500"
+        className="fixed bottom-[5.5rem] right-5 z-40 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-500 hover:scale-105"
         style={{
           background: "rgba(20,18,15,0.88)",
-          border: "1px solid rgba(196,160,82,0.45)",
+          border: "1px solid rgba(210,174,109,0.45)",
           backdropFilter: "blur(10px)",
           WebkitBackdropFilter: "blur(10px)",
         }}
@@ -74,7 +87,7 @@ export default function Musica() {
               style={{
                 width: 2,
                 height: sonando ? undefined : 5,
-                background: "#C4A052",
+                background: "#D2AE6D",
                 animationDelay: `${i * 0.16}s`,
               }}
             />

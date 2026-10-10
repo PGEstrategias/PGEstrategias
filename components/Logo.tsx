@@ -8,6 +8,9 @@ type LogoProps = {
   /* Color del triángulo. Por defecto el rojo de marca; el vertical de
      bodas lo usa en dorado para no pelearse con su paleta. */
   accent?: string;
+  /* Texto junto al isotipo. "Estrategias" es la marca madre; los
+     verticales (p. ej. "Event Films") reutilizan el mismo isotipo. */
+  label?: string;
 };
 
 export default function Logo({
@@ -16,6 +19,7 @@ export default function Logo({
   className = "",
   tone = "cream",
   accent = "#D63A27",
+  label = "Estrategias",
 }: LogoProps) {
   const color = tone === "cream" ? "#E4E0DD" : "#1C1C1A";
   const triangleWidth = Math.round(size * 0.32);
@@ -24,7 +28,7 @@ export default function Logo({
   return (
     <span
       className={`inline-flex items-center gap-2.5 leading-none ${className}`}
-      aria-label="PG Estrategias"
+      aria-label={`PG ${label}`}
     >
       <span
         className="relative inline-block leading-none"
@@ -69,7 +73,7 @@ export default function Logo({
             color,
           }}
         >
-          Estrategias
+          {label}
         </span>
       )}
     </span>

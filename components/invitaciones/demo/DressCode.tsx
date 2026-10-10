@@ -35,7 +35,7 @@ export default function DressCode() {
                 className="block w-16 h-16 sm:w-20 sm:h-20 mx-auto mb-3"
                 style={{
                   background: color.hex,
-                  outline: "1px solid rgba(196,160,82,0.4)",
+                  outline: "1px solid rgba(210,174,109,0.4)",
                   outlineOffset: 4,
                 }}
                 aria-hidden
@@ -48,7 +48,7 @@ export default function DressCode() {
               </p>
               <p
                 className="font-body text-[10px] tracking-[0.1em] mt-1"
-                style={{ color: "rgba(247,243,238,0.32)" }}
+                style={{ color: "rgba(247,243,238,0.66)" }}
               >
                 {color.hex}
               </p>
@@ -60,7 +60,7 @@ export default function DressCode() {
           <div className="bodas-card-dark p-6">
             <p
               className="font-body text-[10px] uppercase tracking-[0.2em] mb-5"
-              style={{ color: "#C4A052" }}
+              style={{ color: "#D2AE6D" }}
             >
               Sí
             </p>
@@ -78,7 +78,7 @@ export default function DressCode() {
                       width: 5,
                       height: 5,
                       transform: "rotate(45deg)",
-                      background: "#C4A052",
+                      background: "#D2AE6D",
                     }}
                   />
                   {item}
@@ -90,7 +90,7 @@ export default function DressCode() {
           <div className="bodas-card-dark p-6">
             <p
               className="font-body text-[10px] uppercase tracking-[0.2em] mb-5"
-              style={{ color: "#A85E56" }}
+              style={{ color: "#EACBC2" }}
             >
               Mejor no
             </p>
@@ -104,7 +104,7 @@ export default function DressCode() {
                   <span
                     aria-hidden
                     className="absolute left-0 top-[0.68rem] w-2.5 h-px"
-                    style={{ background: "#A85E56" }}
+                    style={{ background: "#8C3A45" }}
                   />
                   {item}
                 </li>

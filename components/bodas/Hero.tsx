@@ -20,7 +20,7 @@ export default function BodasHero() {
           width: "58vw",
           height: "58vw",
           background:
-            "radial-gradient(circle, rgba(196,160,82,0.16) 0%, transparent 62%)",
+            "radial-gradient(circle, rgba(210,174,109,0.16) 0%, transparent 62%)",
           filter: "blur(60px)",
         }}
         animate={{ x: [0, -20, 0], y: [0, 20, 0] }}
@@ -63,7 +63,7 @@ export default function BodasHero() {
                 width: 6,
                 height: 6,
                 transform: "rotate(45deg)",
-                background: "#C4A052",
+                background: "#D2AE6D",
               }}
             />
           </div>
@@ -113,7 +113,7 @@ export default function BodasHero() {
 
           <p
             className="text-center font-body text-[11px] uppercase tracking-[0.2em] mt-8"
-            style={{ color: "rgba(247,243,238,0.38)" }}
+            style={{ color: "rgba(247,243,238,0.66)" }}
           >
             Demo reel — así se vive una boda con nosotros
           </p>

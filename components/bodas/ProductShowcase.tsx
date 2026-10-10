@@ -44,7 +44,7 @@ export default function BodasProductShowcase() {
           <h2 className="bodas-title">
             No es solo un video,
             <br />
-            <span className="bodas-em-rose">es tu historia de amor</span>
+            <span className="bodas-em-rose">es la historia de tu día</span>
           </h2>
           <p className="bodas-subtitle mx-auto mt-6">
             Nos obsesionamos con cada detalle para que cuando veas tu video,

@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { whatsappUrl } from "@/components/bodas/contacto";
 
-const GOLD = "#C4A052";
+const GOLD = "#D2AE6D";
 
 type Paquete = {
   id: string;
@@ -154,10 +154,10 @@ export default function InvitacionesPricing() {
                 className="relative overflow-hidden flex flex-col"
                 style={{
                   border: destacado
-                    ? "1px solid rgba(196,160,82,0.5)"
+                    ? "1px solid rgba(210,174,109,0.5)"
                     : "1px solid rgba(247,243,238,0.1)",
                   background: destacado
-                    ? "linear-gradient(160deg, rgba(196,160,82,0.1) 0%, #201D19 55%)"
+                    ? "linear-gradient(160deg, rgba(210,174,109,0.1) 0%, #201D19 55%)"
                     : "#201D19",
                 }}
               >
@@ -176,8 +176,8 @@ export default function InvitacionesPricing() {
                         className="font-body text-[10px] uppercase tracking-[0.16em] px-3 py-1.5 inline-block"
                         style={{
                           color: GOLD,
-                          background: "rgba(196,160,82,0.12)",
-                          border: "1px solid rgba(196,160,82,0.4)",
+                          background: "rgba(210,174,109,0.12)",
+                          border: "1px solid rgba(210,174,109,0.4)",
                         }}
                       >
                         {p.badge}
@@ -185,7 +185,7 @@ export default function InvitacionesPricing() {
                     ) : (
                       <span
                         className="font-body text-[10px] uppercase tracking-[0.16em]"
-                        style={{ color: "rgba(247,243,238,0.35)" }}
+                        style={{ color: "rgba(247,243,238,0.66)" }}
                       >
                         {p.tag}
                       </span>
@@ -209,7 +209,7 @@ export default function InvitacionesPricing() {
                         cuatro precios queden a la misma altura. */}
                     <p
                       className="font-body text-[11px] uppercase tracking-[0.16em] mb-1"
-                      style={{ color: "rgba(247,243,238,0.4)" }}
+                      style={{ color: "rgba(247,243,238,0.66)" }}
                     >
                       {p.priceNote ?? "\u00A0"}
                     </p>
@@ -220,7 +220,7 @@ export default function InvitacionesPricing() {
                       {p.price}
                       <span
                         className="font-body text-sm ml-2"
-                        style={{ color: "rgba(247,243,238,0.4)" }}
+                        style={{ color: "rgba(247,243,238,0.66)" }}
                       >
                         MXN
                       </span>
@@ -269,7 +269,7 @@ export default function InvitacionesPricing() {
                           href={whatsappUrl(mensajeCotizar(p))}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="font-body text-[12px] tracking-[0.06em] text-center underline underline-offset-4 transition-colors duration-500 hover:text-[color:#C4A052]"
+                          className="font-body text-[12px] tracking-[0.06em] text-center underline underline-offset-4 transition-colors duration-500 hover:text-[color:#D2AE6D]"
                           style={{ color: "rgba(247,243,238,0.5)" }}
                         >
                           Cotizar por WhatsApp
@@ -305,7 +305,7 @@ export default function InvitacionesPricing() {
           ¿Ya contrataste la cobertura de video?{" "}
           <a
             href="/bodas"
-            className="underline underline-offset-4 transition-colors duration-500 hover:text-[color:#C4A052]"
+            className="underline underline-offset-4 transition-colors duration-500 hover:text-[color:#D2AE6D]"
             style={{ color: "rgba(247,243,238,0.7)" }}
           >
             El paquete Eterna incluye las invitaciones digitales de regalo

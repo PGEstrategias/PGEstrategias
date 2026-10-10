@@ -45,7 +45,7 @@ export default function BodasCallToAction({
             </a>
             <a
               href={secondaryHref}
-              className="font-body text-[13px] tracking-[0.06em] underline underline-offset-8 transition-colors duration-500 hover:text-[color:#A85E56]"
+              className="font-body text-[13px] tracking-[0.06em] underline underline-offset-8 transition-colors duration-500 hover:text-[color:#8C3A45]"
               style={{ color: "#4A443D" }}
             >
               {secondaryLabel}

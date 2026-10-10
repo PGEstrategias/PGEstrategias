@@ -16,14 +16,14 @@ function InvitacionPreview() {
     <div className="bodas-frame relative bg-[#F7F3EE] text-[#14120F] px-8 py-12 md:px-14 md:py-16 text-center">
       <p
         className="font-body text-[10px] uppercase tracking-[0.28em] mb-7"
-        style={{ color: "#A85E56" }}
+        style={{ color: "#8C3A45" }}
       >
         Nos casamos
       </p>
 
       <p className="bodas-heading text-4xl md:text-5xl leading-tight">
         {NOVIOS.ella}
-        <span className="mx-3" style={{ color: "#C4A052" }}>
+        <span className="mx-3" style={{ color: "#D2AE6D" }}>
           &amp;
         </span>
         {NOVIOS.el}
@@ -36,7 +36,7 @@ function InvitacionPreview() {
             width: 5,
             height: 5,
             transform: "rotate(45deg)",
-            background: "#C4A052",
+            background: "#D2AE6D",
           }}
         />
       </div>
@@ -57,7 +57,7 @@ function InvitacionPreview() {
       {/* Bloque RSVP — el corazón del producto */}
       <div
         className="mt-9 pt-7"
-        style={{ borderTop: "1px solid rgba(196,160,82,0.35)" }}
+        style={{ borderTop: "1px solid rgba(210,174,109,0.35)" }}
       >
         <p
           className="font-body text-[11px] uppercase tracking-[0.2em] mb-4"
@@ -68,7 +68,7 @@ function InvitacionPreview() {
         <div className="flex items-center justify-center gap-3">
           <span
             className="font-body text-[12px] px-6 py-2.5"
-            style={{ background: "#C4A052", color: "#14120F" }}
+            style={{ background: "#D2AE6D", color: "#14120F" }}
           >
             Confirmar asistencia
           </span>
@@ -84,7 +84,7 @@ function InvitacionPreview() {
         </div>
         <p
           className="font-body text-[11px] mt-5"
-          style={{ color: "rgba(74,68,61,0.7)" }}
+          style={{ color: "#4A443D" }}
         >
           2 pases reservados a tu nombre
         </p>
@@ -120,7 +120,7 @@ export default function InvitacionesHero() {
           width: "50vw",
           height: "50vw",
           background:
-            "radial-gradient(circle, rgba(196,160,82,0.16) 0%, transparent 64%)",
+            "radial-gradient(circle, rgba(210,174,109,0.16) 0%, transparent 64%)",
           filter: "blur(70px)",
         }}
         animate={{ x: [0, -22, 0], y: [0, -14, 0] }}
@@ -129,14 +129,9 @@ export default function InvitacionesHero() {
 
       <div className="bodas-container relative z-10 pt-32 pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-16 items-center">
-          <motion.div
-            className="text-center lg:text-left"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-          >
+          <div className="text-center lg:text-left bodas-enter">
             <p className="bodas-label mb-7">
-              Invitaciones digitales · PG Estrategias
+              Invitaciones digitales · PG Event Films
             </p>
 
             <h1 className="bodas-display bodas-display-split">
@@ -145,9 +140,9 @@ export default function InvitacionesHero() {
             </h1>
 
             <p className="bodas-subtitle mt-8 mx-auto lg:mx-0">
-              Una invitación web con tu historia, tu música y tu mapa. Detrás,
-              un sistema que confirma a tus invitados, les manda su pase y te
-              entrega la lista lista para el banquetero.
+              Para bodas, XV años y cualquier celebración: una invitación web con
+              tu historia, tu música y tu mapa. Detrás, un sistema que confirma a
+              tus invitados, les manda su pase y te entrega la lista para el banquetero.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4 mt-10">
@@ -164,27 +159,22 @@ export default function InvitacionesHero() {
                 Contáctanos
               </a>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.25, ease: [0.16, 1, 0.3, 1] }}
-          >
+          <div className="bodas-enter bodas-enter-2">
             <a
               href="/invitacionesdebodas/demo/estandar"
               className="block transition-transform duration-500 hover:scale-[1.015]"
-              aria-label="Abrir la invitación de muestra completa"
             >
               <InvitacionPreview />
             </a>
             <p
               className="text-center font-body text-[11px] uppercase tracking-[0.2em] mt-8"
-              style={{ color: "rgba(247,243,238,0.38)" }}
+              style={{ color: "rgba(247,243,238,0.66)" }}
             >
               Tócala para abrir la invitación completa
             </p>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

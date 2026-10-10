@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { whatsappUrl } from "@/components/bodas/contacto";
 
-const GOLD = "#C4A052";
+const GOLD = "#D2AE6D";
 
 type Paquete = {
   id: string;
@@ -136,8 +136,9 @@ export default function BodasPricing() {
             Cuatro formas de <span className="bodas-em">contar tu historia</span>
           </h2>
           <p className="bodas-subtitle mx-auto mt-6">
-            De la pieza para redes a la cobertura de cine: lo que cambia es
-            cuánto de tu día queda grabado — y cuántas cámaras lo graban.
+            Paquetes de boda, de la pieza para redes a la cobertura de cine. Para
+            XV años, brindis, bautizos y otros eventos armamos la cobertura a la
+            medida de tu celebración.
           </p>
         </div>
 
@@ -154,10 +155,10 @@ export default function BodasPricing() {
                 className="relative overflow-hidden h-full flex flex-col"
                 style={{
                   border: destacado
-                    ? "1px solid rgba(196,160,82,0.5)"
+                    ? "1px solid rgba(210,174,109,0.5)"
                     : "1px solid rgba(247,243,238,0.1)",
                   background: destacado
-                    ? "linear-gradient(160deg, rgba(196,160,82,0.1) 0%, #201D19 55%)"
+                    ? "linear-gradient(160deg, rgba(210,174,109,0.1) 0%, #201D19 55%)"
                     : "#201D19",
                 }}
               >
@@ -187,8 +188,8 @@ export default function BodasPricing() {
                         className="font-body text-[10px] uppercase tracking-[0.16em] px-3 py-1.5 whitespace-nowrap"
                         style={{
                           color: GOLD,
-                          background: "rgba(196,160,82,0.12)",
-                          border: "1px solid rgba(196,160,82,0.4)",
+                          background: "rgba(210,174,109,0.12)",
+                          border: "1px solid rgba(210,174,109,0.4)",
                         }}
                       >
                         {p.badge}
@@ -208,7 +209,7 @@ export default function BodasPricing() {
                       {p.price}
                       <span
                         className="font-body text-base ml-2"
-                        style={{ color: "rgba(247,243,238,0.4)" }}
+                        style={{ color: "rgba(247,243,238,0.66)" }}
                       >
                         MXN
                       </span>
@@ -221,10 +222,10 @@ export default function BodasPricing() {
                     className="flex items-center gap-3 px-4 py-3 mb-7"
                     style={{
                       background: destacado
-                        ? "rgba(196,160,82,0.1)"
+                        ? "rgba(210,174,109,0.1)"
                         : "rgba(247,243,238,0.04)",
                       border: destacado
-                        ? "1px solid rgba(196,160,82,0.3)"
+                        ? "1px solid rgba(210,174,109,0.3)"
                         : "1px solid rgba(247,243,238,0.08)",
                       color: destacado ? GOLD : "rgba(247,243,238,0.6)",
                     }}

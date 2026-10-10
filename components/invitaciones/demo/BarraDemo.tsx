@@ -13,19 +13,20 @@ export default function BarraDemo({ plan }: { plan: Plan }) {
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 z-50"
+      className="fixed bottom-3 left-3 right-3 z-50 mx-auto max-w-2xl rounded-full"
       style={{
-        background: "rgba(20,18,15,0.94)",
-        borderTop: "1px solid rgba(196,160,82,0.35)",
+        background: "rgba(20,17,15,0.9)",
+        border: "1px solid rgba(210,174,109,0.35)",
         backdropFilter: "blur(14px)",
         WebkitBackdropFilter: "blur(14px)",
+        boxShadow: "0 18px 40px -16px rgba(0,0,0,0.6)",
       }}
     >
-      <div className="bodas-container !px-4 md:!px-8 py-3 flex items-center justify-between gap-3">
+      <div className="pl-6 pr-2 py-2 flex items-center justify-between gap-3">
         <div className="min-w-0">
           <p
             className="font-body text-[9px] uppercase tracking-[0.2em]"
-            style={{ color: "#C4A052" }}
+            style={{ color: "#D2AE6D" }}
           >
             Demo · Paquete {ficha.nombre}
           </p>
@@ -48,7 +49,7 @@ export default function BarraDemo({ plan }: { plan: Plan }) {
           </a>
           <a
             href={whatsappUrl(
-              `Hola, vi el demo del paquete ${ficha.nombre} de invitaciones digitales (${ficha.precio} MXN) y quiero cotizarlo para mi boda.`,
+              `Hola, vi el demo del paquete ${ficha.nombre} de invitaciones digitales (${ficha.precio} MXN) y quiero cotizarlo para mi evento.`,
             )}
             target="_blank"
             rel="noopener noreferrer"

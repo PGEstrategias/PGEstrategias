@@ -56,7 +56,7 @@ const CLASE_INPUT =
   "w-full bg-transparent font-body text-[16px] py-3 outline-none transition-colors duration-300 placeholder:text-[rgba(247,243,238,0.28)]";
 const ESTILO_INPUT: React.CSSProperties = {
   color: "#F7F3EE",
-  borderBottom: "1px solid rgba(196,160,82,0.4)",
+  borderBottom: "1px solid rgba(210,174,109,0.4)",
 };
 
 export default function Rsvp({ plan }: { plan: Plan }) {
@@ -178,7 +178,7 @@ export default function Rsvp({ plan }: { plan: Plan }) {
             type="button"
             onClick={reiniciar}
             className="font-body text-[12px] uppercase tracking-[0.14em] underline underline-offset-8 mt-12 transition-opacity hover:opacity-70"
-            style={{ color: "rgba(247,243,238,0.45)" }}
+            style={{ color: "rgba(247,243,238,0.66)" }}
           >
             Probar el formulario otra vez
           </button>
@@ -213,7 +213,7 @@ export default function Rsvp({ plan }: { plan: Plan }) {
               style={{
                 width: i === indice ? 34 : 16,
                 background:
-                  i <= indice ? "#C4A052" : "rgba(247,243,238,0.18)",
+                  i <= indice ? "#D2AE6D" : "rgba(247,243,238,0.18)",
               }}
             />
           ))}
@@ -294,12 +294,12 @@ export default function Rsvp({ plan }: { plan: Plan }) {
                             className="flex-1 py-5 font-body text-lg transition-colors duration-300"
                             style={{
                               border: `1px solid ${
-                                activo ? "#C4A052" : "rgba(247,243,238,0.16)"
+                                activo ? "#D2AE6D" : "rgba(247,243,238,0.16)"
                               }`,
                               background: activo
-                                ? "rgba(196,160,82,0.14)"
+                                ? "rgba(210,174,109,0.14)"
                                 : "transparent",
-                              color: activo ? "#C4A052" : "rgba(247,243,238,0.6)",
+                              color: activo ? "#D2AE6D" : "rgba(247,243,238,0.6)",
                             }}
                             aria-pressed={activo}
                           >
@@ -388,7 +388,7 @@ export default function Rsvp({ plan }: { plan: Plan }) {
                 onClick={() => setIndice((i) => Math.max(0, i - 1))}
                 disabled={enviando}
                 className="font-body text-[12px] uppercase tracking-[0.14em] transition-opacity hover:opacity-70 disabled:opacity-30"
-                style={{ color: "rgba(247,243,238,0.45)" }}
+                style={{ color: "rgba(247,243,238,0.66)" }}
               >
                 Atrás
               </button>
@@ -411,7 +411,7 @@ export default function Rsvp({ plan }: { plan: Plan }) {
 
         <p
           className="text-center font-body text-[12px] mt-6"
-          style={{ color: "rgba(247,243,238,0.32)" }}
+          style={{ color: "rgba(247,243,238,0.66)" }}
         >
           {ficha.promesa}
         </p>

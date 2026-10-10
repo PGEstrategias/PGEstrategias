@@ -36,23 +36,23 @@ export default function Historia() {
               }}
             >
               {capitulo.imagen ? (
-                <div className="bodas-frame overflow-hidden" style={{ direction: "ltr" }}>
+                <div className="bodas-arch group" style={{ direction: "ltr", boxShadow: "0 24px 50px -24px rgba(20,17,15,0.45)" }}>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={foto(capitulo.imagen, 640)}
                     alt={capitulo.titulo}
                     loading="lazy"
-                    className="w-full aspect-[4/3] object-cover"
+                    className="w-full aspect-[4/5] object-cover transition-transform duration-[1.2s] group-hover:scale-105"
                   />
                 </div>
               ) : (
                 /* El último capítulo va sin foto a propósito: la propuesta no
                    se fotografió, y el hueco lo cuenta mejor que una imagen. */
                 <div
-                  className="bodas-frame flex items-center justify-center aspect-[4/3]"
-                  style={{ direction: "ltr", background: "#EFE7E0" }}
+                  className="bodas-arch flex items-center justify-center aspect-[4/5] text-center px-6"
+                  style={{ direction: "ltr", background: "linear-gradient(160deg, #EACBC2, #F7F2EA)" }}
                 >
-                  <span className="bodas-heading text-5xl" style={{ color: "#C4A052" }}>
+                  <span className="bodas-heading text-5xl" style={{ color: "#D2AE6D" }}>
                     ¿Nos acompañas?
                   </span>
                 </div>
@@ -61,7 +61,7 @@ export default function Historia() {
               <div style={{ direction: "ltr" }}>
                 <p
                   className="font-body text-[11px] uppercase tracking-[0.22em] mb-3"
-                  style={{ color: "#C4A052" }}
+                  style={{ color: "#D2AE6D" }}
                 >
                   {capitulo.anio}
                 </p>

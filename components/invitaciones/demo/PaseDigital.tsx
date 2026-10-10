@@ -29,21 +29,21 @@ export default function PaseDigital({ nombre, pases }: DatosPase) {
       <div
         className="px-5 py-8"
         style={{
-          border: "1px solid rgba(196,160,82,0.55)",
-          outline: "1px solid rgba(196,160,82,0.22)",
+          border: "1px solid rgba(210,174,109,0.55)",
+          outline: "1px solid rgba(210,174,109,0.22)",
           outlineOffset: 5,
         }}
       >
         <p
           className="font-body text-[9px] uppercase tracking-[0.26em]"
-          style={{ color: "#A85E56" }}
+          style={{ color: "#8C3A45" }}
         >
           Pase de entrada
         </p>
 
         <p className="bodas-heading text-3xl leading-tight mt-5">
           {NOVIOS.ella}
-          <span className="mx-2" style={{ color: "#C4A052" }}>
+          <span className="mx-2" style={{ color: "#D2AE6D" }}>
             &amp;
           </span>
           {NOVIOS.el}
@@ -56,7 +56,7 @@ export default function PaseDigital({ nombre, pases }: DatosPase) {
               width: 4,
               height: 4,
               transform: "rotate(45deg)",
-              background: "#C4A052",
+              background: "#D2AE6D",
             }}
           />
         </div>
@@ -75,8 +75,8 @@ export default function PaseDigital({ nombre, pases }: DatosPase) {
         <p
           className="bodas-heading text-lg mt-4 pt-4"
           style={{
-            color: "#C4A052",
-            borderTop: "1px solid rgba(196,160,82,0.3)",
+            color: "#D2AE6D",
+            borderTop: "1px solid rgba(210,174,109,0.3)",
           }}
         >
           {pases} {pases === 1 ? "pase" : "pases"}
@@ -84,7 +84,7 @@ export default function PaseDigital({ nombre, pases }: DatosPase) {
 
         <div
           className="mt-5 pt-5 flex flex-col gap-3"
-          style={{ borderTop: "1px solid rgba(196,160,82,0.3)" }}
+          style={{ borderTop: "1px solid rgba(210,174,109,0.3)" }}
         >
           <p
             className="font-body text-[11px] uppercase tracking-[0.14em] leading-relaxed"
@@ -96,7 +96,7 @@ export default function PaseDigital({ nombre, pases }: DatosPase) {
           <div>
             <p
               className="font-body text-[9px] uppercase tracking-[0.2em]"
-              style={{ color: "#A85E56" }}
+              style={{ color: "#8C3A45" }}
             >
               {ceremonia.hora} · Ceremonia
             </p>
@@ -111,7 +111,7 @@ export default function PaseDigital({ nombre, pases }: DatosPase) {
           <div>
             <p
               className="font-body text-[9px] uppercase tracking-[0.2em]"
-              style={{ color: "#A85E56" }}
+              style={{ color: "#8C3A45" }}
             >
               {recepcion.hora} · Recepción
             </p>
@@ -128,7 +128,7 @@ export default function PaseDigital({ nombre, pases }: DatosPase) {
           className="font-body text-[10px] uppercase tracking-[0.16em] mt-5 pt-4"
           style={{
             color: "#4A443D",
-            borderTop: "1px solid rgba(196,160,82,0.3)",
+            borderTop: "1px solid rgba(210,174,109,0.3)",
           }}
         >
           {DRESS_CODE.titulo}
@@ -136,7 +136,7 @@ export default function PaseDigital({ nombre, pases }: DatosPase) {
 
         <p
           className="font-body text-[10px] tracking-[0.12em] mt-4"
-          style={{ color: "#C4A052" }}
+          style={{ color: "#D2AE6D" }}
         >
           {NOVIOS.hashtags[0]}
         </p>

@@ -20,8 +20,8 @@ const ALTO = 560;
 
 const TINTA = rgb(0.078, 0.071, 0.059); // #14120F
 const MARFIL = rgb(0.969, 0.953, 0.933); // #F7F3EE
-const ORO = rgb(0.769, 0.627, 0.322); // #C4A052
-const ROSA = rgb(0.659, 0.369, 0.337); // #A85E56
+const ORO = rgb(0.824, 0.682, 0.427); // #D2AE6D
+const ROSA = rgb(0.659, 0.369, 0.337); // #8C3A45
 const GRIS = rgb(0.29, 0.267, 0.239); // #4A443D
 
 /* pdf-lib no tiene interletraje, así que las versalitas se espacian a mano.

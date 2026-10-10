@@ -12,6 +12,8 @@ import Rsvp from "@/components/invitaciones/demo/Rsvp";
 import Bloqueado from "@/components/invitaciones/demo/Bloqueado";
 import BarraDemo from "@/components/invitaciones/demo/BarraDemo";
 import Musica from "@/components/invitaciones/demo/Musica";
+import Sobre from "@/components/invitaciones/demo/Sobre";
+import EventShell from "@/components/eventfilms/EventShell";
 
 type Props = { params: { plan: string } };
 
@@ -26,14 +28,14 @@ export function generateMetadata({ params }: Props): Metadata {
   const descripcion = `Invitación digital de muestra para ${NOVIOS.ella} y ${NOVIOS.el}. ${ficha.promesa} Paquete ${ficha.nombre}, ${ficha.precio} MXN.`;
 
   return {
-    title: `${titulo} | PG Estrategias`,
+    title: `${titulo} | PG Event Films`,
     description: descripcion,
     openGraph: {
       title: titulo,
       description: descripcion,
       type: "website",
       locale: "es_MX",
-      siteName: "PG Estrategias",
+      siteName: "PG Event Films",
     },
   };
 }
@@ -46,7 +48,8 @@ export default function DemoInvitacionPage({ params }: Props) {
     /* Sin header ni footer de la agencia: el invitado de una boda real no ve
        una barra de navegación corporativa, y el demo tiene que sentirse como
        la invitación que se entrega, no como una página de producto. */
-    <div className="bodas-root">
+    <EventShell>
+      <Sobre />
       {/* Aire para que la barra fija no tape el final de la invitación. */}
       <main className="pb-24">
         <Portada />
@@ -62,35 +65,35 @@ export default function DemoInvitacionPage({ params }: Props) {
           <div className="absolute top-0 left-0 right-0 h-px bodas-rule" />
           <p className="bodas-heading text-3xl mb-3">
             {NOVIOS.ella}
-            <span className="mx-2.5" style={{ color: "#C4A052" }}>
+            <span className="mx-2.5" style={{ color: "#D2AE6D" }}>
               &amp;
             </span>
             {NOVIOS.el}
           </p>
           <p
             className="font-body text-[11px] uppercase tracking-[0.18em]"
-            style={{ color: "rgba(247,243,238,0.4)" }}
+            style={{ color: "rgba(247,243,238,0.66)" }}
           >
             {FECHA_LARGA}
           </p>
           <p
             className="font-body text-[12px] tracking-[0.12em] mt-6"
-            style={{ color: "#C4A052" }}
+            style={{ color: "#D2AE6D" }}
           >
             {NOVIOS.hashtags.join("  ·  ")}
           </p>
           <p
             className="font-body text-[11px] leading-relaxed mt-10 max-w-sm mx-auto px-6"
-            style={{ color: "rgba(247,243,238,0.25)" }}
+            style={{ color: "rgba(247,243,238,0.66)" }}
           >
             {NOVIOS.ellaCompleto} y {NOVIOS.elCompleto} son una pareja ficticia.
-            Esta invitación es una muestra de PG Estrategias.
+            Esta invitación es una muestra de PG Event Films.
           </p>
         </footer>
       </main>
 
       <Musica />
       <BarraDemo plan={plan} />
-    </div>
+    </EventShell>
   );
 }

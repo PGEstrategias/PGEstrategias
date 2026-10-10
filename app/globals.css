@@ -176,15 +176,16 @@ body {
 
 .bodas-root {
   /* Paleta */
-  --b-ink: #14120F;
-  --b-ink-soft: #201D19;
-  --b-ivory: #F7F3EE;
+  /* PG Event Films — noche, marfil, champaña, rubor y vino */
+  --b-ink: #14110F;
+  --b-ink-soft: #1E1A17;
+  --b-ivory: #F7F2EA;
   --b-ivory-soft: #EFE7E0;
-  --b-blush: #E7C9C4;
+  --b-blush: #EACBC2;
   --b-blush-pale: #F4E4E1;
-  --b-rose: #A85E56;
-  --b-gold: #C4A052;
-  --b-gold-soft: #DFC48A;
+  --b-rose: #8C3A45;
+  --b-gold: #D2AE6D;
+  --b-gold-soft: #E6CB97;
   --b-muted-light: #4A443D;
 
   --font-boda: 'Cormorant Garamond', Georgia, serif;
@@ -321,11 +322,29 @@ body {
   gap: 0.6rem;
   font-family: var(--font-body);
   font-size: 0.8125rem;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 0.06em;
-  padding: 0.95rem 2.1rem;
+  padding: 1rem 2.2rem;
+  border-radius: 999px;
   transition: color 0.5s var(--ease-out-expo),
-    border-color 0.5s var(--ease-out-expo);
+    border-color 0.5s var(--ease-out-expo),
+    transform 0.35s var(--ease-out-expo),
+    box-shadow 0.5s var(--ease-out-expo);
+}
+.bodas-btn-gold:hover,
+.bodas-btn-outline:hover,
+.bodas-btn-ink:hover { transform: translateY(-2px); }
+.bodas-btn-gold:hover { box-shadow: 0 10px 30px -8px rgba(210, 174, 109, 0.55); }
+.bodas-btn-gold:active,
+.bodas-btn-outline:active,
+.bodas-btn-ink:active { transform: translateY(0) scale(0.98); }
+.bodas-root a:focus-visible,
+.bodas-root button:focus-visible,
+.bodas-root input:focus-visible,
+.bodas-root select:focus-visible,
+.bodas-root textarea:focus-visible {
+  outline: 2px solid var(--b-gold);
+  outline-offset: 3px;
 }
 
 .bodas-btn-gold::before,
@@ -348,7 +367,7 @@ body {
 .bodas-btn-gold:hover::before { transform: translateX(0); }
 
 .bodas-btn-outline {
-  border: 1px solid rgba(196, 160, 82, 0.5);
+  border: 1px solid rgba(210, 174, 109, 0.5);
   color: var(--b-gold);
 }
 .bodas-btn-outline::before { background: var(--b-gold); }
@@ -374,33 +393,37 @@ body {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(196, 160, 82, 0.65),
+    rgba(210, 174, 109, 0.65),
     transparent
   );
 }
 
 /* Marco de doble filete, guiño a la papelería de boda */
 .bodas-frame {
-  border: 1px solid rgba(196, 160, 82, 0.35);
-  outline: 1px solid rgba(196, 160, 82, 0.16);
+  border: 1px solid rgba(210, 174, 109, 0.35);
+  outline: 1px solid rgba(210, 174, 109, 0.16);
   outline-offset: 6px;
+  border-radius: 22px;
+  overflow: hidden;
 }
 
 .bodas-card-dark {
+  border-radius: 24px;
   background: var(--b-ink-soft);
   border: 1px solid rgba(247, 243, 238, 0.1);
   transition: border-color 0.5s var(--ease-out-expo);
 }
-.bodas-card-dark:hover { border-color: rgba(196, 160, 82, 0.45); }
+.bodas-card-dark:hover { border-color: rgba(210, 174, 109, 0.45); }
 
 .bodas-card-light {
+  border-radius: 24px;
   background: #FFFFFF;
   border: 1px solid rgba(20, 18, 15, 0.09);
   transition: border-color 0.5s var(--ease-out-expo),
     box-shadow 0.5s var(--ease-out-expo);
 }
 .bodas-card-light:hover {
-  border-color: rgba(196, 160, 82, 0.5);
+  border-color: rgba(210, 174, 109, 0.5);
   box-shadow: 0 12px 40px rgba(20, 18, 15, 0.07);
 }
 
@@ -416,10 +439,91 @@ body {
   content: '';
   height: 1px;
   width: clamp(40px, 8vw, 90px);
-  background: linear-gradient(90deg, transparent, rgba(196, 160, 82, 0.7));
+  background: linear-gradient(90deg, transparent, rgba(210, 174, 109, 0.7));
 }
 .bodas-ornament::after {
-  background: linear-gradient(90deg, rgba(196, 160, 82, 0.7), transparent);
+  background: linear-gradient(90deg, rgba(210, 174, 109, 0.7), transparent);
+}
+
+/* ---------- PG Event Films: utilidades ---------- */
+
+.bodas-root input:not([type="checkbox"]):not([type="radio"]),
+.bodas-root select,
+.bodas-root textarea {
+  border-radius: 14px;
+}
+
+/* Entrada al cargar, solo CSS: no espera a JavaScript (no retrasa el LCP) */
+.bodas-enter { animation: bodas-enter 0.9s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.bodas-enter-1 { animation-delay: 0.1s; }
+.bodas-enter-2 { animation-delay: 0.3s; }
+.bodas-enter-3 { animation-delay: 0.5s; }
+@keyframes bodas-enter { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .bodas-enter { animation: none; } }
+
+/* Arco: el formato de foto de la papelería de boda contemporánea */
+.bodas-arch {
+  border-radius: 999px 999px 22px 22px;
+  overflow: hidden;
+}
+
+/* Vidrio sobre fondos oscuros */
+.bodas-glass {
+  background: rgba(247, 242, 234, 0.06);
+  border: 1px solid rgba(247, 242, 234, 0.14);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-radius: 20px;
+}
+
+/* Texto con brillo champaña que recorre la palabra */
+.bodas-shimmer {
+  background: linear-gradient(100deg, #B8914F 0%, #F3DDB0 45%, #D2AE6D 55%, #B8914F 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: bodas-shimmer 6s ease-in-out infinite;
+}
+@keyframes bodas-shimmer {
+  0%, 100% { background-position: 100% 0; }
+  50% { background-position: 0% 0; }
+}
+
+/* Destellos dorados que flotan (decorativos) */
+.bodas-sparkles {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+}
+.bodas-sparkles span {
+  position: absolute; bottom: -10px; width: 4px; height: 4px; border-radius: 50%;
+  background: radial-gradient(circle, #F3DDB0 0%, rgba(210, 174, 109, 0) 70%);
+  opacity: 0;
+  animation: bodas-float var(--d, 12s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+@keyframes bodas-float {
+  0% { transform: translate(0, 0) scale(0.6); opacity: 0; }
+  12% { opacity: 0.9; }
+  80% { opacity: 0.5; }
+  100% { transform: translate(var(--x, 20px), -105vh) scale(1.2); opacity: 0; }
+}
+
+/* Acercamiento lento para fotos y video de fondo */
+.bodas-kenburns { animation: bodas-kenburns 24s ease-in-out infinite alternate; }
+@keyframes bodas-kenburns {
+  from { transform: scale(1.02); }
+  to { transform: scale(1.12) translate(-1.5%, -1%); }
+}
+
+/* Cinta de texto en movimiento continuo */
+.bodas-ticker { display: flex; overflow: hidden; white-space: nowrap; }
+.bodas-ticker > div { display: flex; flex-shrink: 0; animation: bodas-ticker 32s linear infinite; }
+@keyframes bodas-ticker { to { transform: translateX(-100%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .bodas-shimmer, .bodas-kenburns, .bodas-ticker > div { animation: none; }
+  .bodas-sparkles { display: none; }
+  .bodas-btn-gold:hover, .bodas-btn-outline:hover, .bodas-btn-ink:hover { transform: none; }
 }
 
 /* Barras del control de música: solo bailan cuando de verdad hay sonido.

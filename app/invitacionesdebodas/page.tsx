@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import BodasHeader from "@/components/bodas/Header";
+import EventShell from "@/components/eventfilms/EventShell";
 import BodasFooter from "@/components/bodas/Footer";
 import BodasCallToAction from "@/components/bodas/CallToAction";
 import { BodasWhatsAppButton } from "@/components/bodas/WhatsAppButton";
@@ -8,35 +9,34 @@ import InvitacionesComoFunciona from "@/components/invitaciones/ComoFunciona";
 import InvitacionesPricing from "@/components/invitaciones/Pricing";
 
 const DESCRIPTION =
-  "Invitaciones de boda digitales con confirmación automática: landing con tu historia, RSVP conectado a Excel, pases en PDF y reporte para el banquetero. Desde $2,999 MXN.";
+  "Invitaciones digitales para bodas, XV años y eventos, con confirmación automática: RSVP conectado a Excel, pases en PDF y reporte para el banquetero. Desde $2,999 MXN.";
 
 export const metadata: Metadata = {
-  title: "Invitaciones de Boda Digitales — PG Estrategias",
+  title: "Invitaciones digitales para bodas y XV años | PG Event Films",
   description: DESCRIPTION,
   openGraph: {
-    title: "Invitaciones de Boda Digitales — PG Estrategias",
+    title: "Invitaciones digitales para bodas y XV años | PG Event Films",
     description: DESCRIPTION,
     type: "website",
     locale: "es_MX",
-    siteName: "PG Estrategias",
+    siteName: "PG Event Films",
   },
 };
 
 const NAV = [
   { label: "Cómo funciona", href: "#como-funciona" },
   { label: "Paquetes", href: "#paquetes" },
-  { label: "Video de boda", href: "/bodas" },
+  { label: "Event Films", href: "/bodas" },
   { label: "Contacto", href: "#contacto" },
 ];
 
 export default function InvitacionesDeBodasPage() {
   return (
-    /* .bodas-root aplica la paleta nupcial sin tocar el resto del sitio */
-    <div className="bodas-root">
+    <EventShell>
       <BodasHeader
         links={NAV}
         ctaLabel="Cotizar"
-        ctaMessage="Hola, quiero cotizar las invitaciones digitales para mi boda."
+        ctaMessage="Hola, quiero cotizar invitaciones digitales para mi evento."
       />
       <main>
         <InvitacionesHero />
@@ -47,21 +47,21 @@ export default function InvitacionesDeBodasPage() {
           titleAccent="misma semana"
           text="Mándanos tu fecha y el número aproximado de invitados. Te decimos qué paquete te conviene y cuánto tarda en estar listo."
           ctaLabel="Cotizar por WhatsApp"
-          ctaMessage="Hola, quiero cotizar las invitaciones digitales para mi boda."
-          secondaryLabel="Ver también la cobertura de video"
+          ctaMessage="Hola, quiero cotizar invitaciones digitales para mi evento."
+          secondaryLabel="Ver PG Event Films: video y foto"
           secondaryHref="/bodas"
         />
       </main>
       <BodasFooter
-        tagline="Invitaciones digitales con confirmación automática, pases en PDF y la lista de tu banquete resuelta."
+        tagline="Invitaciones digitales de PG Event Films: confirmación automática, pases en PDF y la lista de tu banquete resuelta."
         links={[
           { label: "Cómo funciona", href: "#como-funciona" },
           { label: "Paquetes", href: "#paquetes" },
-          { label: "Video de boda", href: "/bodas" },
+          { label: "Video y foto de eventos", href: "/bodas" },
           { label: "Nuestro trabajo", href: "/nuestrotrabajo" },
         ]}
       />
-      <BodasWhatsAppButton mensaje="Hola, quiero información sobre las invitaciones digitales para mi boda." />
-    </div>
+      <BodasWhatsAppButton mensaje="Hola, quiero información sobre las invitaciones digitales de PG Event Films." />
+    </EventShell>
   );
 }

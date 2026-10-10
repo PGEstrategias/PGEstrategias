@@ -16,10 +16,14 @@ export default function Itinerario() {
 
         <ol className="relative">
           {/* Filo vertical que une las horas. */}
-          <span
+          <motion.span
             aria-hidden
-            className="absolute left-[4.75rem] top-2 bottom-2 w-px hidden sm:block"
-            style={{ background: "rgba(196,160,82,0.3)" }}
+            className="absolute left-[4.75rem] top-2 bottom-2 w-px hidden sm:block origin-top"
+            style={{ background: "linear-gradient(180deg, #D2AE6D, rgba(210,174,109,0.2))" }}
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 1.6, ease: [0.16, 1, 0.3, 1] }}
           />
 
           {ITINERARIO.map((paso, i) => (
@@ -29,11 +33,11 @@ export default function Itinerario() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.45, delay: i * 0.06 }}
-              className="relative grid grid-cols-[4rem_1fr] sm:grid-cols-[4.75rem_1fr] gap-5 sm:gap-8 pb-9 last:pb-0"
+              className="relative grid grid-cols-[4rem_1fr] sm:grid-cols-[4.75rem_1fr] gap-5 sm:gap-8 pb-9 last:pb-0 transition-transform duration-300 hover:translate-x-1"
             >
               <p
                 className="bodas-heading text-xl tabular-nums pt-0.5"
-                style={{ color: "#C4A052" }}
+                style={{ color: "#D2AE6D" }}
               >
                 {paso.hora}
               </p>
@@ -43,11 +47,12 @@ export default function Itinerario() {
                   aria-hidden
                   className="absolute -left-[2.05rem] top-2 hidden sm:block"
                   style={{
-                    width: 7,
-                    height: 7,
-                    transform: "rotate(45deg)",
-                    background: "#F7F3EE",
-                    outline: "1px solid #C4A052",
+                    width: 11,
+                    height: 11,
+                    left: "calc(-2rem - 5.5px)",
+                    borderRadius: "50%",
+                    background: "#D2AE6D",
+                    boxShadow: "0 0 0 4px #F7F2EA, 0 0 0 5px rgba(210,174,109,0.5), 0 0 16px rgba(210,174,109,0.6)",
                   }}
                 />
                 <h3 className="bodas-heading text-xl leading-snug">

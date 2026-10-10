@@ -26,7 +26,7 @@ function BotonCopiar({ valor }: { valor: string }) {
       type="button"
       onClick={copiar}
       className="font-body text-[11px] uppercase tracking-[0.14em] underline underline-offset-4 transition-opacity hover:opacity-70"
-      style={{ color: "#C4A052" }}
+      style={{ color: "#7A5B22" }}
     >
       {copiado ? "Copiado" : "Copiar"}
     </button>
@@ -71,7 +71,7 @@ export default function Regalos() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className="font-body text-[11px] uppercase tracking-[0.14em] underline underline-offset-4 transition-opacity hover:opacity-70"
-                    style={{ color: "#A85E56" }}
+                    style={{ color: "#8C3A45" }}
                   >
                     Abrir
                   </a>

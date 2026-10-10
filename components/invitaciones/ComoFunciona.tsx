@@ -40,8 +40,8 @@ export default function InvitacionesComoFunciona() {
             <span className="bodas-em-rose">deja de ser tu problema</span>
           </h2>
           <p className="bodas-subtitle mx-auto mt-6">
-            El promedio de una boda son 150 invitados. Perseguir a cada uno por
-            WhatsApp cuesta semanas. Esto lo resuelve en cuatro pasos.
+            Perseguir a cada invitado por WhatsApp cuesta semanas, sea boda, XV
+            años o aniversario. Esto lo resuelve en cuatro pasos.
           </p>
         </div>
 
@@ -54,11 +54,11 @@ export default function InvitacionesComoFunciona() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="pt-6"
-              style={{ borderTop: "1px solid rgba(196,160,82,0.5)" }}
+              style={{ borderTop: "1px solid rgba(210,174,109,0.5)" }}
             >
               <p
                 className="bodas-heading text-3xl mb-4"
-                style={{ color: "#C4A052" }}
+                style={{ color: "#D2AE6D" }}
               >
                 {paso.n}
               </p>

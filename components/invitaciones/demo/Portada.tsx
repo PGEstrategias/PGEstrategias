@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import Sparkles from "@/components/eventfilms/Sparkles";
 import {
   FECHA_ISO,
   FECHA_LARGA,
@@ -35,17 +36,29 @@ function useCuentaRegresiva() {
 }
 
 function Casilla({ valor, etiqueta }: { valor: number; etiqueta: string }) {
+  const texto = String(valor).padStart(2, "0");
   return (
-    <div className="text-center min-w-[3.75rem]">
+    <div className="bodas-glass text-center w-[4.4rem] md:w-[5.2rem] py-3.5 md:py-4">
       <p
-        className="bodas-heading text-3xl md:text-4xl tabular-nums leading-none"
-        style={{ color: "#F7F3EE" }}
+        className="bodas-heading text-3xl md:text-4xl tabular-nums leading-none relative h-[1em] overflow-hidden"
+        style={{ color: "#F7F2EA" }}
       >
-        {String(valor).padStart(2, "0")}
+        <AnimatePresence mode="popLayout" initial={false}>
+          <motion.span
+            key={texto}
+            className="block"
+            initial={{ y: "-100%", opacity: 0 }}
+            animate={{ y: "0%", opacity: 1 }}
+            exit={{ y: "100%", opacity: 0 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+          >
+            {texto}
+          </motion.span>
+        </AnimatePresence>
       </p>
       <p
-        className="font-body text-[9px] uppercase tracking-[0.2em] mt-2"
-        style={{ color: "rgba(247,243,238,0.5)" }}
+        className="font-body text-[9px] uppercase tracking-[0.2em] mt-2.5"
+        style={{ color: "rgba(247,242,234,0.6)" }}
       >
         {etiqueta}
       </p>
@@ -67,29 +80,25 @@ export default function Portada() {
           src={foto(FOTOS.cafe, 1400)}
           alt=""
           aria-hidden
-          className="w-full h-full object-cover"
-          style={{ opacity: 0.28 }}
+          className="w-full h-full object-cover bodas-kenburns"
+          style={{ opacity: 0.38 }}
         />
         <div
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at center, rgba(20,18,15,0.55) 0%, rgba(20,18,15,0.92) 72%)",
+              "radial-gradient(ellipse at center, rgba(20,17,15,0.45) 0%, rgba(20,17,15,0.92) 75%)",
           }}
         />
       </div>
+      <Sparkles />
 
-      <motion.div
-        className="relative z-10 px-7 text-center w-full max-w-2xl"
-        initial={{ opacity: 0, y: 18 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-      >
+      <div className="relative z-10 px-7 text-center w-full max-w-2xl bodas-enter">
         <p className="bodas-label mb-8">Nos casamos</p>
 
         <h1 className="bodas-heading text-6xl sm:text-7xl md:text-8xl leading-[1.05]">
           {NOVIOS.ella}
-          <span className="block my-2 text-4xl md:text-5xl" style={{ color: "#C4A052" }}>
+          <span className="block my-2 text-4xl md:text-5xl italic bodas-shimmer">
             &amp;
           </span>
           {NOVIOS.el}
@@ -102,7 +111,7 @@ export default function Portada() {
               width: 5,
               height: 5,
               transform: "rotate(45deg)",
-              background: "#C4A052",
+              background: "#D2AE6D",
             }}
           />
         </div>
@@ -115,7 +124,7 @@ export default function Portada() {
         </p>
         <p
           className="font-body text-[12px] uppercase tracking-[0.18em] mt-2"
-          style={{ color: "rgba(247,243,238,0.45)" }}
+          style={{ color: "rgba(247,243,238,0.66)" }}
         >
           {ceremonia.hora} · Puebla, México
         </p>
@@ -123,8 +132,7 @@ export default function Portada() {
         {/* Cuenta regresiva. Reserva su altura desde el servidor para que la
             portada no dé un salto cuando el reloj arranca en el cliente. */}
         <div
-          className="mt-11 pt-8 flex items-start justify-center gap-5 md:gap-8 min-h-[5.5rem]"
-          style={{ borderTop: "1px solid rgba(196,160,82,0.28)" }}
+          className="mt-11 flex items-start justify-center gap-2.5 md:gap-4 min-h-[5.8rem]"
         >
           {cuenta && (
             <>
@@ -142,7 +150,7 @@ export default function Portada() {
         >
           Confirmar asistencia
         </a>
-      </motion.div>
+      </div>
 
       <motion.div
         className="absolute bottom-7 left-1/2 -translate-x-1/2 z-10"
@@ -154,7 +162,7 @@ export default function Portada() {
           className="block w-px h-9"
           style={{
             background:
-              "linear-gradient(180deg, rgba(196,160,82,0.7), transparent)",
+              "linear-gradient(180deg, rgba(210,174,109,0.7), transparent)",
           }}
         />
       </motion.div>

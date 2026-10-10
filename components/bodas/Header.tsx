@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Logo from "@/components/Logo";
-import { GOLD, whatsappUrl, type NavLink } from "@/components/bodas/contacto";
+import { GOLD, MARCA_LABEL, whatsappUrl, type NavLink } from "@/components/bodas/contacto";
 
 type Props = {
   links: NavLink[];
@@ -33,16 +33,16 @@ export default function BodasHeader({ links, ctaLabel, ctaMessage }: Props) {
         background: scrolled ? "rgba(20,18,15,0.92)" : "transparent",
         backdropFilter: scrolled ? "blur(14px)" : "none",
         WebkitBackdropFilter: scrolled ? "blur(14px)" : "none",
-        borderBottom: scrolled ? "1px solid rgba(196,160,82,0.22)" : "none",
+        borderBottom: scrolled ? "1px solid rgba(210,174,109,0.22)" : "none",
       }}
     >
       <div className="bodas-container flex items-center justify-between h-20">
         <a
-          href="/"
+          href="/bodas"
           className="flex items-center transition-opacity duration-500 hover:opacity-80"
-          aria-label="Ir al inicio de PG Estrategias"
+         
         >
-          <Logo size={30} tone="cream" accent={GOLD} />
+          <Logo size={30} tone="cream" accent={GOLD} label={MARCA_LABEL} />
         </a>
 
         {/* Desktop */}
@@ -91,7 +91,7 @@ export default function BodasHeader({ links, ctaLabel, ctaMessage }: Props) {
           className="md:hidden bodas-container py-10 flex flex-col gap-5"
           style={{
             background: "rgba(20,18,15,0.98)",
-            borderTop: "1px solid rgba(196,160,82,0.22)",
+            borderTop: "1px solid rgba(210,174,109,0.22)",
           }}
         >
           {links.map((link) => (

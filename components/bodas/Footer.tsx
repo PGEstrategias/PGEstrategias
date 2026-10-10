@@ -4,6 +4,7 @@ import { legalLinks } from "@/components/legalLinks";
 import {
   EMAIL,
   GOLD,
+  MARCA_LABEL,
   WHATSAPP_DISPLAY,
   WHATSAPP_URL,
   type NavLink,
@@ -15,7 +16,7 @@ type Props = {
 };
 
 const labelStyle = {
-  color: "rgba(247,243,238,0.4)",
+  color: "rgba(247,243,238,0.66)",
 } as const;
 
 const linkStyle = {
@@ -26,7 +27,7 @@ export default function BodasFooter({ tagline, links }: Props) {
   return (
     <footer
       className="bodas-dark"
-      style={{ borderTop: "1px solid rgba(196,160,82,0.22)" }}
+      style={{ borderTop: "1px solid rgba(210,174,109,0.22)" }}
     >
       <div className="bodas-container pt-20 pb-10">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
@@ -36,11 +37,11 @@ export default function BodasFooter({ tagline, links }: Props) {
               href="/"
               className="inline-flex mb-6 transition-opacity duration-500 hover:opacity-80"
             >
-              <Logo size={26} tone="cream" accent={GOLD} />
+              <Logo size={26} tone="cream" accent={GOLD} label={MARCA_LABEL} />
             </a>
             <p
               className="font-body text-[13px] leading-[1.75] max-w-[260px]"
-              style={{ color: "rgba(247,243,238,0.5)" }}
+              style={{ color: "rgba(247,243,238,0.66)" }}
             >
               {tagline}
             </p>
@@ -59,7 +60,7 @@ export default function BodasFooter({ tagline, links }: Props) {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="font-body text-[14px] transition-colors duration-500 w-fit hover:text-[color:#C4A052]"
+                  className="font-body text-[14px] transition-colors duration-500 w-fit hover:text-[color:#D2AE6D]"
                   style={linkStyle}
                 >
                   {link.label}
@@ -78,7 +79,7 @@ export default function BodasFooter({ tagline, links }: Props) {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="font-body text-[14px] transition-colors duration-500 w-fit hover:text-[color:#C4A052]"
+                  className="font-body text-[14px] transition-colors duration-500 w-fit hover:text-[color:#D2AE6D]"
                   style={linkStyle}
                 >
                   {link.label}
@@ -98,7 +99,7 @@ export default function BodasFooter({ tagline, links }: Props) {
             <div className="flex flex-col gap-3 mb-8">
               <a
                 href={`mailto:${EMAIL}`}
-                className="font-body text-[14px] transition-colors duration-500 w-fit hover:text-[color:#C4A052]"
+                className="font-body text-[14px] transition-colors duration-500 w-fit hover:text-[color:#D2AE6D]"
                 style={linkStyle}
               >
                 {EMAIL}
@@ -107,7 +108,7 @@ export default function BodasFooter({ tagline, links }: Props) {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-body text-[14px] transition-colors duration-500 w-fit hover:text-[color:#C4A052]"
+                className="font-body text-[14px] transition-colors duration-500 w-fit hover:text-[color:#D2AE6D]"
                 style={linkStyle}
               >
                 {WHATSAPP_DISPLAY}
@@ -121,7 +122,7 @@ export default function BodasFooter({ tagline, links }: Props) {
             </p>
             <p
               className="font-body text-[13px] leading-relaxed"
-              style={{ color: "rgba(247,243,238,0.5)" }}
+              style={{ color: "rgba(247,243,238,0.66)" }}
             >
               Calle Valencia 131-2, Las Palmas,
               <br />
@@ -136,13 +137,13 @@ export default function BodasFooter({ tagline, links }: Props) {
         >
           <p
             className="font-body text-[11px]"
-            style={{ color: "rgba(247,243,238,0.32)" }}
+            style={{ color: "rgba(247,243,238,0.66)" }}
           >
-            © {new Date().getFullYear()} PG Estrategias · Growth Partners · Puebla
+            © {new Date().getFullYear()} PG Event Films · una marca de PG Estrategias · Puebla
           </p>
           <p
             className="font-body text-[11px]"
-            style={{ color: "rgba(247,243,238,0.24)" }}
+            style={{ color: "rgba(247,243,238,0.66)" }}
           >
             Todos los precios en MXN, sin IVA.
           </p>
