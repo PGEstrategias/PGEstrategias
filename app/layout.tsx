@@ -8,6 +8,7 @@ const GOOGLE_FONTS =
   "https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Inter:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://pgestrategias.com"),
   title: "Agencia de Marketing Digital y Producción Audiovisual en Puebla | PG Estrategias",
   description: "Anuncios, video y WhatsApp operados por un solo equipo en Puebla. Campaña activa en 14 días con garantía por escrito.",
   keywords: "agencia de marketing Puebla, producción audiovisual Puebla, pauta digital, publicidad digital, Meta Ads, Google Ads",

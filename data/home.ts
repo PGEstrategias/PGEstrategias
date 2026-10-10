@@ -1,6 +1,8 @@
 /* Contenido de la home (/). Los textos entre corchetes son PLACEHOLDER o
    copy por confirmar; ver la lista de pendientes en la entrega. */
 
+import type { VideoItem } from "@/components/site/VideoGrid";
+
 /* Cloudinary: inserta transformaciones en una URL de /upload/. */
 export function cld(url: string, t: string) {
   return url.replace("/upload/", `/upload/${t}/`);
@@ -42,52 +44,58 @@ export const HERO_POSTER = {
 
 /* ── Marcas ───────────────────────────────────────────────────── */
 
-/* Archivos en /public/assets/logos/. Los actuales son PLACEHOLDER de texto:
-   reemplazar cada archivo por el logo oficial con el mismo nombre. */
-export const LOGOS = [
-  { nombre: "Mercedes-Benz", src: "/assets/logos/mercedes-benz.svg" },
-  { nombre: "Land Rover", src: "/assets/logos/land-rover.svg" },
-  { nombre: "Zenith Motors", src: "/assets/logos/zenith-motors.svg" },
-  { nombre: "BMW Vecsa", src: "/assets/logos/bmw-vecsa.svg" },
-  { nombre: "Kigo", src: "/assets/logos/kigo.svg" },
-  { nombre: "Dr. Manuel Fernández", src: "/assets/logos/dr-manuel-fernandez.svg" },
-  { nombre: "Dr. Aarón Zarain", src: "/assets/logos/dr-aaron-zarain.svg" },
+/* Archivos en /public/assets/logos/ (WebP con respaldo PNG). Los de los
+   doctores siguen como PLACEHOLDER: reemplazar el .svg con el logo oficial. */
+export type Marca = { nombre: string; src: string; fallback?: string; w: number; h: number };
+
+export const LOGOS: Marca[] = [
+  { nombre: "Mercedes-Benz", src: "/assets/logos/mercedes-benz.webp", fallback: "/assets/logos/mercedes-benz.png", w: 176, h: 176 },
+  { nombre: "Land Rover", src: "/assets/logos/land-rover.webp", fallback: "/assets/logos/land-rover.png", w: 317, h: 176 },
+  { nombre: "Zenith Motors", src: "/assets/logos/zenith-motors.webp", fallback: "/assets/logos/zenith-motors.png", w: 416, h: 102 },
+  { nombre: "BMW Grupo Vecsa", src: "/assets/logos/bmw-vecsa.webp", fallback: "/assets/logos/bmw-vecsa.png", w: 161, h: 176 },
+  { nombre: "Kigo", src: "/assets/logos/kigo.webp", fallback: "/assets/logos/kigo.png", w: 157, h: 70 },
+  { nombre: "Dr. Manuel Fernández", src: "/assets/logos/dr-manuel-fernandez.svg", w: 160, h: 48 },
+  { nombre: "Dr. Aarón Zarain", src: "/assets/logos/dr-aaron-zarain.svg", w: 160, h: 48 },
 ];
+
+/* ── Videos de clientes ───────────────────────────────────────── */
+
+export const V = {
+  reyesHuerta: HERO_VIDEO,
+  zenith: "https://res.cloudinary.com/djduba5fd/video/upload/v1787612227/HuracanZenith_uzna4d.mp4",
+  landRover: "https://res.cloudinary.com/djduba5fd/video/upload/v1787082349/LandRover_LegacyDrop2_lwq2q2.mp4",
+  drManuel: "https://res.cloudinary.com/dieszqcrn/video/upload/v1778399000/DrManuelPGTestimonio_ar6neh.mp4",
+  aaronZarain: "https://res.cloudinary.com/djduba5fd/video/upload/v1779377487/AronZarainLandingPage_femgcw.mp4",
+  exHacienda: "https://res.cloudinary.com/dieszqcrn/video/upload/v1778398752/ExHaciendaPGTestimonio_ut7ja4.mp4",
+};
 
 /* ── Trabajos destacados ──────────────────────────────────────── */
 
-export type Trabajo = {
-  industria: string;
-  cliente: string;
-  linea: string;
-  video: string;
-  href: string;
-};
-
 /* A CONFIRMAR: los videos son los que ya usa el sitio para cada cliente. */
-export const TRABAJOS: Trabajo[] = [
+export const TRABAJOS: VideoItem[] = [
   {
-    industria: "Concesionarias",
-    cliente: "Mercedes-Benz Reyes Huerta",
-    linea: "[PLACEHOLDER: una línea]",
-    video: HERO_VIDEO,
+    etiqueta: "Concesionarias",
+    titulo: "Mercedes-Benz Reyes Huerta",
+    texto: "[PLACEHOLDER: una línea]",
+    video: V.reyesHuerta,
     href: "/industrias/concesionarias",
+    hrefLabel: "Ver concesionarias",
   },
   {
-    industria: "Médicos",
-    cliente: "Dr. Manuel Fernández",
-    linea: "[PLACEHOLDER: una línea]",
-    video:
-      "https://res.cloudinary.com/dieszqcrn/video/upload/v1778399000/DrManuelPGTestimonio_ar6neh.mp4",
+    etiqueta: "Médicos",
+    titulo: "Dr. Manuel Fernández",
+    texto: "[PLACEHOLDER: una línea]",
+    video: V.drManuel,
     href: "/industrias/medicos",
+    hrefLabel: "Ver médicos",
   },
   {
-    industria: "Eventos",
-    cliente: "Ex Hacienda San Bartolo",
-    linea: "[PLACEHOLDER: una línea]",
-    video:
-      "https://res.cloudinary.com/dieszqcrn/video/upload/v1778398752/ExHaciendaPGTestimonio_ut7ja4.mp4",
+    etiqueta: "Eventos",
+    titulo: "Ex Hacienda San Bartolo",
+    texto: "[PLACEHOLDER: una línea]",
+    video: V.exHacienda,
     href: "/industrias/eventos-restaurantes",
+    hrefLabel: "Ver eventos y restaurantes",
   },
 ];
 
@@ -163,17 +171,17 @@ export const PASOS = [
 export const INDUSTRIAS = [
   {
     nombre: "Concesionarias",
-    linea: "[COPY — confirmar: una línea]",
+    linea: "Video de inventario, Meta Ads y landing pages que llevan al cliente al piso.",
     href: "/industrias/concesionarias",
   },
   {
     nombre: "Médicos y clínicas",
-    linea: "[COPY — confirmar: una línea]",
+    linea: "Perfil de Google, web por procedimiento y video que genera confianza.",
     href: "/industrias/medicos",
   },
   {
     nombre: "Eventos y restaurantes",
-    linea: "[COPY — confirmar: una línea]",
+    linea: "Contenido que antoja y campañas que llenan fechas y mesas.",
     href: "/industrias/eventos-restaurantes",
   },
 ];

@@ -1,13 +1,10 @@
 import type { Metadata } from "next";
-import { Inter, Syne } from "next/font/google";
 import Link from "next/link";
-import SiteHeader from "@/components/site/SiteHeader";
-import SiteFooter from "@/components/site/SiteFooter";
+import PageShell from "@/components/site/PageShell";
+import VideoGrid from "@/components/site/VideoGrid";
 import WhatsAppIcon from "@/components/site/WhatsAppIcon";
 import HeroVideo from "@/components/home/HeroVideo";
-import TrabajosDestacados from "@/components/home/TrabajosDestacados";
 import ContactoForm from "@/components/home/ContactoForm";
-import RevealObserver from "@/components/home/RevealObserver";
 import s from "@/components/home/home.module.css";
 import {
   HERO_POSTER,
@@ -16,13 +13,10 @@ import {
   PAQUETES,
   PASOS,
   TESTIMONIO,
+  TRABAJOS,
 } from "@/data/home";
-import { ultimosArticulos } from "@/data/blog";
+import { PILARES, publicados } from "@/lib/blog";
 import { EMAIL, SITE_URL, WHATSAPP_NUMERO, waLink } from "@/lib/site";
-
-/* Dos familias, subset latino, swap y precarga. Solo se cargan en esta ruta. */
-const syne = Syne({ subsets: ["latin"], display: "swap", variable: "--font-syne" });
-const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
 
 /* PLACEHOLDER: título y descripción definitivos de la home. */
 const TITLE = "PG Estrategias | Producción audiovisual y Meta Ads en Puebla";
@@ -82,21 +76,14 @@ function Ph({ children }: { children: string }) {
 }
 
 export default function Home() {
-  const articulos = ultimosArticulos(3);
+  const articulos = publicados().slice(0, 3);
 
   return (
-    <div className={`${s.page} ${syne.variable} ${inter.variable}`}>
+    <PageShell overHero>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(orgJsonLd) }}
       />
-      <noscript>
-        <style>{"[data-reveal]{opacity:1!important;transform:none!important}"}</style>
-      </noscript>
-
-      <SiteHeader overHero />
-
-      <main id="contenido">
         {/* 1 · HERO */}
         <section className={s.hero} aria-labelledby="hero-title">
           <HeroVideo />
@@ -144,7 +131,17 @@ export default function Home() {
                   data-reveal
                   data-reveal-delay={i * 70}
                 >
-                  <img src={l.src} alt={l.nombre} width={160} height={48} loading="lazy" decoding="async" />
+                  <picture>
+                    {l.fallback && <source srcSet={l.src} type="image/webp" />}
+                    <img
+                      src={l.fallback ?? l.src}
+                      alt={l.nombre}
+                      width={l.w}
+                      height={l.h}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
                 </li>
               ))}
             </ul>
@@ -160,7 +157,7 @@ export default function Home() {
               </h2>
               <p className={s.sub}>Tres proyectos, tres industrias.</p>
             </div>
-            <TrabajosDestacados />
+            <VideoGrid items={TRABAJOS} />
           </div>
         </section>
 
@@ -293,18 +290,21 @@ export default function Home() {
                     data-reveal
                     data-reveal-delay={i * 80}
                   >
-                    <time className={s.date} dateTime={a.fecha}>
-                      {new Date(`${a.fecha}T12:00:00`).toLocaleDateString("es-MX", {
+                    <p className={s.date}>
+                      {PILARES[a.pillar].label} ·{" "}
+                      <time dateTime={a.date}>
+                      {new Date(`${a.date}T12:00:00`).toLocaleDateString("es-MX", {
                         day: "numeric",
                         month: "long",
                         year: "numeric",
                       })}
-                    </time>
+                      </time>
+                    </p>
                     <h3 className={s.cardTitle}>
-                      <Ph>{a.titulo}</Ph>
+                      {a.title}
                     </h3>
                     <p className={s.cardText}>
-                      <Ph>{a.descripcion}</Ph>
+                      {a.description}
                     </p>
                     <Link prefetch={false} href={`/blog/${a.slug}`} className={s.link}>
                       Leer artículo <span aria-hidden="true">→</span>
@@ -346,10 +346,6 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </main>
-
-      <SiteFooter />
-      <RevealObserver />
-    </div>
+    </PageShell>
   );
 }
