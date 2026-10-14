@@ -43,6 +43,7 @@ const NAV = [
   { label: "Eventos", href: "#eventos" },
   { label: "Películas", href: "#peliculas" },
   { label: "Paquetes", href: "#paquetes" },
+  { label: "Wedding planner", href: "/weddingplanner" },
   { label: "Invitaciones", href: "/invitacionesdebodas" },
   { label: "Contacto", href: "#contacto" },
 ];
@@ -92,6 +93,7 @@ export default function EventFilmsPage() {
           { label: "Eventos", href: "#eventos" },
           { label: "Películas", href: "#peliculas" },
           { label: "Paquetes", href: "#paquetes" },
+          { label: "Wedding planner", href: "/weddingplanner" },
           { label: "Invitaciones digitales", href: "/invitacionesdebodas" },
         ]}
       />

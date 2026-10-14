@@ -27,6 +27,7 @@ const NAV = [
   { label: "Cómo funciona", href: "#como-funciona" },
   { label: "Paquetes", href: "#paquetes" },
   { label: "Event Films", href: "/eventfilms" },
+  { label: "Wedding planner", href: "/weddingplanner" },
   { label: "Contacto", href: "#contacto" },
 ];
 
@@ -58,6 +59,7 @@ export default function InvitacionesDeBodasPage() {
           { label: "Cómo funciona", href: "#como-funciona" },
           { label: "Paquetes", href: "#paquetes" },
           { label: "Video y foto de eventos", href: "/eventfilms" },
+          { label: "Wedding planner", href: "/weddingplanner" },
           { label: "Nuestro trabajo", href: "/nuestrotrabajo" },
         ]}
       />
