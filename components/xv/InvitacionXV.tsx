@@ -187,10 +187,37 @@ export default function InvitacionXV() {
   const { sonando, alternar } = useYouTube(XV.youtubeId, holder);
   const [nombre, setNombre] = useState("");
   const [personas, setPersonas] = useState("1");
+  const [mensaje, setMensaje] = useState("");
+  const [trampa, setTrampa] = useState("");
+  const [estado, setEstado] = useState<"listo" | "enviando" | "ok" | "error">("listo");
+
+  /* Guarda la confirmación en la hoja de Google de la familia. Si la hoja
+     todavía no está conectada, se manda por WhatsApp como respaldo. */
+  async function confirmar(e: React.FormEvent) {
+    e.preventDefault();
+    if (estado === "enviando" || nombre.trim().length < 2) return;
+    setEstado("enviando");
+    try {
+      const r = await fetch("/api/xv-rsvp", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ nombre, personas, mensaje, sitio: trampa }),
+      });
+      const datos = (await r.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
+      if (datos?.ok) return setEstado("ok");
+      if (datos?.error === "sin-configurar" && rsvpUrl) {
+        window.open(rsvpUrl, "_blank", "noopener,noreferrer");
+        return setEstado("ok");
+      }
+      setEstado("error");
+    } catch {
+      setEstado("error");
+    }
+  }
 
   const rsvpUrl = XV.whatsappRsvp
     ? `https://wa.me/${XV.whatsappRsvp}?text=${encodeURIComponent(
-        `¡Hola! Confirmo mi asistencia a los XV años de ${XV.nombre}. Nombre: ${nombre || "—"}. Personas: ${personas}.`,
+        `¡Hola! Confirmo mi asistencia a los XV años de ${XV.nombre}. Nombre: ${nombre || "—"}. Personas: ${personas}.${mensaje ? ` Mensaje: ${mensaje}` : ""}`,
       )}`
     : "";
 
@@ -384,34 +411,65 @@ export default function InvitacionXV() {
             <img src="/xvsack/06-disfrutar.webp" alt={`${XV.nombre} de pequeña, lista para la fiesta`} width={900} height={845} loading="lazy" decoding="async" style={{ height: 230 }} />
             <figcaption className={s.pie}>¡Lista para la fiesta!</figcaption>
           </motion.figure>
-          <form className={s.form} onSubmit={(e) => e.preventDefault()}>
-            <div className={s.field}>
-              <label htmlFor="xv-nombre">Tu nombre</label>
-              <input id="xv-nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} autoComplete="name" />
-            </div>
-            <div className={s.field}>
-              <label htmlFor="xv-personas">¿Cuántas personas asisten?</label>
-              <select id="xv-personas" value={personas} onChange={(e) => setPersonas(e.target.value)}>
-                {["1", "2", "3", "4", "5", "6"].map((n) => (
-                  <option key={n}>{n}</option>
-                ))}
-              </select>
-            </div>
-            <a
-              href={rsvpUrl || "#confirmar"}
-              target={rsvpUrl ? "_blank" : undefined}
-              rel="noopener noreferrer"
-              aria-disabled={!rsvpUrl || !nombre.trim()}
-              className={`${s.btn} ${s.btnNoche}`}
+          {estado === "ok" ? (
+            <motion.div
+              className={s.card}
+              style={{ marginTop: 30, textAlign: "center", background: "#fff" }}
+              initial={{ opacity: 0, scale: 0.94 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, ease: EASE }}
+              role="status"
             >
-              Confirmar por WhatsApp
-            </a>
-            {!XV.whatsappRsvp && (
-              <p style={{ textAlign: "center" }}>
-                <span className={s.pend}>Número para confirmar por definir</span>
+              <p style={{ fontSize: 34 }} aria-hidden>💗</p>
+              <h3 className={s.cardTitle}>¡Gracias, {nombre.trim().split(" ")[0]}!</h3>
+              <p className={s.cardText}>
+                Tu asistencia quedó confirmada ({personas} {personas === "1" ? "persona" : "personas"}). ¡Nos vemos en la fiesta!
               </p>
-            )}
-          </form>
+              {rsvpUrl && (
+                <p style={{ marginTop: 16 }}>
+                  <a href={rsvpUrl} target="_blank" rel="noopener noreferrer" className={`${s.btn} ${s.btnLinea}`} style={{ minHeight: 44, color: "#0f0b0d" }}>
+                    Avisar también por WhatsApp
+                  </a>
+                </p>
+              )}
+            </motion.div>
+          ) : (
+            <form className={s.form} onSubmit={confirmar}>
+              <div className={s.field}>
+                <label htmlFor="xv-nombre">Tu nombre</label>
+                <input id="xv-nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} autoComplete="name" required minLength={2} maxLength={120} />
+              </div>
+              <div className={s.field}>
+                <label htmlFor="xv-personas">¿Cuántas personas asisten?</label>
+                <select id="xv-personas" value={personas} onChange={(e) => setPersonas(e.target.value)}>
+                  {["1", "2", "3", "4", "5", "6"].map((n) => (
+                    <option key={n}>{n}</option>
+                  ))}
+                </select>
+              </div>
+              <div className={s.field}>
+                <label htmlFor="xv-mensaje">Un mensaje para {XV.nombre} (opcional)</label>
+                <input id="xv-mensaje" value={mensaje} onChange={(e) => setMensaje(e.target.value)} maxLength={140} />
+              </div>
+              {/* Campo trampa para bots: oculto a las personas. */}
+              <input type="text" name="sitio" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1 }} value={trampa} onChange={(e) => setTrampa(e.target.value)} />
+              <button type="submit" className={`${s.btn} ${s.btnNoche}`} aria-disabled={estado === "enviando" || nombre.trim().length < 2}>
+                {estado === "enviando" ? "Confirmando…" : "Confirmar asistencia"}
+              </button>
+              {estado === "error" && (
+                <p role="alert" className={s.cardText} style={{ textAlign: "center" }}>
+                  No pudimos guardar tu confirmación.{" "}
+                  {rsvpUrl ? (
+                    <a href={rsvpUrl} target="_blank" rel="noopener noreferrer" style={{ color: "#a8466a", fontWeight: 600 }}>
+                      Confírmala por WhatsApp aquí
+                    </a>
+                  ) : (
+                    "Intenta de nuevo en un momento."
+                  )}
+                </p>
+              )}
+            </form>
+          )}
         </div>
       </section>
 
