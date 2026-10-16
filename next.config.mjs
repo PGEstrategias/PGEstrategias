@@ -17,6 +17,18 @@ const nextConfig = {
         source: "/webimagenautomotriz",
         destination: "/webimagenautomotriz/index.html",
       },
+      {
+        source: "/propuestainvermat",
+        destination: "/propuesta-invermat.html",
+      },
+      {
+        source: "/webinvermat",
+        destination: "/invermat/index.html",
+      },
+      {
+        source: "/lpinvermat",
+        destination: "/invermat/lp.html",
+      },
     ];
   },
   async redirects() {
