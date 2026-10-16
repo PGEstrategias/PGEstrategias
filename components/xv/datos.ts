@@ -9,8 +9,9 @@ export const XV = {
   fechaLarga: "Viernes 27 de noviembre de 2026",
   fechaCorta: "27 · 11 · 2026",
 
-  /* PENDIENTE: hora de inicio, formato 24 h, p. ej. "20:00". */
-  hora: "",
+  /* Hora de inicio (24 h, para la cuenta regresiva) y como se lee. */
+  hora: "19:00",
+  horaTexto: "7:00 p.m.",
   lugar: "Ex Hacienda San Bartolo",
   direccion: "",
   maps: "https://share.google/PuIJ5RsBaqF3p8DyO",
@@ -38,6 +39,14 @@ export const FOTOS = [
 export const HISTORIA = [
   "Soy una persona que disfruta descubrir cosas nuevas, compartir momentos especiales con las personas que quiero y crear recuerdos que permanezcan en mi corazón.",
   "Hoy comienzo una etapa llena de sueños, ilusiones y nuevas aventuras. Celebrar mis XV años es agradecer por lo vivido, valorar a quienes me acompañan y dar la bienvenida a todo lo bonito que está por venir.",
+];
+
+export const ITINERARIO = [
+  { hora: "7:00 – 7:30 p.m.", titulo: "Recepción", icono: "🥂" },
+  { hora: "7:30 – 9:00 p.m.", titulo: "Bienvenida y cena", icono: "🍽" },
+  { hora: "9:00 p.m.", titulo: "El vals", icono: "💃" },
+  { hora: "Después del vals", titulo: "Pastel", icono: "🎂" },
+  { hora: "10:30 p.m.", titulo: "Disco y baile", icono: "🪩" },
 ];
 
 export const FRASE =

@@ -28,8 +28,8 @@ function doPost(e) {
   candado.waitLock(10000);
   try {
     if (hoja.getLastRow() === 0) {
-      hoja.appendRow(["Fecha y hora", "Nombre", "Personas", "Mensaje"]);
-      hoja.getRange(1, 1, 1, 4).setFontWeight("bold");
+      hoja.appendRow(["Fecha y hora", "Nombre", "Personas", "Mensaje", "Acompañantes"]);
+      hoja.getRange(1, 1, 1, 5).setFontWeight("bold");
       hoja.setFrozenRows(1);
     }
     hoja.appendRow([
@@ -37,6 +37,7 @@ function doPost(e) {
       limpiar(datos.nombre),
       Math.max(1, Math.min(20, Number(datos.personas) || 1)),
       limpiar(datos.mensaje),
+      limpiar(datos.acompanantes, 800),
     ]);
   } finally {
     candado.releaseLock();
@@ -45,8 +46,8 @@ function doPost(e) {
 }
 
 /* Texto corto y sin fórmulas: un nombre que empiece con "=" no se ejecuta. */
-function limpiar(valor) {
-  const texto = String(valor || "").replace(/[\u0000-\u001f]/g, " ").trim().slice(0, 140);
+function limpiar(valor, max) {
+  const texto = String(valor || "").replace(/[\u0000-\u001f]/g, " ").trim().slice(0, max || 140);
   return /^[=+\-@]/.test(texto) ? "'" + texto : texto;
 }
 

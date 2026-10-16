@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { FOTOS, FRASE, HISTORIA, XV } from "./datos";
+import { FOTOS, FRASE, HISTORIA, ITINERARIO, XV } from "./datos";
 import s from "./xv.module.css";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
@@ -188,6 +188,12 @@ export default function InvitacionXV() {
   const [nombre, setNombre] = useState("");
   const [personas, setPersonas] = useState("1");
   const [mensaje, setMensaje] = useState("");
+  const [acompanantes, setAcompanantes] = useState<string[]>([]);
+  const extra = Number(personas) - 1;
+  const nombresOk =
+    nombre.trim().length >= 2 && acompanantes.slice(0, extra).length === extra &&
+    acompanantes.slice(0, extra).every((n) => (n ?? "").trim().length >= 2);
+  const listaAcomp = acompanantes.slice(0, extra).map((n) => (n ?? "").trim()).filter(Boolean);
   const [trampa, setTrampa] = useState("");
   const [estado, setEstado] = useState<"listo" | "enviando" | "ok" | "error">("listo");
 
@@ -195,13 +201,13 @@ export default function InvitacionXV() {
      todavía no está conectada, se manda por WhatsApp como respaldo. */
   async function confirmar(e: React.FormEvent) {
     e.preventDefault();
-    if (estado === "enviando" || nombre.trim().length < 2) return;
+    if (estado === "enviando" || !nombresOk) return;
     setEstado("enviando");
     try {
       const r = await fetch("/api/xv-rsvp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nombre, personas, mensaje, sitio: trampa }),
+        body: JSON.stringify({ nombre, personas, acompanantes: listaAcomp, mensaje, sitio: trampa }),
       });
       const datos = (await r.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
       if (datos?.ok) return setEstado("ok");
@@ -217,7 +223,7 @@ export default function InvitacionXV() {
 
   const rsvpUrl = XV.whatsappRsvp
     ? `https://wa.me/${XV.whatsappRsvp}?text=${encodeURIComponent(
-        `¡Hola! Confirmo mi asistencia a los XV años de ${XV.nombre}. Nombre: ${nombre || "—"}. Personas: ${personas}.${mensaje ? ` Mensaje: ${mensaje}` : ""}`,
+        `¡Hola! Confirmo mi asistencia a los XV años de ${XV.nombre}. Nombre: ${nombre || "—"}. Personas: ${personas}.${listaAcomp.length ? ` Acompañantes: ${listaAcomp.join(", ")}.` : ""}${mensaje ? ` Mensaje: ${mensaje}` : ""}`,
       )}`
     : "";
 
@@ -304,7 +310,7 @@ export default function InvitacionXV() {
               <p className={s.cardText}>
                 {XV.fechaLarga}
                 <br />
-                {XV.hora ? `${XV.hora} h` : <span className={s.pend}>Hora por confirmar</span>}
+                {XV.hora ? XV.horaTexto : <span className={s.pend}>Hora por confirmar</span>}
               </p>
             </motion.div>
             <motion.div className={s.card} {...aparece}>
@@ -328,6 +334,46 @@ export default function InvitacionXV() {
               )}
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Itinerario */}
+      <section className={`${s.section} ${s.light}`}>
+        <div className={s.wrap} style={{ maxWidth: 560 }}>
+          <motion.div {...aparece}>
+            <p className={s.label}>Itinerario</p>
+            <h2 className={s.title}>
+              Así se va a <em>vivir</em>
+            </h2>
+          </motion.div>
+          <ol className={s.itinerario}>
+            <motion.span
+              aria-hidden
+              className={s.linea}
+              initial={{ scaleY: 0 }}
+              whileInView={{ scaleY: 1 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 1.4, ease: EASE }}
+            />
+            {ITINERARIO.map((p, i) => (
+              <motion.li
+                key={p.titulo}
+                className={s.paso}
+                initial={{ opacity: 0, x: -16 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ duration: 0.5, delay: i * 0.12, ease: EASE }}
+              >
+                <span className={s.punto} aria-hidden>
+                  {p.icono}
+                </span>
+                <div>
+                  <p className={s.pasoHora}>{p.hora}</p>
+                  <h3 className={s.pasoTitulo}>{p.titulo}</h3>
+                </div>
+              </motion.li>
+            ))}
+          </ol>
         </div>
       </section>
 
@@ -440,20 +486,46 @@ export default function InvitacionXV() {
                 <input id="xv-nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} autoComplete="name" required minLength={2} maxLength={120} />
               </div>
               <div className={s.field}>
-                <label htmlFor="xv-personas">¿Cuántas personas asisten?</label>
+                <label htmlFor="xv-personas">¿Cuántas personas asisten? (contándote a ti)</label>
                 <select id="xv-personas" value={personas} onChange={(e) => setPersonas(e.target.value)}>
                   {["1", "2", "3", "4", "5", "6"].map((n) => (
                     <option key={n}>{n}</option>
                   ))}
                 </select>
               </div>
+              {Array.from({ length: Math.max(0, extra) }, (_, i) => (
+                <motion.div
+                  key={i}
+                  className={s.field}
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <label htmlFor={`xv-acomp-${i}`}>Nombre del acompañante {i + 1}</label>
+                  <input
+                    id={`xv-acomp-${i}`}
+                    value={acompanantes[i] ?? ""}
+                    onChange={(e) =>
+                      setAcompanantes((prev) => {
+                        const nuevo = [...prev];
+                        nuevo[i] = e.target.value;
+                        return nuevo;
+                      })
+                    }
+                    required
+                    minLength={2}
+                    maxLength={80}
+                    autoComplete="off"
+                  />
+                </motion.div>
+              ))}
               <div className={s.field}>
                 <label htmlFor="xv-mensaje">Un mensaje para {XV.nombre} (opcional)</label>
                 <input id="xv-mensaje" value={mensaje} onChange={(e) => setMensaje(e.target.value)} maxLength={140} />
               </div>
               {/* Campo trampa para bots: oculto a las personas. */}
               <input type="text" name="sitio" tabIndex={-1} autoComplete="off" aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 1, height: 1 }} value={trampa} onChange={(e) => setTrampa(e.target.value)} />
-              <button type="submit" className={`${s.btn} ${s.btnNoche}`} aria-disabled={estado === "enviando" || nombre.trim().length < 2}>
+              <button type="submit" className={`${s.btn} ${s.btnNoche}`} aria-disabled={estado === "enviando" || !nombresOk}>
                 {estado === "enviando" ? "Confirmando…" : "Confirmar asistencia"}
               </button>
               {estado === "error" && (

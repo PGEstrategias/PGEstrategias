@@ -47,6 +47,11 @@ export async function POST(req: Request) {
   const nombre = limpiar(body.nombre, 120);
   const personas = Math.max(1, Math.min(20, Number(body.personas) || 1));
   const mensaje = limpiar(body.mensaje, 140);
+  const acompanantes = (Array.isArray(body.acompanantes) ? body.acompanantes : [])
+    .slice(0, 19)
+    .map((n) => limpiar(n, 80))
+    .filter((n) => n.length >= 2)
+    .join(", ");
   if (nombre.length < 2) {
     return NextResponse.json({ ok: false, error: "nombre" }, { status: 400 });
   }
@@ -60,7 +65,7 @@ export async function POST(req: Request) {
     const r = await fetch(URL_HOJA, {
       method: "POST",
       headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify({ token: TOKEN, nombre, personas, mensaje }),
+      body: JSON.stringify({ token: TOKEN, nombre, personas, acompanantes, mensaje }),
       redirect: "follow",
       cache: "no-store",
     });
