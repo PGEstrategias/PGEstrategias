@@ -367,10 +367,23 @@ export default function InvitacionXV() {
           <motion.div {...aparece}>
             <p className={s.label}>Confirma tu asistencia</p>
             <h2 className={s.title}>
-              ¿Me <em>acompañas</em>?
+              Ven a <em>disfrutar</em>
             </h2>
             {XV.fechaLimite && <p className={s.text}>Por favor confirma antes del {XV.fechaLimite}.</p>}
           </motion.div>
+          <motion.figure
+            className={s.polaroid}
+            style={{ width: 240, margin: "30px auto 0" }}
+            initial={{ opacity: 0, y: 30, rotate: 0 }}
+            whileInView={{ opacity: 1, y: 0, rotate: -3 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.8, ease: EASE }}
+            whileHover={{ rotate: 0, scale: 1.04 }}
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/xvsack/06-disfrutar.webp" alt={`${XV.nombre} de pequeña, lista para la fiesta`} width={900} height={845} loading="lazy" decoding="async" style={{ height: 230 }} />
+            <figcaption className={s.pie}>¡Lista para la fiesta!</figcaption>
+          </motion.figure>
           <form className={s.form} onSubmit={(e) => e.preventDefault()}>
             <div className={s.field}>
               <label htmlFor="xv-nombre">Tu nombre</label>

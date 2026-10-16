@@ -11,20 +11,17 @@ export const XV = {
 
   /* PENDIENTE: hora de inicio, formato 24 h, p. ej. "20:00". */
   hora: "",
-  /* PENDIENTE: salón o lugar de la recepción y su dirección. */
-  lugar: "",
+  lugar: "Ex Hacienda San Bartolo",
   direccion: "",
-  /* PENDIENTE: enlace de Google Maps del lugar. */
-  maps: "",
+  maps: "https://share.google/PuIJ5RsBaqF3p8DyO",
 
-  /* PENDIENTE: WhatsApp donde la familia recibe las confirmaciones
-     (52 + 10 dígitos) y fecha límite para confirmar. */
-  whatsappRsvp: "",
+  /* WhatsApp donde la familia recibe las confirmaciones (222 306 0930).
+     PENDIENTE opcional: fecha límite para confirmar. */
+  whatsappRsvp: "522223060930",
   fechaLimite: "",
 
-  /* PENDIENTE: ID del video de YouTube de "Neo Roneo" de Latin Mafia
-     (lo que va después de v= en el enlace). */
-  youtubeId: "",
+  /* "Neo Roneo" de Latin Mafia en YouTube (youtu.be/uEXDe_3WfUQ). */
+  youtubeId: "uEXDe_3WfUQ",
   cancion: "Neo Roneo",
   artista: "Latin Mafia",
 };
