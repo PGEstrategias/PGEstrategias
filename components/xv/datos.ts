@@ -28,10 +28,10 @@ export const XV = {
 };
 
 export const FOTOS = [
-  { src: "/xvsack/01-bebe.webp", w: 522, h: 740, pie: "Donde todo empezó" },
-  { src: "/xvsack/02-nina.webp", w: 528, h: 960, pie: "Siempre con estilo" },
-  { src: "/xvsack/03-guitarra.webp", w: 825, h: 1100, pie: "La música llegó" },
-  { src: "/xvsack/04-acustica.webp", w: 960, h: 720, pie: "Y se quedó" },
+  { src: "/xvsack/01-bebe.webp", w: 453, h: 604, pie: "Donde todo empezó" },
+  { src: "/xvsack/02-nina.webp", w: 558, h: 540, pie: "Siempre con estilo" },
+  { src: "/xvsack/03-guitarra.webp", w: 544, h: 741, pie: "La música llegó" },
+  { src: "/xvsack/04-acustica.webp", w: 1038, h: 1100, pie: "Y se quedó" },
   { src: "/xvsack/05-hoy.webp", w: 999, h: 775, pie: "Hoy, XV" },
 ];
 

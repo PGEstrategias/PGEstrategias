@@ -383,7 +383,7 @@ export default function InvitacionXV() {
           <motion.div {...aparece}>
             <p className={s.label}>Código de vestimenta</p>
             <h2 className={s.title}>
-              Full <em>black</em>
+              All <em>black</em>
             </h2>
             <p className={s.text}>
               Todos de negro, de pies a cabeza. El rosa pastel es el color de la quinceañera.

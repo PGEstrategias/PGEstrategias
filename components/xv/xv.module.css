@@ -116,7 +116,7 @@
 .light .cardText { color: #4a3a40; }
 .cardWide { grid-column: 1 / -1; }
 
-/* Paleta full black */
+/* Paleta all black */
 .swatches { display: flex; gap: 12px; justify-content: center; margin-top: 26px; }
 .swatch { width: 54px; height: 54px; border-radius: 50%; border: 2px solid rgba(255, 248, 250, 0.25); }
 
