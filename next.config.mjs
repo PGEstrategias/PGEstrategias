@@ -10,14 +10,6 @@ const nextConfig = {
         destination: "/lpdoctores.html",
       },
       {
-        source: "/propuestaimagenautomotrizlimon",
-        destination: "/propuesta-imagen-automotriz-limon.html",
-      },
-      {
-        source: "/webimagenautomotriz",
-        destination: "/webimagenautomotriz/index.html",
-      },
-      {
         source: "/propuestainvermat",
         destination: "/propuesta-invermat.html",
       },
