@@ -13,6 +13,9 @@ import {
 type Props = {
   tagline: string;
   links: NavLink[];
+  /* Para marcas en colaboración (p. ej. Paola Jiménez · by PG Event Films). */
+  brand?: React.ReactNode;
+  copyright?: string;
 };
 
 const labelStyle = {
@@ -23,7 +26,7 @@ const linkStyle = {
   color: "rgba(247,243,238,0.62)",
 } as const;
 
-export default function BodasFooter({ tagline, links }: Props) {
+export default function BodasFooter({ tagline, links, brand, copyright }: Props) {
   return (
     <footer
       className="bodas-dark"
@@ -37,7 +40,7 @@ export default function BodasFooter({ tagline, links }: Props) {
               href="/"
               className="inline-flex mb-6 transition-opacity duration-500 hover:opacity-80"
             >
-              <Logo size={26} tone="cream" accent={GOLD} label={MARCA_LABEL} />
+              {brand ?? <Logo size={26} tone="cream" accent={GOLD} label={MARCA_LABEL} />}
             </a>
             <p
               className="font-body text-[13px] leading-[1.75] max-w-[260px]"
@@ -139,7 +142,7 @@ export default function BodasFooter({ tagline, links }: Props) {
             className="font-body text-[11px]"
             style={{ color: "rgba(247,243,238,0.66)" }}
           >
-            © {new Date().getFullYear()} PG Event Films · una marca de PG Estrategias · Puebla
+            © {new Date().getFullYear()} {copyright ?? "PG Event Films · una marca de PG Estrategias · Puebla"}
           </p>
           <p
             className="font-body text-[11px]"

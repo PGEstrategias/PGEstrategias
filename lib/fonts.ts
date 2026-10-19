@@ -1,4 +1,4 @@
-import { Cormorant_Garamond, Inter, Syne } from "next/font/google";
+import { Allura, Cormorant_Garamond, Inter, Playfair_Display, Syne } from "next/font/google";
 
 /* Tipografía del sitio principal: dos familias, subset latino, swap y
    precarga. Solo se descarga en las rutas que usan PageShell. */
@@ -12,4 +12,21 @@ export const cormorant = Cormorant_Garamond({
   style: ["normal", "italic"],
   display: "swap",
   variable: "--font-cormorant",
+});
+
+/* Paola Jiménez Weddings & Events (colaboración con PG Event Films):
+   Playfair Display para títulos y Allura para los acentos caligráficos,
+   las dos tipografías de su manual de marca. */
+export const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  style: ["normal", "italic"],
+  display: "swap",
+  variable: "--font-playfair",
+});
+export const allura = Allura({
+  subsets: ["latin"],
+  weight: "400",
+  display: "swap",
+  variable: "--font-allura",
 });

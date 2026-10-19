@@ -1,26 +1,29 @@
 import type { Metadata } from "next";
-import BodasHeader from "@/components/bodas/Header";
 import BodasCallToAction from "@/components/bodas/CallToAction";
 import BodasFooter from "@/components/bodas/Footer";
 import { BodasWhatsAppButton } from "@/components/bodas/WhatsAppButton";
-import EventShell from "@/components/eventfilms/EventShell";
+import PJShell from "@/components/planeacion/PJShell";
+import PJHeader from "@/components/planeacion/PJHeader";
+import PlaneacionDetalles from "@/components/planeacion/Detalles";
+import { PJ } from "@/components/planeacion/marca";
 import PlaneacionHero from "@/components/planeacion/Hero";
 import PlaneacionPaquetes from "@/components/planeacion/Paquetes";
 import PlaneacionRespaldo from "@/components/planeacion/Respaldo";
 
 const DESCRIPTION =
-  "Wedding planner en Puebla y Cholula. Dos paquetes: coordinación del día del evento, o Planeación 360 con todo incluido desde $29,500 MXN hasta 150 personas.";
+  "Paola Jiménez Weddings & Events, by PG Event Films. Wedding planner en Puebla y Cholula. Dos paquetes: coordinación del día del evento, o Planeación 360 con todo incluido desde $29,500 MXN hasta 150 personas.";
 
 export const metadata: Metadata = {
-  title: "Wedding Planner en Puebla — Coordinación y Planeación 360",
+  title: "Paola Jiménez Weddings & Events — Wedding Planner en Puebla · by PG Event Films",
   description: DESCRIPTION,
   alternates: { canonical: "/weddingplanner" },
   openGraph: {
-    title: "Wedding Planner en Puebla — Coordinación y Planeación 360",
+    title: "Paola Jiménez Weddings & Events · by PG Event Films",
     description: DESCRIPTION,
     type: "website",
     locale: "es_MX",
-    siteName: "PG Event Films",
+    siteName: "Paola Jiménez Weddings & Events",
+    images: [{ url: "/paolajimenez/logo.png", width: 1000, height: 647 }],
     url: "/weddingplanner",
   },
 };
@@ -35,12 +38,12 @@ const NAV = [
   { label: "Contacto", href: "#contacto" },
 ];
 
-const MSG_CTA = "Hola, quiero cotizar los servicios de wedding planner para mi boda.";
+const MSG_CTA = "Hola, quiero cotizar los servicios de wedding planner de Paola Jiménez para mi boda.";
 
 export default function WeddingPlannerPage() {
   return (
-    <EventShell>
-      <BodasHeader
+    <PJShell>
+      <PJHeader
         links={NAV}
         ctaLabel="Agendar cita"
         ctaMessage="Hola, quiero agendar una cita para platicar sobre la planeación de mi boda."
@@ -49,6 +52,7 @@ export default function WeddingPlannerPage() {
         <PlaneacionHero />
         <PlaneacionPaquetes />
         <PlaneacionRespaldo />
+        <PlaneacionDetalles />
         <BodasCallToAction
           title="Las fechas buenas"
           titleAccent="se apartan temprano"
@@ -60,7 +64,12 @@ export default function WeddingPlannerPage() {
         />
       </main>
       <BodasFooter
-        tagline="Planeación y coordinación de bodas en Puebla y Cholula, para que el día solo haya que vivirlo."
+        brand={
+          // eslint-disable-next-line @next/next/no-img-element
+          <img src={PJ.logoMarfil} alt={`${PJ.nombre} ${PJ.linea}`} width={1000} height={647} loading="lazy" style={{ width: 190, height: "auto" }} />
+        }
+        copyright={`${PJ.nombre} ${PJ.linea} · ${PJ.firma}, una marca de PG Estrategias · Puebla`}
+        tagline="Planeación y coordinación de bodas en Puebla y Cholula, para que el día solo haya que vivirlo. Sueña · Planea · Celebra."
         links={[
           { label: "Paquetes", href: "#paquetes" },
           { label: "Event Films", href: "/eventfilms" },
@@ -68,7 +77,7 @@ export default function WeddingPlannerPage() {
           { label: "Nuestro trabajo", href: "/nuestrotrabajo" },
         ]}
       />
-      <BodasWhatsAppButton mensaje="Hola, quiero información sobre los servicios de wedding planner." />
-    </EventShell>
+      <BodasWhatsAppButton mensaje="Hola, quiero información sobre los servicios de wedding planner de Paola Jiménez." />
+    </PJShell>
   );
 }

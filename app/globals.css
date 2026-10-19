@@ -542,3 +542,97 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .musica-barra { animation: none; height: 10px; }
 }
+
+/* ═══════════════════════════════════════════
+   PAOLA JIMÉNEZ WEDDINGS & EVENTS · by PG Event Films
+   Misma estructura del vertical de bodas (.bodas-*) con la paleta y
+   tipografías del manual de Paola Jiménez: rosa empolvado, marfil,
+   champán, verde oliva y chocolate. Solo vive bajo .pj-root.
+   ═══════════════════════════════════════════ */
+
+.pj-root {
+  --b-ink: #4A3A32;          /* Chocolate */
+  --b-ink-soft: #574740;
+  --b-ivory: #F8F6F1;        /* Marfil */
+  --b-ivory-soft: #EFE9E1;
+  --b-blush: #E8D6D1;        /* Rosa empolvado */
+  --b-blush-pale: #F2E8E4;
+  --b-rose: #8C5E45;         /* Bronce del logotipo: acentos sobre claro */
+  --b-gold: #D6C2B3;         /* Champán: acentos sobre chocolate */
+  --b-gold-soft: #E6D8CC;
+  --b-muted-light: #6B5B52;
+  --pj-olive: #8A8F7A;       /* Verde oliva */
+  --pj-panel: #C9AE9F;       /* Rosa del isotipo */
+}
+
+.pj-root *,
+.pj-root *::before,
+.pj-root *::after { border-color: rgba(248, 246, 241, 0.14); }
+
+.pj-root .bodas-title,
+.pj-root .bodas-display { letter-spacing: -0.005em; }
+
+.pj-root .pj-script {
+  font-family: var(--font-allura), 'Allura', cursive;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+.pj-root .pj-caps {
+  font-family: var(--font-boda);
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+}
+
+/* Acentos sobre fondos claros: bronce en vez de champán */
+.pj-root .bodas-light .bodas-em,
+.pj-root .bodas-blush .bodas-em { color: var(--b-rose); }
+.pj-root .bodas-light .bodas-label:not(.bodas-label-ink),
+.pj-root .bodas-blush .bodas-label:not(.bodas-label-ink) { color: var(--b-rose); }
+
+/* Filetes, marcos y botones en champán en lugar del dorado de Event Films */
+.pj-root .bodas-btn-gold:hover { box-shadow: 0 10px 30px -8px rgba(214, 194, 179, 0.55); }
+.pj-root .bodas-btn-outline { border-color: rgba(214, 194, 179, 0.55); }
+.pj-root .bodas-light .bodas-btn-outline,
+.pj-root .bodas-blush .bodas-btn-outline {
+  border-color: rgba(74, 58, 50, 0.35);
+  color: var(--b-ink);
+}
+.pj-root .bodas-light .bodas-btn-outline::before,
+.pj-root .bodas-blush .bodas-btn-outline::before { background: var(--b-blush); }
+.pj-root .bodas-rule { background: linear-gradient(90deg, transparent, rgba(214, 194, 179, 0.7), transparent); }
+.pj-root .bodas-frame {
+  border-color: rgba(214, 194, 179, 0.45);
+  outline-color: rgba(214, 194, 179, 0.2);
+}
+.pj-root .bodas-blush .bodas-frame,
+.pj-root .bodas-light .bodas-frame {
+  border-color: rgba(140, 94, 69, 0.3);
+  outline-color: rgba(140, 94, 69, 0.14);
+}
+.pj-root .bodas-card-dark:hover { border-color: rgba(214, 194, 179, 0.5); }
+.pj-root .bodas-card-light { border-color: rgba(74, 58, 50, 0.1); }
+.pj-root .bodas-card-light:hover {
+  border-color: rgba(140, 94, 69, 0.4);
+  box-shadow: 0 12px 40px rgba(74, 58, 50, 0.08);
+}
+
+/* Hero: marfil con un rubor muy tenue */
+.pj-hero {
+  background:
+    radial-gradient(120% 80% at 100% 0%, rgba(232, 214, 209, 0.75) 0%, rgba(232, 214, 209, 0) 60%),
+    var(--b-ivory);
+  color: var(--b-ink);
+}
+
+/* Panel del isotipo, en arco como la papelería */
+.pj-panel {
+  background: linear-gradient(170deg, #D2B8AA 0%, var(--pj-panel) 55%, #BB9E8E 100%);
+  border-radius: 999px 999px 28px 28px;
+}
+
+.pj-arch {
+  border-radius: 999px 999px 18px 18px;
+  overflow: hidden;
+  box-shadow: 0 24px 50px -28px rgba(74, 58, 50, 0.45);
+}

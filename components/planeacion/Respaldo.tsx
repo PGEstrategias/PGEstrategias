@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { OFICINA, SEGURIDAD, TRANSPARENCIA } from "./datos";
 
-const GOLD = "#C4A052";
+const GOLD = "var(--b-gold)";
 
 const aparecer = {
   initial: { opacity: 0, y: 26 },

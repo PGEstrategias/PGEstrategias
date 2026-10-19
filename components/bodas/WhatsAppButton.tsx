@@ -12,8 +12,8 @@ export function BodasWhatsAppButton({ mensaje }: { mensaje: string }) {
       aria-label="Escríbenos por WhatsApp"
       className="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 rounded-full"
       style={{
-        background: "#D2AE6D",
-        color: "#14120F",
+        background: "var(--b-gold)",
+        color: "var(--b-ink)",
         boxShadow: "0 6px 28px rgba(20,18,15,0.4)",
       }}
       whileHover={{ scale: 1.08 }}
