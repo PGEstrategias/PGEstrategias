@@ -1,6 +1,6 @@
 /* Paola Jiménez Weddings & Events: marca de wedding planner en colaboración
    con PG Event Films. La página se presenta como "Paola Jiménez · by PG Event
-   Films"; contacto, oficina y facturación siguen siendo de PG. */
+   Films"; contacto y facturación siguen siendo de PG. */
 export const PJ = {
   nombre: "Paola Jiménez",
   linea: "Weddings & Events",

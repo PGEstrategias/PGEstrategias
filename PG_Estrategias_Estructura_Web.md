@@ -572,10 +572,6 @@ TÍTULO: "Contacto"
 Email: [correo de contacto]
 WhatsApp: [número]
 
-TÍTULO: "Oficina"
-Calle Valencia 131-2, Las Palmas
-Ciudad de México, México
-
 Redes: Instagram · LinkedIn (íconos SVG simples, 18px)
 ```
 

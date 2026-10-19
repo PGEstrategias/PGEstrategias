@@ -392,8 +392,7 @@ export default function LegalPage({
                   style={{ color: MUTED }}
                 >
                   Escríbenos y te lo explicamos sin términos técnicos. Somos PG
-                  Estrategias, con domicilio en Calle Valencia 131-2, Las Palmas,
-                  Puebla, México.
+                  Estrategias, en Puebla, México.
                 </p>
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-8">
                   <a

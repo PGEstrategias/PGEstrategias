@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { whatsappUrl } from "@/components/bodas/contacto";
+import WhatsAppIcon from "@/components/bodas/WhatsAppIcon";
 import { OFICINA, SEGURIDAD, TRANSPARENCIA } from "./datos";
 
 const GOLD = "var(--b-gold)";
@@ -14,7 +16,7 @@ const aparecer = {
 
 /**
  * Lo que sostiene la promesa: equipo capacitado, archivos abiertos y una
- * oficina donde se puede llegar a preguntar. Es la parte que separa a un
+ * cita en persona para conocerse. Es la parte que separa a un
  * planner de alguien que improvisa el día del evento.
  */
 export default function PlaneacionRespaldo() {
@@ -78,25 +80,21 @@ export default function PlaneacionRespaldo() {
               </p>
             </motion.div>
 
-            <motion.address
-              {...aparecer}
-              className="bodas-frame px-8 py-10 not-italic"
-            >
-              <p className="bodas-label mb-4">Nuestra oficina</p>
-              {OFICINA.domicilio.map((linea, i) => (
-                <p
-                  key={linea}
-                  style={{
-                    color: i === 0 ? "var(--b-ivory)" : "rgba(247,243,238,0.62)",
-                    fontSize: i === 0 ? "19px" : "15px",
-                    lineHeight: 1.7,
-                  }}
-                  className={i === 0 ? "bodas-heading mb-2" : ""}
-                >
-                  {linea}
-                </p>
-              ))}
-            </motion.address>
+            <motion.div {...aparecer} className="bodas-frame px-8 py-10">
+              <p className="bodas-label mb-4">Agenden su cita</p>
+              <p style={{ color: "rgba(247,243,238,0.72)", fontSize: "16px", lineHeight: 1.7 }}>
+                {OFICINA.cita}
+              </p>
+              <a
+                href={whatsappUrl("Hola, quiero agendar una cita para platicar sobre la planeación de mi boda.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bodas-btn-gold mt-7"
+              >
+                <WhatsAppIcon />
+                Agendar cita
+              </a>
+            </motion.div>
           </div>
         </div>
       </section>

@@ -45,7 +45,7 @@ const sections: LegalSection[] = [
             { term: "Responsable", desc: "PG Estrategias · Growth Partners" },
             {
               term: "Domicilio",
-              desc: "Calle Valencia 131-2, Las Palmas, Puebla, México",
+              desc: "Puebla, Puebla, México",
             },
             {
               term: "Correo",

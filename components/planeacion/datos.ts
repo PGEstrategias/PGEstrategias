@@ -142,11 +142,7 @@ export const TRANSPARENCIA = {
 export const OFICINA = {
   titulo: 'Conózcanos',
   entrada:
-    'Nos encantará recibirlos en nuestra oficina para presentarles nuestro método de planeación y ayudarles a convertir la boda que imaginaron en una experiencia inolvidable.',
+    'Nos encantará reunirnos con ustedes para presentarles nuestro método de planeación y ayudarles a convertir la boda que imaginaron en una experiencia inolvidable.',
   cierre: 'Agenden su cita y descubran por qué una buena planeación hace toda la diferencia.',
-  domicilio: [
-    'Torre Inxignia',
-    'Atlixcáyotl 2210, Reserva Territorial Atlixcáyotl',
-    '72197 San Bernardino Tlaxcalancingo, Pue.',
-  ],
+  cita: 'Escríbannos por WhatsApp, elegimos juntos el día y les compartimos todos los detalles para su cita.',
 };

@@ -99,7 +99,7 @@ export default function BodasFooter({ tagline, links, brand, copyright }: Props)
             >
               Contacto
             </p>
-            <div className="flex flex-col gap-3 mb-8">
+            <div className="flex flex-col gap-3">
               <a
                 href={`mailto:${EMAIL}`}
                 className="font-body text-[14px] transition-colors duration-500 w-fit hover:text-[color:#D2AE6D]"
@@ -117,20 +117,6 @@ export default function BodasFooter({ tagline, links, brand, copyright }: Props)
                 {WHATSAPP_DISPLAY}
               </a>
             </div>
-            <p
-              className="font-body text-[11px] uppercase tracking-[0.2em] mb-3"
-              style={labelStyle}
-            >
-              Oficina
-            </p>
-            <p
-              className="font-body text-[13px] leading-relaxed"
-              style={{ color: "rgba(247,243,238,0.66)" }}
-            >
-              Calle Valencia 131-2, Las Palmas,
-              <br />
-              Puebla, México
-            </p>
           </div>
         </div>
 

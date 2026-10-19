@@ -164,20 +164,6 @@ export default function Footer() {
                 +52 222 121 5051
               </a>
             </div>
-            <p
-              className="font-body text-[11px] uppercase tracking-[0.14em] mb-3"
-              style={{ color: "rgba(228,224,221,0.35)" }}
-            >
-              Oficina
-            </p>
-            <p
-              className="font-body text-[13px] leading-relaxed"
-              style={{ color: "rgba(228,224,221,0.5)" }}
-            >
-              Calle Valencia 131-2, Las Palmas,
-              <br />
-              Puebla, México
-            </p>
           </div>
         </div>
 
