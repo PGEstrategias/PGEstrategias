@@ -21,6 +21,10 @@ const nextConfig = {
         source: "/lpinvermat",
         destination: "/invermat/lp.html",
       },
+      {
+        source: "/outfitjefe",
+        destination: "/outfitjefe/index.html",
+      },
     ];
   },
   async redirects() {

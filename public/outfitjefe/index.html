@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#f7f4ef" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#16140f" media="(prefers-color-scheme: dark)">
+<title>21 Looks · Sin saco negro</title>
+<style>
+  :root {
+    --bg: #f7f4ef;
+    --card: #ffffff;
+    --ink: #1f1d1a;
+    --muted: #6b665e;
+    --line: #e6e0d6;
+    --soft: #efeae2;
+    --accent: #1f3a5f;
+    --ok: #2f7d4f;
+    --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #16140f;
+      --card: #221f1a;
+      --ink: #f2eee7;
+      --muted: #a8a196;
+      --line: #3a352d;
+      --soft: #2b2721;
+      --accent: #9cc3e6;
+      --ok: #6fcf97;
+    }
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font);
+    font-size: 16px;
+    line-height: 1.45;
+    overflow-x: hidden;
+    padding: 0 0 calc(32px + env(safe-area-inset-bottom));
+  }
+  .wrap { max-width: 520px; margin: 0 auto; padding: 0 16px; }
+
+  /* Encabezado */
+  header { padding: 22px 0 6px; }
+  h1 { font-size: 26px; font-weight: 800; letter-spacing: -0.02em; }
+  h1 span { color: var(--muted); font-weight: 600; }
+  .fecha { margin-top: 4px; font-size: 14px; color: var(--muted); }
+
+  /* Rotación */
+  .rota {
+    margin: 16px 0 18px;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 14px 16px;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  }
+  .rota p { font-size: 15px; color: var(--muted); }
+  .rota strong { display: block; font-size: 20px; color: var(--ink); white-space: nowrap; }
+  .letras { display: flex; gap: 6px; }
+  .letras span {
+    width: 40px; height: 40px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 17px;
+    background: var(--soft); color: var(--muted);
+    border: 2px solid transparent;
+  }
+  .letras span.on { background: var(--accent); color: var(--bg); }
+
+  /* Acordeón */
+  .dias { display: flex; flex-direction: column; gap: 10px; }
+  .dia { border-radius: 16px; overflow: hidden; background: var(--card); border: 1px solid var(--line); }
+  .dia-btn {
+    width: 100%; min-height: 64px;
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 16px;
+    border: 0; cursor: pointer; text-align: left;
+    font: inherit; color: var(--fg);
+    background: var(--day);
+  }
+  .dia-btn:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+  .dia-txt { flex: 1; min-width: 0; }
+  .dia-nombre { display: block; font-size: 19px; font-weight: 800; }
+  .dia-tema { display: block; font-size: 14px; opacity: 0.85; }
+  .hoy-tag {
+    font-size: 11px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 4px 8px; border-radius: 999px;
+    background: var(--fg); color: var(--day);
+  }
+  .chev { width: 22px; height: 22px; flex-shrink: 0; transition: transform .2s ease; }
+  .dia-btn[aria-expanded="true"] .chev { transform: rotate(180deg); }
+
+  .panel { padding: 12px; display: flex; flex-direction: column; gap: 10px; }
+  .panel[hidden] { display: none; }
+
+  .look {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 12px 14px;
+    background: var(--card);
+    opacity: 0.62;
+  }
+  .look.vigente {
+    opacity: 1;
+    border: 2px solid var(--day-strong);
+    box-shadow: 0 6px 18px -10px rgba(0,0,0,0.35);
+  }
+  .look-head { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+  .look-letra {
+    width: 32px; height: 32px; border-radius: 10px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; background: var(--soft); color: var(--ink);
+  }
+  .look.vigente .look-letra { background: var(--day-strong); color: var(--day-strong-fg); }
+  .look-nombre { font-weight: 700; font-size: 16px; }
+  .badge {
+    margin-left: auto;
+    font-size: 12px; font-weight: 800;
+    padding: 4px 10px; border-radius: 999px;
+    background: var(--ok); color: #fff;
+  }
+  @media (prefers-color-scheme: dark) { .badge { color: #10261a; } }
+
+  .prendas { list-style: none; }
+  .prendas li { display: flex; align-items: center; gap: 10px; padding: 6px 0; font-size: 15px; border-top: 1px solid var(--soft); }
+  .prendas li:first-child { border-top: 0; }
+  .dot {
+    width: 16px; height: 16px; border-radius: 50%; flex-shrink: 0;
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.18);
+  }
+  @media (prefers-color-scheme: dark) { .dot { box-shadow: inset 0 0 0 1px rgba(255,255,255,0.28); } }
+
+  /* Paleta y tip */
+  h2 { font-size: 18px; font-weight: 800; margin: 26px 0 10px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 14px 16px; }
+  .paleta { list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 8px 12px; }
+  .paleta li { display: flex; align-items: center; gap: 8px; font-size: 14px; min-width: 0; }
+  .paleta li span:last-child { overflow-wrap: anywhere; }
+  .paleta small { color: var(--muted); font-size: 12px; }
+  .tip { border-left: 4px solid var(--accent); }
+  .tip p { font-size: 15px; }
+  footer { margin-top: 22px; text-align: center; font-size: 12px; color: var(--muted); }
+
+  @media (prefers-reduced-motion: reduce) { .chev { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>21 Looks <span>· Sin saco negro</span></h1>
+    <p class="fecha" id="fecha"></p>
+  </header>
+
+  <section class="rota" aria-live="polite">
+    <p>Rotación semanal<strong id="rota-texto">Esta semana: Rota A</strong></p>
+    <div class="letras" id="rota-letras" aria-hidden="true">
+      <span data-l="A">A</span><span data-l="B">B</span><span data-l="C">C</span>
+    </div>
+  </section>
+
+  <main class="dias" id="dias"></main>
+
+  <h2>Paleta de colores</h2>
+  <ul class="card paleta" id="paleta"></ul>
+
+  <h2>Tip de tintorería</h2>
+  <div class="card tip">
+    <p>Lunes A y Miércoles A usan el mismo traje azul: no lo mandes a tintorería hasta que lo uses 3 veces. Cuélgalo aireando y listo.</p>
+  </div>
+
+  <footer>Rotación A → B → C, una semana cada una.</footer>
+</div>
+
+<script>
+/* ============================================================
+   CONFIGURACIÓN
+   Lunes en que empieza la semana A (formato AAAA-MM-DD).
+   Cada 7 días la rotación avanza: A, B, C, A, B, C…
+   ============================================================ */
+var FECHA_INICIO_SEMANA_A = "2026-10-19";
+
+/* ============================================================
+   DATOS: un objeto por día, con sus tres looks (A, B, C).
+   Cada prenda es [texto, color].
+   ============================================================ */
+var DIAS = [
+  { dia: "Lunes", tema: "Día de cerrar", color: "#1f3a5f", looks: {
+    A: { nombre: "El jefe", prendas: [["Traje azul completo", "#1f3a5f"], ["Camisa negra", "#1a1a1a"], ["Cinturón negro", "#1a1a1a"], ["Zapato negro liso boleado", "#1a1a1a"], ["Mido", "#c0c0c0"]] },
+    B: { nombre: "Italiano", prendas: [["Pantalón gris", "#8a8d91"], ["Camisa negra", "#1a1a1a"], ["Cinturón negro", "#1a1a1a"], ["Zapato negro liso", "#1a1a1a"], ["Mido", "#c0c0c0"], ["Saco azul", "#1f3a5f"]] },
+    C: { nombre: "Poderoso", prendas: [["Pantalón negro", "#1a1a1a"], ["Camisa negra", "#1a1a1a"], ["Cinturón negro", "#1a1a1a"], ["Zapato negro liso", "#1a1a1a"], ["Saco azul", "#1f3a5f"]] }
+  }},
+  { dia: "Martes", tema: "Fresa", color: "#c9a27e", looks: {
+    A: { prendas: [["Pantalón beige", "#d9c7a7"], ["Camisa blanca", "#ffffff"], ["Cinturón café", "#6b4a2f"], ["Zapato café chocolate", "#4a2e1f"], ["Porsche café", "#6b4a2f"]] },
+    B: { prendas: [["Pantalón italiano café", "#8a6a4f"], ["Camisa blanca", "#ffffff"], ["Cinturón café", "#6b4a2f"], ["Zapato taupe claro", "#b8a58f"]] },
+    C: { prendas: [["Pantalón gris", "#8a8d91"], ["Camisa blanca", "#ffffff"], ["Cinturón negro", "#1a1a1a"], ["Zapato negro liso", "#1a1a1a"]] }
+  }},
+  { dia: "Miércoles", tema: "Tony Montana / Vino", color: "#6e1f2e", looks: {
+    A: { prendas: [["Pantalón negro", "#1a1a1a"], ["Camisa vino", "#6e1f2e"], ["Cinturón negro", "#1a1a1a"], ["Zapato negro liso", "#1a1a1a"], ["Saco azul", "#1f3a5f"]] },
+    B: { prendas: [["Pantalón gris", "#8a8d91"], ["Camisa vino", "#6e1f2e"], ["Cinturón negro", "#1a1a1a"], ["Zapato negro liso", "#1a1a1a"]] },
+    C: { prendas: [["Pantalón beige", "#d9c7a7"], ["Camisa vino", "#6e1f2e"], ["Cinturón café", "#6b4a2f"], ["Zapato café chocolate", "#4a2e1f"]] }
+  }},
+  { dia: "Jueves", tema: "El morado", color: "#5b2c83", looks: {
+    A: { prendas: [["Pantalón italiano café", "#8a6a4f"], ["Camisa morada", "#5b2c83"], ["Cinturón café", "#6b4a2f"], ["Zapato taupe claro", "#b8a58f"]] },
+    B: { prendas: [["Pantalón gris", "#8a8d91"], ["Camisa morada", "#5b2c83"], ["Cinturón negro", "#1a1a1a"], ["Zapato negro liso", "#1a1a1a"]] },
+    C: { prendas: [["Traje beige completo", "#d9c7a7"], ["Camisa morada", "#5b2c83"], ["Cinturón café", "#6b4a2f"], ["Zapato café chocolate", "#4a2e1f"]] }
+  }},
+  { dia: "Viernes", tema: "Noche", color: "#1a1a1a", looks: {
+    A: { prendas: [["Pantalón negro", "#1a1a1a"], ["Cuello tortuga negro", "#1a1a1a"], ["Cinturón negro", "#1a1a1a"], ["Zapato negro liso boleado", "#1a1a1a"], ["Saco beige", "#d9c7a7"]] },
+    B: { prendas: [["Pantalón beige", "#d9c7a7"], ["Cuello tortuga negro", "#1a1a1a"], ["Cinturón negro", "#1a1a1a"], ["Zapato negro liso", "#1a1a1a"], ["Saco azul", "#1f3a5f"]] },
+    C: { prendas: [["Pantalón italiano café", "#8a6a4f"], ["Cuello tortuga negro", "#1a1a1a"], ["Cinturón café", "#6b4a2f"], ["Zapato taupe claro", "#b8a58f"]] }
+  }},
+  { dia: "Sábado", tema: "Relax patrón", color: "#7a9a6b", looks: {
+    A: { prendas: [["Pantalón italiano café", "#8a6a4f"], ["Playera beige", "#d9c7a7"], ["Cinturón café", "#6b4a2f"], ["Zapato taupe claro", "#b8a58f"]] },
+    B: { prendas: [["Pantalón beige", "#d9c7a7"], ["Cuello tortuga azul", "#2e5b8a"], ["Cinturón café", "#6b4a2f"], ["Zapato café chocolate", "#4a2e1f"]] },
+    C: { prendas: [["Pantalón gris", "#8a8d91"], ["Cuello tortuga azul", "#2e5b8a"], ["Cinturón negro", "#1a1a1a"], ["Zapato negro liso", "#1a1a1a"]] }
+  }},
+  { dia: "Domingo", tema: "Familiar / Misa", color: "#b08d57", looks: {
+    A: { prendas: [["Pantalón beige", "#d9c7a7"], ["Camisa azul claro", "#9cc3e6"], ["Cinturón café", "#6b4a2f"], ["Zapato café chocolate", "#4a2e1f"], ["Saco azul", "#1f3a5f"]] },
+    B: { prendas: [["Pantalón negro", "#1a1a1a"], ["Camisa blanca", "#ffffff"], ["Cinturón negro", "#1a1a1a"], ["Zapato negro liso", "#1a1a1a"]] },
+    C: { prendas: [["Pantalón gris", "#8a8d91"], ["Playera beige", "#d9c7a7"], ["Cinturón negro", "#1a1a1a"], ["Zapato taupe claro", "#b8a58f"]] }
+  }}
+];
+
+var PALETA = [
+  ["Negro", "#1a1a1a"], ["Azul", "#1f3a5f"], ["Azul claro", "#9cc3e6"], ["Azul tortuga", "#2e5b8a"],
+  ["Gris", "#8a8d91"], ["Beige", "#d9c7a7"], ["Café", "#6b4a2f"], ["Café chocolate", "#4a2e1f"],
+  ["Café italiano", "#8a6a4f"], ["Taupe", "#b8a58f"], ["Vino", "#6e1f2e"], ["Morado", "#5b2c83"],
+  ["Blanco", "#ffffff"], ["Plata (Mido)", "#c0c0c0"]
+];
+
+(function () {
+  var LETRAS = ["A", "B", "C"];
+  var TZ = "America/Mexico_City";
+
+  /* Fecha de hoy en Ciudad de México como {y, m, d, dow} (dow: 0 = lunes). */
+  function hoyMX() {
+    var partes = {};
+    new Intl.DateTimeFormat("en-US", { timeZone: TZ, year: "numeric", month: "2-digit", day: "2-digit", weekday: "short" })
+      .formatToParts(new Date())
+      .forEach(function (p) { partes[p.type] = p.value; });
+    var dows = { Mon: 0, Tue: 1, Wed: 2, Thu: 3, Fri: 4, Sat: 5, Sun: 6 };
+    return { y: +partes.year, m: +partes.month, d: +partes.day, dow: dows[partes.weekday] };
+  }
+
+  /* Letra vigente: semanas completas desde el lunes de inicio, módulo 3. */
+  function letraVigente(hoy) {
+    var f = FECHA_INICIO_SEMANA_A.split("-").map(Number);
+    var inicio = Date.UTC(f[0], f[1] - 1, f[2]);
+    var actual = Date.UTC(hoy.y, hoy.m - 1, hoy.d);
+    var semanas = Math.floor((actual - inicio) / (7 * 864e5));
+    return LETRAS[((semanas % 3) + 3) % 3];
+  }
+
+  /* Texto blanco o negro según la luminosidad del color de fondo. */
+  function luz(hex) {
+    var n = parseInt(hex.slice(1), 16);
+    var c = [(n >> 16) & 255, (n >> 8) & 255, n & 255].map(function (v) {
+      v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    });
+    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2];
+  }
+  /* Elige el texto (negro o blanco) con mayor contraste contra el fondo. */
+  function textoSobre(hex) {
+    var L = luz(hex);
+    var conNegro = (L + 0.05) / (luz("#1a1a1a") + 0.05);
+    var conBlanco = 1.05 / (L + 0.05);
+    return conNegro >= conBlanco ? "#1a1a1a" : "#ffffff";
+  }
+
+  function el(tag, attrs, hijos) {
+    var e = document.createElement(tag);
+    for (var k in attrs || {}) {
+      if (k === "text") e.textContent = attrs[k];
+      else if (k === "style") e.style.cssText = attrs[k];
+      else e.setAttribute(k, attrs[k]);
+    }
+    (hijos || []).forEach(function (h) { if (h) e.appendChild(h); });
+    return e;
+  }
+  function punto(color) { return el("span", { "class": "dot", style: "background:" + color, "aria-hidden": "true" }); }
+
+  var hoy = hoyMX();
+  var vigente = letraVigente(hoy);
+
+  /* Encabezado de fecha y rotación */
+  var fechaTxt = new Intl.DateTimeFormat("es-MX", { timeZone: TZ, weekday: "long", day: "numeric", month: "long" }).format(new Date());
+  document.getElementById("fecha").textContent = fechaTxt.charAt(0).toUpperCase() + fechaTxt.slice(1);
+  document.getElementById("rota-texto").textContent = "Esta semana: Rota " + vigente;
+  document.querySelectorAll("#rota-letras span").forEach(function (s) {
+    s.classList.toggle("on", s.dataset.l === vigente);
+  });
+
+  /* Acordeón */
+  var cont = document.getElementById("dias");
+  var botones = [];
+
+  DIAS.forEach(function (d, i) {
+    var fg = textoSobre(d.color);
+    /* El negro del viernes se perdería como borde en modo oscuro: se aclara. */
+    var fuerte = d.color === "#1a1a1a" ? "#8a8d91" : d.color;
+    var idPanel = "panel-" + i, idBtn = "btn-" + i;
+
+    var btn = el("button", { "class": "dia-btn", id: idBtn, type: "button", "aria-expanded": "false", "aria-controls": idPanel }, [
+      el("span", { "class": "dia-txt" }, [
+        el("span", { "class": "dia-nombre", text: d.dia }),
+        el("span", { "class": "dia-tema", text: d.tema })
+      ]),
+      i === hoy.dow ? el("span", { "class": "hoy-tag", text: "Hoy" }) : null
+    ]);
+    btn.insertAdjacentHTML("beforeend", '<svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>');
+
+    var panel = el("div", { "class": "panel", id: idPanel, role: "region", "aria-labelledby": idBtn, hidden: "" });
+    LETRAS.forEach(function (L) {
+      var look = d.looks[L];
+      var esVigente = L === vigente;
+      var head = el("div", { "class": "look-head" }, [
+        el("span", { "class": "look-letra", text: L, "aria-label": "Look " + L }),
+        el("span", { "class": "look-nombre", text: look.nombre ? "“" + look.nombre + "”" : "Look " + L }),
+        esVigente ? el("span", { "class": "badge", text: "Hoy toca esta" }) : null
+      ]);
+      var lista = el("ul", { "class": "prendas" }, look.prendas.map(function (p) {
+        return el("li", {}, [punto(p[1]), el("span", { text: p[0] })]);
+      }));
+      panel.appendChild(el("article", { "class": "look" + (esVigente ? " vigente" : "") }, [head, lista]));
+    });
+
+    var item = el("section", {
+      "class": "dia",
+      style: "--day:" + d.color + ";--fg:" + fg + ";--day-strong:" + fuerte + ";--day-strong-fg:" + textoSobre(fuerte)
+    }, [btn, panel]);
+    cont.appendChild(item);
+    botones.push(btn);
+
+    btn.addEventListener("click", function () {
+      var abrir = btn.getAttribute("aria-expanded") !== "true";
+      botones.forEach(function (b) {
+        b.setAttribute("aria-expanded", "false");
+        document.getElementById(b.getAttribute("aria-controls")).hidden = true;
+      });
+      if (abrir) {
+        btn.setAttribute("aria-expanded", "true");
+        panel.hidden = false;
+      }
+    });
+  });
+
+  /* Abre el día de hoy al cargar */
+  var hoyBtn = botones[hoy.dow];
+  if (hoyBtn) {
+    hoyBtn.click();
+    if (hoy.dow > 1) setTimeout(function () { hoyBtn.scrollIntoView({ block: "start", behavior: "auto" }); }, 0);
+  }
+
+  /* Paleta */
+  var pal = document.getElementById("paleta");
+  PALETA.forEach(function (c) {
+    pal.appendChild(el("li", {}, [punto(c[1]), el("span", {}, [document.createTextNode(c[0] + " "), el("small", { text: c[1] })])]));
+  });
+})();
+</script>
+</body>
+</html>
