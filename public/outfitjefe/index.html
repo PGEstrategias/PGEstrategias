@@ -60,7 +60,7 @@
     display: flex; align-items: center; justify-content: space-between; gap: 12px;
   }
   .rota p { font-size: 15px; color: var(--muted); }
-  .rota strong { display: block; font-size: 20px; color: var(--ink); white-space: nowrap; }
+  .rota strong { display: block; font-size: 20px; color: var(--ink); }
   .letras { display: flex; gap: 6px; }
   .letras span {
     width: 40px; height: 40px; border-radius: 12px;
@@ -156,7 +156,7 @@
   </header>
 
   <section class="rota" aria-live="polite">
-    <p>Rotación semanal<strong id="rota-texto">Esta semana: Rota A</strong></p>
+    <p>Rotación semanal<strong id="rota-texto">Esta semana: Rota&nbsp;A</strong></p>
     <div class="letras" id="rota-letras" aria-hidden="true">
       <span data-l="A">A</span><span data-l="B">B</span><span data-l="C">C</span>
     </div>
@@ -289,7 +289,7 @@ var PALETA = [
   /* Encabezado de fecha y rotación */
   var fechaTxt = new Intl.DateTimeFormat("es-MX", { timeZone: TZ, weekday: "long", day: "numeric", month: "long" }).format(new Date());
   document.getElementById("fecha").textContent = fechaTxt.charAt(0).toUpperCase() + fechaTxt.slice(1);
-  document.getElementById("rota-texto").textContent = "Esta semana: Rota " + vigente;
+  document.getElementById("rota-texto").textContent = "Esta semana: Rota\u00a0" + vigente;
   document.querySelectorAll("#rota-letras span").forEach(function (s) {
     s.classList.toggle("on", s.dataset.l === vigente);
   });
