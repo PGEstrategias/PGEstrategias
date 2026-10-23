@@ -61,6 +61,7 @@ export default function InvitacionesDeBodasPage() {
           { label: "Video y foto de eventos", href: "/eventfilms" },
           { label: "Wedding planner", href: "/weddingplanner" },
           { label: "Nuestro trabajo", href: "/nuestrotrabajo" },
+          { label: "Blog de bodas", href: "/blog?pilar=bodas-eventos" },
         ]}
       />
       <BodasWhatsAppButton mensaje="Hola, quiero información sobre las invitaciones digitales de PG Event Films." />

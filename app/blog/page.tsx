@@ -11,7 +11,7 @@ const POR_PAGINA = 9;
 export const metadata: Metadata = {
   title: "Blog | PG Estrategias",
   description:
-    "Guías de producción audiovisual, Meta Ads y marketing digital para concesionarias, médicos y negocios locales en Puebla.",
+    "Guías de producción audiovisual, Meta Ads y marketing digital en Puebla, y de video, invitaciones digitales y planeación para bodas y eventos.",
   alternates: { canonical: "/blog" },
 };
 

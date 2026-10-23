@@ -16,6 +16,7 @@ export const PILARES = {
   medicos: { label: "Médicos", href: "/industrias/medicos" },
   "meta-ads": { label: "Meta Ads", href: "/servicios#meta-ads" },
   "industrias-locales": { label: "Industrias locales", href: "/industrias/eventos-restaurantes" },
+  "bodas-eventos": { label: "Bodas y eventos", href: "/eventfilms" },
 } as const;
 export type Pilar = keyof typeof PILARES;
 export const esPilar = (p: string): p is Pilar => p in PILARES;

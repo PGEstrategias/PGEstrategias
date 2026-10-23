@@ -75,6 +75,7 @@ export default function WeddingPlannerPage() {
           { label: "Event Films", href: "/eventfilms" },
           { label: "Invitaciones digitales", href: "/invitacionesdebodas" },
           { label: "Nuestro trabajo", href: "/nuestrotrabajo" },
+          { label: "Blog de bodas", href: "/blog?pilar=bodas-eventos" },
         ]}
       />
       <BodasWhatsAppButton mensaje="Hola, quiero información sobre los servicios de wedding planner de Paola Jiménez." />

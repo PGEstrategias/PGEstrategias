@@ -95,6 +95,7 @@ export default function EventFilmsPage() {
           { label: "Paquetes", href: "#paquetes" },
           { label: "Wedding planner", href: "/weddingplanner" },
           { label: "Invitaciones digitales", href: "/invitacionesdebodas" },
+          { label: "Blog de bodas", href: "/blog?pilar=bodas-eventos" },
         ]}
       />
       <BodasWhatsAppButton mensaje="Hola, quiero información de PG Event Films para mi evento." />
