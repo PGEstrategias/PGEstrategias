@@ -22,6 +22,10 @@ const nextConfig = {
         destination: "/invermat/lp.html",
       },
       {
+        source: "/propuestaorlandopan",
+        destination: "/propuesta-orlando-pan.html",
+      },
+      {
         source: "/outfitjefe",
         destination: "/outfitjefe/index.html",
       },
