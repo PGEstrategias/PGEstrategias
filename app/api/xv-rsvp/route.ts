@@ -82,3 +82,45 @@ export async function POST(req: Request) {
     return NextResponse.json({ ok: false, error: "hoja" }, { status: 502 });
   }
 }
+
+/* Diagnóstico sin escribir en la hoja: /api/xv-rsvp?evento=fatima
+   Dice si la invitación tiene sus variables y si el Apps Script contesta.
+   Manda una clave equivocada a propósito: un script bien publicado responde
+   {"ok":false,"error":"token"} sin tocar la hoja. No expone URL ni clave. */
+export async function GET(req: Request) {
+  const evento = new URL(req.url).searchParams.get("evento") ?? "";
+  if (!Object.hasOwn(HOJAS, evento)) {
+    return NextResponse.json({ evento, error: "evento desconocido", eventos: Object.keys(HOJAS) }, { status: 400 });
+  }
+  const { url, token } = HOJAS[evento];
+  const diag: Record<string, unknown> = {
+    evento,
+    variable_url: url ? "cargada" : "FALTA",
+    variable_token: token ? "cargada" : "FALTA",
+    url_termina_en_exec: url ? /\/exec\/?$/.test(url) : null,
+  };
+  if (!url) return NextResponse.json(diag);
+  try {
+    const r = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({ token: "diagnostico-clave-incorrecta" }),
+      redirect: "follow",
+      cache: "no-store",
+    });
+    const texto = await r.text();
+    diag.script_http = r.status;
+    let json: { ok?: boolean; error?: string } | null = null;
+    try {
+      json = JSON.parse(texto);
+    } catch {}
+    if (json?.error === "token") diag.script = "responde bien (rechazó la clave de prueba, como debe)";
+    else if (json) diag.script = `respondió algo inesperado: ${JSON.stringify(json).slice(0, 120)}`;
+    else if (/accounts\.google\.com|ServiceLogin|signin/i.test(texto))
+      diag.script = "pide iniciar sesión: la implementación no está como 'Cualquier usuario'";
+    else diag.script = `no respondió JSON (¿script sin publicar o con error?): ${texto.replace(/\s+/g, " ").slice(0, 160)}`;
+  } catch (e) {
+    diag.script = `no se pudo contactar: ${(e as Error).message}`;
+  }
+  return NextResponse.json(diag);
+}
