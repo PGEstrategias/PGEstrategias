@@ -137,8 +137,8 @@ export const SACK: ConfigXV = {
 };
 
 /* Fátima Ximena Cernas Espinosa — datos del cuestionario de diseño.
-   PENDIENTES de la familia: fotos (portada y galería), frase de
-   bienvenida, padrinos, regalos, canción de fondo y fecha límite. */
+   PENDIENTES de la familia: fotos (portada y galería), padrinos, regalos,
+   enlace de la canción de fondo y fecha límite. */
 export const FATIMA: ConfigXV = {
   evento: "fatima",
   nombre: "Fátima Ximena",
@@ -191,10 +191,14 @@ export const FATIMA: ConfigXV = {
 
   portada: null,
   fotos: [],
-  historia: [],
+  /* Mensaje de bienvenida, en el tono de la invitación de Sack. */
+  historia: [
+    "Hay momentos que se esperan toda la vida, y este es uno de ellos. Hoy comienzo una nueva etapa llena de sueños, ilusiones y aventuras, y quiero vivirla rodeada de las personas que más quiero.",
+    "Celebrar mis XV años es agradecer por todo lo vivido y por quienes me han acompañado en el camino. Tu presencia hará que esta noche sea todavía más especial.",
+  ],
   itinerario: [
     { hora: "5:00 p.m.", titulo: "Misa", icono: "⛪" },
     { hora: "7:00 p.m.", titulo: "Recepción", icono: "🥂" },
   ],
-  frase: "",
+  frase: "Porque hay momentos que se viven una sola vez y noches que se quedan para siempre en el corazón.",
 };
