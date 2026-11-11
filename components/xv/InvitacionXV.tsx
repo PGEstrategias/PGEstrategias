@@ -323,7 +323,7 @@ export default function InvitacionXV({ c }: { c: ConfigXV }) {
                 whileHover={{ rotate: 0, scale: 1.04 }}
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={f.src} alt={`${XV.nombre}: ${f.pie}`} width={f.w} height={f.h} loading="lazy" decoding="async" />
+                <img src={f.src} alt={`${XV.nombre}: ${f.pie}`} width={f.w} height={f.h} loading="lazy" decoding="async" style={f.pos ? { objectPosition: f.pos } : undefined} />
                 <figcaption className={s.pie}>{f.pie}</figcaption>
               </motion.figure>
             ))}

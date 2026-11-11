@@ -12,7 +12,8 @@ export type Lugar = {
   direccion?: string;
 };
 
-export type Foto = { src: string; w: number; h: number; pie: string };
+/* `pos`: encuadre dentro del marco (object-position), si la persona no está al centro. */
+export type Foto = { src: string; w: number; h: number; pie: string; pos?: string };
 
 export type ConfigXV = {
   /* Identifica la hoja de Google donde caen las confirmaciones. */
@@ -137,8 +138,7 @@ export const SACK: ConfigXV = {
 };
 
 /* Fátima Ximena Cernas Espinosa — datos del cuestionario de diseño.
-   PENDIENTES de la familia: fotos (portada y galería), padrinos, regalos
-   y fecha límite. */
+   PENDIENTES de la familia: padrinos, regalos y fecha límite. */
 export const FATIMA: ConfigXV = {
   evento: "fatima",
   nombre: "Fátima Ximena",
@@ -190,8 +190,30 @@ export const FATIMA: ConfigXV = {
   },
   avisos: [],
 
-  portada: null,
-  fotos: [],
+  portada: "/xvfatima/14-anos.webp",
+  /* Quince años en fotos: de nacimiento a los 14, con sus momentos
+     especiales en el año que les toca. */
+  fotos: [
+    { src: "/xvfatima/00-nacimiento.webp", w: 1100, h: 627, pie: "Nacimiento", pos: "72% 50%" },
+    { src: "/xvfatima/01-ano.webp", w: 1100, h: 825, pie: "1 año" },
+    { src: "/xvfatima/02-anos.webp", w: 1100, h: 825, pie: "2 años" },
+    { src: "/xvfatima/03-anos.webp", w: 300, h: 400, pie: "3 años" },
+    { src: "/xvfatima/04-anos.webp", w: 825, h: 1100, pie: "4 años", pos: "28% 45%" },
+    { src: "/xvfatima/05-anos.webp", w: 619, h: 1100, pie: "5 años", pos: "62% 42%" },
+    { src: "/xvfatima/princesa-primavera.webp", w: 825, h: 1100, pie: "Princesa de la primavera" },
+    { src: "/xvfatima/06-anos.webp", w: 1100, h: 733, pie: "6 años", pos: "66% 50%" },
+    { src: "/xvfatima/07-anos.webp", w: 1100, h: 733, pie: "7 años", pos: "46% 62%" },
+    { src: "/xvfatima/pandemia-2020.webp", w: 535, h: 1100, pie: "Festejando en pandemia" },
+    { src: "/xvfatima/08-anos.webp", w: 619, h: 1100, pie: "8 años", pos: "44% 66%" },
+    { src: "/xvfatima/comunion.webp", w: 535, h: 1100, pie: "Mi primera comunión" },
+    { src: "/xvfatima/confirmacion.webp", w: 535, h: 1100, pie: "Mi confirmación" },
+    { src: "/xvfatima/09-anos.webp", w: 825, h: 1100, pie: "9 años" },
+    { src: "/xvfatima/10-anos.webp", w: 1100, h: 618, pie: "10 años" },
+    { src: "/xvfatima/11-anos.webp", w: 619, h: 1100, pie: "11 años" },
+    { src: "/xvfatima/12-anos.webp", w: 1100, h: 825, pie: "12 años" },
+    { src: "/xvfatima/13-anos.webp", w: 825, h: 1100, pie: "13 años" },
+    { src: "/xvfatima/14-anos.webp", w: 1195, h: 896, pie: "14 años" },
+  ],
   /* Mensaje de bienvenida, en el tono de la invitación de Sack. */
   historia: [
     "Hay momentos que se esperan toda la vida, y este es uno de ellos. Hoy comienzo una nueva etapa llena de sueños, ilusiones y aventuras, y quiero vivirla rodeada de las personas que más quiero.",
