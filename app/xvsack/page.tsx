@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import InvitacionXV from "@/components/xv/InvitacionXV";
 import { cormorant, inter } from "@/lib/fonts";
-import { XV } from "@/components/xv/datos";
+import { SACK as XV } from "@/components/xv/datos";
 
 /* Invitación privada de una clienta menor de edad: fuera de buscadores y
    del sitemap. Se comparte solo por enlace. */
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <div className={`${cormorant.variable} ${inter.variable}`}>
-      <InvitacionXV />
+      <InvitacionXV c={XV} />
     </div>
   );
 }

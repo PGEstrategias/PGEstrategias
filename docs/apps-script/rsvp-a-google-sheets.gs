@@ -9,7 +9,11 @@
  *     - Ejecutar como: Yo.
  *     - Quién tiene acceso: Cualquier usuario.
  *  5. Autoriza los permisos y copia la URL que termina en /exec.
- *  6. Esa URL y la clave van en las variables de entorno de Vercel.
+ *  6. Esa URL y la clave van en las variables de entorno de Vercel, con el
+ *     nombre de cada invitación (ver app/api/xv-rsvp/route.ts):
+ *       Sack:   XV_SACK_SHEET_URL   y XV_SACK_SHEET_TOKEN
+ *       Fátima: XV_FATIMA_SHEET_URL y XV_FATIMA_SHEET_TOKEN
+ *     Después hay que volver a desplegar (Redeploy) para que las tome.
  */
 
 const TOKEN = "PEGA_AQUI_LA_CLAVE";

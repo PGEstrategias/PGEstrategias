@@ -1,13 +1,16 @@
 import { NextResponse } from "next/server";
 
-/* Confirmaciones de la invitación de XV de Sack → Google Sheets.
-   El servidor reenvía al Apps Script de la hoja; la URL y la clave viven en
-   variables de entorno (el repositorio es público). */
+/* Confirmaciones de las invitaciones de XV → Google Sheets.
+   El servidor reenvía al Apps Script de la hoja de cada familia; la URL y la
+   clave viven en variables de entorno (el repositorio es público). Cada
+   invitación manda su `evento` para saber a qué hoja va. */
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
-const URL_HOJA = process.env.XV_SACK_SHEET_URL ?? "";
-const TOKEN = process.env.XV_SACK_SHEET_TOKEN ?? "";
+const HOJAS: Record<string, { url: string; token: string }> = {
+  sack: { url: process.env.XV_SACK_SHEET_URL ?? "", token: process.env.XV_SACK_SHEET_TOKEN ?? "" },
+  fatima: { url: process.env.XV_FATIMA_SHEET_URL ?? "", token: process.env.XV_FATIMA_SHEET_TOKEN ?? "" },
+};
 
 /* Freno sencillo contra envíos automáticos: por IP y global, por hora. */
 const VENTANA = 60 * 60 * 1000;
@@ -30,15 +33,18 @@ const limpiar = (v: unknown, max: number) =>
   typeof v === "string" ? v.replace(/[\u0000-\u001f\u007f]/g, " ").trim().slice(0, max) : "";
 
 export async function POST(req: Request) {
-  if (!URL_HOJA || !TOKEN) {
-    return NextResponse.json({ ok: false, error: "sin-configurar" }, { status: 503 });
-  }
-
   let body: Record<string, unknown>;
   try {
     body = await req.json();
   } catch {
     return NextResponse.json({ ok: false, error: "json" }, { status: 400 });
+  }
+
+  /* Sin `evento` es la invitación de Sack (la primera, antes de que hubiera más). */
+  const evento = typeof body.evento === "string" && Object.hasOwn(HOJAS, body.evento) ? body.evento : "sack";
+  const { url: URL_HOJA, token: TOKEN } = HOJAS[evento];
+  if (!URL_HOJA || !TOKEN) {
+    return NextResponse.json({ ok: false, error: "sin-configurar" }, { status: 503 });
   }
 
   /* Campo trampa: los bots lo llenan, las personas no lo ven. */

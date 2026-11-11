@@ -2,13 +2,13 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { FOTOS, FRASE, HISTORIA, ITINERARIO, XV } from "./datos";
+import type { ConfigXV, Lugar } from "./datos";
 import s from "./xv.module.css";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const ABRIR = "xv:abrir";
 
-const objetivo = () => new Date(`${XV.fechaISO}T${XV.hora || "00:00"}:00-06:00`).getTime();
+const objetivo = (c: ConfigXV) => new Date(`${c.fechaISO}T${c.hora || "00:00"}:00-06:00`).getTime();
 
 const aparece = {
   initial: { opacity: 0, y: 26 },
@@ -18,7 +18,7 @@ const aparece = {
 };
 
 /* ── Sobre de apertura ───────────────────────────────────────── */
-function Sobre() {
+function Sobre({ nombre }: { nombre: string }) {
   const reduce = useReducedMotion();
   const [visible, setVisible] = useState(true);
   const [abriendo, setAbriendo] = useState(false);
@@ -49,7 +49,7 @@ function Sobre() {
                 transition={{ duration: 0.8, delay: 0.45, ease: EASE }}
               >
                 <span style={{ fontFamily: "var(--serif)", fontStyle: "italic", fontSize: 20 }}>Mis XV años</span>
-                <span style={{ fontFamily: "var(--serif)", fontSize: 44, lineHeight: 1 }}>{XV.nombre}</span>
+                <span style={{ fontFamily: "var(--serif)", fontSize: 44, lineHeight: 1, textAlign: "center" }}>{nombre}</span>
               </motion.div>
               <div className={s.cuerpo} />
               <motion.div
@@ -142,14 +142,14 @@ function useYouTube(id: string, holder: React.RefObject<HTMLDivElement>) {
 }
 
 /* ── Cuenta regresiva ────────────────────────────────────────── */
-function useCuenta() {
+function useCuenta(c: ConfigXV) {
   const [ms, setMs] = useState<number | null>(null);
   useEffect(() => {
-    const t = () => setMs(Math.max(0, objetivo() - Date.now()));
+    const t = () => setMs(Math.max(0, objetivo(c) - Date.now()));
     t();
     const id = setInterval(t, 1000);
     return () => clearInterval(id);
-  }, []);
+  }, [c]);
   if (ms === null) return null;
   const sg = Math.floor(ms / 1000);
   return { Días: Math.floor(sg / 86400), Horas: Math.floor((sg % 86400) / 3600), Min: Math.floor((sg % 3600) / 60), Seg: sg % 60 };
@@ -180,9 +180,41 @@ const PARTICULAS = Array.from({ length: 16 }, (_, i) => ({
   c: i % 3 === 0 ? "✦" : "♡",
 }));
 
+function idSpotify(url: string) {
+  return url.match(/playlist\/([A-Za-z0-9]+)/)?.[1] ?? "";
+}
+
+function TarjetaLugar({ icono, titulo, lugar }: { icono: string; titulo: string; lugar: Lugar }) {
+  return (
+    <motion.div className={s.card} {...aparece}>
+      <span className={s.cardIcon} aria-hidden>{icono}</span>
+      <h3 className={s.cardTitle}>{titulo}</h3>
+      <p className={s.cardText}>
+        {lugar.horaTexto}
+        <br />
+        {lugar.nombre}
+        {lugar.direccion && (
+          <>
+            <br />
+            {lugar.direccion}
+          </>
+        )}
+      </p>
+      {lugar.maps && (
+        <p style={{ marginTop: 14 }}>
+          <a href={lugar.maps} target="_blank" rel="noopener noreferrer" className={`${s.btn} ${s.btnLinea}`} style={{ minHeight: 44 }}>
+            Cómo llegar
+          </a>
+        </p>
+      )}
+    </motion.div>
+  );
+}
+
 /* ── Invitación ──────────────────────────────────────────────── */
-export default function InvitacionXV() {
-  const cuenta = useCuenta();
+export default function InvitacionXV({ c }: { c: ConfigXV }) {
+  const XV = c;
+  const cuenta = useCuenta(c);
   const holder = useRef<HTMLDivElement>(null);
   const { sonando, alternar } = useYouTube(XV.youtubeId, holder);
   const [nombre, setNombre] = useState("");
@@ -207,7 +239,7 @@ export default function InvitacionXV() {
       const r = await fetch("/api/xv-rsvp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ nombre, personas, acompanantes: listaAcomp, mensaje, sitio: trampa }),
+        body: JSON.stringify({ evento: c.evento, nombre, personas, acompanantes: listaAcomp, mensaje, sitio: trampa }),
       });
       const datos = (await r.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
       if (datos?.ok) return setEstado("ok");
@@ -229,14 +261,16 @@ export default function InvitacionXV() {
 
   return (
     <div className={s.root}>
-      <Sobre />
+      <Sobre nombre={XV.nombre} />
 
       {/* Portada */}
       <section className={s.hero}>
-        <div className={s.heroBg} aria-hidden>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/xvsack/05-hoy.webp" alt="" fetchPriority="high" />
-        </div>
+        {XV.portada && (
+          <div className={s.heroBg} aria-hidden>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={XV.portada} alt="" fetchPriority="high" />
+          </div>
+        )}
         <div className={s.heroShade} aria-hidden />
         <div className={s.flotan} aria-hidden>
           {PARTICULAS.map((p, i) => (
@@ -247,7 +281,10 @@ export default function InvitacionXV() {
         </div>
         <div className={s.heroIn}>
           <p className={s.misXV}>Mis XV años</p>
-          <h1 className={s.nombre}>{XV.nombre}</h1>
+          {/* Nombres largos ("Fátima Ximena") bajan un poco de tamaño para no tocar los bordes. */}
+          <h1 className={s.nombre} style={XV.nombre.length > 8 ? { fontSize: "clamp(84px, 25vw, 180px)" } : undefined}>
+            {XV.nombre}
+          </h1>
           <p className={s.fecha}>{XV.fechaLarga}</p>
           <div className={s.cuenta} aria-label="Cuenta regresiva para la fiesta" style={{ minHeight: 92 }}>
             {cuenta && Object.entries(cuenta).map(([u, v]) => <Casilla key={u} v={v} u={u} />)}
@@ -261,6 +298,7 @@ export default function InvitacionXV() {
       </section>
 
       {/* Historia */}
+      {(XV.historia.length > 0 || XV.fotos.length > 0) && (
       <section className={`${s.section} ${s.light}`}>
         <div className={s.wrap}>
           <motion.div {...aparece}>
@@ -268,14 +306,14 @@ export default function InvitacionXV() {
             <h2 className={s.title}>
               Quince años de <em>recuerdos</em>
             </h2>
-            {HISTORIA.map((p) => (
+            {XV.historia.map((p) => (
               <p key={p.slice(0, 20)} className={s.text}>
                 {p}
               </p>
             ))}
           </motion.div>
           <div className={s.carrete}>
-            {FOTOS.map((f, i) => (
+            {XV.fotos.map((f, i) => (
               <motion.figure
                 key={f.src}
                 className={s.polaroid}
@@ -293,6 +331,33 @@ export default function InvitacionXV() {
           </div>
         </div>
       </section>
+      )}
+
+      {/* Padres */}
+      {XV.padres && XV.padres.length > 0 && (
+        <section className={s.section}>
+          <div className={s.wrap}>
+            <motion.div {...aparece}>
+              <p className={s.label}>Con la bendición de Dios y de mis padres</p>
+              {XV.padres.map((n) => (
+                <p key={n} className={s.title} style={{ fontSize: "clamp(26px, 6vw, 38px)", marginTop: 8 }}>
+                  {n}
+                </p>
+              ))}
+              {XV.padrinos && XV.padrinos.length > 0 && (
+                <>
+                  <p className={s.label} style={{ marginTop: 36 }}>Mis padrinos</p>
+                  {XV.padrinos.map((n) => (
+                    <p key={n} className={s.title} style={{ fontSize: "clamp(24px, 5.5vw, 34px)", marginTop: 8 }}>
+                      {n}
+                    </p>
+                  ))}
+                </>
+              )}
+            </motion.div>
+          </div>
+        </section>
+      )}
 
       {/* Fiesta */}
       <section className={s.section}>
@@ -303,6 +368,15 @@ export default function InvitacionXV() {
               Te espero para <em>celebrar</em>
             </h2>
           </motion.div>
+          {XV.ceremonia && XV.recepcion ? (
+            <>
+              <p className={s.text}>{XV.fechaLarga}</p>
+              <div className={s.grid}>
+                <TarjetaLugar icono="⛪" titulo="Misa" lugar={XV.ceremonia} />
+                <TarjetaLugar icono="🥂" titulo="Recepción" lugar={XV.recepcion} />
+              </div>
+            </>
+          ) : (
           <div className={s.grid}>
             <motion.div className={s.card} {...aparece}>
               <span className={s.cardIcon} aria-hidden>🗓</span>
@@ -334,6 +408,7 @@ export default function InvitacionXV() {
               )}
             </motion.div>
           </div>
+          )}
         </div>
       </section>
 
@@ -355,7 +430,7 @@ export default function InvitacionXV() {
               viewport={{ once: true, margin: "-60px" }}
               transition={{ duration: 1.4, ease: EASE }}
             />
-            {ITINERARIO.map((p, i) => (
+            {XV.itinerario.map((p, i) => (
               <motion.li
                 key={p.titulo}
                 className={s.paso}
@@ -383,36 +458,41 @@ export default function InvitacionXV() {
           <motion.div {...aparece}>
             <p className={s.label}>Código de vestimenta</p>
             <h2 className={s.title}>
-              All <em>black</em>
+              {XV.vestimenta.titulo && `${XV.vestimenta.titulo} `}
+              <em>{XV.vestimenta.acento}</em>
             </h2>
-            <p className={s.text}>
-              Todos de negro, de pies a cabeza. El rosa pastel es el color de la quinceañera.
-            </p>
-            <div className={s.swatches} aria-hidden>
-              <span className={s.swatch} style={{ background: "#000" }} />
-              <span className={s.swatch} style={{ background: "#111" }} />
-              <span className={s.swatch} style={{ background: "#1c1c1c" }} />
-              <span className={s.swatch} style={{ background: "#f6c9d6", borderColor: "#f6c9d6" }} title="Solo la quinceañera" />
-            </div>
+            <p className={s.text}>{XV.vestimenta.texto}</p>
+            {(XV.vestimenta.colores.length > 0 || XV.vestimenta.reservado) && (
+              <div className={s.swatches} aria-hidden>
+                {XV.vestimenta.colores.map((col) => (
+                  <span key={col} className={s.swatch} style={{ background: col }} />
+                ))}
+                {XV.vestimenta.reservado && (
+                  <span
+                    className={s.swatch}
+                    style={{ background: XV.vestimenta.reservado, borderColor: XV.vestimenta.reservado }}
+                    title="Solo la quinceañera"
+                  />
+                )}
+              </div>
+            )}
           </motion.div>
-          <div className={s.grid}>
-            <motion.div className={s.card} {...aparece}>
-              <span className={s.cardIcon} aria-hidden>👶</span>
-              <h3 className={s.cardTitle}>Si vienes con niños</h3>
-              <p className={s.cardText}>Te pedimos estar al pendiente de ellos durante el vals.</p>
-            </motion.div>
-            <motion.div className={s.card} {...aparece}>
-              <span className={s.cardIcon} aria-hidden>🎁</span>
-              <h3 className={s.cardTitle}>Regalos</h3>
-              <p className={s.cardText}>
-                Cualquier detalle es bienvenido en la mesa de regalos; si lo prefieres, la lluvia de sobres es ideal.
-              </p>
-            </motion.div>
-          </div>
+          {XV.avisos.length > 0 && (
+            <div className={s.grid}>
+              {XV.avisos.map((a) => (
+                <motion.div key={a.titulo} className={s.card} {...aparece}>
+                  <span className={s.cardIcon} aria-hidden>{a.icono}</span>
+                  <h3 className={s.cardTitle}>{a.titulo}</h3>
+                  <p className={s.cardText}>{a.texto}</p>
+                </motion.div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
       {/* Canción */}
+      {XV.youtubeId && (
       <section className={s.section}>
         <div className={s.wrap}>
           <motion.div {...aparece}>
@@ -422,17 +502,43 @@ export default function InvitacionXV() {
             </h2>
           </motion.div>
           <div className={`${s.disco} ${sonando ? s.gira : ""}`} aria-hidden />
-          {XV.youtubeId ? (
-            <div className={s.yt}>
-              <div ref={holder} />
-            </div>
-          ) : (
-            <p style={{ marginTop: 24 }}>
-              <span className={s.pend}>Enlace de la canción por confirmar</span>
-            </p>
-          )}
+          <div className={s.yt}>
+            <div ref={holder} />
+          </div>
         </div>
       </section>
+      )}
+
+      {/* Playlist colaborativa */}
+      {XV.spotifyPlaylist && (
+        <section className={s.section}>
+          <div className={s.wrap}>
+            <motion.div {...aparece}>
+              <p className={s.label}>Playlist de la fiesta</p>
+              <h2 className={s.title}>
+                Arma la playlist <em>conmigo</em>
+              </h2>
+              <p className={s.text}>Agrega la canción que no puede faltar esa noche.</p>
+            </motion.div>
+            <div style={{ maxWidth: 420, margin: "30px auto 0" }}>
+              <iframe
+                title="Playlist de la fiesta en Spotify"
+                src={`https://open.spotify.com/embed/playlist/${idSpotify(XV.spotifyPlaylist)}?theme=0`}
+                width="100%"
+                height="352"
+                loading="lazy"
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                style={{ border: 0, borderRadius: 16, display: "block" }}
+              />
+            </div>
+            <p style={{ marginTop: 22 }}>
+              <a href={XV.spotifyPlaylist} target="_blank" rel="noopener noreferrer" className={`${s.btn} ${s.btnRosa}`}>
+                Agregar canciones en Spotify
+              </a>
+            </p>
+          </div>
+        </section>
+      )}
 
       {/* Confirmación */}
       <section id="confirmar" className={`${s.section} ${s.light}`}>
@@ -444,6 +550,7 @@ export default function InvitacionXV() {
             </h2>
             {XV.fechaLimite && <p className={s.text}>Por favor confirma antes del {XV.fechaLimite}.</p>}
           </motion.div>
+          {XV.fotoConfirmar && (
           <motion.figure
             className={s.polaroid}
             style={{ width: 240, margin: "30px auto 0" }}
@@ -454,9 +561,10 @@ export default function InvitacionXV() {
             whileHover={{ rotate: 0, scale: 1.04 }}
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/xvsack/06-disfrutar.webp" alt={`${XV.nombre} de pequeña, lista para la fiesta`} width={900} height={845} loading="lazy" decoding="async" style={{ height: 230 }} />
-            <figcaption className={s.pie}>¡Lista para la fiesta!</figcaption>
+            <img src={XV.fotoConfirmar.src} alt={XV.fotoConfirmar.alt} width={XV.fotoConfirmar.w} height={XV.fotoConfirmar.h} loading="lazy" decoding="async" style={{ height: 230 }} />
+            <figcaption className={s.pie}>{XV.fotoConfirmar.pie}</figcaption>
           </motion.figure>
+          )}
           {estado === "ok" ? (
             <motion.div
               className={s.card}
@@ -548,9 +656,11 @@ export default function InvitacionXV() {
       {/* Cierre */}
       <section className={s.section}>
         <div className={s.wrap}>
-          <motion.p className={s.cierre} {...aparece}>
-            “{FRASE}” 💘
-          </motion.p>
+          {XV.frase && (
+            <motion.p className={s.cierre} {...aparece}>
+              “{XV.frase}” 💘
+            </motion.p>
+          )}
           <motion.p className={s.nombre} style={{ fontSize: "clamp(64px, 18vw, 110px)", marginTop: 26 }} {...aparece}>
             {XV.nombre}
           </motion.p>
