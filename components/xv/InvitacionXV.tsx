@@ -227,7 +227,7 @@ export default function InvitacionXV({ c }: { c: ConfigXV }) {
     acompanantes.slice(0, extra).every((n) => (n ?? "").trim().length >= 2);
   const listaAcomp = acompanantes.slice(0, extra).map((n) => (n ?? "").trim()).filter(Boolean);
   const [trampa, setTrampa] = useState("");
-  const [estado, setEstado] = useState<"listo" | "enviando" | "ok" | "error">("listo");
+  const [estado, setEstado] = useState<"listo" | "enviando" | "ok" | "whatsapp" | "error">("listo");
 
   /* Guarda la confirmación en la hoja de Google de la familia. Si la hoja
      todavía no está conectada, se manda por WhatsApp como respaldo. */
@@ -243,10 +243,9 @@ export default function InvitacionXV({ c }: { c: ConfigXV }) {
       });
       const datos = (await r.json().catch(() => null)) as { ok?: boolean; error?: string } | null;
       if (datos?.ok) return setEstado("ok");
-      if (datos?.error === "sin-configurar" && rsvpUrl) {
-        window.open(rsvpUrl, "_blank", "noopener,noreferrer");
-        return setEstado("ok");
-      }
+      /* Sin hoja conectada no se guardó nada: el invitado debe terminar por
+         WhatsApp. No se abre solo porque el navegador suele bloquearlo. */
+      if (datos?.error === "sin-configurar" && rsvpUrl) return setEstado("whatsapp");
       setEstado("error");
     } catch {
       setEstado("error");
@@ -565,7 +564,25 @@ export default function InvitacionXV({ c }: { c: ConfigXV }) {
             <figcaption className={s.pie}>{XV.fotoConfirmar.pie}</figcaption>
           </motion.figure>
           )}
-          {estado === "ok" ? (
+          {estado === "whatsapp" ? (
+            <motion.div
+              className={s.card}
+              style={{ marginTop: 30, textAlign: "center", background: "#fff" }}
+              initial={{ opacity: 0, scale: 0.94 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.5, ease: EASE }}
+              role="status"
+            >
+              <p style={{ fontSize: 34 }} aria-hidden>📲</p>
+              <h3 className={s.cardTitle}>Falta un paso, {nombre.trim().split(" ")[0]}</h3>
+              <p className={s.cardText}>Envía tu confirmación por WhatsApp para que quede registrada.</p>
+              <p style={{ marginTop: 16 }}>
+                <a href={rsvpUrl} target="_blank" rel="noopener noreferrer" className={`${s.btn} ${s.btnNoche}`} style={{ minHeight: 48 }}>
+                  Enviar por WhatsApp
+                </a>
+              </p>
+            </motion.div>
+          ) : estado === "ok" ? (
             <motion.div
               className={s.card}
               style={{ marginTop: 30, textAlign: "center", background: "#fff" }}
