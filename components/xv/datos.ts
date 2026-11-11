@@ -10,8 +10,8 @@ export const XV = {
   fechaCorta: "27 · 11 · 2026",
 
   /* Hora de inicio (24 h, para la cuenta regresiva) y como se lee. */
-  hora: "19:00",
-  horaTexto: "7:00 p.m.",
+  hora: "19:30",
+  horaTexto: "7:30 p.m.",
   lugar: "Ex Hacienda San Bartolo",
   direccion: "",
   maps: "https://share.google/PuIJ5RsBaqF3p8DyO",
@@ -42,11 +42,11 @@ export const HISTORIA = [
 ];
 
 export const ITINERARIO = [
-  { hora: "7:00 – 7:30 p.m.", titulo: "Recepción", icono: "🥂" },
-  { hora: "7:30 – 9:00 p.m.", titulo: "Bienvenida y cena", icono: "🍽" },
-  { hora: "9:00 p.m.", titulo: "El vals", icono: "💃" },
+  { hora: "7:30 – 8:00 p.m.", titulo: "Recepción", icono: "🥂" },
+  { hora: "8:00 – 10:30 p.m.", titulo: "Bienvenida y cena", icono: "🍽" },
+  { hora: "10:30 p.m.", titulo: "El vals", icono: "💃" },
   { hora: "Después del vals", titulo: "Pastel", icono: "🎂" },
-  { hora: "10:30 p.m.", titulo: "Disco y baile", icono: "🪩" },
+  { hora: "Después del pastel", titulo: "Disco y baile", icono: "🪩" },
 ];
 
 export const FRASE =
