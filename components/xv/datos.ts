@@ -137,8 +137,8 @@ export const SACK: ConfigXV = {
 };
 
 /* Fátima Ximena Cernas Espinosa — datos del cuestionario de diseño.
-   PENDIENTES de la familia: fotos (portada y galería), padrinos, regalos,
-   enlace de la canción de fondo y fecha límite. */
+   PENDIENTES de la familia: fotos (portada y galería), padrinos, regalos
+   y fecha límite. */
 export const FATIMA: ConfigXV = {
   evento: "fatima",
   nombre: "Fátima Ximena",
@@ -175,9 +175,10 @@ export const FATIMA: ConfigXV = {
   whatsappRsvp: "522228055746",
   fechaLimite: "",
 
-  youtubeId: "",
-  cancion: "",
-  artista: "",
+  /* "A Thousand Years" de Christina Perri (youtu.be/rtOvBOTyX00). */
+  youtubeId: "rtOvBOTyX00",
+  cancion: "A Thousand Years",
+  artista: "Christina Perri",
   spotifyPlaylist:
     "https://open.spotify.com/playlist/3RNlu8KHE7i8U2gffE7Xra?si=iOxl-stFRXGhWUCJaL7OpA&pi=CIAEzJdoSOC7n",
 
