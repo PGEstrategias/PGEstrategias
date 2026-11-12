@@ -178,9 +178,8 @@ export const FATIMA: ConfigXV = {
   whatsappRsvp: "522228055746",
   fechaLimite: "",
 
-  /* "Days in the Sun" (La Bella y la Bestia, 2017). PENDIENTE: enlace de
-     YouTube; mientras no esté, la sección de la canción no se muestra. */
-  youtubeId: "",
+  /* "Days in the Sun" (La Bella y la Bestia, 2017): youtube.com/watch?v=deVaBYbP3WY */
+  youtubeId: "deVaBYbP3WY",
   cancion: "Days in the Sun",
   artista: "La Bella y la Bestia",
   spotifyPlaylist:
