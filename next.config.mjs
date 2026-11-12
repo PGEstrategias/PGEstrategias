@@ -26,6 +26,14 @@ const nextConfig = {
         destination: "/propuesta-orlando-tecuatl.html",
       },
       {
+        source: "/propuestadreamhaus",
+        destination: "/propuesta-dream-haus.html",
+      },
+      {
+        source: "/webdreamhaus",
+        destination: "/dreamhaus/index.html",
+      },
+      {
         source: "/outfitjefe",
         destination: "/outfitjefe/index.html",
       },
