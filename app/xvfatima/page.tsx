@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import InvitacionXV from "@/components/xv/InvitacionXV";
-import { cormorant, inter } from "@/lib/fonts";
+import { cinzel, cinzelDeco, cormorant, inter } from "@/lib/fonts";
 import { FATIMA as XV } from "@/components/xv/datos";
 
 /* Invitación privada de una clienta menor de edad: fuera de buscadores y
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
   return (
-    <div className={`${cormorant.variable} ${inter.variable}`}>
+    <div className={`${cormorant.variable} ${inter.variable} ${cinzelDeco.variable} ${cinzel.variable}`}>
       <InvitacionXV c={XV} />
     </div>
   );

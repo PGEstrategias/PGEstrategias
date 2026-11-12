@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import type { ConfigXV, Lugar } from "./datos";
 import s from "./xv.module.css";
+import { EscenaCastillo, Petalos, RosaEncantada, Separador } from "./Bella";
 
 const EASE = [0.16, 1, 0.3, 1] as const;
 const ABRIR = "xv:abrir";
@@ -214,6 +215,7 @@ function TarjetaLugar({ icono, titulo, lugar }: { icono: string; titulo: string;
 /* ── Invitación ──────────────────────────────────────────────── */
 export default function InvitacionXV({ c }: { c: ConfigXV }) {
   const XV = c;
+  const bella = c.tema === "bella";
   const cuenta = useCuenta(c);
   const holder = useRef<HTMLDivElement>(null);
   const { sonando, alternar } = useYouTube(XV.youtubeId, holder);
@@ -259,11 +261,13 @@ export default function InvitacionXV({ c }: { c: ConfigXV }) {
     : "";
 
   return (
-    <div className={s.root}>
+    <div className={`${s.root}${bella ? ` ${s.bella}` : ""}`}>
       <Sobre nombre={XV.nombre} />
+      {bella && <Petalos />}
 
       {/* Portada */}
       <section className={s.hero}>
+        {bella && <EscenaCastillo />}
         {XV.portada && (
           <div className={s.heroBg} aria-hidden>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -271,6 +275,7 @@ export default function InvitacionXV({ c }: { c: ConfigXV }) {
           </div>
         )}
         <div className={s.heroShade} aria-hidden />
+        {!bella && (
         <div className={s.flotan} aria-hidden>
           {PARTICULAS.map((p, i) => (
             <span key={i} style={{ left: `${p.left}%`, ["--d" as string]: p.d, ["--delay" as string]: p.delay, ["--x" as string]: p.x, ["--s" as string]: p.s }}>
@@ -278,9 +283,11 @@ export default function InvitacionXV({ c }: { c: ConfigXV }) {
             </span>
           ))}
         </div>
+        )}
         <div className={s.heroIn}>
+          {bella && <RosaEncantada />}
           <p className={s.misXV}>Mis XV años</p>
-          {/* Nombres largos ("Fátima Ximena") bajan un poco de tamaño para no tocar los bordes. */}
+          {/* Nombres largos ("Fatima Ximena") bajan un poco de tamaño para no tocar los bordes. */}
           <h1 className={s.nombre} style={XV.nombre.length > 8 ? { fontSize: "clamp(84px, 25vw, 180px)" } : undefined}>
             {XV.nombre}
           </h1>
@@ -305,6 +312,7 @@ export default function InvitacionXV({ c }: { c: ConfigXV }) {
             <h2 className={s.title}>
               Quince años de <em>recuerdos</em>
             </h2>
+            {bella && <Separador />}
             {XV.historia.map((p) => (
               <p key={p.slice(0, 20)} className={s.text}>
                 {p}
@@ -366,6 +374,7 @@ export default function InvitacionXV({ c }: { c: ConfigXV }) {
             <h2 className={s.title}>
               Te espero para <em>celebrar</em>
             </h2>
+            {bella && <Separador />}
           </motion.div>
           {XV.ceremonia && XV.recepcion ? (
             <>
@@ -419,6 +428,7 @@ export default function InvitacionXV({ c }: { c: ConfigXV }) {
             <h2 className={s.title}>
               Así se va a <em>vivir</em>
             </h2>
+            {bella && <Separador />}
           </motion.div>
           <ol className={s.itinerario}>
             <motion.span
@@ -452,7 +462,7 @@ export default function InvitacionXV({ c }: { c: ConfigXV }) {
       </section>
 
       {/* Código de vestimenta y avisos */}
-      <section className={s.section} style={{ background: "#140e11" }}>
+      <section className={s.section} style={bella ? undefined : { background: "#140e11" }}>
         <div className={s.wrap}>
           <motion.div {...aparece}>
             <p className={s.label}>Código de vestimenta</p>
@@ -460,6 +470,7 @@ export default function InvitacionXV({ c }: { c: ConfigXV }) {
               {XV.vestimenta.titulo && `${XV.vestimenta.titulo} `}
               <em>{XV.vestimenta.acento}</em>
             </h2>
+            {bella && <Separador />}
             <p className={s.text}>{XV.vestimenta.texto}</p>
             {(XV.vestimenta.colores.length > 0 || XV.vestimenta.reservado) && (
               <div className={s.swatches} aria-hidden>
@@ -499,6 +510,7 @@ export default function InvitacionXV({ c }: { c: ConfigXV }) {
             <h2 className={s.title}>
               {XV.cancion} <em>· {XV.artista}</em>
             </h2>
+            {bella && <Separador />}
           </motion.div>
           <div className={`${s.disco} ${sonando ? s.gira : ""}`} aria-hidden />
           <div className={s.yt}>
@@ -517,6 +529,7 @@ export default function InvitacionXV({ c }: { c: ConfigXV }) {
               <h2 className={s.title}>
                 Arma la playlist <em>conmigo</em>
               </h2>
+            {bella && <Separador />}
               <p className={s.text}>Agrega la canción que no puede faltar esa noche.</p>
             </motion.div>
             <div style={{ maxWidth: 420, margin: "30px auto 0" }}>
@@ -547,6 +560,7 @@ export default function InvitacionXV({ c }: { c: ConfigXV }) {
             <h2 className={s.title}>
               Ven a <em>disfrutar</em>
             </h2>
+            {bella && <Separador />}
             {XV.fechaLimite && <p className={s.text}>Por favor confirma antes del {XV.fechaLimite}.</p>}
           </motion.div>
           {XV.fotoConfirmar && (
@@ -675,7 +689,7 @@ export default function InvitacionXV({ c }: { c: ConfigXV }) {
         <div className={s.wrap}>
           {XV.frase && (
             <motion.p className={s.cierre} {...aparece}>
-              “{XV.frase}” 💘
+              “{XV.frase}” {bella ? "🌹" : "💘"}
             </motion.p>
           )}
           <motion.p className={s.nombre} style={{ fontSize: "clamp(64px, 18vw, 110px)", marginTop: 26 }} {...aparece}>

@@ -186,3 +186,147 @@
   .flotan { display: none; }
   .btn:hover, .card:hover { transform: none; }
 }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   Tema "La Bella y la Bestia" (.bella): noche azul, oro y la rosa
+   encantada. Solo aplica a las invitaciones con tema: "bella".
+   ═══════════════════════════════════════════════════════════════ */
+.bella {
+  --noche: #08102b;
+  --noche-2: #101b44;
+  --rosa: #e3c06f;
+  --rosa-claro: #f8f0dc;
+  --rosa-vivo: #c99a3e;
+  --marfil: #fffaf0;
+  --texto-suave: rgba(255, 250, 240, 0.8);
+  --oro-oscuro: #8a6420;
+  --rojo-rosa: #b3203a;
+  --serif: var(--font-cinzel-deco), "Cinzel Decorative", Georgia, serif;
+  --cinzel: var(--font-cinzel), "Cinzel", Georgia, serif;
+  --cursiva: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  background: var(--noche);
+}
+.bella ::selection { background: var(--rosa); color: var(--noche); }
+.bella .label { font-family: var(--cinzel); font-weight: 600; letter-spacing: 0.26em; }
+.bella .title { font-weight: 400; font-size: clamp(28px, 6.4vw, 46px); line-height: 1.15; }
+.bella .title em, .bella .nombre {
+  font-style: normal;
+  background: linear-gradient(110deg, #fff3c4 0%, #d9a943 35%, #fff6d6 50%, #c99a3e 70%, #fff3c4 100%);
+  background-size: 240% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
+  animation: brillo 5s ease-in-out infinite;
+}
+.bella .light .title em { background-image: linear-gradient(110deg, #8a6420 0%, #c99a3e 40%, #e8c46e 50%, #8a6420 100%); }
+.bella .light .label, .bella .pasoHora { color: var(--oro-oscuro); }
+.bella .light .text, .bella .light .cardText { color: #4a3f2e; }
+.bella .misXV, .bella .pie, .bella .cierre { font-family: var(--cursiva); }
+.bella .misXV { color: var(--rosa); font-size: 28px; }
+.bella .nombre { font-size: clamp(44px, 13vw, 112px) !important; line-height: 1.05; letter-spacing: 0.02em; font-weight: 400; }
+.bella .fecha { font-family: var(--cinzel); }
+.bella .num { font-family: var(--cinzel); }
+.bella .casilla { background: rgba(227, 192, 111, 0.08); border-color: rgba(227, 192, 111, 0.35); }
+
+/* Cada sección con su escenografía: filigrana dorada en las esquinas */
+.bella .section::before {
+  content: ""; position: absolute; inset: 14px; pointer-events: none; z-index: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 90 90'%3E%3Cg transform=''%3E%3Cg fill='none' stroke='%23c99a3e' stroke-width='1.6' stroke-linecap='round' opacity='0.9'%3E%3Cpath d='M4 4 H70 M4 4 V70'/%3E%3Cpath d='M14 14 C40 14 52 22 54 40 C40 30 26 34 22 48 C18 34 14 26 14 14Z'/%3E%3Cpath d='M54 40 C62 46 64 56 58 62 C52 56 52 48 54 40Z'/%3E%3Cpath d='M22 48 C16 56 18 64 26 66'/%3E%3Ccircle cx='14' cy='14' r='3' fill='%23c99a3e'/%3E%3Cpath d='M70 4 C76 8 80 8 86 4 M4 70 C8 76 8 80 4 86'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") left top / 70px no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 90 90'%3E%3Cg transform='translate(90 0) scale(-1 1)'%3E%3Cg fill='none' stroke='%23c99a3e' stroke-width='1.6' stroke-linecap='round' opacity='0.9'%3E%3Cpath d='M4 4 H70 M4 4 V70'/%3E%3Cpath d='M14 14 C40 14 52 22 54 40 C40 30 26 34 22 48 C18 34 14 26 14 14Z'/%3E%3Cpath d='M54 40 C62 46 64 56 58 62 C52 56 52 48 54 40Z'/%3E%3Cpath d='M22 48 C16 56 18 64 26 66'/%3E%3Ccircle cx='14' cy='14' r='3' fill='%23c99a3e'/%3E%3Cpath d='M70 4 C76 8 80 8 86 4 M4 70 C8 76 8 80 4 86'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") right top / 70px no-repeat,
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 90 90'%3E%3Cg transform='translate(0 90) scale(1 -1)'%3E%3Cg fill='none' stroke='%23c99a3e' stroke-width='1.6' stroke-linecap='round' opacity='0.9'%3E%3Cpath d='M4 4 H70 M4 4 V70'/%3E%3Cpath d='M14 14 C40 14 52 22 54 40 C40 30 26 34 22 48 C18 34 14 26 14 14Z'/%3E%3Cpath d='M54 40 C62 46 64 56 58 62 C52 56 52 48 54 40Z'/%3E%3Cpath d='M22 48 C16 56 18 64 26 66'/%3E%3Ccircle cx='14' cy='14' r='3' fill='%23c99a3e'/%3E%3Cpath d='M70 4 C76 8 80 8 86 4 M4 70 C8 76 8 80 4 86'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") left bottom / 70px no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='90' height='90' viewBox='0 0 90 90'%3E%3Cg transform='translate(90 90) scale(-1 -1)'%3E%3Cg fill='none' stroke='%23c99a3e' stroke-width='1.6' stroke-linecap='round' opacity='0.9'%3E%3Cpath d='M4 4 H70 M4 4 V70'/%3E%3Cpath d='M14 14 C40 14 52 22 54 40 C40 30 26 34 22 48 C18 34 14 26 14 14Z'/%3E%3Cpath d='M54 40 C62 46 64 56 58 62 C52 56 52 48 54 40Z'/%3E%3Cpath d='M22 48 C16 56 18 64 26 66'/%3E%3Ccircle cx='14' cy='14' r='3' fill='%23c99a3e'/%3E%3Cpath d='M70 4 C76 8 80 8 86 4 M4 70 C8 76 8 80 4 86'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") right bottom / 70px no-repeat;
+  animation: filigrana 4s ease-in-out infinite alternate;
+}
+@keyframes filigrana { from { opacity: 0.55; } to { opacity: 1; } }
+.bella .section > .wrap { position: relative; z-index: 1; }
+/* Secciones de noche: cielo estrellado que se desplaza despacio */
+.bella .section:not(.light) {
+  background-color: var(--noche);
+  background-image:
+    radial-gradient(1.4px 1.4px at 20px 30px, rgba(255, 246, 216, 0.9), transparent),
+    radial-gradient(1px 1px at 120px 80px, rgba(255, 246, 216, 0.7), transparent),
+    radial-gradient(1.6px 1.6px at 70px 160px, rgba(227, 192, 111, 0.8), transparent),
+    radial-gradient(1px 1px at 170px 130px, rgba(255, 246, 216, 0.6), transparent),
+    radial-gradient(ellipse at 50% 0%, rgba(59, 63, 134, 0.55), transparent 65%);
+  background-size: 200px 200px, 200px 200px, 200px 200px, 200px 200px, 100% 100%;
+  animation: cieloMov 90s linear infinite;
+}
+@keyframes cieloMov { to { background-position: 200px 400px, -200px 400px, 200px 400px, -200px 400px, 0 0; } }
+/* Secciones claras: pergamino */
+.bella .light {
+  background: radial-gradient(ellipse at 50% 0%, #fffaf0 0%, transparent 70%), linear-gradient(180deg, #f7ecd2, #fbf5e6 50%, #f3e4c2);
+  color: var(--noche);
+}
+
+/* Tarjetas, fotos e itinerario */
+.bella .card { background: rgba(16, 27, 68, 0.72); border-color: rgba(227, 192, 111, 0.35); animation: flotar 6s ease-in-out infinite alternate; }
+.bella .grid > :nth-child(2) { animation-delay: -3s; }
+.bella .light .card { background: #fffaf0; border-color: rgba(201, 154, 62, 0.4); }
+@keyframes flotar { from { translate: 0 0; } to { translate: 0 -6px; } }
+.bella .cardTitle { font-family: var(--cinzel); font-size: 22px; letter-spacing: 0.04em; }
+.bella .polaroid { background: #fffaf0; box-shadow: 0 0 0 1px rgba(201, 154, 62, 0.55), 0 18px 40px -18px rgba(8, 16, 43, 0.6); }
+.bella .pie { font-size: 20px; color: var(--noche); }
+.bella .punto { background: #fffaf0; box-shadow: 0 0 0 4px #f3e4c2, 0 0 0 5px rgba(201, 154, 62, 0.6), 0 10px 22px -10px rgba(138, 100, 32, 0.6); }
+.bella .linea { background: linear-gradient(180deg, #c99a3e, rgba(201, 154, 62, 0.2)); }
+.bella .pasoTitulo { font-family: var(--cinzel); font-size: 24px; letter-spacing: 0.03em; }
+.bella .swatch { border-color: rgba(227, 192, 111, 0.4); }
+
+/* Botones y formulario */
+.bella .btnRosa { background: linear-gradient(135deg, #f1d48a, #c99a3e); color: var(--noche); box-shadow: 0 10px 30px -10px rgba(227, 192, 111, 0.7); }
+.bella .btnNoche { background: var(--noche); color: #f1d48a; }
+.bella .field label { color: #4a3f2e; }
+.bella .field input, .bella .field select { border-color: rgba(201, 154, 62, 0.45); }
+.bella .firma a { color: var(--rosa); }
+
+/* Sobre de apertura: terciopelo azul y sello de cera roja */
+.bella .sobreFondo { background: radial-gradient(circle at 50% 40%, #1b2a66, var(--noche) 72%); }
+.bella .carta { background: #fbf3df; font-family: var(--cursiva); }
+.bella .carta span:last-child { font-family: var(--serif) !important; font-size: 30px !important; }
+.bella .cuerpo { background: linear-gradient(160deg, #22327a, #121d4c); }
+.bella .solapa { background: linear-gradient(180deg, #2a3b8a, #17235a); }
+.bella .sello { font-family: var(--serif); font-style: normal; font-size: 22px; color: #f6dc94; background: radial-gradient(circle at 35% 30%, #d23a55, #7a0c20 70%); box-shadow: 0 6px 14px rgba(0, 0, 0, 0.45), inset 0 -3px 6px rgba(0, 0, 0, 0.35), 0 0 0 2px rgba(246, 220, 148, 0.5); }
+.bella .toca { color: var(--rosa); font-family: var(--cinzel); }
+.bella .musica { box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(227, 192, 111, 0.6); }
+.bella .musica::after, .bella .disco::after { background: radial-gradient(circle, var(--noche) 0 9%, #c99a3e 10% 100%); }
+
+/* Portada: escena del castillo */
+.escena { position: absolute; inset: 0; width: 100%; height: 100%; }
+/* El castillo se queda abajo, como paisaje, sin tapar el texto */
+.castillo { position: absolute; left: 50%; bottom: 0; transform: translateX(-50%); width: max(100%, 760px); height: auto; max-height: 52%; }
+.bella .hero { align-items: flex-start; padding: 64px 0 clamp(190px, 30vh, 300px); }
+.estrella { animation: parpadeo var(--d) ease-in-out infinite alternate; animation-delay: var(--delay); }
+@keyframes parpadeo { from { opacity: 0.25; } to { opacity: 1; } }
+.ventanas { animation: velas 3.4s ease-in-out infinite alternate; }
+@keyframes velas { 0% { opacity: 0.75; } 40% { opacity: 1; } 70% { opacity: 0.85; } 100% { opacity: 1; } }
+.banderin { transform-box: fill-box; transform-origin: left center; animation: ondea 2.6s ease-in-out infinite alternate; }
+@keyframes ondea { from { transform: skewY(-6deg) scaleX(0.92); } to { transform: skewY(6deg) scaleX(1.05); } }
+.bella .heroShade { background: radial-gradient(ellipse at 50% 42%, rgba(8, 16, 43, 0.55), rgba(8, 16, 43, 0.15) 60%), linear-gradient(180deg, transparent 70%, var(--noche)); }
+.bella .heroIn { text-shadow: 0 2px 18px rgba(5, 10, 31, 0.7); }
+
+/* Rosa encantada */
+.rosaEncantada { display: block; width: 104px; height: auto; margin: 0 auto 14px; overflow: visible; filter: drop-shadow(0 0 18px rgba(255, 140, 160, 0.35)); animation: levita 4.5s ease-in-out infinite alternate; }
+@keyframes levita { from { transform: translateY(0); } to { transform: translateY(-8px); } }
+.rosaBrillo { transform-box: fill-box; transform-origin: center; animation: pulso 3s ease-in-out infinite; }
+@keyframes pulso { 0%, 100% { opacity: 0.55; transform: scale(0.92); } 50% { opacity: 1; transform: scale(1.06); } }
+.petaloCae { animation: caePetalo 6s ease-in infinite; }
+@keyframes caePetalo { 0%, 30% { transform: translate(0, 0) rotate(0); opacity: 0; } 40% { opacity: 1; } 90% { transform: translate(-10px, 46px) rotate(80deg); opacity: 1; } 100% { transform: translate(-10px, 46px) rotate(80deg); opacity: 0; } }
+
+/* Pétalos que caen por toda la invitación */
+.petalos { position: fixed; inset: 0; z-index: 3; pointer-events: none; overflow: hidden; }
+.petalos span {
+  position: absolute; top: -40px; border-radius: 0 75% 0 75%; opacity: 0;
+  background: linear-gradient(135deg, #e2324f, #8e1027);
+  box-shadow: inset -2px -2px 4px rgba(0, 0, 0, 0.25);
+  animation: caer var(--d) linear infinite; animation-delay: var(--delay);
+}
+@keyframes caer {
+  0% { transform: translate(0, 0) rotate(0deg); opacity: 0; }
+  8% { opacity: 0.8; }
+  50% { transform: translate(calc(var(--x) * -1), 55vh) rotate(260deg); }
+  92% { opacity: 0.7; }
+  100% { transform: translate(var(--x), 112vh) rotate(540deg); opacity: 0; }
+}
+
+.separador { display: block; width: 200px; height: auto; margin: 16px auto 4px; color: #c99a3e; }
+
+@media (prefers-reduced-motion: reduce) {
+  .bella .section::before, .bella .section:not(.light), .bella .card, .bella .title em, .bella .nombre,
+  .estrella, .ventanas, .banderin, .rosaEncantada, .rosaBrillo, .petaloCae { animation: none; }
+  .petalos { display: none; }
+}

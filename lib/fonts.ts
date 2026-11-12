@@ -1,4 +1,4 @@
-import { Allura, Cormorant_Garamond, Inter, Playfair_Display, Syne } from "next/font/google";
+import { Allura, Cinzel, Cinzel_Decorative, Cormorant_Garamond, Inter, Playfair_Display, Syne } from "next/font/google";
 
 /* Tipografía del sitio principal: dos familias, subset latino, swap y
    precarga. Solo se descarga en las rutas que usan PageShell. */
@@ -29,4 +29,19 @@ export const allura = Allura({
   weight: "400",
   display: "swap",
   variable: "--font-allura",
+});
+
+/* XV con tema de La Bella y la Bestia: capitulares ornamentadas al estilo
+   del título de la película (Cinzel Decorative) y Cinzel para etiquetas. */
+export const cinzelDeco = Cinzel_Decorative({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+  variable: "--font-cinzel-deco",
+});
+export const cinzel = Cinzel({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  display: "swap",
+  variable: "--font-cinzel",
 });

@@ -18,6 +18,8 @@ export type Foto = { src: string; w: number; h: number; pie: string; pos?: strin
 export type ConfigXV = {
   /* Identifica la hoja de Google donde caen las confirmaciones. */
   evento: "sack" | "fatima";
+  /* Tema visual. Sin tema: negro y rosa (Sack). "bella": La Bella y la Bestia. */
+  tema?: "bella";
   nombre: string;
   nombreCompleto?: string;
   fechaISO: string;
@@ -141,13 +143,14 @@ export const SACK: ConfigXV = {
    PENDIENTES de la familia: padrinos, regalos y fecha límite. */
 export const FATIMA: ConfigXV = {
   evento: "fatima",
-  nombre: "Fátima Ximena",
-  nombreCompleto: "Fátima Ximena Cernas Espinosa",
-  /* El cuestionario trae "03 de julio del 2027" en el renglón de fecha
-     límite; es la única fecha del documento y se toma como la del evento. */
-  fechaISO: "2027-07-03",
-  fechaLarga: "Sábado 3 de julio de 2027",
-  fechaCorta: "03 · 07 · 2027",
+  tema: "bella",
+  /* La familia pidió el nombre sin acento. */
+  nombre: "Fatima Ximena",
+  nombreCompleto: "Fatima Ximena Cernas Espinosa",
+  /* Fecha confirmada por la familia: sábado 24 de julio de 2027. */
+  fechaISO: "2027-07-24",
+  fechaLarga: "Sábado 24 de julio de 2027",
+  fechaCorta: "24 · 07 · 2027",
 
   hora: "17:00",
   horaTexto: "5:00 p.m.",
@@ -167,7 +170,7 @@ export const FATIMA: ConfigXV = {
     maps: "https://maps.app.goo.gl/B4BQjYLwHK3W7c3n9",
   },
 
-  padres: ["Ángel Cernas Morales", "Laura Edith Espinosa Muñoz"],
+  padres: ["Angel Cernas Morales", "Laura Edith Espinosa Muñoz"],
   padrinos: [],
 
   /* Confirmaciones: 222 805 5746 (respaldo por WhatsApp). La familia dio
@@ -175,10 +178,11 @@ export const FATIMA: ConfigXV = {
   whatsappRsvp: "522228055746",
   fechaLimite: "",
 
-  /* "A Thousand Years" de Christina Perri (youtu.be/rtOvBOTyX00). */
-  youtubeId: "rtOvBOTyX00",
-  cancion: "A Thousand Years",
-  artista: "Christina Perri",
+  /* "Days in the Sun" (La Bella y la Bestia, 2017). PENDIENTE: enlace de
+     YouTube; mientras no esté, la sección de la canción no se muestra. */
+  youtubeId: "",
+  cancion: "Days in the Sun",
+  artista: "La Bella y la Bestia",
   spotifyPlaylist:
     "https://open.spotify.com/playlist/3RNlu8KHE7i8U2gffE7Xra?si=iOxl-stFRXGhWUCJaL7OpA&pi=CIAEzJdoSOC7n",
 
@@ -190,7 +194,8 @@ export const FATIMA: ConfigXV = {
   },
   avisos: [],
 
-  portada: "/xvfatima/14-anos.webp",
+  /* Portada con la escena temática de La Bella y la Bestia (sin foto). */
+  portada: null,
   /* Quince años en fotos: de nacimiento a los 14, con sus momentos
      especiales en el año que les toca. */
   fotos: [
