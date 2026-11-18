@@ -3,7 +3,6 @@ import Link from "next/link";
 import PageShell from "@/components/site/PageShell";
 import VideoGrid from "@/components/site/VideoGrid";
 import WhatsAppIcon from "@/components/site/WhatsAppIcon";
-import HeroVideo from "@/components/home/HeroVideo";
 import ContactoForm from "@/components/home/ContactoForm";
 import RotatingWord from "@/components/home/RotatingWord";
 import LogosCarrusel from "@/components/home/LogosCarrusel";
@@ -16,7 +15,7 @@ import {
   PAQUETES,
   PASOS,
   TESTIMONIO,
-  TRABAJOS,
+  TESTIMONIOS_VIDEO,
 } from "@/data/home";
 import { PILARES, publicados } from "@/lib/blog";
 import { EMAIL, SITE_URL, WHATSAPP_NUMERO, waLink } from "@/lib/site";
@@ -96,7 +95,6 @@ export default function Home() {
       />
         {/* 1 · HERO */}
         <section className={s.hero} aria-labelledby="hero-title">
-          <HeroVideo />
           <div className={`${s.container} ${s.heroInner}`}>
             <h1 id="hero-title" className={s.h1} aria-label={H1}>
               {H1.split(" ").map((w, i) => (
@@ -149,19 +147,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 3 · TRABAJOS DESTACADOS */}
-        <section className={`${s.section} ${s.sectionAlt}`} aria-labelledby="trabajos-title">
-          <div className={s.container}>
-            <div className={`${s.head} ${s.reveal}`} data-reveal>
-              <h2 id="trabajos-title" className={s.h2}>
-                Trabajos que hablan por nosotros
-              </h2>
-              <p className={s.sub}>Tres proyectos, tres industrias.</p>
-            </div>
-            <VideoGrid items={TRABAJOS} />
-          </div>
-        </section>
-
         {/* 3b · PORTAFOLIO COMPLETO */}
         <section className={s.section} aria-labelledby="portafolio-title" id="portafolio">
           <div className={s.container}>
@@ -172,6 +157,26 @@ export default function Home() {
               <p className={s.sub}>Concesionarias, eventos, marcas, médicos y tomas con dron. Toca un video para verlo completo con sonido.</p>
             </div>
             <Portafolio />
+          </div>
+        </section>
+
+        {/* 3c · TESTIMONIOS EN VIDEO */}
+        <section className={`${s.section} ${s.sectionAlt}`} aria-labelledby="testimonios-title">
+          <div className={s.container}>
+            <div className={`${s.head} ${s.reveal}`} data-reveal>
+              <h2 id="testimonios-title" className={s.h2}>
+                Lo que dicen nuestros clientes
+              </h2>
+              <p className={s.sub}>Testimonios en video de clientes con los que trabajamos.</p>
+            </div>
+            <div className={s.dosVideos}>
+              <VideoGrid items={TESTIMONIOS_VIDEO} />
+            </div>
+            <p style={{ marginTop: 28 }}>
+              <Link prefetch={false} href="/testimonios" className={s.link}>
+                Ver todos los testimonios <span aria-hidden="true">→</span>
+              </Link>
+            </p>
           </div>
         </section>
 

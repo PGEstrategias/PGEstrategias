@@ -70,30 +70,21 @@ export const V = {
   exHacienda: "https://res.cloudinary.com/dieszqcrn/video/upload/v1778398752/ExHaciendaPGTestimonio_ut7ja4.mp4",
 };
 
-/* ── Trabajos destacados ──────────────────────────────────────── */
+/* ── Testimonios en video (home) ──────────────────────────────── */
 
-/* A CONFIRMAR: los videos son los que ya usa el sitio para cada cliente. */
-export const TRABAJOS: VideoItem[] = [
+export const TESTIMONIOS_VIDEO: VideoItem[] = [
   {
-    etiqueta: "Concesionarias",
-    titulo: "Mercedes-Benz",
-    texto: "Video de sucursal con tomas de detrás de cámara.",
-    video: V.reyesHuerta,
-    href: "/industrias/concesionarias",
-    hrefLabel: "Ver concesionarias",
-  },
-  {
-    etiqueta: "Médicos",
+    etiqueta: "Testimonio",
     titulo: "Dr. José Manuel Fernández",
-    texto: "Testimonio en video del doctor sobre su trabajo con nosotros.",
+    texto: "El doctor cuenta su experiencia trabajando con nosotros.",
     video: V.drManuel,
     href: "/industrias/medicos",
     hrefLabel: "Ver médicos",
   },
   {
-    etiqueta: "Eventos",
+    etiqueta: "Testimonio",
     titulo: "Ex Hacienda San Bartolo",
-    texto: "Producción de espacios y servicios del venue para sus campañas.",
+    texto: "El venue cuenta su experiencia trabajando con nosotros.",
     video: V.exHacienda,
     href: "/industrias/eventos-restaurantes",
     hrefLabel: "Ver eventos y restaurantes",
@@ -107,6 +98,7 @@ export type Categoria = (typeof CATEGORIAS)[number];
 export type VideoPortafolio = VideoItem & { categoria: Categoria };
 
 export const PORTAFOLIO: VideoPortafolio[] = [
+  { categoria: "Concesionarias", etiqueta: "Concesionarias", titulo: "Mercedes-Benz", texto: "Video de sucursal con tomas de detrás de cámara.", video: V.reyesHuerta },
   { categoria: "Concesionarias", etiqueta: "Concesionarias", titulo: "Ford Rivera", texto: "Video promocional de la agencia.", video: "https://res.cloudinary.com/djduba5fd/video/upload/v1790084706/Demo_egdhe3.mp4" },
   { categoria: "Concesionarias", etiqueta: "Concesionarias", titulo: "Zenith Motors · Lamborghini Huracán", texto: "Video de un superdeportivo para redes.", video: "https://res.cloudinary.com/djduba5fd/video/upload/v1787612227/HuracanZenith_uzna4d.mp4" },
   { categoria: "Concesionarias", etiqueta: "Concesionarias", titulo: "Zenith Motors · Dodge Challenger", texto: "Video de inventario con estilo de cine.", video: "https://res.cloudinary.com/djduba5fd/video/upload/v1787612470/Challenger_vur6pe.mp4" },

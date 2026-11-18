@@ -156,6 +156,9 @@
 /* ── Tarjetas ─────────────────────────────────────────────────── */
 .grid3 { display: grid; grid-template-columns: 1fr; gap: 20px; }
 @media (min-width: 768px) { .grid3 { grid-template-columns: repeat(3, 1fr); } }
+/* Dos videos (testimonios): dos columnas centradas en lugar de tres. */
+.dosVideos { max-width: 820px; margin: 0 auto; }
+@media (min-width: 768px) { .dosVideos .grid3 { grid-template-columns: repeat(2, 1fr); } }
 .card { background: #f1eeeb; border: 1px solid var(--line); border-radius: 16px; overflow: hidden; display: flex; flex-direction: column; }
 .lift { transition: transform 200ms ease, box-shadow 200ms ease; }
 .lift:hover { transform: translateY(-4px); box-shadow: 0 10px 24px rgba(63, 60, 57, 0.12); }
