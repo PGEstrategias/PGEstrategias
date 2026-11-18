@@ -6,6 +6,8 @@ import WhatsAppIcon from "@/components/site/WhatsAppIcon";
 import HeroVideo from "@/components/home/HeroVideo";
 import ContactoForm from "@/components/home/ContactoForm";
 import RotatingWord from "@/components/home/RotatingWord";
+import LogosCarrusel from "@/components/home/LogosCarrusel";
+import Portafolio from "@/components/home/Portafolio";
 import s from "@/components/home/home.module.css";
 import {
   HERO_POSTER,
@@ -143,27 +145,7 @@ export default function Home() {
             <h2 id="marcas-title" className={`${s.h2} ${s.head} ${s.reveal}`} data-reveal>
               Marcas con las que hemos colaborado
             </h2>
-            <div className={s.marquee}>
-              {[0, 1].map((copia) => (
-                <ul key={copia} className={s.track} aria-hidden={copia === 1 ? true : undefined}>
-                  {LOGOS.map((l) => (
-                    <li key={l.nombre} className={s.logo}>
-                      <picture>
-                        {l.fallback && <source srcSet={l.src} type="image/webp" />}
-                        <img
-                          src={l.fallback ?? l.src}
-                          alt={copia === 0 ? l.nombre : ""}
-                          width={l.w}
-                          height={l.h}
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      </picture>
-                    </li>
-                  ))}
-                </ul>
-              ))}
-            </div>
+            <LogosCarrusel logos={LOGOS} />
           </div>
         </section>
 
@@ -177,6 +159,19 @@ export default function Home() {
               <p className={s.sub}>Tres proyectos, tres industrias.</p>
             </div>
             <VideoGrid items={TRABAJOS} />
+          </div>
+        </section>
+
+        {/* 3b · PORTAFOLIO COMPLETO */}
+        <section className={s.section} aria-labelledby="portafolio-title" id="portafolio">
+          <div className={s.container}>
+            <div className={`${s.head} ${s.reveal}`} data-reveal>
+              <h2 id="portafolio-title" className={s.h2}>
+                Más de nuestro trabajo
+              </h2>
+              <p className={s.sub}>Concesionarias, eventos, marcas, médicos y tomas con dron. Toca un video para verlo completo con sonido.</p>
+            </div>
+            <Portafolio />
           </div>
         </section>
 

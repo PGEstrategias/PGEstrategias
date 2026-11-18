@@ -108,7 +108,9 @@ function Modal({ t, onClose }: { t: Trabajo; onClose: () => void }) {
 
 /* Galería de videos: vista previa silenciosa y modal con el video completo
    con sonido. */
-export default function VideoGrid({ items }: { items: VideoItem[] }) {
+/* `revelar`: entrada animada al hacer scroll. En listas que cambian después
+   de cargar (filtros) va en false: los elementos nuevos no los ve el observador. */
+export default function VideoGrid({ items, revelar = true }: { items: VideoItem[]; revelar?: boolean }) {
   const [abierto, setAbierto] = useState<Trabajo | null>(null);
 
   return (
@@ -117,9 +119,9 @@ export default function VideoGrid({ items }: { items: VideoItem[] }) {
         {items.map((t, i) => (
           <article
             key={t.titulo + t.video}
-            className={`${s.card} ${s.lift} ${s.reveal}`}
-            data-reveal
-            data-reveal-delay={(i % 3) * 80}
+            className={`${s.card} ${s.lift}${revelar ? ` ${s.reveal}` : ""}`}
+            data-reveal={revelar ? true : undefined}
+            data-reveal-delay={revelar ? (i % 3) * 80 : undefined}
           >
             <Preview t={t} onOpen={() => setAbierto(t)} />
             <div className={s.cardBody}>
