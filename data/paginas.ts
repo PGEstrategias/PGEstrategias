@@ -1,6 +1,6 @@
 /* Contenido de /servicios e /industrias. Copy propuesto por PG Estrategias,
    sin cifras ni resultados: validar antes de publicar. */
-import { V } from "./home";
+import { PORTAFOLIO, V, type Categoria } from "./home";
 import type { VideoItem } from "@/components/site/VideoGrid";
 import type { Pilar } from "@/lib/blog";
 
@@ -63,6 +63,16 @@ export type Industria = {
   mensaje: string;
 };
 
+/* Videos de cada industria: los propios de la página y, después, los del
+   portafolio de la home en esa categoría, sin repetir ningún video. */
+function conPortafolio(propios: VideoItem[], categoria: Categoria, etiqueta: string): VideoItem[] {
+  const vistos = new Set(propios.map((t) => t.video));
+  const extra = PORTAFOLIO.filter((v) => v.categoria === categoria && !vistos.has(v.video)).map(
+    ({ categoria: _c, ...v }) => ({ ...v, etiqueta: v.etiqueta === "Concesionarias" ? etiqueta : v.etiqueta })
+  );
+  return [...propios, ...extra];
+}
+
 export const INDUSTRIAS_DETALLE: Industria[] = [
   {
     slug: "concesionarias",
@@ -81,11 +91,15 @@ export const INDUSTRIAS_DETALLE: Industria[] = [
       { titulo: "Landing de inventario", texto: "Páginas por categoría con botón directo a WhatsApp." },
       { titulo: "Perfil de Google", texto: "Fotos reales del showroom, horarios correctos y reseñas respondidas." },
     ],
-    trabajos: [
-      { etiqueta: "Concesionaria", titulo: "Mercedes-Benz", video: V.reyesHuerta },
-      { etiqueta: "Concesionaria", titulo: "Zenith Motors", video: V.zenith },
-      { etiqueta: "Concesionaria", titulo: "Land Rover Puebla", video: V.landRover },
-    ],
+    trabajos: conPortafolio(
+      [
+        { etiqueta: "Concesionaria", titulo: "Mercedes-Benz", video: V.reyesHuerta },
+        { etiqueta: "Concesionaria", titulo: "Zenith Motors", video: V.zenith },
+        { etiqueta: "Concesionaria", titulo: "Land Rover Puebla", video: V.landRover },
+      ],
+      "Concesionarias",
+      "Concesionaria"
+    ),
     mensaje: "Hola, tengo una concesionaria y me interesa trabajar con PG Estrategias.",
   },
   {
@@ -105,10 +119,14 @@ export const INDUSTRIAS_DETALLE: Industria[] = [
       { titulo: "Video del médico", texto: "Testimoniales y contenido educativo que generan confianza antes de la cita." },
       { titulo: "Campañas locales", texto: "Anuncios hacia pacientes de la zona que atiende el consultorio." },
     ],
-    trabajos: [
-      { etiqueta: "Médicos", titulo: "Dr. José Manuel Fernández", video: V.drManuel },
-      { etiqueta: "Médicos", titulo: "Dr. Aarón Zarain", video: V.aaronZarain },
-    ],
+    trabajos: conPortafolio(
+      [
+        { etiqueta: "Médicos", titulo: "Dr. José Manuel Fernández", video: V.drManuel },
+        { etiqueta: "Médicos", titulo: "Dr. Aarón Zarain", video: V.aaronZarain },
+      ],
+      "Médicos",
+      "Médicos"
+    ),
     mensaje: "Hola, soy médico y me interesa trabajar con PG Estrategias.",
   },
   {
@@ -128,7 +146,11 @@ export const INDUSTRIAS_DETALLE: Industria[] = [
       { titulo: "Landing de paquetes y reservaciones", texto: "Paquetes, menús y fechas en una página con botón directo." },
       { titulo: "Google y reseñas", texto: "Perfil al día con fotos recientes y una estrategia para pedir reseñas." },
     ],
-    trabajos: [{ etiqueta: "Eventos", titulo: "Ex Hacienda San Bartolo", video: V.exHacienda }],
+    trabajos: conPortafolio(
+      [{ etiqueta: "Eventos", titulo: "Ex Hacienda San Bartolo · Testimonio", video: V.exHacienda }],
+      "Eventos y espacios",
+      "Eventos"
+    ),
     mensaje: "Hola, tengo un negocio de eventos/restaurante y me interesa trabajar con PG Estrategias.",
   },
 ];
