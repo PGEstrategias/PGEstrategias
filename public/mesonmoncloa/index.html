@@ -10,7 +10,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Mesón de la Moncloa · Cocina española con vista a Angelópolis">
 <meta property="og:description" content="Reserva tu mesa en línea o por WhatsApp.">
-<meta property="og:image" content="/mesonmoncloa/logo.png">
+<meta property="og:image" content="/mesonmoncloa/vista-noche.webp">
 <meta property="og:locale" content="es_MX">
 <link rel="icon" href="/mesonmoncloa/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -85,16 +85,15 @@
 
   /* Hero: Angelópolis de noche desde las alturas */
   .hero { min-height: 100vh; min-height: 100svh; display: flex; align-items: center; padding: 130px 0 90px; overflow: hidden; text-align: center; }
-  .ciudad { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .hero::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 42%, rgba(18,13,11,0.35), rgba(18,13,11,0.1) 55%), linear-gradient(180deg, transparent 72%, var(--noche)); pointer-events: none; }
+  .hero-foto { position: absolute; inset: 0; background: url("/mesonmoncloa/vista-noche.webp") center 60% / cover no-repeat; transform: scale(1.08); animation: acerca 20s ease-out forwards; }
+  @keyframes acerca { to { transform: scale(1); } }
+  .hero::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 45%, rgba(18,13,11,0.72), rgba(18,13,11,0.35) 70%), linear-gradient(180deg, rgba(18,13,11,0.4) 0%, transparent 30%, transparent 70%, var(--noche)); pointer-events: none; }
   .hero .wrap { position: relative; z-index: 1; }
   .hero-logo { width: min(460px, 62vw); height: auto; margin: 0 auto 22px; filter: drop-shadow(0 6px 30px rgba(0,0,0,0.6)); }
   .hero h1 { font-size: clamp(26px, 4vw, 44px); max-width: 780px; margin: 0 auto 14px; }
   .hero p.lead { margin: 0 auto; }
   .hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 30px; }
-  .ventana { animation: luz 4s ease-in-out infinite alternate; }
   @keyframes luz { from { opacity: 0.45; } to { opacity: 1; } }
-  .estrella { animation: luz 3s ease-in-out infinite alternate; }
 
   /* Experiencia */
   .exp { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 44px; }
@@ -106,6 +105,15 @@
 
   /* Cocina */
   .cocina { background: linear-gradient(180deg, var(--noche), #1d130f 50%, var(--noche)); }
+  .foto-ancha { margin: 36px 0 0; position: relative; overflow: hidden; border: 1px solid var(--linea); }
+  .foto-ancha img { width: 100%; height: clamp(240px, 46vw, 520px); object-fit: cover; transition: transform 1.2s ease; }
+  .foto-ancha:hover img { transform: scale(1.04); }
+  .foto-ancha figcaption, .galeria figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 40px 20px 16px; font-family: var(--cursiva); font-style: italic; font-size: 22px; color: var(--crema); background: linear-gradient(180deg, transparent, rgba(18,13,11,0.85)); }
+  .galeria { display: grid; grid-template-columns: 1fr; gap: 14px; margin-top: 36px; }
+  @media (min-width: 760px) { .galeria { grid-template-columns: 1.3fr 1fr 1fr; } }
+  .galeria figure { position: relative; overflow: hidden; border: 1px solid var(--linea); }
+  .galeria img { width: 100%; height: clamp(220px, 30vw, 380px); object-fit: cover; transition: transform 1s ease; }
+  .galeria figure:hover img { transform: scale(1.06); }
   .platos { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--linea); border: 1px solid var(--linea); margin-top: 44px; }
   @media (min-width: 700px) { .platos { grid-template-columns: 1fr 1fr; } }
   @media (min-width: 1060px) { .platos { grid-template-columns: repeat(3, 1fr); } }
@@ -166,7 +174,7 @@
 
   .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
   .reveal.in { opacity: 1; transform: none; }
-  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } .ventana, .estrella { animation: none; } }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } .hero-foto { animation: none; transform: none; } }
   @media (max-width: 600px) {
     section { padding: 72px 0; }
     .hero { padding: 104px 0 70px; align-items: flex-start; }
@@ -206,52 +214,7 @@
 <main>
   <!-- HERO -->
   <section class="hero" id="inicio">
-    <svg class="ciudad" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
-      <defs>
-        <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="#0d0a0e" />
-          <stop offset="0.45" stop-color="#2a1a18" />
-          <stop offset="0.72" stop-color="#6b3a22" />
-          <stop offset="0.86" stop-color="#b8692c" />
-          <stop offset="1" stop-color="#2a1a14" />
-        </linearGradient>
-        <linearGradient id="edif" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1412" /><stop offset="1" stop-color="#0b0807" /></linearGradient>
-        <pattern id="ventanas" width="22" height="26" patternUnits="userSpaceOnUse">
-          <rect x="5" y="6" width="6" height="9" fill="#f3c46a" />
-        </pattern>
-        <pattern id="ventanas2" width="18" height="22" patternUnits="userSpaceOnUse">
-          <rect x="4" y="5" width="5" height="7" fill="#ffd98a" />
-        </pattern>
-      </defs>
-      <rect width="1440" height="900" fill="url(#cielo)" />
-      <g fill="#fff3d6">
-        <circle class="estrella" cx="120" cy="90" r="1.4" /><circle class="estrella" cx="300" cy="160" r="1.1" style="animation-delay:-1s" />
-        <circle class="estrella" cx="520" cy="70" r="1.6" style="animation-delay:-2s" /><circle class="estrella" cx="760" cy="130" r="1.2" />
-        <circle class="estrella" cx="980" cy="60" r="1.5" style="animation-delay:-1.5s" /><circle class="estrella" cx="1210" cy="150" r="1.1" style="animation-delay:-.5s" />
-        <circle class="estrella" cx="1360" cy="80" r="1.4" style="animation-delay:-2.4s" />
-      </g>
-      <!-- Volcanes al fondo -->
-      <path d="M0 640 L260 560 L380 470 L430 455 L470 470 L600 560 L760 600 L900 580 L1010 500 L1060 488 L1110 505 L1240 575 L1440 610 V900 H0Z" fill="#3a2520" opacity="0.85" />
-      <path d="M408 462 L430 455 L452 464 L440 474 L420 474Z M1042 494 L1060 488 L1080 497 L1068 506 L1050 506Z" fill="#f2e3cf" opacity="0.7" />
-      <!-- Ciudad: torres de Angelópolis -->
-      <g fill="url(#edif)">
-        <rect x="40" y="690" width="110" height="210" /><rect x="170" y="640" width="80" height="260" /><rect x="270" y="700" width="120" height="200" />
-        <rect x="420" y="600" width="90" height="300" /><rect x="530" y="660" width="130" height="240" /><rect x="690" y="560" width="70" height="340" />
-        <rect x="780" y="620" width="110" height="280" /><rect x="910" y="580" width="90" height="320" /><rect x="1020" y="670" width="130" height="230" />
-        <rect x="1170" y="620" width="85" height="280" /><rect x="1275" y="690" width="120" height="210" />
-      </g>
-      <g class="ventana" opacity="0.8">
-        <rect x="170" y="650" width="80" height="250" fill="url(#ventanas)" opacity="0.55" />
-        <rect x="420" y="610" width="90" height="290" fill="url(#ventanas2)" opacity="0.6" />
-        <rect x="690" y="570" width="70" height="330" fill="url(#ventanas)" opacity="0.7" />
-      </g>
-      <g class="ventana" opacity="0.8" style="animation-delay:-2s">
-        <rect x="910" y="590" width="90" height="310" fill="url(#ventanas2)" opacity="0.55" />
-        <rect x="1170" y="630" width="85" height="270" fill="url(#ventanas)" opacity="0.6" />
-        <rect x="530" y="670" width="130" height="230" fill="url(#ventanas2)" opacity="0.35" />
-      </g>
-      <rect y="860" width="1440" height="40" fill="#0b0807" />
-    </svg>
+    <div class="hero-foto" role="img" aria-label="Salón de Mesón de la Moncloa con vista nocturna de Angelópolis"></div>
     <div class="wrap">
       <span class="script">¡Bienvenidos!</span>
       <img class="hero-logo" src="/mesonmoncloa/logo.png" alt="Mesón de la Moncloa" width="1000" height="561">
@@ -315,6 +278,10 @@
         <h2>Una mesa con <em class="oro">toda la ciudad</em> a tus pies</h2>
         <p class="lead">Comidas de negocios, cenas especiales y celebraciones con una vista que no se olvida.</p>
       </div>
+      <figure class="foto-ancha reveal">
+        <img src="/mesonmoncloa/vista-dia-platillos.webp" alt="Platillos españoles servidos frente a los ventanales con vista a las torres de Angelópolis" width="1660" height="1188" loading="lazy">
+        <figcaption>Cocina española frente a todo Angelópolis</figcaption>
+      </figure>
       <div class="exp">
         <article class="reveal"><span class="num">I</span><h3>La vista</h3><p>Desde lo alto de la torre, todo Angelópolis y, en días despejados, los volcanes.</p></article>
         <article class="reveal"><span class="num">II</span><h3>La cocina</h3><p>Recetas de tradición española, preparadas con producto de calidad.</p></article>
@@ -331,6 +298,11 @@
         <span class="script">¡Que aproveche!</span>
         <span class="kicker">Nuestra cocina</span>
         <h2>Sabores de <em class="oro">España</em></h2>
+      </div>
+      <div class="galeria reveal">
+        <figure><img src="/mesonmoncloa/tapas-vino.webp" alt="Montaditos de jamón, gambas, sobrasada y gulas con copa de vino tinto" width="1760" height="1132" loading="lazy"><figcaption>Montaditos y vino</figcaption></figure>
+        <figure><img src="/mesonmoncloa/vista-dia-platillos.webp" alt="Cazuelas de barro, mariscos y bacalao con la ciudad de fondo" width="1660" height="1188" loading="lazy"><figcaption>Cazuelas y mar</figcaption></figure>
+        <figure><img src="/mesonmoncloa/tarta.webp" alt="Tarta de almendra espolvoreada con azúcar glass" width="1800" height="1133" loading="lazy"><figcaption>Postres de la casa</figcaption></figure>
       </div>
       <div class="platos reveal">
         <div><b>Tapas</b><span>Para compartir y abrir el apetito.</span></div>
