@@ -181,6 +181,21 @@
   .dark .price .cur, .dark .price .per { color: var(--gray); }
   @media (min-width: 1000px) { .port { grid-template-columns: repeat(3, 1fr); } }
   @media (max-width: 640px) { .goals td.hoy::before { content: "Hoy: "; } .goals td.obj::before { content: "Objetivo: "; color: var(--muted); font-weight: 400; } }
+  .bono-grid { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: center; }
+  @media (min-width: 940px) { .bono-grid { grid-template-columns: 3fr 2fr; gap: 48px; } }
+  #bono h2 { font-size: clamp(30px, 3.6vw, 46px); }
+  .bonos { list-style: none; margin-top: 22px; }
+  .bonos li { padding: 14px 0 14px 34px; border-top: 1px solid var(--line); position: relative; }
+  .bonos li::before { content: "✓"; position: absolute; left: 0; top: 14px; width: 22px; height: 22px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; }
+  .bonos b { display: block; color: var(--dark); font-size: 16px; }
+  .bonos span { color: var(--muted); font-size: 15px; }
+  .bono-caja { background: var(--dark); border-radius: 18px; padding: 26px 20px; }
+  .count { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+  .count div { background: rgba(228,224,221,.07); border: 1px solid rgba(228,224,221,.15); border-radius: 12px; padding: 14px 4px; text-align: center; }
+  .count b { display: block; font-family: var(--font-title); font-size: clamp(24px, 3.4vw, 32px); font-weight: 800; color: var(--accent); line-height: 1; font-variant-numeric: tabular-nums; }
+  .count span { font-size: 11px; color: var(--gray); text-transform: uppercase; letter-spacing: .08em; }
+  .deadline { margin-top: 14px; font-size: 14px; color: var(--gray); text-align: center; }
+  .deadline b { color: var(--bg); }
 </style>
 </head>
 <body>
@@ -307,6 +322,32 @@
             <li><div class="name">Videollamada semanal, consultoría quincenal y reporte semanal con tablero en vivo</div></li>
           </ul>
         </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4b · BONO DICIEMBRE -->
+  <section id="bono">
+    <div class="wrap bono-grid">
+      <div>
+        <span class="eyebrow">Bono por iniciar antes del 1 de diciembre</span>
+        <h2>Si empezamos en noviembre, esto va <span class="accent">sin costo adicional</span></h2>
+        <p class="lead">Aplica para Tracción o Dominio al iniciar la colaboración antes del 1 de diciembre de 2026.</p>
+        <ul class="bonos">
+          <li><b>Página web + 2 landing pages</b><span>El sitio de la demo y dos landings: una para el servicio de mantenimiento y otra para llantas.</span></li>
+          <li><b>2 influencers del nicho automotriz</b><span>Bryan y Autos Puebla participan en la producción de los anuncios.</span></li>
+          <li><b>Bot para responder a los leads</b><span>Configuración del bot de WhatsApp que contesta al instante precios, horarios y agenda.</span></li>
+          <li><b>Bot de reseñas post-servicio</b><span>Configuración del mensaje automático que pide la reseña en Google después de cada servicio.</span></li>
+        </ul>
+      </div>
+      <div class="bono-caja">
+        <div class="count" id="countdown" aria-live="polite">
+          <div><b data-u="d">0</b><span>días</span></div>
+          <div><b data-u="h">00</b><span>horas</span></div>
+          <div><b data-u="m">00</b><span>min</span></div>
+          <div><b data-u="s">00</b><span>seg</span></div>
+        </div>
+        <p class="deadline" id="deadline-text">Válido para colaboraciones que inicien antes del <b>martes 1 de diciembre de 2026</b>.</p>
       </div>
     </div>
   </section>
@@ -449,6 +490,27 @@
       });
     });
 
+
+    // Cuenta regresiva al 1 de diciembre de 2026, 00:00 hora de Puebla (UTC-6).
+    var END = new Date("2026-12-01T00:00:00-06:00").getTime();
+    var box = document.getElementById("countdown");
+    var txt = document.getElementById("deadline-text");
+    function pad(n) { return n < 10 ? "0" + n : "" + n; }
+    function tick() {
+      var diff = END - Date.now();
+      if (diff <= 0) {
+        box.style.display = "none";
+        txt.innerHTML = "El bono cerró el <b>1 de diciembre de 2026</b>. Pregúntanos por las condiciones vigentes.";
+        return false;
+      }
+      var s = Math.floor(diff / 1000);
+      box.querySelector('[data-u="d"]').textContent = Math.floor(s / 86400);
+      box.querySelector('[data-u="h"]').textContent = pad(Math.floor(s % 86400 / 3600));
+      box.querySelector('[data-u="m"]').textContent = pad(Math.floor(s % 3600 / 60));
+      box.querySelector('[data-u="s"]').textContent = pad(s % 60);
+      return true;
+    }
+    if (tick()) { var iv = setInterval(function () { if (!tick()) clearInterval(iv); }, 1000); }
   })();
 </script>
 </body>
