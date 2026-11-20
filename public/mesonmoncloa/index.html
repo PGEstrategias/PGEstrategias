@@ -15,7 +15,7 @@
 <link rel="icon" href="/mesonmoncloa/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cinzel+Decorative:wght@400;700&family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -50,12 +50,15 @@
   body { background: var(--noche); color: var(--crema); font-family: var(--body); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
   img, svg { display: block; max-width: 100%; }
   a { color: inherit; text-decoration: none; }
+  .azulejos { height: 28px; background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2256%22 height=%2256%22 viewBox=%220 0 56 56%22%3E%3Crect width=%2256%22 height=%2256%22 fill=%22%23f6efe2%22/%3E%3Cg fill=%22none%22 stroke=%22%231d3f8f%22 stroke-width=%222.2%22%3E%3Ccircle cx=%2228%22 cy=%2228%22 r=%2210%22/%3E%3Cpath d=%22M28 6 C34 16 34 16 28 18 C22 16 22 16 28 6Z M28 50 C34 40 34 40 28 38 C22 40 22 40 28 50Z M6 28 C16 22 16 22 18 28 C16 34 16 34 6 28Z M50 28 C40 22 40 22 38 28 C40 34 40 34 50 28Z%22/%3E%3C/g%3E%3Cg fill=%22%23c8102e%22%3E%3Ccircle cx=%2228%22 cy=%2228%22 r=%223.5%22/%3E%3C/g%3E%3Cg fill=%22%23f6c400%22%3E%3Ccircle cx=%220%22 cy=%220%22 r=%227%22/%3E%3Ccircle cx=%2256%22 cy=%220%22 r=%227%22/%3E%3Ccircle cx=%220%22 cy=%2256%22 r=%227%22/%3E%3Ccircle cx=%2256%22 cy=%2256%22 r=%227%22/%3E%3C/g%3E%3Cg fill=%22%231d3f8f%22%3E%3Cpath d=%22M14 14 l4 4 -4 4 -4 -4z M42 14 l4 4 -4 4 -4 -4z M14 42 l4 4 -4 4 -4 -4z M42 42 l4 4 -4 4 -4 -4z%22/%3E%3C/g%3E%3C/svg%3E") 0 0 / 28px 28px repeat-x; border-top: 2px solid var(--oro); border-bottom: 2px solid var(--oro); }
+  .script { font-family: "Pinyon Script", cursive; font-weight: 400; color: var(--oro-2); font-size: clamp(30px, 4vw, 44px); line-height: 1; display: block; margin-bottom: 4px; letter-spacing: 0; text-transform: none; }
   .wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
   section { padding: 96px 0; position: relative; }
 
   .kicker { display: inline-flex; align-items: center; gap: 12px; font-family: var(--titulo); font-size: 13px; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: var(--oro); }
   .kicker::before { content: ""; width: 26px; height: 4px; background: linear-gradient(180deg, var(--rojo) 0 25%, var(--amarillo) 25% 75%, var(--rojo) 75%); border-radius: 1px; }
   h1, h2, h3 { font-family: var(--titulo); font-weight: 500; line-height: 1.12; letter-spacing: 0.04em; }
+  h2 { font-family: "Cinzel Decorative", var(--titulo); font-weight: 400; }
   h1 { font-size: clamp(36px, 6.4vw, 74px); }
   h2 { font-size: clamp(30px, 4.6vw, 52px); margin: 14px 0 16px; }
   h3 { font-size: 22px; }
@@ -73,6 +76,7 @@
   header { position: fixed; inset: 0 0 auto 0; z-index: 30; background: rgba(18,13,11,0.82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--linea); }
   header .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 16px; }
   .logo img { height: 50px; width: auto; }
+  footer img, .logo img { object-fit: contain; }
   nav ul { list-style: none; display: flex; gap: 28px; }
   nav a { font-family: var(--titulo); font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--suave); }
   nav a:hover { color: var(--oro-2); }
@@ -84,7 +88,7 @@
   .ciudad { position: absolute; inset: 0; width: 100%; height: 100%; }
   .hero::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 42%, rgba(18,13,11,0.35), rgba(18,13,11,0.1) 55%), linear-gradient(180deg, transparent 72%, var(--noche)); pointer-events: none; }
   .hero .wrap { position: relative; z-index: 1; }
-  .hero-logo { width: min(460px, 82vw); margin: 0 auto 26px; filter: drop-shadow(0 6px 30px rgba(0,0,0,0.6)); }
+  .hero-logo { width: min(460px, 62vw); height: auto; margin: 0 auto 22px; filter: drop-shadow(0 6px 30px rgba(0,0,0,0.6)); }
   .hero h1 { font-size: clamp(26px, 4vw, 44px); max-width: 780px; margin: 0 auto 14px; }
   .hero p.lead { margin: 0 auto; }
   .hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 30px; }
@@ -143,11 +147,20 @@
   .mapa { min-height: 360px; border: 1px solid var(--linea); overflow: hidden; }
   .mapa iframe { width: 100%; height: 100%; min-height: 360px; border: 0; display: block; filter: grayscale(0.3) invert(0.9) hue-rotate(180deg) sepia(0.2); }
 
-  footer { border-top: 1px solid var(--linea); padding: 38px 0 100px; font-size: 13px; color: rgba(246,239,226,0.55); }
+  footer { border-top: 1px solid var(--linea); padding: 38px 0 120px; font-size: 13px; color: rgba(246,239,226,0.55); }
   footer .wrap { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; }
   footer img { height: 46px; width: auto; }
   footer a { color: var(--oro); }
 
+  .barra-reserva { position: fixed; left: 0; right: 0; bottom: 0; z-index: 45; display: flex; gap: 10px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom)); background: rgba(18,13,11,0.96); border-top: 1px solid var(--oro); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); transform: translateY(calc(100% + 40px)); opacity: 0; pointer-events: none; transition: transform .35s ease, opacity .35s ease; }
+  .barra-reserva.ver { transform: none; opacity: 1; pointer-events: auto; }
+  .barra-reserva .btn { flex: 1; min-height: 48px; font-size: 13px; padding: 0 12px; }
+  .barra-reserva .btn-wa { background: var(--wa); color: #0b2a15; }
+  @media (min-width: 900px) {
+    .barra-reserva { left: auto; right: 24px; bottom: 24px; border: 1px solid var(--oro); border-radius: 4px; padding: 10px; box-shadow: 0 14px 40px rgba(0,0,0,0.55); }
+    .barra-reserva .btn { flex: 0 0 auto; padding: 0 22px; }
+  }
+  .seccion-cta { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 12px; }
   .wa-float { position: fixed; right: 18px; bottom: 18px; z-index: 40; width: 58px; height: 58px; border-radius: 50%; background: var(--wa); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
   .wa-float svg { width: 30px; height: 30px; color: #fff; }
 
@@ -156,6 +169,12 @@
   @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } .ventana, .estrella { animation: none; } }
   @media (max-width: 600px) {
     section { padding: 72px 0; }
+    .hero { padding: 104px 0 70px; align-items: flex-start; }
+    .hero-logo { width: min(250px, 64vw); margin-bottom: 14px; }
+    .hero .script { font-size: 26px; }
+    .hero h1 { font-size: 24px; }
+    .hero p.lead { font-size: 15px; }
+    .hero .ctas { margin-top: 20px; }
     .hero .btn { width: 100%; }
     .fila { grid-template-columns: 1fr; }
     .datos li { grid-template-columns: 1fr; gap: 2px; }
@@ -234,55 +253,24 @@
       <rect y="860" width="1440" height="40" fill="#0b0807" />
     </svg>
     <div class="wrap">
+      <span class="script">¡Bienvenidos!</span>
       <img class="hero-logo" src="/mesonmoncloa/logo.png" alt="Mesón de la Moncloa" width="1000" height="561">
       <h1>Cocina española en las alturas de <em class="oro">Angelópolis</em></h1>
       <p class="lead">Sabores de España, una cava para cada ocasión y la mejor vista de Puebla desde uno de los pisos más altos de la ciudad.</p>
       <div class="ctas">
-        <a class="btn btn-oro" href="#reservar">Reservar mesa</a>
+        <a class="btn btn-oro" href="#reservar">Reservar mesa ahora</a>
         <a class="btn btn-linea" data-wa="Hola, quiero hacer una reservación en Mesón de la Moncloa." href="#"><svg><use href="#wa"/></svg>WhatsApp</a>
       </div>
     </div>
   </section>
 
-  <!-- EXPERIENCIA -->
-  <section id="experiencia">
-    <div class="wrap">
-      <div class="reveal">
-        <span class="kicker">La experiencia</span>
-        <h2>Una mesa con <em class="oro">toda la ciudad</em> a tus pies</h2>
-        <p class="lead">Comidas de negocios, cenas especiales y celebraciones con una vista que no se olvida.</p>
-      </div>
-      <div class="exp">
-        <article class="reveal"><span class="num">I</span><h3>La vista</h3><p>Desde lo alto de la torre, todo Angelópolis y, en días despejados, los volcanes.</p></article>
-        <article class="reveal"><span class="num">II</span><h3>La cocina</h3><p>Recetas de tradición española, preparadas con producto de calidad.</p></article>
-        <article class="reveal"><span class="num">III</span><h3>El servicio</h3><p>Atención cuidada para que cada visita se sienta especial.</p></article>
-      </div>
-    </div>
-  </section>
-
-  <!-- COCINA -->
-  <section class="cocina" id="cocina">
-    <div class="wrap">
-      <div class="reveal">
-        <span class="kicker">Nuestra cocina</span>
-        <h2>Sabores de <em class="oro">España</em></h2>
-      </div>
-      <div class="platos reveal">
-        <div><b>Tapas</b><span>Para compartir y abrir el apetito.</span></div>
-        <div><b>Paellas y arroces</b><span>Al centro de la mesa, como manda la tradición.</span></div>
-        <div><b>Embutidos y quesos</b><span>Selección para acompañar con un buen vino.</span></div>
-        <div><b>Cortes y mar</b><span>Platos fuertes para cada gusto.</span></div>
-        <div><b>Vinos y clericot</b><span>Una carta pensada para cada platillo.</span></div>
-        <div><b>Postres</b><span>El cierre dulce de la experiencia.</span></div>
-      </div>
-      <p class="nota">Sitio demo: categorías ilustrativas. El menú real se carga con el restaurante.</p>
-    </div>
-  </section>
+  <div class="azulejos" aria-hidden="true"></div>
 
   <!-- RESERVACIONES -->
   <section id="reservar">
     <div class="wrap reserva-grid">
       <div class="reveal">
+        <span class="script">Te esperamos</span>
         <span class="kicker">Reservaciones</span>
         <h2>Aparta tu mesa <em class="oro">en un minuto</em></h2>
         <p class="lead">Elige la fecha, la hora y cuántos son. Te confirmamos por WhatsApp.</p>
@@ -316,6 +304,47 @@
     </div>
   </section>
 
+  <div class="azulejos" aria-hidden="true"></div>
+
+  <!-- EXPERIENCIA -->
+  <section id="experiencia">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="script">Olé</span>
+        <span class="kicker">La experiencia</span>
+        <h2>Una mesa con <em class="oro">toda la ciudad</em> a tus pies</h2>
+        <p class="lead">Comidas de negocios, cenas especiales y celebraciones con una vista que no se olvida.</p>
+      </div>
+      <div class="exp">
+        <article class="reveal"><span class="num">I</span><h3>La vista</h3><p>Desde lo alto de la torre, todo Angelópolis y, en días despejados, los volcanes.</p></article>
+        <article class="reveal"><span class="num">II</span><h3>La cocina</h3><p>Recetas de tradición española, preparadas con producto de calidad.</p></article>
+        <article class="reveal"><span class="num">III</span><h3>El servicio</h3><p>Atención cuidada para que cada visita se sienta especial.</p></article>
+      </div>
+      <div class="seccion-cta"><a class="btn btn-oro" href="#reservar">Reservar mi mesa</a><a class="btn btn-linea" data-wa="Hola, quiero información para un evento en Mesón de la Moncloa." href="#"><svg><use href="#wa"/></svg>Eventos privados</a></div>
+    </div>
+  </section>
+
+  <!-- COCINA -->
+  <section class="cocina" id="cocina">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="script">¡Que aproveche!</span>
+        <span class="kicker">Nuestra cocina</span>
+        <h2>Sabores de <em class="oro">España</em></h2>
+      </div>
+      <div class="platos reveal">
+        <div><b>Tapas</b><span>Para compartir y abrir el apetito.</span></div>
+        <div><b>Paellas y arroces</b><span>Al centro de la mesa, como manda la tradición.</span></div>
+        <div><b>Embutidos y quesos</b><span>Selección para acompañar con un buen vino.</span></div>
+        <div><b>Cortes y mar</b><span>Platos fuertes para cada gusto.</span></div>
+        <div><b>Vinos y clericot</b><span>Una carta pensada para cada platillo.</span></div>
+        <div><b>Postres</b><span>El cierre dulce de la experiencia.</span></div>
+      </div>
+      <p class="nota">Sitio demo: categorías ilustrativas. El menú real se carga con el restaurante.</p>
+      <div class="seccion-cta"><a class="btn btn-oro" href="#reservar">Reservar para probarlo</a></div>
+    </div>
+  </section>
+
   <!-- CLUB -->
   <section class="club" id="club">
     <div class="wrap reveal">
@@ -335,9 +364,9 @@
         <h2>En lo alto de <em class="oro">Angelópolis</em></h2>
         <ul class="datos">
           <li><span>Dónde</span>En uno de los pisos más altos de una torre de Angelópolis, Puebla.</li>
-          <li><span>Reservas</span>En línea o por WhatsApp</li>
+          <li><span>Reservas</span>En línea o por WhatsApp al <a href="tel:+522218417356">221 841 7356</a></li>
         </ul>
-        <a class="btn btn-oro" href="https://share.google/AAFtTua8qPnLQFiGW" target="_blank" rel="noopener">Cómo llegar</a>
+        <div class="seccion-cta" style="margin-top:0"><a class="btn btn-oro" href="#reservar">Reservar mesa</a><a class="btn btn-linea" href="https://share.google/AAFtTua8qPnLQFiGW" target="_blank" rel="noopener">Cómo llegar</a></div>
       </div>
       <div class="mapa reveal">
         <iframe title="Ubicación de Mesón de la Moncloa en Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
@@ -355,13 +384,15 @@
   </div>
 </footer>
 
-<a class="wa-float" data-wa="Hola, quiero hacer una reservación en Mesón de la Moncloa." href="#" aria-label="Escríbenos por WhatsApp"><svg><use href="#wa"/></svg></a>
+<div class="barra-reserva" id="barra-reserva" role="region" aria-label="Reservar">
+  <a class="btn btn-oro" href="#reservar">Reservar mesa</a>
+  <a class="btn btn-wa" data-wa="Hola, quiero hacer una reservación en Mesón de la Moncloa." href="#"><svg><use href="#wa"/></svg>WhatsApp</a>
+</div>
 
 <script>
   (function () {
-    /* PENDIENTE: número de WhatsApp del restaurante (52 + 10 dígitos).
-       Mientras esté vacío, WhatsApp abre el selector de contactos. */
-    var NUM = "";
+    /* WhatsApp de PG Estrategias (221 841 7356) para la demo. */
+    var NUM = "522218417356";
     function wa(msg) { return "https://wa.me/" + NUM + "?text=" + encodeURIComponent(msg); }
     document.querySelectorAll("[data-wa]").forEach(function (a) {
       a.href = wa(a.getAttribute("data-wa"));
@@ -393,6 +424,18 @@
     ["r-nombre", "r-fecha", "r-hora"].forEach(function (id) {
       document.getElementById(id).addEventListener("input", function () { this.setCustomValidity(""); });
     });
+
+    var barra = document.getElementById("barra-reserva");
+    var hero = document.getElementById("inicio");
+    var form = document.getElementById("reserva");
+    /* Visible al pasar la portada; se oculta mientras el formulario de reservación está en pantalla. */
+    function barraVisible() {
+      var r = form.getBoundingClientRect();
+      var enForm = r.top < window.innerHeight * 0.85 && r.bottom > window.innerHeight * 0.15;
+      barra.classList.toggle("ver", hero.getBoundingClientRect().bottom < window.innerHeight * 0.6 && !enForm);
+    }
+    window.addEventListener("scroll", barraVisible, { passive: true });
+    barraVisible();
 
     var els = document.querySelectorAll(".reveal");
     if ("IntersectionObserver" in window) {
