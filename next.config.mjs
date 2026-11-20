@@ -42,6 +42,14 @@ const nextConfig = {
         destination: "/boxbox/index.html",
       },
       {
+        source: "/propuestamesonmoncloa",
+        destination: "/propuesta-meson-moncloa.html",
+      },
+      {
+        source: "/webmesonmoncloa",
+        destination: "/mesonmoncloa/index.html",
+      },
+      {
         source: "/outfitjefe",
         destination: "/outfitjefe/index.html",
       },

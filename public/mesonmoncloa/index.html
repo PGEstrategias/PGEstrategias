@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Restaurante Español en Puebla con Vista a Angelópolis | Mesón de la Moncloa</title>
+<meta name="description" content="Mesón de la Moncloa: restaurante premium de cocina española en las alturas de Angelópolis, Puebla. Reserva tu mesa en línea o por WhatsApp.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#120d0b">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Mesón de la Moncloa · Cocina española con vista a Angelópolis">
+<meta property="og:description" content="Reserva tu mesa en línea o por WhatsApp.">
+<meta property="og:image" content="/mesonmoncloa/logo.png">
+<meta property="og:locale" content="es_MX">
+<link rel="icon" href="/mesonmoncloa/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Mesón de la Moncloa",
+  "servesCuisine": "Española",
+  "description": "Restaurante premium de cocina española con vista a Angelópolis, Puebla.",
+  "logo": "/mesonmoncloa/logo.png",
+  "acceptsReservations": true,
+  "hasMap": "https://share.google/AAFtTua8qPnLQFiGW",
+  "address": { "@type": "PostalAddress", "addressLocality": "Puebla", "addressRegion": "Puebla", "addressCountry": "MX" }
+}
+</script>
+<style>
+  :root {
+    --noche: #120d0b;
+    --noche-2: #1b1411;
+    --linea: rgba(234, 214, 176, 0.16);
+    --crema: #f6efe2;
+    --suave: rgba(246, 239, 226, 0.74);
+    --oro: #cfa65a;
+    --oro-2: #e6c784;
+    --rojo: #c8102e;
+    --amarillo: #f6c400;
+    --wa: #25d366;
+    --titulo: "Cinzel", Georgia, serif;
+    --cursiva: "Cormorant Garamond", Georgia, serif;
+    --body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+  body { background: var(--noche); color: var(--crema); font-family: var(--body); font-size: 16px; line-height: 1.7; overflow-x: hidden; }
+  img, svg { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { max-width: 1160px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 96px 0; position: relative; }
+
+  .kicker { display: inline-flex; align-items: center; gap: 12px; font-family: var(--titulo); font-size: 13px; font-weight: 600; letter-spacing: 0.32em; text-transform: uppercase; color: var(--oro); }
+  .kicker::before { content: ""; width: 26px; height: 4px; background: linear-gradient(180deg, var(--rojo) 0 25%, var(--amarillo) 25% 75%, var(--rojo) 75%); border-radius: 1px; }
+  h1, h2, h3 { font-family: var(--titulo); font-weight: 500; line-height: 1.12; letter-spacing: 0.04em; }
+  h1 { font-size: clamp(36px, 6.4vw, 74px); }
+  h2 { font-size: clamp(30px, 4.6vw, 52px); margin: 14px 0 16px; }
+  h3 { font-size: 22px; }
+  em.oro { font-family: var(--cursiva); font-style: italic; font-weight: 500; color: var(--oro-2); letter-spacing: 0.01em; text-transform: none; }
+  p.lead { font-size: clamp(16px, 1.8vw, 18px); color: var(--suave); max-width: 640px; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 10px; min-height: 52px; padding: 0 28px; font-family: var(--titulo); font-weight: 600; font-size: 14px; letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid transparent; border-radius: 2px; cursor: pointer; transition: background .25s, color .25s, border-color .25s; }
+  .btn svg { width: 18px; height: 18px; }
+  .btn-oro { background: var(--oro); color: var(--noche); }
+  .btn-oro:hover { background: var(--oro-2); }
+  .btn-linea { border-color: rgba(246,239,226,0.55); color: var(--crema); background: transparent; }
+  .btn-linea:hover { border-color: var(--oro); color: var(--oro-2); }
+
+  /* Header */
+  header { position: fixed; inset: 0 0 auto 0; z-index: 30; background: rgba(18,13,11,0.82); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--linea); }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 76px; gap: 16px; }
+  .logo img { height: 50px; width: auto; }
+  nav ul { list-style: none; display: flex; gap: 28px; }
+  nav a { font-family: var(--titulo); font-size: 12px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--suave); }
+  nav a:hover { color: var(--oro-2); }
+  header .btn { min-height: 42px; padding: 0 16px; font-size: 12px; }
+  @media (max-width: 960px) { nav { display: none; } }
+
+  /* Hero: Angelópolis de noche desde las alturas */
+  .hero { min-height: 100vh; min-height: 100svh; display: flex; align-items: center; padding: 130px 0 90px; overflow: hidden; text-align: center; }
+  .ciudad { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hero::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 42%, rgba(18,13,11,0.35), rgba(18,13,11,0.1) 55%), linear-gradient(180deg, transparent 72%, var(--noche)); pointer-events: none; }
+  .hero .wrap { position: relative; z-index: 1; }
+  .hero-logo { width: min(460px, 82vw); margin: 0 auto 26px; filter: drop-shadow(0 6px 30px rgba(0,0,0,0.6)); }
+  .hero h1 { font-size: clamp(26px, 4vw, 44px); max-width: 780px; margin: 0 auto 14px; }
+  .hero p.lead { margin: 0 auto; }
+  .hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin-top: 30px; }
+  .ventana { animation: luz 4s ease-in-out infinite alternate; }
+  @keyframes luz { from { opacity: 0.45; } to { opacity: 1; } }
+  .estrella { animation: luz 3s ease-in-out infinite alternate; }
+
+  /* Experiencia */
+  .exp { display: grid; grid-template-columns: 1fr; gap: 18px; margin-top: 44px; }
+  @media (min-width: 860px) { .exp { grid-template-columns: repeat(3, 1fr); } }
+  .exp article { border: 1px solid var(--linea); background: var(--noche-2); padding: 34px 28px; }
+  .exp .num { font-family: var(--cursiva); font-style: italic; font-size: 44px; color: var(--oro); line-height: 1; }
+  .exp h3 { margin: 12px 0 8px; }
+  .exp p { color: var(--suave); font-size: 15px; }
+
+  /* Cocina */
+  .cocina { background: linear-gradient(180deg, var(--noche), #1d130f 50%, var(--noche)); }
+  .platos { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--linea); border: 1px solid var(--linea); margin-top: 44px; }
+  @media (min-width: 700px) { .platos { grid-template-columns: 1fr 1fr; } }
+  @media (min-width: 1060px) { .platos { grid-template-columns: repeat(3, 1fr); } }
+  .platos div { background: var(--noche); padding: 30px 26px; }
+  .platos b { display: block; font-family: var(--titulo); font-weight: 500; font-size: 20px; letter-spacing: 0.06em; margin-bottom: 6px; color: var(--oro-2); }
+  .platos span { color: var(--suave); font-size: 15px; }
+  .nota { margin-top: 16px; font-size: 13px; color: rgba(246,239,226,0.5); }
+
+  /* Reservaciones */
+  .reserva-grid { display: grid; grid-template-columns: 1fr; gap: 36px; align-items: start; }
+  @media (min-width: 940px) { .reserva-grid { grid-template-columns: 5fr 6fr; gap: 56px; } }
+  .ventajas { list-style: none; margin-top: 24px; }
+  .ventajas li { padding: 12px 0 12px 30px; border-top: 1px solid var(--linea); position: relative; color: var(--suave); }
+  .ventajas li::before { content: "✦"; position: absolute; left: 0; top: 12px; color: var(--oro); }
+  form.reserva { background: var(--noche-2); border: 1px solid var(--linea); padding: 30px 26px; display: grid; gap: 14px; }
+  form.reserva h3 { font-size: 24px; }
+  .fila { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .campo label { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--oro); margin-bottom: 6px; }
+  .campo input, .campo select, .campo textarea { width: 100%; min-height: 50px; padding: 12px 14px; font: inherit; font-size: 16px; color: var(--crema); background: var(--noche); border: 1px solid var(--linea); border-radius: 2px; }
+  .campo textarea { min-height: 84px; resize: vertical; }
+  .campo input:focus, .campo select:focus, .campo textarea:focus { outline: 2px solid var(--oro); outline-offset: 1px; }
+  .campo input::-webkit-calendar-picker-indicator { filter: invert(0.8); }
+  form.reserva .btn { width: 100%; margin-top: 4px; }
+  .fino { font-size: 12px; color: rgba(246,239,226,0.5); text-align: center; }
+  .ok { display: none; border: 1px solid var(--oro); padding: 18px; text-align: center; }
+  .ok b { font-family: var(--titulo); font-size: 20px; color: var(--oro-2); display: block; margin-bottom: 6px; }
+
+  /* Club */
+  .club { background: radial-gradient(ellipse at 50% 0%, rgba(207,166,90,0.16), transparent 60%), var(--noche-2); border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); text-align: center; }
+  .club p.lead { margin: 0 auto; }
+  .club .copa { width: 64px; height: 64px; margin: 0 auto 10px; color: var(--oro); }
+
+  /* Ubicación */
+  .ubica { display: grid; grid-template-columns: 1fr; gap: 32px; align-items: stretch; }
+  @media (min-width: 940px) { .ubica { grid-template-columns: 1fr 1fr; } }
+  .datos { list-style: none; margin: 22px 0 28px; }
+  .datos li { display: grid; grid-template-columns: 130px 1fr; gap: 12px; padding: 14px 0; border-top: 1px solid var(--linea); }
+  .datos li span { font-family: var(--titulo); font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--oro); padding-top: 3px; }
+  .mapa { min-height: 360px; border: 1px solid var(--linea); overflow: hidden; }
+  .mapa iframe { width: 100%; height: 100%; min-height: 360px; border: 0; display: block; filter: grayscale(0.3) invert(0.9) hue-rotate(180deg) sepia(0.2); }
+
+  footer { border-top: 1px solid var(--linea); padding: 38px 0 100px; font-size: 13px; color: rgba(246,239,226,0.55); }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: space-between; }
+  footer img { height: 46px; width: auto; }
+  footer a { color: var(--oro); }
+
+  .wa-float { position: fixed; right: 18px; bottom: 18px; z-index: 40; width: 58px; height: 58px; border-radius: 50%; background: var(--wa); display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(0,0,0,0.4); }
+  .wa-float svg { width: 30px; height: 30px; color: #fff; }
+
+  .reveal { opacity: 0; transform: translateY(24px); transition: opacity .8s ease, transform .8s ease; }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } .ventana, .estrella { animation: none; } }
+  @media (max-width: 600px) {
+    section { padding: 72px 0; }
+    .hero .btn { width: 100%; }
+    .fila { grid-template-columns: 1fr; }
+    .datos li { grid-template-columns: 1fr; gap: 2px; }
+  }
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="wa" viewBox="0 0 24 24"><path fill="currentColor" d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-.9 1.2-.3.2-.6.1a8.2 8.2 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.8.4 3.5 3.5 0 0 0-1.1 2.6 6 6 0 0 0 1.3 3.2 13.9 13.9 0 0 0 5.3 4.7c2 .8 2.8.9 3.8.8a3.2 3.2 0 0 0 2.1-1.5 2.6 2.6 0 0 0 .2-1.5c-.1-.1-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></symbol>
+</svg>
+
+<header>
+  <div class="wrap">
+    <a href="#inicio" class="logo" aria-label="Mesón de la Moncloa, inicio"><img src="/mesonmoncloa/logo.png" alt="Mesón de la Moncloa" width="1000" height="561"></a>
+    <nav aria-label="Principal">
+      <ul>
+        <li><a href="#experiencia">Experiencia</a></li>
+        <li><a href="#cocina">Cocina</a></li>
+        <li><a href="#reservar">Reservar</a></li>
+        <li><a href="#club">Club</a></li>
+        <li><a href="#ubicacion">Ubicación</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-oro" href="#reservar">Reservar</a>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <svg class="ciudad" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+      <defs>
+        <linearGradient id="cielo" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#0d0a0e" />
+          <stop offset="0.45" stop-color="#2a1a18" />
+          <stop offset="0.72" stop-color="#6b3a22" />
+          <stop offset="0.86" stop-color="#b8692c" />
+          <stop offset="1" stop-color="#2a1a14" />
+        </linearGradient>
+        <linearGradient id="edif" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1412" /><stop offset="1" stop-color="#0b0807" /></linearGradient>
+        <pattern id="ventanas" width="22" height="26" patternUnits="userSpaceOnUse">
+          <rect x="5" y="6" width="6" height="9" fill="#f3c46a" />
+        </pattern>
+        <pattern id="ventanas2" width="18" height="22" patternUnits="userSpaceOnUse">
+          <rect x="4" y="5" width="5" height="7" fill="#ffd98a" />
+        </pattern>
+      </defs>
+      <rect width="1440" height="900" fill="url(#cielo)" />
+      <g fill="#fff3d6">
+        <circle class="estrella" cx="120" cy="90" r="1.4" /><circle class="estrella" cx="300" cy="160" r="1.1" style="animation-delay:-1s" />
+        <circle class="estrella" cx="520" cy="70" r="1.6" style="animation-delay:-2s" /><circle class="estrella" cx="760" cy="130" r="1.2" />
+        <circle class="estrella" cx="980" cy="60" r="1.5" style="animation-delay:-1.5s" /><circle class="estrella" cx="1210" cy="150" r="1.1" style="animation-delay:-.5s" />
+        <circle class="estrella" cx="1360" cy="80" r="1.4" style="animation-delay:-2.4s" />
+      </g>
+      <!-- Volcanes al fondo -->
+      <path d="M0 640 L260 560 L380 470 L430 455 L470 470 L600 560 L760 600 L900 580 L1010 500 L1060 488 L1110 505 L1240 575 L1440 610 V900 H0Z" fill="#3a2520" opacity="0.85" />
+      <path d="M408 462 L430 455 L452 464 L440 474 L420 474Z M1042 494 L1060 488 L1080 497 L1068 506 L1050 506Z" fill="#f2e3cf" opacity="0.7" />
+      <!-- Ciudad: torres de Angelópolis -->
+      <g fill="url(#edif)">
+        <rect x="40" y="690" width="110" height="210" /><rect x="170" y="640" width="80" height="260" /><rect x="270" y="700" width="120" height="200" />
+        <rect x="420" y="600" width="90" height="300" /><rect x="530" y="660" width="130" height="240" /><rect x="690" y="560" width="70" height="340" />
+        <rect x="780" y="620" width="110" height="280" /><rect x="910" y="580" width="90" height="320" /><rect x="1020" y="670" width="130" height="230" />
+        <rect x="1170" y="620" width="85" height="280" /><rect x="1275" y="690" width="120" height="210" />
+      </g>
+      <g class="ventana" opacity="0.8">
+        <rect x="170" y="650" width="80" height="250" fill="url(#ventanas)" opacity="0.55" />
+        <rect x="420" y="610" width="90" height="290" fill="url(#ventanas2)" opacity="0.6" />
+        <rect x="690" y="570" width="70" height="330" fill="url(#ventanas)" opacity="0.7" />
+      </g>
+      <g class="ventana" opacity="0.8" style="animation-delay:-2s">
+        <rect x="910" y="590" width="90" height="310" fill="url(#ventanas2)" opacity="0.55" />
+        <rect x="1170" y="630" width="85" height="270" fill="url(#ventanas)" opacity="0.6" />
+        <rect x="530" y="670" width="130" height="230" fill="url(#ventanas2)" opacity="0.35" />
+      </g>
+      <rect y="860" width="1440" height="40" fill="#0b0807" />
+    </svg>
+    <div class="wrap">
+      <img class="hero-logo" src="/mesonmoncloa/logo.png" alt="Mesón de la Moncloa" width="1000" height="561">
+      <h1>Cocina española en las alturas de <em class="oro">Angelópolis</em></h1>
+      <p class="lead">Sabores de España, una cava para cada ocasión y la mejor vista de Puebla desde uno de los pisos más altos de la ciudad.</p>
+      <div class="ctas">
+        <a class="btn btn-oro" href="#reservar">Reservar mesa</a>
+        <a class="btn btn-linea" data-wa="Hola, quiero hacer una reservación en Mesón de la Moncloa." href="#"><svg><use href="#wa"/></svg>WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCIA -->
+  <section id="experiencia">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="kicker">La experiencia</span>
+        <h2>Una mesa con <em class="oro">toda la ciudad</em> a tus pies</h2>
+        <p class="lead">Comidas de negocios, cenas especiales y celebraciones con una vista que no se olvida.</p>
+      </div>
+      <div class="exp">
+        <article class="reveal"><span class="num">I</span><h3>La vista</h3><p>Desde lo alto de la torre, todo Angelópolis y, en días despejados, los volcanes.</p></article>
+        <article class="reveal"><span class="num">II</span><h3>La cocina</h3><p>Recetas de tradición española, preparadas con producto de calidad.</p></article>
+        <article class="reveal"><span class="num">III</span><h3>El servicio</h3><p>Atención cuidada para que cada visita se sienta especial.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- COCINA -->
+  <section class="cocina" id="cocina">
+    <div class="wrap">
+      <div class="reveal">
+        <span class="kicker">Nuestra cocina</span>
+        <h2>Sabores de <em class="oro">España</em></h2>
+      </div>
+      <div class="platos reveal">
+        <div><b>Tapas</b><span>Para compartir y abrir el apetito.</span></div>
+        <div><b>Paellas y arroces</b><span>Al centro de la mesa, como manda la tradición.</span></div>
+        <div><b>Embutidos y quesos</b><span>Selección para acompañar con un buen vino.</span></div>
+        <div><b>Cortes y mar</b><span>Platos fuertes para cada gusto.</span></div>
+        <div><b>Vinos y clericot</b><span>Una carta pensada para cada platillo.</span></div>
+        <div><b>Postres</b><span>El cierre dulce de la experiencia.</span></div>
+      </div>
+      <p class="nota">Sitio demo: categorías ilustrativas. El menú real se carga con el restaurante.</p>
+    </div>
+  </section>
+
+  <!-- RESERVACIONES -->
+  <section id="reservar">
+    <div class="wrap reserva-grid">
+      <div class="reveal">
+        <span class="kicker">Reservaciones</span>
+        <h2>Aparta tu mesa <em class="oro">en un minuto</em></h2>
+        <p class="lead">Elige la fecha, la hora y cuántos son. Te confirmamos por WhatsApp.</p>
+        <ul class="ventajas">
+          <li>Pide mesa junto a la ventana para disfrutar la vista</li>
+          <li>Cuéntanos si es una ocasión especial y la preparamos</li>
+          <li>Grupos y eventos privados con atención personalizada</li>
+        </ul>
+      </div>
+      <form class="reserva reveal" id="reserva" novalidate>
+        <h3>Tu reservación</h3>
+        <div class="campo"><label for="r-nombre">Nombre</label><input id="r-nombre" name="nombre" autocomplete="name" required></div>
+        <div class="fila">
+          <div class="campo"><label for="r-fecha">Fecha</label><input id="r-fecha" name="fecha" type="date" required></div>
+          <div class="campo"><label for="r-hora">Hora</label><input id="r-hora" name="hora" type="time" step="900" required></div>
+        </div>
+        <div class="fila">
+          <div class="campo"><label for="r-personas">Personas</label>
+            <select id="r-personas" name="personas"><option>1</option><option selected>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>Más de 8</option></select>
+          </div>
+          <div class="campo"><label for="r-ocasion">Ocasión</label>
+            <select id="r-ocasion" name="ocasion"><option>Comida o cena</option><option>Cumpleaños</option><option>Aniversario</option><option>Negocios</option><option>Celebración especial</option><option>Evento privado</option></select>
+          </div>
+        </div>
+        <div class="campo"><label for="r-ventana"><input id="r-ventana" name="ventana" type="checkbox" style="width:auto;min-height:0;margin-right:8px;vertical-align:middle">Me gustaría mesa junto a la ventana</label></div>
+        <div class="campo"><label for="r-notas">Comentarios (opcional)</label><textarea id="r-notas" name="notas" maxlength="300"></textarea></div>
+        <button class="btn btn-oro" type="submit"><svg><use href="#wa"/></svg>Confirmar por WhatsApp</button>
+        <p class="fino">Al enviar se abre WhatsApp con tu reservación lista para mandar.</p>
+        <div class="ok" id="reserva-ok" role="status"><b>¡Gracias!</b>Tu reservación se abrió en WhatsApp. Envía el mensaje y te confirmamos tu mesa.</div>
+      </form>
+    </div>
+  </section>
+
+  <!-- CLUB -->
+  <section class="club" id="club">
+    <div class="wrap reveal">
+      <svg class="copa" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 8h24l-2 18a10 10 0 0 1-20 0z"/><path d="M32 36v16M22 56h20"/><path d="M23 18h18"/></svg>
+      <span class="kicker">Club Moncloa</span>
+      <h2>Tu primer <em class="oro">clericot</em> va por la casa</h2>
+      <p class="lead">Regístrate en nuestro club durante tu visita y déjanos tu reseña: te invitamos un clericot y recibes primero nuestras ofertas, noches especiales y fechas de temporada.</p>
+      <p style="margin-top:26px"><a class="btn btn-oro" data-wa="Hola, quiero unirme al Club Moncloa." href="#">Unirme al club</a></p>
+    </div>
+  </section>
+
+  <!-- UBICACIÓN -->
+  <section id="ubicacion">
+    <div class="wrap ubica">
+      <div class="reveal">
+        <span class="kicker">Visítanos</span>
+        <h2>En lo alto de <em class="oro">Angelópolis</em></h2>
+        <ul class="datos">
+          <li><span>Dónde</span>En uno de los pisos más altos de una torre de Angelópolis, Puebla.</li>
+          <li><span>Reservas</span>En línea o por WhatsApp</li>
+        </ul>
+        <a class="btn btn-oro" href="https://share.google/AAFtTua8qPnLQFiGW" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+      <div class="mapa reveal">
+        <iframe title="Ubicación de Mesón de la Moncloa en Google Maps" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+          src="https://maps.google.com/maps?q=Mes%C3%B3n%20de%20la%20Moncloa%2C%20Puebla&z=15&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <img src="/mesonmoncloa/logo.png" alt="Mesón de la Moncloa" width="1000" height="561" loading="lazy">
+    <div>© <span id="y">2026</span> Mesón de la Moncloa · Puebla</div>
+    <div>Sitio demo por <a href="https://pgestrategias.com">PG Estrategias</a></div>
+  </div>
+</footer>
+
+<a class="wa-float" data-wa="Hola, quiero hacer una reservación en Mesón de la Moncloa." href="#" aria-label="Escríbenos por WhatsApp"><svg><use href="#wa"/></svg></a>
+
+<script>
+  (function () {
+    /* PENDIENTE: número de WhatsApp del restaurante (52 + 10 dígitos).
+       Mientras esté vacío, WhatsApp abre el selector de contactos. */
+    var NUM = "";
+    function wa(msg) { return "https://wa.me/" + NUM + "?text=" + encodeURIComponent(msg); }
+    document.querySelectorAll("[data-wa]").forEach(function (a) {
+      a.href = wa(a.getAttribute("data-wa"));
+      a.target = "_blank";
+      a.rel = "noopener";
+    });
+
+    // Fecha mínima: hoy (hora de Puebla).
+    var hoy = new Intl.DateTimeFormat("en-CA", { timeZone: "America/Mexico_City" }).format(new Date());
+    var fecha = document.getElementById("r-fecha");
+    fecha.min = hoy;
+
+    document.getElementById("reserva").addEventListener("submit", function (e) {
+      e.preventDefault();
+      var f = e.target;
+      var faltan = ["nombre", "fecha", "hora"].filter(function (n) { return !f[n].value.trim(); });
+      if (faltan.length) { f[faltan[0]].focus(); f[faltan[0]].reportValidity && f[faltan[0]].setCustomValidity("Completa este dato"); f[faltan[0]].reportValidity(); return; }
+      var d = new Date(f.fecha.value + "T12:00:00");
+      var fechaTxt = d.toLocaleDateString("es-MX", { weekday: "long", day: "numeric", month: "long" });
+      var msg = "Hola, quiero reservar en Mesón de la Moncloa.\n" +
+        "Nombre: " + f.nombre.value.trim() + "\n" +
+        "Fecha: " + fechaTxt + "\nHora: " + f.hora.value + "\n" +
+        "Personas: " + f.personas.value + "\nOcasión: " + f.ocasion.value +
+        (f.ventana.checked ? "\nMesa junto a la ventana, si es posible." : "") +
+        (f.notas.value.trim() ? "\nComentarios: " + f.notas.value.trim() : "");
+      window.open(wa(msg), "_blank", "noopener");
+      document.getElementById("reserva-ok").style.display = "block";
+    });
+    ["r-nombre", "r-fecha", "r-hora"].forEach(function (id) {
+      document.getElementById(id).addEventListener("input", function () { this.setCustomValidity(""); });
+    });
+
+    var els = document.querySelectorAll(".reveal");
+    if ("IntersectionObserver" in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+      }, { rootMargin: "0px 0px -60px 0px" });
+      els.forEach(function (el) { io.observe(el); });
+    } else {
+      els.forEach(function (el) { el.classList.add("in"); });
+    }
+    document.getElementById("y").textContent = new Date().getFullYear();
+  })();
+</script>
+</body>
+</html>
