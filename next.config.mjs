@@ -34,6 +34,14 @@ const nextConfig = {
         destination: "/dreamhaus/index.html",
       },
       {
+        source: "/propuestaboxbox",
+        destination: "/propuesta-box-box.html",
+      },
+      {
+        source: "/webboxbox",
+        destination: "/boxbox/index.html",
+      },
+      {
         source: "/outfitjefe",
         destination: "/outfitjefe/index.html",
       },
